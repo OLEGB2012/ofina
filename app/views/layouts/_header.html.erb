@@ -9,7 +9,24 @@
         <ul class="nav pull-right">
           <li><%= link_to "На главную",root_path %></li>
           <li><%= link_to "Документация",help_path %></li>
-          <li><%= link_to "Вход на сайт", '#' %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Пользователи", '#' %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.email %> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Профиль",  '#'  %></li>
+                <li><%= link_to "Настройки",'#'  %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Выйти", destroy_user_session_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Войти", new_user_session_path %></li>
+          <% end %>          
         </ul>
       </nav>
     </div>

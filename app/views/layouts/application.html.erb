@@ -10,8 +10,16 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% flash.each do |key, value| %>
+          <%  if key.to_s=='alert' or key.to_s=='error' %>
+            <%= content_tag(:div, value , class: "alert alert-error") %>
+          <% end %>
+          <%  if key.to_s=='notice' %>
+            <%= content_tag(:div, value , class: "alert alert-info") %>
+          <% end %>
+          <%  if key.to_s=='success' %>
+            <%= content_tag(:div, value , class: "alert alert-success") %>
+          <% end %>      
         <% end %>
         <%= yield %>
         <%= render 'layouts/footer' %>

@@ -7,6 +7,8 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'devise'
+
 group :development, :test do
   gem 'rspec-rails', '2.10.1'
   gem 'sqlite3'
