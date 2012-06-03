@@ -1,0 +1,20 @@
+ru:
+  activerecord:
+    attributes:
+      user:  
+        login: "Имя пользователя или e-mail"
+        password: "Пароль (не менее чем 6 знаков)"
+        password_confirmation: "Подтверждение пароля"
+        remember_me: "Запомнить меня"
+        username: "Имя пользователя"
+        email: "Адрес e-mail"
+        
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "Введённый e-mail уже занят"
+            password:
+              confirmation: "Подтверждение пароля не соответствует основному паролю"
+              blank: "Пароль не должен быть пустым"
