@@ -1,12 +1,14 @@
-<h2>Resend confirmation instructions</h2>
+<h2>Повторная отправка инструкций по подтверждению учётной записи</h2>
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Resend confirmation instructions" %></div>
+  <div class="row">
+    <div class="span6 offset3">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+      <%= f.submit "Выполнить отправку на e-mail", :class => "btn btn-large btn-primary" %>
+    </div>
+  </div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

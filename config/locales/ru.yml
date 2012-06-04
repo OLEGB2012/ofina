@@ -8,13 +8,21 @@ ru:
         remember_me: "Запомнить меня"
         username: "Имя пользователя"
         email: "Адрес e-mail"
+        current_password: "Текущий пароль"
         
     errors:
       models:
         user:
           attributes:
             email:
-              taken: "Введённый e-mail уже занят"
+              taken: " => e-mail уже занят другим пользователем"
+              blank: " => не может быть пустым"
             password:
-              confirmation: "Подтверждение пароля не соответствует основному паролю"
-              blank: "Пароль не должен быть пустым"
+              confirmation: " => новый пароль не совпадает с его подтверждением"
+              blank: " => не может быть пустым"
+              too_short: " => слишком короткий"
+            current_password:
+              blank: " => не может быть пустым"
+              invalid: " => не соответствует действующему"
+            login:
+              blank: "=> не может быть пустым"
