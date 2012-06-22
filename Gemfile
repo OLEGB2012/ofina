@@ -12,7 +12,7 @@ gem 'devise'
 group :development, :test do
   gem 'rspec-rails', '2.10.1'
   gem 'sqlite3'
-  gem 'annotate', '~> 2.4.1.beta'
+  gem 'annotate'
 end
 
 # Bundle edge Rails instead:

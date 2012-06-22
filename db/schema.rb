@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603202632) do
+ActiveRecord::Schema.define(:version => 20120621093006) do
+
+  create_table "enterprises", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "org_name"
+    t.string   "uch_nomer_plat",     :limit => 9
+    t.string   "vid_econom_deyatel"
+    t.string   "organiz_pravo_form"
+    t.string   "organ_upravlen"
+    t.string   "edinic_izmer",       :limit => 20
+    t.string   "adres"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "enterprises", ["user_id"], :name => "index_enterprises_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
