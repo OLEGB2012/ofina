@@ -7,7 +7,10 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem "acts_as_tree", "~> 1.1.0"
+
 gem 'devise'
+gem 'russian', '~> 0.6.0' # см. https://github.com/yaroslav/russian
 
 group :development, :test do
   gem 'rspec-rails', '2.10.1'

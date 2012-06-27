@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Branch do
+describe Form1Report do
   pending "add some examples to (or delete) #{__FILE__}"
 end
