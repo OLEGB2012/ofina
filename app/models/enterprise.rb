@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class Enterprise < ActiveRecord::Base
   belongs_to :user
   has_many   :form_one_reports,   :dependent => :destroy

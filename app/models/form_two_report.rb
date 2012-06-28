@@ -1,6 +1,8 @@
 # encoding: utf-8
 class FormTwoReport < ActiveRecord::Base
-belongs_to :enterprise
+  before_save :calc_rows_f2  
+
+  belongs_to :enterprise
   
   attr_accessible :date_period_beg, :date_period_end, 
                   :S010, :S020, :S030, :S040, :S050, :S060, :S070, :S080, :S090, 
@@ -14,4 +16,20 @@ belongs_to :enterprise
             :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
             :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
             :S220, :S230, :S240, :S250, :S260, numericality: true
+  
+  private
+  # Расчитаем итоговые строки для формы 2
+  def calc_rows_f2
+    self.S030 = self.S010-self.S020
+    self.S060 = self.S030-self.S040-self.S050
+    self.S090 = self.S060+self.S070-self.S080
+    self.S100 = self.S101+self.S102+self.S103+self.S104
+    self.S110 = self.S111+self.S112
+    self.S120 = self.S121+self.S122
+    self.S130 = self.S131+self.S132+self.S133
+    self.S150 = self.S100-self.S110+self.S120-self.S130+self.S140
+    self.S160 = self.S090+self.S150
+    self.S210 = self.S160-self.S170+self.S180+self.S190-self.S200
+    self.S240 = self.S210+self.S220+self.S230
+  end
 end

@@ -1,5 +1,6 @@
 # encoding: utf-8
 class FormOneReport < ActiveRecord::Base
+  before_save :calc_rows_f1
   #set_table_name("form_one_reports")
 
   belongs_to :enterprise
@@ -17,5 +18,19 @@ class FormOneReport < ActiveRecord::Base
             :S490, :S510, :S520, :S530, :S540, :S550, :S560, :S590, :S610, :S620, :S630, :S631, 
             :S632, :S633, :S634, :S635, :S636, :S637, :S638, :S640, :S650, :S660, :S670, :S690, 
             :S700, numericality: true
-  
+          
+  private
+  # Расчитаем итоговые строки для формы 1
+  def calc_rows_f1
+    self.S130 = self.S131+self.S132+self.S133
+    self.S190 = self.S110+self.S120+self.S130+self.S140+self.S150+self.S160+self.S170+self.S180
+    self.S210 = self.S211+self.S212+self.S213+self.S214+self.S215+self.S216
+    self.S290 = self.S210+self.S220+self.S230+self.S240+self.S250+self.S260+self.S270+self.S280
+    self.S300 = self.S190+self.S290
+    self.S490 = self.S410+self.S420+self.S430+self.S440+self.S450+self.S460+self.S470+self.S480
+    self.S590 = self.S510+self.S520+self.S530+self.S540+self.S550+self.S560
+    self.S630 = self.S631+self.S632+self.S633+self.S634+self.S635+self.S636+self.S637+self.S638
+    self.S690 = self.S610+self.S620+self.S630+self.S640+self.S650+self.S660+self.S670
+    self.S700 = self.S490+self.S590+self.S690
+  end  
 end

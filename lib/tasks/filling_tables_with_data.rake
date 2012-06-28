@@ -113,7 +113,7 @@ def make_form_three_report
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Уменьшение собственного капитала - всего',
-           G2: '060', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '060', G3: 0, G4: 0, G5: 0, G6: 0, G7: 305, G8: 0, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -173,7 +173,7 @@ def make_form_three_report
 
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'прочие',
-           G2: '069', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '069', G3: 0, G4: 0, G5: 0, G6: 0, G7: 305, G8: 0, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3  
   
@@ -197,13 +197,13 @@ def make_form_three_report
 
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year),"%d %B %Y").to_s+' года',
-           G2: '100', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '100', G3: 317474, G4: 0, G5: 0, G6: 0, G7: 109273, G8: 18975, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3  
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year.end_of_year),"%d %B %Y").to_s+' года',
-           G2: '110', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '110', G3: 404165, G4: 0, G5: 0, G6: 167, G7: 527160, G8: 17908, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3 
   
@@ -221,7 +221,7 @@ def make_form_three_report
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Cкорректированный остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year.end_of_year),"%d %B %Y").to_s+' года',
-           G2: '140', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '140', G3: 404165, G4: 0, G5: 0, G6: 167, G7: 527160, G8: 17908, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -234,7 +234,7 @@ def make_form_three_report
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Увеличение собственного капитала - всего',
-           G2: '150', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '150', G3: 13501, G4: 0, G5: 0, G6: 231, G7: 84, G8: 0, G9: 5)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -246,7 +246,7 @@ def make_form_three_report
 
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'чистая прибыль',
-           G2: '151', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '151', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 5)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -294,13 +294,13 @@ def make_form_three_report
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'прочие',
-           G2: '159', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '159', G3: 13501, G4: 0, G5: 0, G6: 231, G7: 84, G8: 0, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
 
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Уменьшение собственного капитала - всего',
-           G2: '160', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '160', G3: 0, G4: 0, G5: 0, G6: 0, G7: 1805, G8: 532, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -342,7 +342,7 @@ def make_form_three_report
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'дивиденды и другие доходы от участия в уставном капитале организации',
-           G2: '166', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '166', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 301, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -360,7 +360,7 @@ def make_form_three_report
   
   new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'прочие',
-           G2: '169', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '169', G3: 0, G4: 0, G5: 0, G6: 0, G7: 1805, G8: 231, G9: 0)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
   
@@ -384,7 +384,7 @@ def make_form_three_report
   
  new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31',
            G1: 'Остаток на '+Russian::strftime((('2012-03-31').to_date),"%d %B %Y").to_s+' года',
-           G2: '200', G3: 0, G4: 0, G5: 0, G6: 0, G7: 0, G8: 0, G9: 0)
+           G2: '200', G3: 417666, G4: 0, G5: 0, G6: 398, G7: 525439, G8: 17376, G9: 5)
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3   
 end
@@ -393,21 +393,21 @@ def make_form_two_report
   FormTwoReport.delete_all
   
   new_form2 = FormTwoReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31', 
-                  S010: 229282, S020: 143297, S030: 85985, S040: 29166, S050: 2100, S060: 54719, 
-                  S070: 73187, S080: 74378, S090: 53528, S100: 1008, S101: 875, S102: 0, S103: 133, S104: 0, S110: 130, 
-                  S111: 7, S112: 123, S120: -20, S121: -20, S122: 0, S130: 53782, S131: 5863, S132: 47919, S133: 0, 
-                  S140: 0, S150: -52924, S160: 604, S170: 599, S180: 0, S190: 0, S200: 0, S210: 5, S211: 1, 
-                  S212: 5, S213: 0, S214: 0, S220: 0, S230: 0, S240: 5, S250: 0, S260: 0)
+                  S010: 229282, S020: 143297, S040: 29166, S050: 2100, 
+                  S070: 73187, S080: 74378, S101: 875, S102: 0, S103: 133, S104: 0, 
+                  S111: 7, S112: 123, S121: -20, S122: 0, S131: 5863, S132: 47919, S133: 0, 
+                  S140: 0, S170: 599, S180: 0, S190: 0, S200: 0, S211: 1, 
+                  S212: 5, S213: 0, S214: 0, S220: 0, S230: 0, S250: 0, S260: 0)
   
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_two_reports << new_form2
   
   new_form2 = FormTwoReport.create!(date_period_beg: '2011-01-01', date_period_end: '2011-03-31', 
-                  S010: 72146, S020: 67257, S030: 4889, S040: 0, S050: 1054, S060: 3835, S070: 45042, S080: 37021, S090: 11856, 
-                  S100: 18, S101: 18, S102: 0, S103: 0, S104: 0, S110: 0, S111: 0, S112: 0, S120: 0,
-                  S121: 0, S122: 0, S130: 11175, S131: 0, S132: 11175, S133: 0, S140: 0, S150: -10955, S160: 901,
-                  S170: 393, S180: 0, S190: 0, S200: 0, S210: 508, S211: 1, S212: 508, S213: 0, S214: 0,
-                  S220: 0, S230: 0, S240: 508, S250: 0, S260: 0)
+                  S010: 72146, S020: 67257, S040: 0, S050: 1054, S070: 45042, S080: 37021, 
+                  S101: 18, S102: 0, S103: 0, S104: 0, S111: 0, S112: 0,
+                  S121: 0, S122: 0, S131: 0, S132: 11175, S133: 0, S140: 0,
+                  S170: 393, S180: 0, S190: 0, S200: 0, S211: 1, S212: 508, S213: 0, S214: 0,
+                  S220: 0, S230: 0, S250: 0, S260: 0)
   
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_two_reports << new_form2
@@ -417,43 +417,41 @@ def make_form_one_report
   FormOneReport.delete_all
   
   new_form1 = FormOneReport.create!(date_period: '2012-03-31', 
-                                    S110:  816528, S120:   6862, S130:      0, S131:       0, 
+                                    S110:  816528, S120:   6862, S131:       0, 
                                     S132:       0, S133:      0, S140:  95179, S150:   74013, 
-                                    S160:       0, S170:    167, S180:   5155, S190:  997904,
-                                    S210:  161585, S211:  52457, S212:      0, S213:   41052, 
+                                    S160:       0, S170:    167, S180:   5155,
+                                    S211:  52457, S212:      0, S213:   41052, 
                                     S214:   68076, S215:      0, S216:      0, S220:       0, 
                                     S230:  175778, S240:   4378, S250:  72102, S260:     189, 
-                                    S270:    4104, S280:  74371, S290: 492507, S300: 1490411,
+                                    S270:    4104, S280:  74371,
                                     S410:  417666, S420:      0, S430:      0, S440:     398, 
                                     S450:  525439, S460:  17376, S470:      5, S480:       0,
-                                    S490:  960884, S510: 252320, S520:      0, S530:       0, 
-                                    S540:       0, S550:      0, S560:      0, S590:  252320, 
+                                    S510:  252320, S520:      0, S530:      0, 
+                                    S540:       0, S550:      0, S560:      0, 
                                     S610:  184391, S620:      0, S630:  89181, S631:   28078, 
                                     S632:   33065, S633:   4754, S634:   4050, S635:   12908, 
                                     S636:       0, S637:   3611, S638:   2715, S640:       0, 
-                                    S650:     855, S660:      0, S670:   2780, S690:  277207, 
-                                    S700: 1490411)
+                                    S650:     855, S660:      0, S670:   2780)
           
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_one_reports << new_form1
 
   new_form1 = FormOneReport.create!(date_period: '2011-12-31', 
-                                    S110:  821034, S120:   6199, S130:      0, S131:        0, 
+                                    S110:  821034, S120:   6199, S131:        0, 
                                     S132:       0, S133:      0, S140:  94410, S150:    74013, 
-                                    S160:       0, S170:    161, S180:   5155, S190:  1000972,
-                                    S210:  161413, S211:  44733, S212:      0, S213:    36009, 
+                                    S160:       0, S170:    161, S180:   5155,
+                                    S211:  44733, S212:      0, S213:    36009, 
                                     S214:   39432, S215:  41239, S216:      0, S220:        0, 
                                     S230:  211394, S240:   5967, S250:  19280, S260:      218, 
-                                    S270:    7451, S280:  55822, S290: 461545, S300:  1462517,
+                                    S270:    7451, S280:  55822,
                                     S410:  404165, S420:      0, S430:      0, S440:      167, 
                                     S450:  527160, S460:  17908, S470:      0, S480:        0,
-                                    S490:  949400, S510: 260004, S520:      0, S530:        0, 
-                                    S540:       0, S550:      0, S560:      0, S590:   260004, 
+                                    S510:  260004, S520:      0, S530:      0, 
+                                    S540:       0, S550:      0, S560:      0, 
                                     S610:  163379, S620:      0, S630:  86906, S631:    36210, 
                                     S632:   26046, S633:   3827, S634:   3392, S635:    10117, 
                                     S636:       0, S637:   3283, S638:   4031, S640:        0, 
-                                    S650:      48, S660:      0, S670:   2780, S690:   253113, 
-                                    S700: 1462517)
+                                    S650:      48, S660:      0, S670:   2780)
           
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_one_reports << new_form1
