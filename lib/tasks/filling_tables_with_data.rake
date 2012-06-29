@@ -8,7 +8,32 @@ namespace :db do
     make_form_one_report
     make_form_two_report
     make_form_three_report
+    make_form_four_report
   end
+end
+
+def make_form_four_report
+  FormFourReport.delete_all
+  
+  new_form4 = FormFourReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31', 
+                  S010: 229282, S020: 143297, S040: 29166, S050: 2100, 
+                  S070: 73187, S080: 74378, S101: 875, S102: 0, S103: 133, S104: 0, 
+                  S111: 7, S112: 123, S121: -20, S122: 0, S131: 5863, S132: 47919, S133: 0, 
+                  S140: 0, S170: 599, S180: 0, S190: 0, S200: 0, S211: 1, 
+                  S212: 5, S213: 0, S214: 0, S220: 0, S230: 0, S250: 0, S260: 0)
+  
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_four_reports << new_form4
+  
+  new_form4 = FormTwoReport.create!(date_period_beg: '2011-01-01', date_period_end: '2011-03-31', 
+                  S010: 72146, S020: 67257, S040: 0, S050: 1054, S070: 45042, S080: 37021, 
+                  S101: 18, S102: 0, S103: 0, S104: 0, S111: 0, S112: 0,
+                  S121: 0, S122: 0, S131: 0, S132: 11175, S133: 0, S140: 0,
+                  S170: 393, S180: 0, S190: 0, S200: 0, S211: 1, S212: 508, S213: 0, S214: 0,
+                  S220: 0, S230: 0, S250: 0, S260: 0)
+  
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_four_reports << new_form4
 end
 
 def make_form_three_report
