@@ -33,7 +33,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Token authenticatable
       # t.string :authentication_token
 
-
+      # Добавим своих полей ...
+      t.boolean :admin, default: false
+      t.string :username
+      
       t.timestamps
     end
 

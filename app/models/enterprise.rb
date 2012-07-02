@@ -14,7 +14,6 @@ class Enterprise < ActiveRecord::Base
                   :edinic_izmer,
                   :adres                  
   
-  validates :uch_nomer_plat, length: { is: 9, wrong_length: 'Учётный номер должен состоять из {{count}} цифр' },
-                       numericality: true     
+  validates :uch_nomer_plat, length: { is: 9 }, numericality: true     
   validates :edinic_izmer,   length: { maximum: 20 }
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626170025) do
+ActiveRecord::Schema.define(:version => 20120629173415) do
 
   create_table "enterprises", :force => true do |t|
     t.integer  "parent_id",                        :default => 0
@@ -30,6 +30,58 @@ ActiveRecord::Schema.define(:version => 20120626170025) do
   add_index "enterprises", ["parent_id", "id"], :name => "index_enterprises_on_parent_id_and_id"
   add_index "enterprises", ["parent_id"], :name => "index_enterprises_on_parent_id"
   add_index "enterprises", ["user_id"], :name => "index_enterprises_on_user_id"
+
+  create_table "form_four_reports", :force => true do |t|
+    t.integer  "enterprise_id"
+    t.date     "date_period_beg"
+    t.date     "date_period_end"
+    t.integer  "S020",            :default => 0
+    t.integer  "S021",            :default => 0
+    t.integer  "S022",            :default => 0
+    t.integer  "S023",            :default => 0
+    t.integer  "S024",            :default => 0
+    t.integer  "S030",            :default => 0
+    t.integer  "S031",            :default => 0
+    t.integer  "S032",            :default => 0
+    t.integer  "S033",            :default => 0
+    t.integer  "S034",            :default => 0
+    t.integer  "S040",            :default => 0
+    t.integer  "S050",            :default => 0
+    t.integer  "S051",            :default => 0
+    t.integer  "S052",            :default => 0
+    t.integer  "S053",            :default => 0
+    t.integer  "S054",            :default => 0
+    t.integer  "S055",            :default => 0
+    t.integer  "S060",            :default => 0
+    t.integer  "S061",            :default => 0
+    t.integer  "S062",            :default => 0
+    t.integer  "S063",            :default => 0
+    t.integer  "S064",            :default => 0
+    t.integer  "S070",            :default => 0
+    t.integer  "S080",            :default => 0
+    t.integer  "S081",            :default => 0
+    t.integer  "S082",            :default => 0
+    t.integer  "S083",            :default => 0
+    t.integer  "S084",            :default => 0
+    t.integer  "S090",            :default => 0
+    t.integer  "S091",            :default => 0
+    t.integer  "S092",            :default => 0
+    t.integer  "S093",            :default => 0
+    t.integer  "S094",            :default => 0
+    t.integer  "S095",            :default => 0
+    t.integer  "S100",            :default => 0
+    t.integer  "S110",            :default => 0
+    t.integer  "S120",            :default => 0
+    t.integer  "S130",            :default => 0
+    t.integer  "S140",            :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "form_four_reports", ["enterprise_id", "date_period_beg", "date_period_end", "id"], :name => "four_enterpise_id_period_id"
+  add_index "form_four_reports", ["enterprise_id", "date_period_beg", "id"], :name => "four_enterpise_id_period_beg_id"
+  add_index "form_four_reports", ["enterprise_id", "date_period_end", "id"], :name => "four_enterpise_id_period_end_id"
+  add_index "form_four_reports", ["enterprise_id"], :name => "index_form_four_reports_on_enterprise_id"
 
   create_table "form_one_reports", :force => true do |t|
     t.integer  "enterprise_id"
@@ -190,10 +242,10 @@ ActiveRecord::Schema.define(:version => 20120626170025) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
     t.string   "username"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
