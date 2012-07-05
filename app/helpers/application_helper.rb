@@ -7,7 +7,19 @@ module ApplicationHelper
     if page_title.empty?
       base_title
     else
-      "#{base_title} | #{page_title}"
+      "#{base_title} | #{get_mode_for_title()}| #{page_title}"
     end
+  end
+
+  def get_mode_for_title()
+    if user_signed_in?              
+      if current_user.admin
+         "Административный Режим"
+      else 
+         "Пользовательский Режим"
+      end 
+    else 
+      "Гостевой Режим"             
+    end 
   end  
 end

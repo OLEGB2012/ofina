@@ -34,7 +34,7 @@ GEM
     annotate (2.4.1.beta1)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.0.0)
+    bootstrap-sass (2.0.4.0)
     bootstrap-will_paginate (0.0.7)
       will_paginate
     builder (3.0.0)
@@ -155,6 +155,9 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    simple_form (2.0.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -184,10 +187,10 @@ DEPENDENCIES
   acts_as_tree (~> 1.1.0)
   annotate
   bcrypt-ruby
-  bootstrap-sass
+  bootstrap-sass (~> 2.0.4.0)
   bootstrap-will_paginate
   capybara
-  coffee-rails (= 3.2.2)
+  coffee-rails
   cucumber-rails
   database_cleaner
   devise
@@ -198,7 +201,8 @@ DEPENDENCIES
   rails (= 3.2.3)
   rspec-rails (= 2.10.1)
   russian (~> 0.6.0)
-  sass-rails (= 3.2.5)
+  sass-rails
+  simple_form
   sqlite3
   therubyracer
   uglifier (= 1.2.4)

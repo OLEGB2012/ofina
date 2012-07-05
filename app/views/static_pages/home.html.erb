@@ -1,39 +1,48 @@
-<% if user_signed_in? %>
-<%# тут ещё добавить логику для пользователя, если он админ ... %>
-<%=   render 'shared/home_for_user' %>
-<% else %>
-<%=   render 'shared/home_for_guest' %>
-<% end %>
+<%  provide(:title, 'Главная')%>
 
-
-<%# provide(:title, 'Home') %>
-<%# if signed_in? %>
-  <%#*<div class="row">%>
-    <%#*<aside class="span4">%>
-      <%#*<section>%>
-        <%#= render 'shared/user_info' %>
-      <%#*</section>%>
-      <%#*<section>%>
-        <%#= render 'shared/stats' %>
-      <%#*</section>%>
-      <%#*<section>%>
-        <%#= render 'shared/micropost_form' %>
-      <%#*</section>%>
-    <%#*</aside>%>
-    <%#*<div class="span8">%>
-      <%#*<h3>Micropost Feed</h3>%>
-      <%#= render 'shared/feed' %>
-    <%#*</div>%>
-  <%#*</div>%>
-<%# else %>
-  <%#*<div class="center hero-unit">%>
-    <%#*<h1>Welcome to the Sample App</h1>%>
-    <%#*<h2>%>
-      <%#*This is the home page for the%>
-      <%#*<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a> sample application.%>
-    <%#*</h2>%>
-    <%#= link_to "Sign up now!", signup_path,
-      class: "btn btn-large btn-primary" %>
-    <%#*</div>%>
-    <%#= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
-  <%# end %>
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">База данных</li>  
+      <li><%= link_to "Предприятия", "#"%></li>  
+      <li><%= link_to "Данные форм бухгалтерской отчётности", "#"%></li>  
+      <li><%= link_to "Настройки пользователя", "#"%></li>
+      <li><%= link_to "Сервис Базы Данных", "#"%></li>  
+      <li class="nav-header">Операции</li>  
+      <li><%= link_to "Контроль", "#"%></li>
+      <li><%= link_to "Расчёты", "#"%></li> 
+      <li><%= link_to "Просмотр результатов", "#"%></li>          
+    </ul>  
+  </div>  
+<% end  %>
+<% content_for :span9 do %>
+  <div class="row-fluid">  
+    <div class="span4">  
+      <h2>Данные</h2>  
+      <p>Вводите данные по отчётным формам для требуемого периода. 
+        Предварительно "создайте" предприятие (если его нет в базе),к которому относятся ваши данные.</p>         
+      <p><a class="btn btn-success btn-large" href="#">1.Редактировать...</a></p>  
+    </div><!--/span-->  
+    <div class="span4">  
+      <h2>Расчёты</h2>  
+      <p>Выполняйте необходимые расчёты. Они станут основой для построения отчётов по результатам анализа. 
+        Если исходные данные изменялись, то расчёты нужно повторить.</p>  
+      <p><a class="btn btn-success btn-large" href="#">2.Выполнить...</a></p>  
+    </div><!--/span-->  
+    <div class="span4">  
+      <h2>Результаты</h2>  
+      <p>Отображайте результаты в различных представлениях: таблица, стандартная форма, диаграмма. 
+        Выполняйте расчёты перед выводом новых результатов.</p>  
+      <p><a class="btn btn-success btn-large" href="#">3.Просмотреть...</a></p>  
+    </div>  
+  </div>
+<% end  %>
+<% content_for :guest_area do %>
+  <div class="hero-unit">
+    <p>Вы у нас в гостях,и мы рады предложить вниманию профессионалов новые возможности, которые предоставляет наш проект! 
+      С его помощью Вы сможете быстро и качественно решать следующие задачи:</p>
+  </div>
+  <div class="center"> 
+    <%= link_to "Зарегистрироваться сейчас!", new_user_registration_path , class: "btn btn-large btn-primary" %> 
+    </div>
+  <% end  %>
