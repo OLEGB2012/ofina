@@ -16,6 +16,8 @@ class FormFourReport < ActiveRecord::Base
             :S061, :S062, :S063, :S064, :S070, :S080, :S081, :S082, :S083, 
             :S084, :S090, :S091, :S092, :S093, :S094, :S095, :S100, :S110, 
             :S120, :S130, :S140, numericality: true
+          
+  self.per_page = 12 # число страниц для гема пагинации ...
   
   private
   # Расчитаем итоговые строки для формы 4

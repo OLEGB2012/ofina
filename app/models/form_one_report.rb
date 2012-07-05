@@ -19,6 +19,8 @@ class FormOneReport < ActiveRecord::Base
             :S632, :S633, :S634, :S635, :S636, :S637, :S638, :S640, :S650, :S660, :S670, :S690, 
             :S700, numericality: true
           
+  self.per_page = 12 # число страниц для гема пагинации ...
+          
   private
   # Расчитаем итоговые строки для формы 1
   def calc_rows_f1

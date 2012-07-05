@@ -16,6 +16,8 @@ class FormTwoReport < ActiveRecord::Base
             :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
             :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
             :S220, :S230, :S240, :S250, :S260, numericality: true
+          
+  self.per_page = 12 # число страниц для гема пагинации ...
   
   private
   # Расчитаем итоговые строки для формы 2

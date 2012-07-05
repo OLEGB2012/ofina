@@ -29,4 +29,6 @@ class User < ActiveRecord::Base
 ### This is the correct method you override with the code above
 ### def self.find_for_database_authentication(warden_conditions)
 ### end  
+
+  self.per_page = 12 # число страниц для гема пагинации ...
 end

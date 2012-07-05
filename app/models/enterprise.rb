@@ -16,4 +16,9 @@ class Enterprise < ActiveRecord::Base
   
   validates :uch_nomer_plat, length: { is: 9 }, numericality: true     
   validates :edinic_izmer,   length: { maximum: 20 }
+  
+#  scope :UserArea, where(:user_id => current_user.id)
+
+  self.per_page = 12 # число страниц для гема пагинации ...
+  
 end

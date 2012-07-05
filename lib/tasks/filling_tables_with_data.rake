@@ -527,6 +527,7 @@ def make_enterprises
                                       organ_upravlen: 'Концерн приборостороения', 
                                       edinic_izmer: 'млн. рубл.',
                                       adres: 'ул. Космонавтов, 64')
+  
   user = User.find_by_id(3)
   user.enterprises << new_enterprise
 

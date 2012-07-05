@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3' #, :git => 'git://github.com/rails/rails.git'
 gem 'bootstrap-sass', "~> 2.0.4.0" # https://github.com/thomas-mcdonald/bootstrap-sass/
-gem 'simple_form'                  # см. https://github.com/plataformatec/simple_form 
+gem 'simple_form'                  # https://github.com/plataformatec/simple_form 
 
 gem 'bcrypt-ruby'
 gem 'faker'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate'            # https://github.com/mislav/will_paginate
+gem 'bootstrap-will_paginate'  # https://github.com/yrgoldteeth/bootstrap-will_paginate
 
 gem "acts_as_tree", "~> 1.1.0"
 
