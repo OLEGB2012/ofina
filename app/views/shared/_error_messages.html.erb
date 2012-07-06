@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      The form contains <%= pluralize(object.errors.count, "error") %>.
+      Операция отменена из-за <%= Russian::pluralize(object.errors.count, "ошибки", "ошибок", "ошибок") %>.
     </div>
     <ul>
       <% object.errors.full_messages.each do |msg| %>
