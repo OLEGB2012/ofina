@@ -1,4 +1,12 @@
 Ofina::Application.routes.draw do
+  get "form_one_reports/edit"
+
+  get "form_one_reports/index"
+
+  get "form_one_reports/new"
+
+  get "form_one_reports/show"
+
   devise_for :users
   
   root to: 'static_pages#home'
