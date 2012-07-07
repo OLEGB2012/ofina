@@ -1,12 +1,5 @@
 Ofina::Application.routes.draw do
-  get "form_one_reports/edit"
-
-  get "form_one_reports/index"
-
-  get "form_one_reports/new"
-
-  get "form_one_reports/show"
-
+  
   devise_for :users
   
   root to: 'static_pages#home'
@@ -17,7 +10,8 @@ Ofina::Application.routes.draw do
   match '/news'   , to: 'static_pages#news'
   
   resources :enterprises
-     
+  resources :form_one_reports
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
