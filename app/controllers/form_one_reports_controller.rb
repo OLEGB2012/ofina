@@ -1,3 +1,4 @@
+# encoding: utf-8
 class FormOneReportsController < ApplicationController
   before_filter :authenticate_user!
   
