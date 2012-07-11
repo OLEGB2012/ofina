@@ -4,13 +4,14 @@ Ofina::Application.routes.draw do
   
   root to: 'static_pages#home'
   
-  match '/help'   , to: 'static_pages#help'
-  match '/about'  , to: 'static_pages#about'  
-  match '/contact', to: 'static_pages#contact'
-  match '/news'   , to: 'static_pages#news'
-  
-  resources :enterprises
-  resources :form_one_reports
+  match '/help'           , to: 'static_pages#help'
+  match '/about'          , to: 'static_pages#about'  
+  match '/contact'        , to: 'static_pages#contact'
+  match '/news'           , to: 'static_pages#news'
+    
+  resources :enterprises do 
+    resources :form_one_reports, :form_two_reports, :form_three_reports, :form_four_reports
+  end  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

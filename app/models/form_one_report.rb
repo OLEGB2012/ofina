@@ -20,6 +20,9 @@ class FormOneReport < ActiveRecord::Base
             :S700, numericality: true
           
   self.per_page = 12 # число страниц для гема пагинации ...
+  
+  scope :Sorted, order('form_one_reports.date_period DESC')
+  scope :FormOneEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
           
   private
   # Расчитаем итоговые строки для формы 1

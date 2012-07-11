@@ -9,9 +9,6 @@
   </div>  
 <% end  %>
 
-
-<% content_for :span9 do %> 
-  <%= simple_form_for(@enterprise,html: {class: "well form-horizontal"}) do |f| %>
-    <%= render 'fields', f: f %>    
-  <% end %>  
+<% content_for :span9 do %>  
+  <%= render 'fields'%>
 <% end  %>

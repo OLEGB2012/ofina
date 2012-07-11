@@ -27,8 +27,23 @@
           <td><div class="pull-left"><%= enterprise.org_name %></div></td>
           <td><div class="pagination-centered"><%= enterprise.uch_nomer_plat %></div></td>
           <td><div class="pull-left"><%= enterprise.vid_econom_deyatel %></div></td>
-          <td><div class="pagination-centered"><%= link_to "Удалить...", enterprise, method: :delete, confirm: "Вы уверены удалить "+enterprise.org_name+" ?" %></div></td>
-          <td><div class="pagination-centered"><%= link_to "Подробно...", enterprise_path(enterprise) %></div></td>
+          <td>
+            <div class="pagination-centered">
+              <%= link_to (enterprise), 
+                   class: "btn btn-small btn-danger", 
+                   method: :delete,                                             
+                   confirm: "Вы уверены удалить "+enterprise.org_name+" ?" do %>
+                Удалить...<i class="icon-trash icon-white"></i> 
+              <% end %>
+             </div>
+          </td>
+          <td>
+            <div class="pagination-centered">
+              <%= link_to (enterprise_path(enterprise)), class: "btn btn-small btn-info" do %>
+                Подробно...<i class="icon-info-sign icon-white"></i>
+              <% end %>  
+            </div>
+          </td>         
         </tr>
       <% end %>      
     </tbody>    
