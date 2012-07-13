@@ -32,7 +32,7 @@
         <td colspan="4"><div class="pagination-centered"><strong>Активы</strong></div></td>        
       </tr>
       <tr>
-        <td colspan="4"><div class="pull-left"><strong>Раздел I.Долгосрочные активы</strong></div></td>        
+        <td colspan="4"><div class="pull-left"><strong>Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ</strong></div></td>        
       </tr>
       <tr>
         <td><div>Основные средства</div></td>
@@ -49,8 +49,8 @@
       <tr>
         <td><div><strong>Доходные вложения в материальные активы</strong></div></td>
         <td><div class="pagination-centered"><strong>130</strong></div></td>
-        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S130") %></div></td>
-        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S130") %></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report","S130") %></strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S130") %></strong></div></td>
       </tr>
       <tr>
         <td><div>В том числе:</div></td>
@@ -111,6 +111,171 @@
         <td><div class="pagination-centered"><strong>190</strong></div></td>
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report","S190") %></strong></div></td>
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S190") %></strong></div></td>
+      </tr>
+      <tr>
+        <td colspan="4"><div class="pull-left"><strong>Раздел II. КРАТКОСРОЧНЫЕ АКТИВЫ</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div><strong>Запасы</strong></div></td>
+        <td><div class="pagination-centered"><strong>210</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report","S210") %></strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S210") %></strong></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>материалы</div></td>
+        <td><div class="pagination-centered">211</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S211") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S211") %></div></td>
+      </tr>
+      <tr>
+        <td><div>животные на выращивании и откорме</div></td>
+        <td><div class="pagination-centered">212</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S212") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S212") %></div></td>
+      </tr>
+      <tr>
+        <td><div>незавершенное производство</div></td>
+        <td><div class="pagination-centered">213</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S213") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S213") %></div></td>
+      </tr>
+      <tr>
+        <td><div>готовая продукция и товары</div></td>
+        <td><div class="pagination-centered">214</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S214") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S214") %></div></td>
+      </tr>
+      <tr>
+        <td><div>товары отгруженные</div></td>
+        <td><div class="pagination-centered">215</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S215") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S215") %></div></td>
+      </tr>
+      <tr>
+        <td><div>прочие запасы</div></td>
+        <td><div class="pagination-centered">216</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S216") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S216") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Долгосрочные активы, предназначенные для реализации</div></td>
+        <td><div class="pagination-centered">220</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S220") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S220") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Расходы будущих периодов</div></td>
+        <td><div class="pagination-centered">230</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S230") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S230") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Налог на добавленную стоимость по приобретенным товарам, работам, услугам</div></td>
+        <td><div class="pagination-centered">240</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S240") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S240") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Краткосрочная дебиторская задолженность</div></td>
+        <td><div class="pagination-centered">250</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S250") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S250") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Краткосрочные финансовые вложения</div></td>
+        <td><div class="pagination-centered">260</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S260") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S260") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Денежные средства и их эквиваленты</div></td>
+        <td><div class="pagination-centered">270</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S270") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S270") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Прочие краткосрочные активы</div></td>
+        <td><div class="pagination-centered">280</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S280") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S280") %></div></td>
+      </tr>
+      <tr>
+        <td><div><strong>ИТОГО по разделу II</strong></div></td>
+        <td><div class="pagination-centered"><strong>290</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report","S290") %></strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S290") %></strong></div></td>
+      </tr>
+      <tr>
+        <td><div><strong>БАЛАHС (190+290)</strong></div></td>
+        <td><div class="pagination-centered"><strong>300</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report","S300") %></strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S300") %></strong></div></td>
+      </tr>
+      <tr>
+        <td colspan="4"><div class="pagination-centered"><strong>Собственный капитал и обязательства</strong></div></td>        
+      </tr>
+      <tr>
+        <td colspan="4"><div class="pull-left"><strong>Раздел III. СОБСТВЕННЫЙ КАПИТАЛ</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div>Уставный капитал</div></td>
+        <td><div class="pagination-centered">410</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S410") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S410") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Неоплаченная часть уставного капитала</div></td>
+        <td><div class="pagination-centered">420</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S420") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S420") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Собственные акции (доли в уставном капитале)</div></td>
+        <td><div class="pagination-centered">430</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S430") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S430") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Резервный капитал</div></td>
+        <td><div class="pagination-centered">440</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S440") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S440") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Добавочный капитал</div></td>
+        <td><div class="pagination-centered">450</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S450") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S450") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Нераспределенная  прибыль (непокрытый убыток)</div></td>
+        <td><div class="pagination-centered">460</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S460") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S460") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Чистая прибыль(убыток) отчетного года</div></td>
+        <td><div class="pagination-centered">470</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S470") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S470") %></div></td>
+      </tr>
+      <tr>
+        <td><div>Целевое финансирование</div></td>
+        <td><div class="pagination-centered">480</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report","S480") %></div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_one_report_g4","S480") %></div></td>
+      </tr>
+      <tr>
+        <td><div><strong>ИТОГО по разделу III</strong></div></td>
+        <td><div class="pagination-centered"><strong>490</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report","S490") %></strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S490") %></strong></div></td>
       </tr>
     </tbody>    
   </table>  
