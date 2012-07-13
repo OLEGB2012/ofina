@@ -13,6 +13,8 @@ class FormOneReportsController < ApplicationController
     @form_one_report=FormOneReport.find(params[:id])    
     @OrgName=@enterprise.org_name
     @DatePeriod=@form_one_report.date_period
+    @form_one_report_g4=FormOneReport.where(["enterprise_id=? AND date_period=?",
+                  params[:enterprise_id],((@DatePeriod).prev_year).end_of_year]).first # запись с балансом на конец предыдущего года
   end
     
   def edit
