@@ -16,44 +16,55 @@ class FormOneReportsController < ApplicationController
     @form_one_report_g4=FormOneReport.where(["enterprise_id=? AND date_period=?",
                   params[:enterprise_id],((@DatePeriod).prev_year).end_of_year]).first # запись с балансом на конец предыдущего года
   end
-    
-  def edit
-    @form_one_report=FormOneReport.find(params[:id])
-  end
   
   def new
-    @form_one_report=FormOneReport.new        
-  end  
-  
-  def delete
-    @form_one_report=FormOneReport.find(params[:id])
+    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
+    #@form_one_report=FormOneReport.new
+    @form_one_report=@enterprise.form_one_reports.build
+    @OrgName=@enterprise.org_name    
   end
   
   def create
-    @form_one_report=FormOneReport.new(params[:form_one_report])
-    @form_one_report=enterprise.form_one_report.build(params[:form_one_report])
+    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
+    # @form_one_report=FormOneReport.new(params[:form_one_report])
+    @form_one_report=@enterprise.form_one_reports.build(params[:form_one_report])
     if @form_one_report.save
       flash[:notice]="Отчёт создан."
-      redirect_to form_one_report_path
+      redirect_to enterprise_form_one_reports_path(@enterprise)
     else
       render('new')
     end
   end
   
+  def edit
+    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
+    #@form_one_report=FormOneReport.find(params[:id])
+    @form_one_report=@enterprise.form_one_reports.find_by_id(params[:id])
+    @OrgName=@enterprise.org_name    
+  end
+
   def update
-    @form_one_report=FormOneReport.find(params[:id])
+    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
+    #@form_one_report=FormOneReport.find(params[:id])
+    @form_one_report=@enterprise.form_one_reports.find_by_id(params[:id])
     if @form_one_report.update_attributes(params[:form_one_report])
       flash[:notice]="Отчёт обновлен."
-      redirect_to form_one_report_path(@form_one_report)
+      redirect_to enterprise_form_one_reports_path(@enterprise)
     else  
       render('edit')
     end
   end
   
+  def delete
+    @form_one_report=FormOneReport.find(params[:id])
+  end
+    
   def destroy
-    form_one_report=FormOneReport.find(params[:id])
-    form_one_report.destroy
+    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
+    #@form_one_report=FormOneReport.find(params[:id])
+    @form_one_report=@enterprise.form_one_reports.find_by_id(params[:id])
+    @form_one_report.destroy
     flash[:notice]="Отчёт удалён."
-    redirect_to form_one_reports_path
+    redirect_to enterprise_form_one_reports_path
   end
 end

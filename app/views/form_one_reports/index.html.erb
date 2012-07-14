@@ -29,7 +29,7 @@
           <td><div class="pull-right"><%= number_with_delimiter(form_one_report.S700, delimiter: ' ') %></div></td>
           <td>
             <div class="pagination-centered">
-              <%= link_to (enterprise_form_one_report_path(@enterprise,form_one_report)), 
+              <%= link_to ([@enterprise,form_one_report]), 
                    class: "btn btn-small btn-danger", 
                    method: :delete,                                             
                    confirm: "Вы уверены удалить БУХГАЛТЕРСКИЙ БАЛАНС нa "+Russian::strftime(form_one_report.date_period,"%d %B %Y")+"года для "+@OrgName+" ?" do %>

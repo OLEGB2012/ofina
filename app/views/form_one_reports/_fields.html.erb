@@ -1,6 +1,328 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+<%= simple_form_for([@enterprise,@form_one_report], html: {class: "form-inline"}) do |f| %>
+    
+    <%= render 'shared/error_messages', object: f.object %>
 
-<%= "_fields.html" %>
+<table class="table table-striped table-bordered table-condensed">
+    <caption> <strong>БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
+    <thead>
+      <tr>
+        <th><div class="pagination-centered">Наименование строки</div></th>
+        <th><div class="pagination-centered">Код стр.</div></th>
+        <th><div class="pagination-centered">Сумма</div></th>        
+      </tr>
+      <tr>
+        <th><div class="pagination-centered">1</div></th>
+        <th><div class="pagination-centered">2</div></th>
+        <th><div class="pagination-centered">3</div></th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3"><div class="pagination-centered"><strong><%= f.input :date_period, :label => 'На дату' %></strong></div></td>        
+      </tr>      
+      <tr>
+        <td colspan="3"><div class="pagination-centered"><strong>Активы</strong></div></td>        
+      </tr>
+      <tr>
+        <td colspan="3"><div class="pull-left"><strong>Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div>Основные средства</div></td>
+        <td><div class="pagination-centered">110</div></td>
+        <td><div class="pagination-centered"><%= f.input :S110, :label => false%></div></td>        
+      </tr>
+      <tr>
+        <td><div>Нематериальные активы</div></td>
+        <td><div class="pagination-centered">120</div></td>
+        <td><div class="pagination-centered"><%= f.input :S120, :label => false%></div></td>        
+      </tr>
+      <tr>
+        <td colspan="3"><div><strong>Доходные вложения в материальные активы</strong></div></td>             
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - инвестиционная недвижимость</em></div></td>
+        <td><div class="pagination-centered"><em>131</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S131, :label => false%></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - предметы финансовой аренды (лизинга)</em></div></td>
+        <td><div class="pagination-centered"><em>132</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S132, :label => false%></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - прочие доходные вложения в материальные активы</em></div></td>
+        <td><div class="pagination-centered"><em>133</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S133, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div>Вложения в долгосрочные активы</div></td>
+        <td><div class="pagination-centered">140</div></td>
+        <td><div class="pagination-centered"><%= f.input :S140, :label => false %></div></td>        
+      </tr>
+       <tr>
+        <td><div>Долгосрочные финансовые вложения</div></td>
+        <td><div class="pagination-centered">150</div></td>
+        <td><div class="pagination-centered"><%= f.input :S150, :label => false %></div></td>        
+      </tr>
+       <tr>
+        <td><div>Отложенные налоговые активы</div></td>
+        <td><div class="pagination-centered">160</div></td>
+        <td><div class="pagination-centered"><%= f.input :S160, :label => false %></div></td>        
+      </tr>
+       <tr>
+        <td><div>Долгосрочная дебиторская задолженность</div></td>
+        <td><div class="pagination-centered">170</div></td>
+        <td><div class="pagination-centered"><%= f.input :S170, :label => false %></div></td>       
+      </tr>
+       <tr>
+        <td><div>Прочие  долгосрочные активы</div></td>
+        <td><div class="pagination-centered">180</div></td>
+        <td><div class="pagination-centered"><%= f.input :S180, :label => false %></div></td>        
+      </tr>      
+      <tr>
+        <td colspan="3"><div class="pull-left"><strong>Раздел II. КРАТКОСРОЧНЫЕ АКТИВЫ</strong></div></td>        
+      </tr>
+      <tr>
+        <td  colspan="3"><div><strong>Запасы</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - материалы</em></div></td>
+        <td><div class="pagination-centered"><em>211</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S211, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - животные на выращивании и откорме</em></div></td>
+        <td><div class="pagination-centered"><em>212</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S212, :label => false %></em></div></td>       
+      </tr>
+      <tr>
+        <td><div><em> - незавершенное производство</em></div></td>
+        <td><div class="pagination-centered"><em>213</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S213, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - готовая продукция и товары</em></div></td>
+        <td><div class="pagination-centered"><em>214</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S214, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - товары отгруженные</em></div></td>
+        <td><div class="pagination-centered"><em>215</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S215, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - прочие запасы</em></div></td>
+        <td><div class="pagination-centered"><em>216</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S216, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div>Долгосрочные активы, предназначенные для реализации</div></td>
+        <td><div class="pagination-centered">220</div></td>
+        <td><div class="pagination-centered"><%= f.input :S220, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Расходы будущих периодов</div></td>
+        <td><div class="pagination-centered">230</div></td>
+        <td><div class="pagination-centered"><%= f.input :S230, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Налог на добавленную стоимость по приобретенным товарам, работам, услугам</div></td>
+        <td><div class="pagination-centered">240</div></td>
+        <td><div class="pagination-centered"><%= f.input :S240, :label => false %></div></td>       
+      </tr>
+      <tr>
+        <td><div>Краткосрочная дебиторская задолженность</div></td>
+        <td><div class="pagination-centered">250</div></td>
+        <td><div class="pagination-centered"><%= f.input :S250, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Краткосрочные финансовые вложения</div></td>
+        <td><div class="pagination-centered">260</div></td>
+        <td><div class="pagination-centered"><%= f.input :S260, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Денежные средства и их эквиваленты</div></td>
+        <td><div class="pagination-centered">270</div></td>
+        <td><div class="pagination-centered"><%= f.input :S270, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Прочие краткосрочные активы</div></td>
+        <td><div class="pagination-centered">280</div></td>
+        <td><div class="pagination-centered"><%= f.input :S280, :label => false %></div></td>        
+      </tr>      
+      <tr>
+        <td colspan="3"><div class="pagination-centered"><strong>Собственный капитал и обязательства</strong></div></td>        
+      </tr>
+      <tr>
+        <td colspan="3"><div class="pull-left"><strong>Раздел III. СОБСТВЕННЫЙ КАПИТАЛ</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div>Уставный капитал</div></td>
+        <td><div class="pagination-centered">410</div></td>
+        <td><div class="pagination-centered"><%= f.input :S410, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Неоплаченная часть уставного капитала</div></td>
+        <td><div class="pagination-centered">420</div></td>
+        <td><div class="pagination-centered"><%= f.input :S420, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Собственные акции (доли в уставном капитале)</div></td>
+        <td><div class="pagination-centered">430</div></td>
+        <td><div class="pagination-centered"><%= f.input :S430, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Резервный капитал</div></td>
+        <td><div class="pagination-centered">440</div></td>
+        <td><div class="pagination-centered"><%= f.input :S440, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Добавочный капитал</div></td>
+        <td><div class="pagination-centered">450</div></td>
+        <td><div class="pagination-centered"><%= f.input :S450, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Нераспределенная  прибыль (непокрытый убыток)</div></td>
+        <td><div class="pagination-centered">460</div></td>
+        <td><div class="pagination-centered"><%= f.input :S460, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Чистая прибыль(убыток) отчетного года</div></td>
+        <td><div class="pagination-centered">470</div></td>
+        <td><div class="pagination-centered"><%= f.input :S470, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Целевое финансирование</div></td>
+        <td><div class="pagination-centered">480</div></td>
+        <td><div class="pagination-centered"><%= f.input :S480, :label => false %></div></td>        
+      </tr>      
+      <tr>
+        <td colspan="3"><div class="pull-left"><strong>Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div>Долгосрочные кредиты и займы</div></td>
+        <td><div class="pagination-centered">510</div></td>
+        <td><div class="pagination-centered"><%= f.input :S510, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Долгосрочные обязательства по лизинговым платежам</div></td>
+        <td><div class="pagination-centered">520</div></td>
+        <td><div class="pagination-centered"><%= f.input :S520, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Долгосрочные обязательства по лизинговым платежам</div></td>
+        <td><div class="pagination-centered">530</div></td>
+        <td><div class="pagination-centered"><%= f.input :S530, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Отложенные налоговые обязательства</div></td>
+        <td><div class="pagination-centered">540</div></td>
+        <td><div class="pagination-centered"><%= f.input :S540, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Резервы предстоящих платежей</div></td>
+        <td><div class="pagination-centered">550</div></td>
+        <td><div class="pagination-centered"><%= f.input :S550, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Резервы предстоящих платежей</div></td>
+        <td><div class="pagination-centered">560</div></td>
+        <td><div class="pagination-centered"><%= f.input :S560, :label => false %></div></td>        
+      </tr>      
+      <tr>
+        <td colspan="3"><div class="pull-left"><strong>Раздел V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div>Краткосрочные кредиты и займы</div></td>
+        <td><div class="pagination-centered">610</div></td>
+        <td><div class="pagination-centered"><%= f.input :S610, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Краткосрочная часть долгосрочных обязательств</div></td>
+        <td><div class="pagination-centered">620</div></td>
+        <td><div class="pagination-centered"><%= f.input :S620, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td colspan="3"><div><strong>Краткосрочная кредиторская задолженность</strong></div></td>    
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - поставщикам, подрядчикам, исполнителям</em></div></td>
+        <td><div class="pagination-centered"><em>631</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S631, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - по авансам полученным</em></div></td>
+        <td><div class="pagination-centered"><em>632</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S632, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - по налогам и сборам</em></div></td>
+        <td><div class="pagination-centered"><em>633</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S633, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - по социальному страхованию и обеспечению</em></div></td>
+        <td><div class="pagination-centered"><em>634</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S634, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - по оплате труда</em></div></td>
+        <td><div class="pagination-centered"><em>635</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S635, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - по лизинговым платежам</em></div></td>
+        <td><div class="pagination-centered"><em>636</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S636, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - собственнику имущества (учредителям, участникам)</em></div></td>
+        <td><div class="pagination-centered"><em>637</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S637, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div><em> - прочим кредиторам</em></div></td>
+        <td><div class="pagination-centered"><em>638</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S638, :label => false %></em></div></td>        
+      </tr>
+      <tr>
+        <td><div>Обязательства, предназначенные для реализации</div></td>
+        <td><div class="pagination-centered">640</div></td>
+        <td><div class="pagination-centered"><%= f.input :S640, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Доходы будущих периодов</div></td>
+        <td><div class="pagination-centered">650</div></td>
+        <td><div class="pagination-centered"><%= f.input :S650, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Резервы предстоящих платежей</div></td>
+        <td><div class="pagination-centered">660</div></td>
+        <td><div class="pagination-centered"><%= f.input :S660, :label => false %></div></td>        
+      </tr>
+      <tr>
+        <td><div>Прочие краткосрочные обязательства</div></td>
+        <td><div class="pagination-centered">670</div></td>
+        <td><div><%= f.input :S670, :label => false %></div></td>        
+      </tr>     
+    </tbody>    
+  </table>
+
+  <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
+      
+  <% end %>
