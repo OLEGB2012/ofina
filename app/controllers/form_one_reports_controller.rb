@@ -49,7 +49,7 @@ class FormOneReportsController < ApplicationController
     @form_one_report=@enterprise.form_one_reports.find_by_id(params[:id])
     if @form_one_report.update_attributes(params[:form_one_report])
       flash[:notice]="Отчёт обновлен."
-      redirect_to enterprise_form_one_reports_path(@enterprise)
+      redirect_to enterprise_form_one_report_path(@enterprise)
     else  
       render('edit')
     end
