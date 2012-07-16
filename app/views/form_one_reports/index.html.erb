@@ -3,16 +3,16 @@
 <% content_for :span3 do %>      
   <div class="well sidebar-nav">  
     <ul class="nav nav-list">  
-      <li class="nav-header">Форма "БУХГАЛТЕРСКИЙ БАЛАНС"</li>  
-      <li><%= link_to "Новая", new_enterprise_form_one_report_path%></li>  
-      <li><%= link_to "К списку форм", @enterprise %></li>      
+      <li class="nav-header">Отчёт "БУХГАЛТЕРСКИЙ БАЛАНС"</li>  
+      <li><%= link_to "Новый", new_enterprise_form_one_report_path%></li>  
+      <li><%= link_to "К списку отчётов", @enterprise %></li>      
     </ul>  
   </div>  
 <% end  %>
 
 <% content_for :span9 do %>
   <table class="table table-striped table-bordered table-condensed">
-    <caption> Список форм <strong>БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>
+    <caption> Список отчётов <strong>БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>
     <thead>
       <tr>
         <th><div class="pagination-centered">На дату</div></th>

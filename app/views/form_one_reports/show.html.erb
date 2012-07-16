@@ -3,9 +3,9 @@
 <% content_for :span3 do %>      
   <div class="well sidebar-nav">  
     <ul class="nav nav-list">  
-      <li class="nav-header">БУХГАЛТЕРСКИЙ БАЛАНС</li>  
+      <li class="nav-header">ОТЧЁТ БУХГАЛТЕРСКИЙ БАЛАНС</li>  
       <li><%= link_to "Редактировать", edit_enterprise_form_one_report_path%></li>
-      <li><%= link_to "К списку форм БУХГАЛТЕРСКИЙ БАЛАНС", enterprise_form_one_reports_path %></li>
+      <li><%= link_to "К списку отчётов БУХГАЛТЕРСКИЙ БАЛАНС", enterprise_form_one_reports_path %></li>
       <%= render 'anchors'%>
     </ul>  
   </div>  
@@ -14,7 +14,7 @@
 <% content_for :span9 do %>
   <a name="BeginOfPage"></a>
   <table class="table table-striped table-bordered table-condensed">
-    <caption> <strong>БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
+    <caption> Отчёт<strong> БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
     <thead>
       <tr>
         <th><div class="pagination-centered">Наименование строки</div></th>
