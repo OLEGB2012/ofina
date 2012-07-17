@@ -18,7 +18,10 @@ class FormOneReport < ActiveRecord::Base
             :S490, :S510, :S520, :S530, :S540, :S550, :S560, :S590, :S610, :S620, :S630, :S631, 
             :S632, :S633, :S634, :S635, :S636, :S637, :S638, :S640, :S650, :S660, :S670, :S690, 
             :S700, numericality: true
-          
+  
+  # Валидация из гема validates_timeliness
+  validates_date :date_period
+
   self.per_page = 12 # число страниц для гема пагинации ...
   
   scope :Sorted, order('form_one_reports.date_period DESC')

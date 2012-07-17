@@ -17,6 +17,10 @@ class FormTwoReport < ActiveRecord::Base
             :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
             :S220, :S230, :S240, :S250, :S260, numericality: true
           
+  # Валидация из гема validates_timeliness
+  validates_date :date_period_beg, :before => :date_period_end  
+  validates_date :date_period_end, :after  => :date_period_beg
+  
   self.per_page = 12 # число страниц для гема пагинации ...
   
   scope :Sorted, order('form_two_reports.date_period_end DESC')

@@ -1,0 +1,32 @@
+en:
+  errors:
+    messages:
+      invalid_date: "is not a valid date"
+      invalid_time: "is not a valid time"
+      invalid_datetime: "is not a valid datetime"
+      is_at: "must be at %{restriction}"
+      before: "must be before %{restriction}"
+      on_or_before: "must be on or before %{restriction}"
+      after: "must be after %{restriction}"
+      on_or_after: "must be on or after %{restriction}"
+  validates_timeliness:
+    error_value_formats:
+      date: '%Y-%m-%d'
+      time: '%H:%M:%S'
+      datetime: '%Y-%m-%d %H:%M:%S'
+ru:
+  errors:
+    messages:
+      invalid_date: "не является датой"
+      invalid_time: "не является временем"
+      invalid_datetime: "не является датой и временем"
+      is_at: "должно быть равным %{restriction}"
+      before: "должно быть раньше, чем %{restriction}"
+      on_or_before: "должно быть не позднее %{restriction}"
+      after: "должно быть позже, чем %{restriction}"
+      on_or_after: "должно быть не ранее чем %{restriction}"
+  validates_timeliness:
+    error_value_formats:
+      date: '%Y-%m-%d'
+      time: '%H:%M:%S'
+      datetime: '%Y-%m-%d %H:%M:%S'

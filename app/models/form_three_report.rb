@@ -8,6 +8,10 @@ class FormThreeReport < ActiveRecord::Base
     
   validates :G3,:G4,:G5,:G6,:G7,:G8,:G9,:G10, numericality: true
   
+  # Валидация из гема validates_timeliness
+  validates_date :date_period_beg, :before => :date_period_end  
+  validates_date :date_period_end, :after  => :date_period_beg
+  
   self.per_page = 12 # число страниц для гема пагинации ...
   
   private

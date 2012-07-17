@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3' #, :git => 'git://github.com/rails/rails.git'
 gem 'bootstrap-sass', "~> 2.0.4.0" # https://github.com/thomas-mcdonald/bootstrap-sass/
-gem 'simple_form'                  # https://github.com/plataformatec/simple_form 
+gem 'simple_form'                  # https://github.com/plataformatec/simple_form
+
+
+gem 'validates_timeliness' # https://github.com/adzap/validates_timeliness/
 
 gem 'bcrypt-ruby'
 gem 'faker'

@@ -17,6 +17,10 @@ class FormFourReport < ActiveRecord::Base
             :S084, :S090, :S091, :S092, :S093, :S094, :S095, :S100, :S110, 
             :S120, :S130, :S140, numericality: true
           
+   # Валидация из гема validates_timeliness
+  validates_date :date_period_beg, :before => :date_period_end  
+  validates_date :date_period_end, :after  => :date_period_beg
+  
   self.per_page = 12 # число страниц для гема пагинации ...
   
   private
