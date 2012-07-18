@@ -1,2 +1,77 @@
-<h1>FormThreeReports#show</h1>
-<p>Find me in app/views/form_three_reports/show.html.erb</p>
+<%  provide(:title, 'Отчёт об изменении капитала')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">ОТЧЁТ ОБ ИЗМЕНЕНИИ КАПИТАЛА</li>  
+      <li><%= link_to "Редактировать", edit_enterprise_form_three_report_path%></li>
+      <li><%= link_to "К списку отчётов ОБ ИЗМЕНЕНИИ КАПИТАЛА", enterprise_form_three_reports_path %></li>
+      <%= render 'anchors'%>
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+  <a name="BeginOfPage"></a>
+  <table class="table table-striped table-bordered table-condensed">
+    <caption> Отчёт<strong> ОБ ИЗМЕНЕНИИ КАПИТАЛА</strong> предприятия <strong><em><%= @OrgName %></em></strong><br/>
+             За <%= Russian::strftime(@DatePeriod_beg,"%B")%> - <%= Russian::strftime(@DatePeriod_end,"%B %Y")%> г.
+    </caption>       
+    <thead>
+      <tr>
+        <th><div class="pagination-centered">Наименование показателя</div></th>
+  <th><div class="pagination-centered">Код стр.</div></th>
+  <th><div class="pagination-centered">Сумма</div></th>
+  </tr>
+  <tr>
+    <th><a name="G3"></a><div class="pagination-centered">1</div></th>
+  <th><div class="pagination-centered">2</div></th>
+  <th><div class="pagination-centered">3</div></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 3 : Уставный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+      <tr>
+        <td><div class="pull-left"><strong>Остаток на <em><%= Russian::strftime((((@DatePeriod_beg).to_date.prev_year-1).end_of_year),"%d %B %Y").to_s%></em> года</strong></div></td>
+        <td><div class="pagination-centered"><strong>010</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_three_report","G3_S010") %></strong></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
+        <td><div class="pagination-centered">020</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_three_report","G3_S020") %></div></td>
+      </tr>
+      
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 4 : Неоплаченная часть уставного капитала</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 5 : Собственные акции (доли в уставном капитале)</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 6 : Резервный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 7 : Добавочный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 8 : Нераспределенная прибыль (непокрытый убыток)</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 9 : Чистая прибыль (убыток)</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+    <tr>
+      <td colspan="3"><div class="pagination-centered"><strong>Графа 10: Итого</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+    </tr>
+
+  </tbody>    
+  </table>  
+<% end %>

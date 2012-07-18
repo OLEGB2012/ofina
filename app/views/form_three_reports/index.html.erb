@@ -1,2 +1,54 @@
-<h1>FormThreeReports#index</h1>
-<p>Find me in app/views/form_three_reports/index.html.erb</p>
+<%  provide(:title, 'Отчёт об изменении капитала')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Отчёт "ОБ ИЗМЕНЕНИИ КАПИТАЛА"</li>  
+      <li><%= link_to "Новый", new_enterprise_form_three_report_path%></li>  
+      <li><%= link_to "К списку отчётов", @enterprise %></li>      
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+  <table class="table table-striped table-bordered table-condensed">
+    <caption>Список отчётов<strong> ОБ ИЗМЕНЕНИИ КАПИТАЛА</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>
+    <thead>
+      <tr>
+        <th colspan="2"><div class="pagination-centered">За период</div></th>
+        <th colspan="2" rowspan="2"><div class="pagination-centered">Действия</div></th>
+      </tr>
+      <tr>
+        <th><div class="pagination-centered"> С  </div></th>
+        <th><div class="pagination-centered"> ПО </div></th>
+      </tr>  
+    </thead>
+    <tbody>
+     <% @form_three_reports.each do |form_three_report| %>        
+        <tr>          
+          <td><div class="pagination-centered"><%= Russian::strftime(form_three_report.date_period_beg,"%d %B %Y") %> г.</div></td>
+          <td><div class="pagination-centered"><%= Russian::strftime(form_three_report.date_period_end,"%d %B %Y") %> г.</div></td>
+          <td>
+            <div class="pagination-centered">
+              <%= link_to ([@enterprise,form_three_report]), 
+                   class: "btn btn-small btn-danger", 
+                   method: :delete,                                             
+                   confirm: "Вы уверены удалить ОТЧЁТ ОБ ИЗМЕНЕНИИ КАПИТАЛА за период c "+Russian::strftime(form_three_report.date_period_beg,"%d %B %Y")+" года по "+
+                                                                                       Russian::strftime(form_three_report.date_period_end,"%d %B %Y")+" года для "+@OrgName+" ?" do %>
+                Удалить...<i class="icon-trash icon-white"></i> 
+              <% end %>
+             </div>
+          </td>
+          <td>
+            <div class="pagination-centered">
+              <%= link_to (enterprise_form_three_report_path(@enterprise,form_three_report)), class: "btn btn-small btn-info" do %>
+                Подробно...<i class="icon-info-sign icon-white"></i>
+              <% end %>  
+            </div>
+          </td>          
+        </tr>
+      <% end %>      
+    </tbody>    
+  </table>
+  <%= will_paginate %>
+<% end  %>
