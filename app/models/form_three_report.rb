@@ -129,6 +129,10 @@ class FormThreeReport < ActiveRecord::Base
   
   private
   def summa_for_g10
+      
+      # ??? Расчёт строк 100 и 200 ... 
+      # перенос остатков в строках на 31 декабря предыдущего года и года, предшествующего предыдущему (10, 40, 110, 140) (из отчётов за какой период и из каких строк ???)...
+    
       self.G3_S050 = self.G3_S051+self.G3_S052+self.G3_S053+self.G3_S054+self.G3_S055+self.G3_S056+self.G3_S057+self.G3_S057+self.G3_S059
       self.G4_S050 = self.G4_S051+self.G4_S052+self.G4_S053+self.G4_S054+self.G4_S055+self.G4_S056+self.G4_S057+self.G4_S057+self.G4_S059
       self.G5_S050 = self.G5_S051+self.G5_S052+self.G5_S053+self.G5_S054+self.G5_S055+self.G5_S056+self.G5_S057+self.G5_S057+self.G5_S059

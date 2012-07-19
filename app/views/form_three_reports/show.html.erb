@@ -34,7 +34,7 @@
       <td colspan="3"><div class="pagination-centered"><strong>Графа 3 : Уставный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
     </tr>
       <tr>
-        <td><div class="pull-left"><strong>Остаток на <em><%= Russian::strftime((((@DatePeriod_beg).to_date.prev_year-1).end_of_year),"%d %B %Y").to_s%></em> года</strong></div></td>
+        <td><div class="pull-left"><strong>Остаток на <em><%= Russian::strftime(@Date_For_S010,"%d %B %Y").to_s%></em> года</strong></div></td>
         <td><div class="pagination-centered"><strong>010</strong></div></td>
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_three_report","G3_S010") %></strong></div></td>
       </tr>
@@ -43,7 +43,146 @@
         <td><div class="pagination-centered">020</div></td>
         <td><div class="pagination-centered"><%= display_cell_data("form_three_report","G3_S020") %></div></td>
       </tr>
-      
+      <tr>
+        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
+        <td><div class="pagination-centered">030</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_three_report","G3_S030") %></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left"><strong>Cкорректированный остаток на <em><%= Russian::strftime(@Date_For_S040,"%d %B %Y").to_s%></em> года</strong></div></td>
+        <td><div class="pagination-centered"><strong>040</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_three_report","G3_S040") %></strong></div></td>
+      </tr>
+     <tr>
+        <td><div class="pull-left"><strong>За  период <em><%= Russian::strftime(@Date_From_For_S0401,"%d %B %Y").to_s%></em> г. - <em><%= Russian::strftime(@Date_To_For_S0401,"%d %B %Y").to_s%></em> г. </strong></div></td>
+        <td><div class="pagination-centered"></div></td>
+        <td><div class="pagination-centered"></div></td>
+      </tr>
+    <tr>
+        <td><div class="pull-left"><strong>Увеличение собственного капитала - всего</strong></div></td>
+        <td><div class="pagination-centered"><strong>050</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_three_report","G3_S050")%></strong></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left">В том числе:</div></td>
+        <td><div class="pagination-centered"></div></td>
+        <td><div class="pagination-centered"></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
+        <td><div class="pagination-centered"><em>051</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S051")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
+        <td><div class="pagination-centered"><em>052</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S052")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
+        <td><div class="pagination-centered"><em>053</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S053")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
+        <td><div class="pagination-centered"><em>054</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S054")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
+        <td><div class="pagination-centered"><em>055</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S055")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
+        <td><div class="pagination-centered"><em>056</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S056")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - реорганизация</em></div></td>
+        <td><div class="pagination-centered"><em>057</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S057")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em></em></div></td>
+        <td><div class="pagination-centered"><em>058</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S058")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - прочие</em></div></td>
+        <td><div class="pagination-centered"><em>059</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S059")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><strong>Уменьшение собственного капитала - всего</strong></div></td>
+        <td><div class="pagination-centered"><strong>060</strong></div></td>
+        <td><div class="pagination-centered"><strong><%= display_cell_data("form_three_report","G3_S060")%></strong></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left">В том числе:</div></td>
+        <td><div class="pagination-centered"></div></td>
+        <td><div class="pagination-centered"></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - убыток</em></div></td>
+        <td><div class="pagination-centered"><em>061</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S061")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
+        <td><div class="pagination-centered"><em>062</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S062")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
+        <td><div class="pagination-centered"><em>063</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S063")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
+        <td><div class="pagination-centered"><em>064</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S064")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
+        <td><div class="pagination-centered"><em>065</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S065")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
+        <td><div class="pagination-centered"><em>066</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S066")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - реорганизация</em></div></td>
+        <td><div class="pagination-centered"><em>067</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S067")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em></em></div></td>
+        <td><div class="pagination-centered"><em>068</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S068")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left"><em> - прочие</em></div></td>
+        <td><div class="pagination-centered"><em>069</em></div></td>
+        <td><div class="pagination-centered"><em><%= display_cell_data("form_three_report","G3_S069")%></em></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left">Изменение уставного капитала</div></td>
+        <td><div class="pagination-centered">070</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_three_report","G3_S070")%></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left">Изменение резервного капитала</div></td>
+        <td><div class="pagination-centered">080</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_three_report","G3_S080")%></div></td>
+    </tr>
+    <tr>
+        <td><div class="pull-left">Изменение добавочного капитала</div></td>
+        <td><div class="pagination-centered">090</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("form_three_report","G3_S090")%></div></td>
+    </tr>
     <tr>
       <td colspan="3"><div class="pagination-centered"><strong>Графа 4 : Неоплаченная часть уставного капитала</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
     </tr>

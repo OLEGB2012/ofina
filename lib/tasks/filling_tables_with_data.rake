@@ -36,8 +36,6 @@ end
 def make_form_three_report
   FormThreeReport.delete_all
   
-  # '010' => 'Остаток на '+Russian::strftime(((('2012-01-01').to_date.prev_year-1).end_of_year),"%d %B %Y").to_s+' года'
-  # '040' => 'Cкорректированный остаток на '+Russian::strftime(((('2012-01-01').to_date.prev_year-1).end_of_year),"%d %B %Y").to_s+' года'
   # '0401'=> 'За  период с '+Russian::strftime(('2012-01-01').to_date.prev_year,"%d %B").to_s+' по '+Russian::strftime(('2012-03-31').to_date.prev_year,"%d %B %Y").to_s+' года'
   # '100' => 'Остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year),"%d %B %Y").to_s+' года'
   # '110' => 'Остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year.end_of_year),"%d %B %Y").to_s+' года'
