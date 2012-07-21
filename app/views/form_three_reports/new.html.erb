@@ -1,2 +1,15 @@
-<h1>FormThreeReports#new</h1>
-<p>Find me in app/views/form_three_reports/new.html.erb</p>
+<% provide(:title, 'Новый Отчёт об изменении капитала') %>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Новая Отчёт</li>  
+      <li><%= link_to "Отменить операцию", enterprise_form_three_reports_path %></li>
+      <%= render 'anchors'%>
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>  
+  <%= render 'fields'%>
+<% end  %>
