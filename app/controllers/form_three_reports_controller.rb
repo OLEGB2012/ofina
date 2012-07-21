@@ -30,18 +30,6 @@ class FormThreeReportsController < ApplicationController
     @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_three_report=@enterprise.form_three_reports.build
     @OrgName=@enterprise.org_name
-#    @DatePeriod_beg     = @form_three_report.date_period_beg
-#    @DatePeriod_end     = @form_three_report.date_period_end
-#    @Date_For_S010      = ((@DatePeriod_beg).to_date.prev_year-1).end_of_year
-#    @Date_For_S040      = ((@DatePeriod_beg).to_date.prev_year-1).end_of_year
-#    @Date_From_For_S0401= (@DatePeriod_beg).to_date.prev_year
-#    @Date_To_For_S0401  = (@DatePeriod_end).to_date.prev_year
-#    @Date_For_S100      = (@DatePeriod_end).to_date.prev_year
-#    @Date_For_S110      = ((@DatePeriod_beg).to_date.prev_year).end_of_year
-#    @Date_For_S140      = ((@DatePeriod_beg).to_date.prev_year).end_of_year
-#    @Date_From_For_S1401= (@DatePeriod_beg).to_date
-#    @Date_To_For_S1401  = (@DatePeriod_end).to_date
-#    @Date_For_S200      = (@DatePeriod_end).to_date
   end
   
   def create
@@ -59,18 +47,6 @@ class FormThreeReportsController < ApplicationController
     @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_three_report=@enterprise.form_three_reports.find_by_id(params[:id])
     @OrgName=@enterprise.org_name
-#    @DatePeriod_beg     = @form_three_report.date_period_beg
-#    @DatePeriod_end     = @form_three_report.date_period_end
-#    @Date_For_S010      = ((@DatePeriod_beg).to_date.prev_year-1).end_of_year
-#    @Date_For_S040      = ((@DatePeriod_beg).to_date.prev_year-1).end_of_year
-#    @Date_From_For_S0401= (@DatePeriod_beg).to_date.prev_year
-#    @Date_To_For_S0401  = (@DatePeriod_end).to_date.prev_year
-#    @Date_For_S100      = (@DatePeriod_end).to_date.prev_year
-#    @Date_For_S110      = ((@DatePeriod_beg).to_date.prev_year).end_of_year
-#    @Date_For_S140      = ((@DatePeriod_beg).to_date.prev_year).end_of_year
-#    @Date_From_For_S1401= (@DatePeriod_beg).to_date
-#    @Date_To_For_S1401  = (@DatePeriod_end).to_date
-#    @Date_For_S200      = (@DatePeriod_end).to_date    
   end
 
   def update
