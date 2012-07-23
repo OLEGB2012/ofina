@@ -23,6 +23,9 @@ class FormFourReport < ActiveRecord::Base
   
   self.per_page = 12 # число страниц для гема пагинации ...
   
+  scope :Sorted, order('form_four_reports.date_period_end DESC')
+  scope :FormFourEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
+  
   private
   # Расчитаем итоговые строки для формы 4
   def calc_rows_f4

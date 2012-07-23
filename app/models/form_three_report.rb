@@ -4,7 +4,8 @@ class FormThreeReport < ActiveRecord::Base
   
   belongs_to :enterprise
   
-  attr_accessible :date_period_beg, :date_period_end, :G3_S010, :G4_S010, :G5_S010, :G6_S010, :G7_S010, :G8_S010, :G9_S010, :G10_S010,
+  attr_accessible :date_period_beg, :date_period_end, 
+      :G3_S010, :G4_S010, :G5_S010, :G6_S010, :G7_S010, :G8_S010, :G9_S010, :G10_S010,
       :G3_S020, :G4_S020, :G5_S020, :G6_S020, :G7_S020, :G8_S020, :G9_S020, :G10_S020,
       :G3_S030, :G4_S030, :G5_S030, :G6_S030, :G7_S030, :G8_S030, :G9_S030, :G10_S030,
       :G3_S040, :G4_S040, :G5_S040, :G6_S040, :G7_S040, :G8_S040, :G9_S040, :G10_S040,
@@ -130,8 +131,13 @@ class FormThreeReport < ActiveRecord::Base
   private
   def summa_for_g10
       
-      # ??? Расчёт строк 100 и 200 ... 
-      # перенос остатков в строках на 31 декабря предыдущего года и года, предшествующего предыдущему (10, 40, 110, 140) (из отчётов за какой период и из каких строк ???)...
+      self.G3_S040 = self.G3_S010+self.G3_S020+self.G3_S030
+      self.G4_S040 = self.G4_S010+self.G4_S020+self.G4_S030
+      self.G5_S040 = self.G5_S010+self.G5_S020+self.G5_S030
+      self.G6_S040 = self.G6_S010+self.G6_S020+self.G6_S030
+      self.G7_S040 = self.G7_S010+self.G7_S020+self.G7_S030
+      self.G8_S040 = self.G8_S010+self.G8_S020+self.G8_S030
+      self.G9_S040 = self.G9_S010+self.G9_S020+self.G9_S030
     
       self.G3_S050 = self.G3_S051+self.G3_S052+self.G3_S053+self.G3_S054+self.G3_S055+self.G3_S056+self.G3_S057+self.G3_S057+self.G3_S059
       self.G4_S050 = self.G4_S051+self.G4_S052+self.G4_S053+self.G4_S054+self.G4_S055+self.G4_S056+self.G4_S057+self.G4_S057+self.G4_S059
@@ -149,6 +155,22 @@ class FormThreeReport < ActiveRecord::Base
       self.G8_S060 = self.G8_S061+self.G8_S062+self.G8_S063+self.G8_S064+self.G8_S065+self.G8_S066+self.G8_S067+self.G8_S067+self.G8_S069
       self.G9_S060 = self.G9_S061+self.G9_S062+self.G9_S063+self.G9_S064+self.G9_S065+self.G9_S066+self.G9_S067+self.G9_S067+self.G9_S069
       
+      self.G3_S100 = self.G3_S040+self.G3_S050-self.G3_S060+self.G3_S070+self.G3_S080+self.G3_S090
+      self.G4_S100 = self.G4_S040+self.G4_S050-self.G4_S060+self.G4_S070+self.G4_S080+self.G4_S090
+      self.G5_S100 = self.G5_S040+self.G5_S050-self.G5_S060+self.G5_S070+self.G5_S080+self.G5_S090
+      self.G6_S100 = self.G6_S040+self.G6_S050-self.G6_S060+self.G6_S070+self.G6_S080+self.G6_S090
+      self.G7_S100 = self.G7_S040+self.G7_S050-self.G7_S060+self.G7_S070+self.G7_S080+self.G7_S090
+      self.G8_S100 = self.G8_S040+self.G8_S050-self.G8_S060+self.G8_S070+self.G8_S080+self.G8_S090
+      self.G9_S100 = self.G9_S040+self.G9_S050-self.G9_S060+self.G9_S070+self.G9_S080+self.G9_S090
+      
+      self.G3_S140 = self.G3_S110+self.G3_S120+self.G3_S130
+      self.G4_S140 = self.G4_S110+self.G4_S120+self.G4_S130
+      self.G5_S140 = self.G5_S110+self.G5_S120+self.G5_S130
+      self.G6_S140 = self.G6_S110+self.G6_S120+self.G6_S130
+      self.G7_S140 = self.G7_S110+self.G7_S120+self.G7_S130
+      self.G8_S140 = self.G8_S110+self.G8_S120+self.G8_S130
+      self.G9_S140 = self.G9_S110+self.G9_S120+self.G9_S130      
+      
       self.G3_S150 = self.G3_S151+self.G3_S152+self.G3_S153+self.G3_S154+self.G3_S155+self.G3_S156+self.G3_S157+self.G3_S157+self.G3_S159
       self.G4_S150 = self.G4_S151+self.G4_S152+self.G4_S153+self.G4_S154+self.G4_S155+self.G4_S156+self.G4_S157+self.G4_S157+self.G4_S159
       self.G5_S150 = self.G5_S151+self.G5_S152+self.G5_S153+self.G5_S154+self.G5_S155+self.G5_S156+self.G5_S157+self.G5_S157+self.G5_S159
@@ -164,7 +186,15 @@ class FormThreeReport < ActiveRecord::Base
       self.G7_S160 = self.G7_S161+self.G7_S162+self.G7_S163+self.G7_S164+self.G7_S165+self.G7_S166+self.G7_S167+self.G7_S167+self.G7_S169
       self.G8_S160 = self.G8_S161+self.G8_S162+self.G8_S163+self.G8_S164+self.G8_S165+self.G8_S166+self.G8_S167+self.G8_S167+self.G8_S169
       self.G9_S160 = self.G9_S161+self.G9_S162+self.G9_S163+self.G9_S164+self.G9_S165+self.G9_S166+self.G9_S167+self.G9_S167+self.G9_S169
-        
+      
+      self.G3_S200 = self.G3_S140+self.G3_S150-self.G3_S160+self.G3_S170+self.G3_S180+self.G3_S190
+      self.G4_S200 = self.G4_S140+self.G4_S150-self.G4_S160+self.G4_S170+self.G4_S180+self.G4_S190
+      self.G5_S200 = self.G5_S140+self.G5_S150-self.G5_S160+self.G5_S170+self.G5_S180+self.G5_S190
+      self.G6_S200 = self.G6_S140+self.G6_S150-self.G6_S160+self.G6_S170+self.G6_S180+self.G6_S190
+      self.G7_S200 = self.G7_S140+self.G7_S150-self.G7_S160+self.G7_S170+self.G7_S180+self.G7_S190
+      self.G8_S200 = self.G8_S140+self.G8_S150-self.G8_S160+self.G8_S170+self.G8_S180+self.G8_S190
+      self.G9_S200 = self.G9_S140+self.G9_S150-self.G9_S160+self.G9_S170+self.G9_S180+self.G9_S190      
+    
       self.G10_S010 = self.G3_S010+self.G4_S010+self.G5_S010+self.G6_S010+self.G7_S010+self.G8_S010+self.G9_S010 
       self.G10_S020 = self.G3_S020+self.G4_S020+self.G5_S020+self.G6_S020+self.G7_S020+self.G8_S020+self.G9_S020 
       self.G10_S030 = self.G3_S030+self.G4_S030+self.G5_S030+self.G6_S030+self.G7_S030+self.G8_S030+self.G9_S030 
