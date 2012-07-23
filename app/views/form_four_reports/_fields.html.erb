@@ -1,6 +1,235 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+<%= simple_form_for([@enterprise,@form_four_report], html: {class: "form-inline"}, defaults: { label: false, :input_html => { :class => 'span12' } }) do |f| %>
 
-<%= "_fields.html" %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= "За период (ГГГГ-ММ-ДД)" %>
+    <%= f.input :date_period_beg, label: " С : ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>  
+    <%= f.input :date_period_end, label: " По: ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
+    
+    <table class="table table-striped table-bordered table-condensed">
+      <caption> <strong>ОТЧЁТ О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>        
+      <thead>
+        <tr>
+          <th><div class="pagination-centered">Наименование показателя</div></th>
+          <th><div class="pagination-centered">Код стр.</div></th>
+          <th><div class="pagination-centered">Сумма</div></th>        
+       </tr>
+       <tr>
+          <th><div class="pagination-centered">1</div></th>
+          <th><div class="pagination-centered">2</div></th>
+         <th><div class="pagination-centered">3</div></th>        
+       </tr>
+      </thead>
+     <tbody>          
+     <tr>
+        <td colspan="4"><div><strong>Движение денежных средств по ТЕКУЩЕЙ деятельности</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div><strong>Поступило денежных средств</strong></div></td>
+        <td><div class="pagination-centered"><strong>020</strong></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - от покупателей продукции, товаров, заказчиков работ, услуг</em></div></td>
+        <td><div class="pagination-centered"><em>021</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S021 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - от покупателей материалов и других запасов</em></div></td>
+        <td><div class="pagination-centered"><em>022</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S022 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - роялти</em></div></td>
+        <td><div class="pagination-centered"><em>023</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S023 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - прочие поступления</em></div></td>
+        <td><div class="pagination-centered"><em>024</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S024 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><strong>Направлено денежных средств</strong></div></td>
+        <td><div class="pagination-centered"><strong>030</strong></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на приобретение запасов,  работ, услуг</em></div></td>
+        <td><div class="pagination-centered"><em>031</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S031 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на оплату труда</em></div></td>
+        <td><div class="pagination-centered"><em>032</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S032 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на уплату налогов и взносов</em></div></td>
+        <td><div class="pagination-centered"><em>033</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S033 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на прочие выплаты</em></div></td>
+        <td><div class="pagination-centered"><em>034</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S034 %></em></div></td>
+      </tr>
+            
+      <tr>
+        <td colspan="4"><div><strong>Движение денежных средств по ИНВЕСТИЦИОННОЙ деятельности</strong></div></td>
+      </tr>
+      <tr>
+        <td><div><strong>Поступило денежных средств</strong></div></td>
+        <td><div class="pagination-centered"><strong>050</strong></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - от покупателей основных средств, нематериальных активов и других долгосрочных активов</em></div></td>
+        <td><div class="pagination-centered"><em>051</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S051 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> -  возврат предоставленных займов</em></div></td>
+        <td><div class="pagination-centered"><em>052</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S052 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - доходы от участия в уставном капитале других организаций</em></div></td>
+        <td><div class="pagination-centered"><em>053</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S053 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - проценты</em></div></td>
+        <td><div class="pagination-centered"><em>054</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S054 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - прочие поступления</em></div></td>
+        <td><div class="pagination-centered"><em>055</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S055 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><strong>Направлено денежных средств</strong></div></td>
+        <td><div class="pagination-centered"><strong>060</strong></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на приобретение запасов,  работ, услуг</em></div></td>
+        <td><div class="pagination-centered"><em>061</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S061 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на оплату труда</em></div></td>
+        <td><div class="pagination-centered"><em>062</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S062 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на уплату налогов и взносов</em></div></td>
+        <td><div class="pagination-centered"><em>063</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S063  %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на прочие выплаты</em></div></td>
+        <td><div class="pagination-centered"><em>064</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S064 %></em></div></td>
+      </tr>
+            
+      <tr>
+        <td colspan="4"><div><strong>Движение денежных средств по ФИНАНСОВОЙ деятельности</strong></div></td>
+      </tr>
+       <tr>
+        <td><div><strong>Поступило денежных средств</strong></div></td>
+        <td><div class="pagination-centered"><strong>080</strong></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - кредиты и займы</em></div></td>
+        <td><div class="pagination-centered"><em>081</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S081 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> -  от выпуска акций</em></div></td>
+        <td><div class="pagination-centered"><em>082</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S082 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
+        <td><div class="pagination-centered"><em>083</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S083 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - прочие поступления</em></div></td>
+        <td><div class="pagination-centered"><em>084</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S084 %></em></div></td>
+      </tr>      
+      <tr>
+        <td><div><strong>Направлено денежных средств</strong></div></td>
+        <td><div class="pagination-centered"><strong>090</strong></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div>В том числе:</div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на погашение кредитов и займов</em></div></td>
+        <td><div class="pagination-centered"><em>091</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S091 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на выплаты дивидендов и других доходов от участия в уставном капитале организации</em></div></td>
+        <td><div class="pagination-centered"><em>092</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S092 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на выплаты процентов</em></div></td>
+        <td><div class="pagination-centered"><em>093</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S093 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - на лизинговые платежи</em></div></td>
+        <td><div class="pagination-centered"><em>094</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S094 %></em></div></td>
+      </tr>
+      <tr>
+        <td><div><em> - прочие выплаты</em></div></td>
+        <td><div class="pagination-centered"><em>095</em></div></td>
+        <td><div class="pagination-centered"><em><%= f.input :S095 %></em></div></td>
+      </tr>            
+      <tr>
+        <td><div>Влияние изменений курса иностранной валюты по отношению к белорусскому рублю</div></td>
+        <td><div class="pagination-centered">140</div></td>
+        <td><div class="pagination-centered"><%= f.input :S140 %></div></td>
+      </tr>   
+     </tbody>    
+   </table>
+
+    <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
+
+  <% end %>
