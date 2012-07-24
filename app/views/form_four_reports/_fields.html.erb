@@ -1,6 +1,8 @@
-<%= simple_form_for([@enterprise,@form_four_report], html: {class: "form-inline"}, defaults: { label: false, :input_html => { :class => 'span12' } }) do |f| %>
+<%= simple_form_for([@enterprise,@form_four_report], html: {class: "well form-inline"}, defaults: { label: false, :input_html => { :class => 'span12' } }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
+
+<div class="form-inputs">
 
     <%= "За период (ГГГГ-ММ-ДД)" %>
     <%= f.input :date_period_beg, label: " С : ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>  
@@ -229,7 +231,10 @@
       </tr>   
      </tbody>    
    </table>
-
+</div>
+ 
+  <div class="form-actions">
     <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
+  </div>    
 
   <% end %>

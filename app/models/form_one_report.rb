@@ -35,7 +35,7 @@ class FormOneReport < ActiveRecord::Base
     self.S210 = self.S211+self.S212+self.S213+self.S214+self.S215+self.S216
     self.S290 = self.S210+self.S220+self.S230+self.S240+self.S250+self.S260+self.S270+self.S280
     self.S300 = self.S190+self.S290
-    self.S490 = self.S410+self.S420+self.S430+self.S440+self.S450+self.S460+self.S470+self.S480
+    self.S490 = self.S410-self.S420-self.S430+self.S440+self.S450+self.S460+self.S470+self.S480
     self.S590 = self.S510+self.S520+self.S530+self.S540+self.S550+self.S560
     self.S630 = self.S631+self.S632+self.S633+self.S634+self.S635+self.S636+self.S637+self.S638
     self.S690 = self.S610+self.S620+self.S630+self.S640+self.S650+self.S660+self.S670

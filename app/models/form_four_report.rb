@@ -39,6 +39,6 @@ class FormFourReport < ActiveRecord::Base
     self.S090 = self.S091+self.S092+self.S093+self.S094+self.S095
     self.S100 = self.S080-self.S090
     self.S110 = self.S040+self.S070+self.S100
-    self.S130 = self.S110+self.S120
+    self.S130 = self.S120+self.S110
   end
 end

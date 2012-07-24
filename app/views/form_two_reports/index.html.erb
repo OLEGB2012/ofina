@@ -24,7 +24,7 @@
     <tbody>
      <% @form_two_reports.each do |form_two_report| %>        
         <tr>          
-          <td><div class="pull-left">C <%= Russian::strftime(form_two_report.date_period_beg,"%d %B %Y") %> г. <br/> По <%= Russian::strftime(form_two_report.date_period_end,"%d %B %Y") %> г.</div></td>
+          <td><div class="pull-left">C <%= Russian::strftime(form_two_report.date_period_beg,"%d %B %Y") %><br/> По <%= Russian::strftime(form_two_report.date_period_end,"%d %B %Y") %></div></td>
           <td><div class="pull-right"><%= number_with_delimiter(form_two_report.S030, delimiter: ' ') %></div></td>
           <td><div class="pull-right"><%= number_with_delimiter(form_two_report.S240, delimiter: ' ') %></div></td>
           <td>

@@ -27,8 +27,8 @@
     <tbody>
      <% @form_four_reports.each do |form_four_report| %>        
         <tr>          
-          <td><div class="pagination-centered"><%= Russian::strftime(form_four_report.date_period_beg,"%d %B %Y") %> г.</div></td>
-          <td><div class="pagination-centered"><%= Russian::strftime(form_four_report.date_period_end,"%d %B %Y") %> г.</div></td>          
+          <td><div class="pagination-centered"><%= Russian::strftime(form_four_report.date_period_beg,"%d %B %Y") %></div></td>
+          <td><div class="pagination-centered"><%= Russian::strftime(form_four_report.date_period_end,"%d %B %Y") %></div></td>          
           <td>
             <div class="pagination-centered">
               <%= link_to ([@enterprise,form_four_report]), 
