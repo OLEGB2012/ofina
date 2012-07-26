@@ -1,6 +1,6 @@
 # encoding: utf-8
 class FormFourReport < ActiveRecord::Base
-  before_save :calc_rows_f4  
+  before_save :calc_rows_f4, :normalize_end_date  
 
   belongs_to :enterprise
   
@@ -20,6 +20,11 @@ class FormFourReport < ActiveRecord::Base
    # Валидация из гема validates_timeliness
   validates_date :date_period_beg, :before => :date_period_end  
   validates_date :date_period_end, :after  => :date_period_beg
+  
+  # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
+  def normalize_end_date    
+    self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
+  end
   
   self.per_page = 12 # число страниц для гема пагинации ...
   

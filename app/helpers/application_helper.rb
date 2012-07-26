@@ -25,7 +25,7 @@ module ApplicationHelper
 
   # Выводит в видах суммы с учётом особенностей их представления...
   def display_cell_data(cArrName,cFieldName)
-    eval("@"+cArrName).nil? ? "Нет данных":eval("@"+cArrName+"."+cFieldName)==0?"-":eval("@"+cArrName+"."+cFieldName)<0?"("+number_with_delimiter(eval("@"+cArrName+"."+cFieldName), delimiter: ' ').to_s+")":number_with_delimiter(eval("@"+cArrName+"."+cFieldName), delimiter: ' ')
+    eval("@"+cArrName).nil? ? "х":eval("@"+cArrName+"."+cFieldName)==0?"-":eval("@"+cArrName+"."+cFieldName)<0?"("+number_with_delimiter(eval("@"+cArrName+"."+cFieldName), delimiter: ' ').to_s+")":number_with_delimiter(eval("@"+cArrName+"."+cFieldName), delimiter: ' ')
   end
   
 end

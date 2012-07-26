@@ -9,7 +9,8 @@ class CreateEnterprises < ActiveRecord::Migration
       t.string     "organiz_pravo_form"        # Организационно-правовая форма          
       t.string     "organ_upravlen"            # Орган управления                       
       t.string     "edinic_izmer", limit: 20   # Единица измерения                      
-      t.string     "adres"                     # Адрес 
+      t.string     "adres"                     # Адрес
+      
       t.timestamps      
     end    
     add_index :enterprises, :user_id

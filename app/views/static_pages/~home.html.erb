@@ -1,0 +1,48 @@
+<%  provide(:title, 'Главная')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">База данных</li>  
+      <li><%= link_to "Организации", enterprises_path%></li>  
+      <li><%= link_to "Настройки пользователя", "#"%></li>
+      <li><%= link_to "Сервис Базы Данных", "#"%></li>  
+      <li class="nav-header">Операции</li>  
+      <li><%= link_to "Контроль", "#"%></li>
+      <li><%= link_to "Расчёты", "#"%></li> 
+      <li><%= link_to "Просмотр результатов", "#"%></li>          
+    </ul>  
+  </div>  
+<% end  %>
+<% content_for :span9 do %>
+  <div class="row-fluid">  
+    <div class="span4">  
+      <h2>Данные</h2>  
+      <p>Вводите данные по отчётным формам для требуемого периода. 
+        Предварительно "создайте" Организацию (если её нет в базе), к которой относятся ваши данные.</p>         
+      <p><a class="btn btn-primary btn-large" href=<%=enterprises_path%>>1.Редактировать...</a></p>  
+    </div><!--/span-->  
+    <div class="span4">  
+      <h2>Расчёты</h2>  
+      <p>Выполняйте необходимые расчёты. Они станут основой для построения отчётов по результатам анализа. 
+        Если исходные данные изменялись, то расчёты нужно повторить.</p>  
+      <p><a class="btn btn-primary btn-large" href="#">2.Выполнить...</a></p>  
+    </div><!--/span-->  
+    <div class="span4">  
+      <h2>Результаты</h2>  
+      <p>Отображайте результаты в различных представлениях: таблица, страничная форма, диаграмма и т.д.. 
+        Выполняйте расчёты перед выводом новых результатов.</p>  
+      <p><a class="btn btn-primary btn-large" href="#">3.Просмотреть...</a></p>  
+    </div>  
+  </div>
+<% end  %>
+
+<% content_for :guest_area do %>
+  <div class="hero-unit">
+    <p>Вы у нас в гостях,и мы рады предложить вниманию профессионалов новые возможности, которые предоставляет наш проект! 
+      С его помощью Вы сможете быстро и качественно решать следующие задачи:</p>
+  </div>
+  <div class="center"> 
+    <%= link_to "Зарегистрироваться сейчас!", new_user_registration_path , class: "btn btn-large btn-primary" %> 
+  </div>
+  <% end  %>

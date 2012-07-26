@@ -9,9 +9,9 @@ class CreateFormTwoReports < ActiveRecord::Migration
                 "S220", "S230", "S240", "S250", "S260", default: 0
       t.timestamps
     end
-    add_index :form_two_reports, [:enterprise_id,:date_period_beg,:date_period_end,:id], name: 'two_enterpise_id_period_id'
-    add_index :form_two_reports, [:enterprise_id,:date_period_beg,:id], name: 'two_enterpise_id_period_beg_id'
-    add_index :form_two_reports, [:enterprise_id,:date_period_end,:id], name: 'two_enterpise_id_period_end_id'
+    add_index :form_two_reports, [:enterprise_id,:date_period_beg,:date_period_end], name: 'two_enterpise_id_period'
+    add_index :form_two_reports, [:enterprise_id,:date_period_beg], name: 'two_enterpise_id_period_beg'
+    add_index :form_two_reports, [:enterprise_id,:date_period_end], name: 'two_enterpise_id_period_end'
     add_index :form_two_reports, :enterprise_id
   end
 end

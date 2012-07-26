@@ -10,8 +10,8 @@ class CreateFormFourReports < ActiveRecord::Migration
       t.timestamps
     end
     add_index :form_four_reports, :enterprise_id
-    add_index :form_four_reports, [:enterprise_id,:date_period_beg,:date_period_end,:id], name: 'four_enterpise_id_period_id'
-    add_index :form_four_reports, [:enterprise_id,:date_period_beg,:id], name: 'four_enterpise_id_period_beg_id'
-    add_index :form_four_reports, [:enterprise_id,:date_period_end,:id], name: 'four_enterpise_id_period_end_id'
+    add_index :form_four_reports, [:enterprise_id,:date_period_beg,:date_period_end], name: 'four_enterpise_id_period'
+    add_index :form_four_reports, [:enterprise_id,:date_period_beg], name: 'four_enterpise_id_period_beg'
+    add_index :form_four_reports, [:enterprise_id,:date_period_end], name: 'four_enterpise_id_period_end'
   end
 end

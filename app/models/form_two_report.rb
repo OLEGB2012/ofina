@@ -1,6 +1,6 @@
 # encoding: utf-8
 class FormTwoReport < ActiveRecord::Base
-  before_save :calc_rows_f2  
+  before_save :calc_rows_f2, :normalize_end_date  
 
   belongs_to :enterprise
   
@@ -21,12 +21,19 @@ class FormTwoReport < ActiveRecord::Base
   validates_date :date_period_beg, :before => :date_period_end  
   validates_date :date_period_end, :after  => :date_period_beg
   
+  
   self.per_page = 12 # число страниц для гема пагинации ...
   
   scope :Sorted, order('form_two_reports.date_period_end DESC')
   scope :FormTwoEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
   
   private
+  
+  # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
+  def normalize_end_date    
+    self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
+  end
+  
   # Расчитаем итоговые строки для формы 2
   def calc_rows_f2
     self.S030 = self.S010-self.S020

@@ -3,38 +3,54 @@
 <% content_for :span3 do %>      
   <div class="well sidebar-nav">  
     <ul class="nav nav-list">  
-      <li class="nav-header">База данных</li>  
-      <li><%= link_to "Организации", enterprises_path%></li>  
-      <li><%= link_to "Настройки пользователя", "#"%></li>
-      <li><%= link_to "Сервис Базы Данных", "#"%></li>  
       <li class="nav-header">Операции</li>  
-      <li><%= link_to "Контроль", "#"%></li>
-      <li><%= link_to "Расчёты", "#"%></li> 
-      <li><%= link_to "Просмотр результатов", "#"%></li>          
+      <li><%= link_to "Список Организаций", enterprises_path%></li>  
+      <li><%= link_to "Управление аккаунтом", "#"%></li>
+      <li class="divider"></li>
+      <li><%= link_to "Сервис Базы Данных", "#"%></li>  
     </ul>  
   </div>  
 <% end  %>
 <% content_for :span9 do %>
-  <div class="row-fluid">  
-    <div class="span4">  
-      <h2>Данные</h2>  
-      <p>Вводите данные по отчётным формам для требуемого периода. 
-        Предварительно "создайте" Организацию (если её нет в базе), к которой относятся ваши данные.</p>         
-      <p><a class="btn btn-primary btn-large" href=<%=enterprises_path%>>1.Редактировать...</a></p>  
-    </div><!--/span-->  
-    <div class="span4">  
-      <h2>Расчёты</h2>  
-      <p>Выполняйте необходимые расчёты. Они станут основой для построения отчётов по результатам анализа. 
-        Если исходные данные изменялись, то расчёты нужно повторить.</p>  
-      <p><a class="btn btn-primary btn-large" href="#">2.Выполнить...</a></p>  
-    </div><!--/span-->  
-    <div class="span4">  
-      <h2>Результаты</h2>  
-      <p>Отображайте результаты в различных представлениях: таблица, страничная форма, диаграмма и т.д.. 
-        Выполняйте расчёты перед выводом новых результатов.</p>  
-      <p><a class="btn btn-primary btn-large" href="#">3.Просмотреть...</a></p>  
-    </div>  
-  </div>
+  <table class="table table-striped table-bordered table-condensed">
+    <caption><strong><h3>Текущая статистика Базы Данных</h3></strong></caption>
+    <tbody>
+      <tr>
+        <td><div class="pull-left"><strong>Количество организаций:</strong></div></td>
+        <td><div class="pagination-centered"><span class="badge badge-info"><%= @enterprise_count %></span></div></td>        
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pull-left"><strong>Всего отчётов за <%= @current_year %> год: </strong></div></td>        
+      </tr>
+        <td><div class="pull-left"><em>   - ОТЧЁТ "БУХГАЛТЕРСКИЙ БАЛАНС"</em></div></td>
+        <td><div class="pagination-centered"><span class="badge badge-info"><%= @form_one_reports_count %></span></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left"><em>   - ОТЧЁТ "О ПРИБЫЛЯХ И УБЫТКАХ"</em></div></td>
+        <td><div class="pagination-centered"><span class="badge badge-info"><%= @form_two_reports_count %></span></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left"><em>   - ОТЧЁТ "ОБ ИЗМЕНЕНИИ КАПИТАЛА"</em></div></td>
+        <td><div class="pagination-centered"><span class="badge badge-info"><%= @form_three_reports_count %></span></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left"><em>   - ОТЧЁТ "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ"</em></div></td>
+        <td><div class="pagination-centered"><span class="badge badge-info"><%= @form_four_reports_count %></span></div></td>
+      </tr>      
+      <tr>
+        <td><div class="pull-left"><strong>Записей в журнале ошибок:</strong></div></td>
+        <td>
+          <div class="pagination-centered">
+            <% if false %>
+                <span class="badge badge-success"><%= 0 %></span>
+            <% else %>    
+                <span class="badge badge-important"><%= 5 %></span>
+            <% end %>  
+            </div>
+        </td>
+      </tr>         
+    </tbody>    
+  </table>
 <% end  %>
 
 <% content_for :guest_area do %>
@@ -43,6 +59,6 @@
       С его помощью Вы сможете быстро и качественно решать следующие задачи:</p>
   </div>
   <div class="center"> 
-    <%= link_to "Зарегистрироваться сейчас!", new_user_registration_path , class: "btn btn-large btn-primary" %> 
-    </div>
+    <%= link_to "Регистрация...", new_user_registration_path , class: "btn btn-large btn-primary" %> 
+  </div>
   <% end  %>
