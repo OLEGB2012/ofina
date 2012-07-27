@@ -10,7 +10,7 @@ class CreateEnterprises < ActiveRecord::Migration
       t.string     "organ_upravlen"                 # Орган управления                       
       t.string     "edinic_izmer", limit: 20        # Единица измерения                      
       t.string     "adres"                          # Адрес
-      t.column :K1, :decimal, :precision => 3, :scale => 2, :default => 0, :range [..] # Норматив коэф-та текущей ликвидности
+      t.column :K1, :decimal, :precision => 3, :scale => 2, :default => 0 # Норматив коэф-та текущей ликвидности
       t.column :K2, :decimal, :precision => 3, :scale => 2, :default => 0 # Норматив коэф-та обеспеченности собственными оборотными средствами
       t.column :K3, :decimal, :precision => 3, :scale => 2, :default => 0 # Норматив коэф-та обеспеченности финансовых обязательств активами
       t.date       "rab_date_beg" # Начальная дата рабочего интервала
