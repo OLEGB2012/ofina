@@ -22,7 +22,7 @@ class FormTwoReport < ActiveRecord::Base
   validates_date :date_period_end, :after  => :date_period_beg
   
   
-  self.per_page = 12 # число страниц для гема пагинации ...
+  self.per_page = 4 # число строк на страницу для гема пагинации ...
   
   scope :Sorted, order('form_two_reports.date_period_end DESC')
   scope :FormTwoEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}

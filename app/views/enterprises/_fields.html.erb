@@ -1,14 +1,19 @@
-<%= simple_form_for(@enterprise, html: {class: "well form-horizontal"}, defaults: { :input_html => { :class => 'span12' } }) do |f| %>
+<%= simple_form_for(@enterprise, html: {class: "well form-vertical"}, defaults: { :input_html => { :class => 'span12' } }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-inputs">
-      <%= f.input :org_name,           :label => 'Наименование организации' %>
-      <%= f.input :uch_nomer_plat,     :label => 'Учётный номер плательщика' %>
-      <%= f.input :vid_econom_deyatel, :label => 'Вид экономической деятельности' %>
-      <%= f.input :organiz_pravo_form, :label => 'Организационно-правовая форма' %>
-      <%= f.input :organ_upravlen,     :label => 'Орган управления' %>
-      <%= f.input :edinic_izmer,       :label => 'Единица измерения' %>
-      <%= f.input :adres,              :label => 'Адрес' %>
+      <%= f.input :org_name,           :label => 'Наименование организации:' %>
+      <%= f.input :uch_nomer_plat,     :label => 'Учётный номер плательщика:' %>
+      <%= f.input :vid_econom_deyatel, :label => 'Вид экономической деятельности:' %>
+      <%= f.input :organiz_pravo_form, :label => 'Организационно-правовая форма:' %>
+      <%= f.input :organ_upravlen,     :label => 'Орган управления:' %>
+      <%= f.input :edinic_izmer,       :label => 'Единица измерения:' %>
+      <%= f.input :adres,              :label => 'Адрес:' %>
+      <%= f.input :K1,                 :label => 'Норматив коэффициента текущей ликвидности (K1):' %>
+      <%= f.input :K2,                 :label => 'Норматив коэффициента обеспеченности собственными оборотными средствами (K2):' %>
+      <%= f.input :K3,                 :label => 'Норматив коэффициента обеспеченности финансовых обязательств активами (K3):' %>
+      <%= f.input :rab_date_beg,       :label => 'Начальная дата рабочего интервала (ГГГГ-ММ-ДД):', :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
+      <%= f.input :rab_date_end,       :label => 'Конечная дата рабочего интервала (ГГГГ-ММ-ДД):' , :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
     </div>   
     <div class="form-actions">
       <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>

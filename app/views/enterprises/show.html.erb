@@ -7,10 +7,10 @@
       <li><%= link_to "Редактировать", edit_enterprise_path%></li>
       <li><%= link_to "К списку организаций", enterprises_path %></li>
       <li class="nav-header">ОТЧЁТЫ</li>
-      <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС (приложение 1)"       , enterprise_form_one_reports_path(@enterprise) %></li>
-      <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ (приложение 2)"       , enterprise_form_two_reports_path(@enterprise) %></li>
-      <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (приложение 3)"      , enterprise_form_three_reports_path(@enterprise)%></li>
-      <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (приложение 4)", enterprise_form_four_reports_path(@enterprise)%></li>                       
+      <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС (Кол-во : "+@form_one_reports_count.to_s+")"   , enterprise_form_one_reports_path(@enterprise) %></li>
+      <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ (Кол-во : "+@form_two_reports_count.to_s+")"       , enterprise_form_two_reports_path(@enterprise) %></li>
+      <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (Кол-во : "+@form_three_reports_count.to_s+")"      , enterprise_form_three_reports_path(@enterprise)%></li>
+      <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%></li>                       
     </ul>  
   </div>  
 <% end  %>
@@ -46,6 +46,26 @@
       <tr>
         <td><div class="pull-left">Адрес</div></td>
         <td><div class="pull-left"><%= @enterprise.adres %></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left">Норматив коэффициента текущей ликвидности (K1)</div></td>
+        <td><div class="pull-left"><%= @enterprise.K1 %></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left">Норматив коэффициента обеспеченности собственными оборотными средствами (K2)</div></td>
+        <td><div class="pull-left"><%= @enterprise.K2 %></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left">Норматив коэффициента обеспеченности финансовых обязательств активами (K3)</div></td>
+        <td><div class="pull-left"><%= @enterprise.K3 %></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left">Начальная дата рабочего интервала (ГГГГ-ММ-ДД)</div></td>
+        <td><div class="pull-left"><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-left">Конечная дата рабочего интервала (ГГГГ-ММ-ДД)</div></td>
+        <td><div class="pull-left"><%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></div></td>
       </tr>
     </tbody>    
   </table>  

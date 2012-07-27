@@ -26,7 +26,7 @@ class FormFourReport < ActiveRecord::Base
     self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
   end
   
-  self.per_page = 12 # число страниц для гема пагинации ...
+  self.per_page = 4 # число строк на страницу для гема пагинации ...
   
   scope :Sorted, order('form_four_reports.date_period_end DESC')
   scope :FormFourEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120629173415) do
 
   create_table "enterprises", :force => true do |t|
-    t.integer  "parent_id",                        :default => 0
+    t.integer  "parent_id",                                                      :default => 0
     t.integer  "user_id"
     t.string   "org_name"
     t.string   "uch_nomer_plat",     :limit => 9
@@ -23,8 +23,13 @@ ActiveRecord::Schema.define(:version => 20120629173415) do
     t.string   "organ_upravlen"
     t.string   "edinic_izmer",       :limit => 20
     t.string   "adres"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.decimal  "K1",                               :precision => 3, :scale => 2, :default => 0.0
+    t.decimal  "K2",                               :precision => 3, :scale => 2, :default => 0.0
+    t.decimal  "K3",                               :precision => 3, :scale => 2, :default => 0.0
+    t.date     "rab_date_beg"
+    t.date     "rab_date_end"
+    t.datetime "created_at",                                                                      :null => false
+    t.datetime "updated_at",                                                                      :null => false
   end
 
   add_index "enterprises", ["parent_id", "id"], :name => "index_enterprises_on_parent_id_and_id"
@@ -78,9 +83,9 @@ ActiveRecord::Schema.define(:version => 20120629173415) do
     t.datetime "updated_at",                     :null => false
   end
 
-  add_index "form_four_reports", ["enterprise_id", "date_period_beg", "date_period_end", "id"], :name => "four_enterpise_id_period_id"
-  add_index "form_four_reports", ["enterprise_id", "date_period_beg", "id"], :name => "four_enterpise_id_period_beg_id"
-  add_index "form_four_reports", ["enterprise_id", "date_period_end", "id"], :name => "four_enterpise_id_period_end_id"
+  add_index "form_four_reports", ["enterprise_id", "date_period_beg", "date_period_end"], :name => "four_enterpise_id_period"
+  add_index "form_four_reports", ["enterprise_id", "date_period_beg"], :name => "four_enterpise_id_period_beg"
+  add_index "form_four_reports", ["enterprise_id", "date_period_end"], :name => "four_enterpise_id_period_end"
   add_index "form_four_reports", ["enterprise_id"], :name => "index_form_four_reports_on_enterprise_id"
 
   create_table "form_one_reports", :force => true do |t|
@@ -664,9 +669,9 @@ ActiveRecord::Schema.define(:version => 20120629173415) do
     t.datetime "updated_at",                     :null => false
   end
 
-  add_index "form_two_reports", ["enterprise_id", "date_period_beg", "date_period_end", "id"], :name => "two_enterpise_id_period_id"
-  add_index "form_two_reports", ["enterprise_id", "date_period_beg", "id"], :name => "two_enterpise_id_period_beg_id"
-  add_index "form_two_reports", ["enterprise_id", "date_period_end", "id"], :name => "two_enterpise_id_period_end_id"
+  add_index "form_two_reports", ["enterprise_id", "date_period_beg", "date_period_end"], :name => "two_enterpise_id_period"
+  add_index "form_two_reports", ["enterprise_id", "date_period_beg"], :name => "two_enterpise_id_period_beg"
+  add_index "form_two_reports", ["enterprise_id", "date_period_end"], :name => "two_enterpise_id_period_end"
   add_index "form_two_reports", ["enterprise_id"], :name => "index_form_two_reports_on_enterprise_id"
 
   create_table "users", :force => true do |t|

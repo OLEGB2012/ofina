@@ -180,7 +180,12 @@ def make_enterprises
                                       organiz_pravo_form: 'ОАО',
                                       organ_upravlen: 'Частное предприятие', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул. Преображенская,40')
+                                      adres: 'ул. Преображенская,40',
+                                      K1: 1.5,
+                                      K2: 0.2,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   user = User.find_by_id(1)
   user.enterprises << new_enterprise
 
@@ -190,7 +195,12 @@ def make_enterprises
                                       organiz_pravo_form: 'ОАО',
                                       organ_upravlen: 'Концерн Белнефтехим', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул. Крылья Советов,13')
+                                      adres: 'ул. Крылья Советов,13',
+                                      K1: 1.5,
+                                      K2: 0.2,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   user = User.find_by_id(2)
   user.enterprises << new_enterprise
 
@@ -200,7 +210,12 @@ def make_enterprises
                                       organiz_pravo_form: 'ЗАО',
                                       organ_upravlen: 'Частное предприятие', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул.Малые горки, 50')
+                                      adres: 'ул.Малые горки, 50',
+                                      K1: 1.15,
+                                      K2: 0.15,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   user = User.find_by_id(2)
   user.enterprises << new_enterprise
   
@@ -210,7 +225,12 @@ def make_enterprises
                                       organiz_pravo_form: 'Унитарное предприятие',
                                       organ_upravlen: 'Концерн приборостороения', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул. Космонавтов, 64')
+                                      adres: 'ул. Космонавтов, 64',
+                                      K1: 1.5,
+                                      K2: 0.2,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   
   user = User.find_by_id(3)
   user.enterprises << new_enterprise
@@ -221,7 +241,12 @@ def make_enterprises
                                       organiz_pravo_form: 'ОАО',
                                       organ_upravlen: 'Концерн Белгоспищепром', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул. Бахарова, 45')
+                                      adres: 'ул. Бахарова, 45',
+                                      K1: 1.5,
+                                      K2: 0.2,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   user = User.find_by_id(4)
   user.enterprises << new_enterprise
 
@@ -231,7 +256,12 @@ def make_enterprises
                                       organiz_pravo_form: 'ОАО',
                                       organ_upravlen: 'Концерн Беллегпром', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул. Первомайская, 40')
+                                      adres: 'ул. Первомайская, 40',
+                                      K1: 1.5,
+                                      K2: 0.2,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   user = User.find_by_id(5)
   user.enterprises << new_enterprise
 
@@ -241,7 +271,12 @@ def make_enterprises
                                       organiz_pravo_form: 'ЧУП',
                                       organ_upravlen: 'Частное', 
                                       edinic_izmer: 'млн. рубл.',
-                                      adres: 'ул. Где-то там на пригорке')
+                                      adres: 'ул. Где-то там на пригорке',
+                                      K1: 1.0,
+                                      K2: 0.1,
+                                      K3: 0.85,
+                                      rab_date_beg: '2012-01-01',
+                                      rab_date_end: '2012-12-31')
   user = User.find_by_id(6)
   user.enterprises << new_enterprise
 end

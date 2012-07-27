@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :last_sign_in_at
     
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'

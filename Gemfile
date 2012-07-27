@@ -19,7 +19,8 @@ gem 'russian', '~> 0.6.0' # см. https://github.com/yaroslav/russian
 
 group :development, :test do
   gem 'rspec-rails', '2.10.1'
-  gem 'sqlite3'
+  #gem 'sqlite3'
+  gem 'pg'
   gem 'annotate'
 end
 

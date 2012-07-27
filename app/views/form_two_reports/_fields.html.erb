@@ -8,7 +8,11 @@
     <%= f.input :date_period_beg, label: " С : ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>  
     <%= f.input :date_period_end, label: " По: ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
     
-    <table class="table table-striped table-bordered table-condensed">
+  <div class="form-actions">
+    <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
+  </div>    
+  
+  <table class="table table-striped table-bordered table-condensed">
       <caption> <strong>ОТЧЁТ О ПРИБЫЛЯХ И УБЫТКАХ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>        
       <thead>
         <tr>

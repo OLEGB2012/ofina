@@ -11,6 +11,7 @@
     </ul>  
   </div>  
 <% end  %>
+
 <% content_for :span9 do %>
   <table class="table table-striped table-bordered table-condensed">
     <caption><strong><h3>Текущая статистика Базы Данных</h3></strong></caption>
@@ -48,7 +49,11 @@
             <% end %>  
             </div>
         </td>
-      </tr>         
+      </tr>
+      <tr>
+        <td><div class="pull-left"><strong>Дата предыдущего входа в систему:</strong></div></td>
+        <td><div class="pagination-centered"><span class="badge badge-success"><%= @last_sign_in_at %></span></div></td>        
+      </tr>
     </tbody>    
   </table>
 <% end  %>

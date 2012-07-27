@@ -22,7 +22,7 @@ class FormOneReport < ActiveRecord::Base
   # Валидация из гема validates_timeliness
   validates_date :date_period
 
-  self.per_page = 12 # число страниц для гема пагинации ...
+  self.per_page = 12 # число строк на страницу для гема пагинации ...
   
   scope :Sorted, order('form_one_reports.date_period DESC')
   scope :FormOneEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
