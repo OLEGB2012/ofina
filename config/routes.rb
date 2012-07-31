@@ -11,9 +11,13 @@ Ofina::Application.routes.draw do
   match '/calc_prompt'    , to: 'calculations#prompt'
   match '/calc_run'       , to: 'calculations#run'
     
-  resources :enterprises do 
-    resources :form_one_reports, :form_two_reports, 
-              :form_three_reports, :form_four_reports              
+  resources :enterprises do
+#    shallow do 
+      resources :form_one_reports
+      resources :form_two_reports
+      resources :form_three_reports
+      resources :form_four_reports
+#    end         
   end  
   
   # The priority is based upon order of creation:

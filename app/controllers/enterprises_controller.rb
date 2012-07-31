@@ -7,15 +7,22 @@ class EnterprisesController < ApplicationController
   end
   
   def show
-    @enterprise=Enterprise.find(params[:id])
-    @form_one_reports_count  =@enterprise.form_one_reports.where(["date_period>=? AND date_period<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
-    @form_two_reports_count  =@enterprise.form_two_reports.where(["date_period_beg>=? AND date_period_beg<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
-    @form_three_reports_count=@enterprise.form_three_reports.where(["date_period_beg>=? AND date_period_beg<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
-    @form_four_reports_count =@enterprise.form_four_reports.where(["date_period_beg>=? AND date_period_beg<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
+    @enterprise=Enterprise.find_by_id(params[:id])
+    if not @enterprise.nil?
+      @form_one_reports_count  =@enterprise.form_one_reports.where(["date_period>=? AND date_period<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
+      @form_two_reports_count  =@enterprise.form_two_reports.where(["date_period_beg>=? AND date_period_beg<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
+      @form_three_reports_count=@enterprise.form_three_reports.where(["date_period_beg>=? AND date_period_beg<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
+      @form_four_reports_count =@enterprise.form_four_reports.where(["date_period_beg>=? AND date_period_beg<=?",Time.now.beginning_of_year,Time.now.end_of_year]).count
+    else
+      redirect_to enterprises_path
+    end
   end
     
   def edit
-    @enterprise=Enterprise.find(params[:id])
+    @enterprise=Enterprise.find_by_id(params[:id])
+    if @enterprise.nil?
+      redirect_to enterprises_path
+    end
   end
   
   def new
@@ -23,7 +30,10 @@ class EnterprisesController < ApplicationController
   end  
   
   def delete
-    @enterprise=Enterprise.find(params[:id])
+    @enterprise=Enterprise.find_by_id(params[:id])
+    if @enterprise.nil?
+      redirect_to enterprises_path
+    end
   end
   
   def create
@@ -38,7 +48,10 @@ class EnterprisesController < ApplicationController
   end
   
   def update
-    @enterprise=Enterprise.find(params[:id])
+    @enterprise=Enterprise.find_by_id(params[:id])
+    if @enterprise.nil?
+      redirect_to enterprises_path
+    end
     if @enterprise.update_attributes(params[:enterprise])
       flash[:notice]="Предприятие обновлено."
       redirect_to enterprise_path(@enterprise)
@@ -48,7 +61,10 @@ class EnterprisesController < ApplicationController
   end
   
   def destroy
-    enterprise=Enterprise.find(params[:id])
+    enterprise=Enterprise.find_by_id(params[:id])
+    if @enterprise.nil?
+      redirect_to enterprises_path
+    end
     enterprise.destroy
     flash[:notice]="Предприятие удалено."
     redirect_to enterprises_path
