@@ -7,17 +7,23 @@
       <li><%= link_to "Редактировать", edit_enterprise_path%></li>
       <li><%= link_to "К списку организаций", enterprises_path %></li>
       <li class="nav-header">ОТЧЁТЫ</li>
-      <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС (Кол-во : "+@form_one_reports_count.to_s+")"   , enterprise_form_one_reports_path(@enterprise) %></li>
-      <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ (Кол-во : "+@form_two_reports_count.to_s+")"       , enterprise_form_two_reports_path(@enterprise) %></li>
-      <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (Кол-во : "+@form_three_reports_count.to_s+")"      , enterprise_form_three_reports_path(@enterprise)%></li>
-      <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%></li>                       
+      <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС (Кол-во : "+@form_one_reports_count.to_s+")"        , enterprise_form_one_reports_path(@enterprise) %></li>
+      <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ (Кол-во : "+@form_two_reports_count.to_s+")"        , enterprise_form_two_reports_path(@enterprise) %></li>
+      <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (Кол-во : "+@form_three_reports_count.to_s+")"     , enterprise_form_three_reports_path(@enterprise)%></li>
+      <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%></li>
+      <li class="nav-header">Контроль</li>
+      <li><%= link_to "Перейти ..."   , "#" %></li>      
+      <li class="nav-header">РАСЧЁТЫ</li>
+      <li><%= link_to "Перейти ..."   , calc_prompt_path(id: @enterprise) %></li>      
+      <li class="nav-header">РЕЗУЛЬТАТЫ</li>
+      <li><%= link_to "Просмотреть ...", "#" %></li>      
     </ul>  
   </div>  
 <% end  %>
 
 <% content_for :span9 do %>
+<legend>Сведения об Организации</legend>
   <table class="table table-striped table-bordered table-condensed">
-    <caption><strong>Сведения об Организации</strong></caption>
     <tbody>
       <tr>
         <td><div class="pull-left">Наименование</div></td>
@@ -60,11 +66,11 @@
         <td><div class="pull-left"><%= @enterprise.K3 %></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Начальная дата рабочего интервала (ГГГГ-ММ-ДД)</div></td>
+        <td><div class="pull-left">Начальная дата рабочего интервала</div></td>
         <td><div class="pull-left"><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Конечная дата рабочего интервала (ГГГГ-ММ-ДД)</div></td>
+        <td><div class="pull-left">Конечная дата рабочего интервала</div></td>
         <td><div class="pull-left"><%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></div></td>
       </tr>
     </tbody>    
