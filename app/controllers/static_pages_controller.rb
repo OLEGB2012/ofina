@@ -21,6 +21,13 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+    
+  end
+  
+  def normativ    
+  end
+  
+  def glossary    
   end
   
   def about
