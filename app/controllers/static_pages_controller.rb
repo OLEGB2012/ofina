@@ -20,8 +20,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def help
-    
+  def help    
   end
   
   def normativ    
