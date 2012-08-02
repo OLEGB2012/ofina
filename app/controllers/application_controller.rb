@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
       else
         #      "Предприятие с кодом "+checked_ent_id+" не принадлежит текущему пользователю "+current_user.username
         flash[:alert] = "Предприятие с кодом "+checked_ent_id+" не принадлежит текущему пользователю "+current_user.username
-        redirect_to enterprises_path
+        redirect_to enterprises_path        
       end
     else
       #      "В Базе нет Предприятия с кодом "+checked_ent_id+" ..."
