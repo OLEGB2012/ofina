@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629173415) do
+ActiveRecord::Schema.define(:version => 20120802095641) do
+
+  create_table "analytical_balances", :force => true do |t|
+    t.integer  "enterprise_id"
+    t.date     "date_period_beg"
+    t.date     "date_period_end"
+    t.integer  "row_type"
+    t.string   "G1"
+    t.string   "G2"
+    t.integer  "G3",                                            :default => 0
+    t.decimal  "G4",              :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "G5",                                            :default => 0
+    t.decimal  "G6",              :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "G7",                                            :default => 0
+    t.decimal  "G8",              :precision => 5, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
+  end
+
+  add_index "analytical_balances", ["enterprise_id", "date_period_beg", "date_period_end"], :name => "ab_enterpise_id_period"
+  add_index "analytical_balances", ["enterprise_id", "date_period_beg"], :name => "ab_enterpise_id_period_beg"
+  add_index "analytical_balances", ["enterprise_id", "date_period_end"], :name => "ab_enterpise_id_period_end"
+  add_index "analytical_balances", ["enterprise_id"], :name => "index_analytical_balances_on_enterprise_id"
 
   create_table "enterprises", :force => true do |t|
     t.integer  "parent_id",                                                      :default => 0

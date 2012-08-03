@@ -12,6 +12,7 @@ Ofina::Application.routes.draw do
   match '/glossary'       , to: 'static_pages#glossary'
   match '/calc_prompt'    , to: 'calculations#prompt'
   match '/calc_run'       , to: 'calculations#run'
+  match '/results'        , to: 'results#index'
     
   resources :enterprises do
 #    shallow do 

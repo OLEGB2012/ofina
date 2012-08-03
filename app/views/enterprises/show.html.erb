@@ -16,7 +16,7 @@
       <li class="nav-header">РАСЧЁТЫ</li>
       <li><%= link_to "Перейти ..."   , calc_prompt_path(id: @enterprise) %></li>      
       <li class="nav-header">РЕЗУЛЬТАТЫ</li>
-      <li><%= link_to "Просмотреть ...", "#" %></li>      
+      <li><%= link_to "Просмотреть ...", results_path(id: @enterprise) %></li>      
     </ul>  
   </div>  
 <% end  %>
