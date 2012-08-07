@@ -26,8 +26,9 @@ class FormOneReport < ActiveRecord::Base
   
   scope :Sorted, order('form_one_reports.date_period DESC')
   scope :FormOneEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
-  scope :WorkPeriod, lambda{|date_period_1, date_period_2|where("date_period >= ? AND date_period <= ?", date_period_1, date_period_2)} 
-          
+  scope :WorkPeriod,           lambda{|date_period_1, date_period_2|where("date_period >= ? AND date_period <= ?", date_period_1, date_period_2)} 
+  scope :ReportOnDate,         lambda{|date_report|where("date_period = ?", date_report)} 
+  
   private
   # Расчитаем итоговые строки для формы 1
   def calc_rows_f1

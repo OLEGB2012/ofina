@@ -20,8 +20,23 @@ class CalculationsController < ApplicationController
                                         Kcap:  form_one_report.S490!=0?((form_one_report.S590+form_one_report.S690).to_f/form_one_report.S490):0, 
                                         Kfnez: form_one_report.S700!=0?((form_one_report.S490).to_f/form_one_report.S700):0)
     end
-    # 2 - считаем показатели на основе формы 2 (о прибылях и убытках)
-    
+    # 2 - считаем показатели на основе формы 2 (о прибылях и убытках) и формы 1 (баланс)
+    @form_two_reports=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end)
+    @form_two_reports.each do |form_two_report|
+      # данные строки 300/графы 4 (конец предыдущего года) формы 1
+      @F1_S300_G4=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(form_two_report.date_period_beg.prev_year.end_of_year).first.S300
+      # данные строки 300/графы 3 (конец текущего периода) формы 1
+      @F1_S300_G3=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(form_two_report.date_period_end).first.S300
+      # данные строки 290/графы 4 (конец предыдущего года) формы 1      
+      @F1_S290_G4=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(form_two_report.date_period_beg.prev_year.end_of_year).first.S290 
+      # данные строки 290/графы 3 (конец текущего периода) формы 1            
+      @F1_S290_G3=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(form_two_report.date_period_end).first.S290
+      # Рассчитаем окончательные показатели ...
+      @Kobk=(@F1_S300_G4+@F1_S300_G3)!=0?(form_two_report.S010.to_f/((@F1_S300_G4+@F1_S300_G3)/2)):0
+      @Kobs=(@F1_S290_G4+@F1_S290_G3)!=0?(form_two_report.S010.to_f/((@F1_S290_G4+@F1_S290_G3)/2)):0
+      # Закинем в строчку массива ...
+      form_two_report.update_attributes(Kobk: @Kobk, Kobs: @Kobs)
+    end    
     # 3 - считаем массив аналитического баланса за данный период.
     # Подготовим исходные массивы. 
     # Предприятие уже есть - @enterprise, 
@@ -373,6 +388,6 @@ class CalculationsController < ApplicationController
       flash[:alert]="За текущий интервал дат отсутствуют данные по формам баланса. Никаких расчётов не выполнилось..."
     end   
     
-    redirect_to enterprise_path(params[:id])
+   # redirect_to enterprise_path(params[:id])
   end  
 end

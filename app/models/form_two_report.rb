@@ -26,6 +26,7 @@ class FormTwoReport < ActiveRecord::Base
   
   scope :Sorted, order('form_two_reports.date_period_end DESC')
   scope :FormTwoEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
+  scope :WorkPeriod, lambda{|date_period_1, date_period_2|where("date_period_beg >= ? AND date_period_end <= ?", date_period_1, date_period_2)} 
   
   private
   
