@@ -10,12 +10,12 @@ class CreateFormOneReports < ActiveRecord::Migration
                 "S540", "S550", "S560", "S590", "S610", "S620", "S630", "S631", "S632", "S633", 
                 "S634", "S635", "S636", "S637", "S638", "S640", "S650", "S660", "S670", "S690", 
                 "S700", default: 0
-      t.column :K1,   :decimal, :precision => 3, :scale => 2, :default => 0 # Коэф-т текущей ликвидности
-      t.column :K2,   :decimal, :precision => 3, :scale => 2, :default => 0 # Коэф-т обеспеченности собственными оборотными средствами
-      t.column :K3,   :decimal, :precision => 3, :scale => 2, :default => 0 # Коэф-т обеспеченности финансовых обязательств активами        
-      t.column :Kabsl,:decimal, :precision => 4, :scale => 3, :default => 0 # Коэф-т абсолютной ликвидности
-      t.column :Kcap, :decimal, :precision => 4, :scale => 3, :default => 0 # Коэф-т капитализации
-      t.column :Kfnez,:decimal, :precision => 4, :scale => 3, :default => 0 # Коэф-т финансовой независимости
+      t.column :K1,   :decimal, :precision => 6, :scale => 4, :default => 0 # Коэф-т текущей ликвидности
+      t.column :K2,   :decimal, :precision => 6, :scale => 4, :default => 0 # Коэф-т обеспеченности собственными оборотными средствами
+      t.column :K3,   :decimal, :precision => 6, :scale => 4, :default => 0 # Коэф-т обеспеченности финансовых обязательств активами        
+      t.column :Kabsl,:decimal, :precision => 6, :scale => 4, :default => 0 # Коэф-т абсолютной ликвидности
+      t.column :Kcap, :decimal, :precision => 6, :scale => 4, :default => 0 # Коэф-т капитализации
+      t.column :Kfnez,:decimal, :precision => 6, :scale => 4, :default => 0 # Коэф-т финансовой независимости
       t.timestamps
     end
     add_index :form_one_reports, [:enterprise_id,:date_period]
