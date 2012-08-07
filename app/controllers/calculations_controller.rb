@@ -388,6 +388,6 @@ class CalculationsController < ApplicationController
       flash[:alert]="За текущий интервал дат отсутствуют данные по формам баланса. Никаких расчётов не выполнилось..."
     end   
     
-   # redirect_to enterprise_path(params[:id])
+    redirect_to enterprise_path(params[:id])
   end  
 end
