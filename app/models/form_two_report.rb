@@ -9,13 +9,13 @@ class FormTwoReport < ActiveRecord::Base
                   :S100, :S101, :S102, :S103, :S104, :S110, :S111, :S112, :S120,
                   :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
                   :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
-                  :S220, :S230, :S240, :S250, :S260
+                  :S220, :S230, :S240, :S250, :S260, :Kobk, :Kobs
                     
   validates :S010, :S020, :S030, :S040, :S050, :S060, :S070, :S080, :S090, 
             :S100, :S101, :S102, :S103, :S104, :S110, :S111, :S112, :S120,
             :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
             :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
-            :S220, :S230, :S240, :S250, :S260, numericality: true
+            :S220, :S230, :S240, :S250, :S260, :Kobk, :Kobs, numericality: true
           
   # Валидация из гема validates_timeliness
   validates_date :date_period_beg, :before => :date_period_end  
