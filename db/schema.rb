@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
     t.decimal  "G6",              :precision => 5, :scale => 2, :default => 0.0
     t.integer  "G7",                                            :default => 0
     t.decimal  "G8",              :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "G9",                                            :default => 0
+    t.integer  "G10",                                           :default => 0
     t.datetime "created_at",                                                     :null => false
     t.datetime "updated_at",                                                     :null => false
   end

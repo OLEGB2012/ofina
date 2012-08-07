@@ -9,11 +9,13 @@
       <%= f.input :organ_upravlen,     :label => 'Орган управления:' %>
       <%= f.input :edinic_izmer,       :label => 'Единица измерения:' %>
       <%= f.input :adres,              :label => 'Адрес:' %>
-      <%= f.input :K1,                 :label => 'Норматив коэффициента текущей ликвидности (K1):' %>
-      <%= f.input :K2,                 :label => 'Норматив коэффициента обеспеченности собственными оборотными средствами (K2):' %>
-      <%= f.input :K3,                 :label => 'Норматив коэффициента обеспеченности финансовых обязательств активами (K3):' %>
-      <%= f.input :rab_date_beg,       :label => 'Начальная дата рабочего интервала (ГГГГ-ММ-ДД):', :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
-      <%= f.input :rab_date_end,       :label => 'Конечная дата рабочего интервала (ГГГГ-ММ-ДД):' , :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
+      <legend>Нормативы коэффициентов</legend>
+        <%= f.input :K1,                 :label => 'Текущей ликвидности (K1):' %>
+        <%= f.input :K2,                 :label => 'Обеспеченности собственными оборотными средствами (K2):' %>
+        <%= f.input :K3,                 :label => 'Обеспеченности финансовых обязательств активами (K3):' %>
+      <legend>Рабочий интервал дат (ГГГГ-ММ-ДД)</legend>     
+        <%= f.input :rab_date_beg,       :label => 'С :' , :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
+        <%= f.input :rab_date_end,       :label => 'ПО:' , :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
     </div>   
     <div class="form-actions">
       <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>

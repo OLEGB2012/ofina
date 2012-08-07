@@ -26,52 +26,58 @@
   <table class="table table-striped table-bordered table-condensed">
     <tbody>
       <tr>
-        <td><div class="pull-left">Наименование</div></td>
-        <td><div class="pull-left"><%= @enterprise.org_name %></div></td>
+        <td><div class="pull-right">Наименование</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.org_name %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Учётный номер плательщика</div></td>
-        <td><div class="pull-left"><%= @enterprise.uch_nomer_plat %></div></td>
+        <td><div class="pull-right">Учётный номер плательщика</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.uch_nomer_plat %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Вид экономической деятельности</div></td>
-        <td><div class="pull-left"><%= @enterprise.vid_econom_deyatel %></div></td>
+        <td><div class="pull-right">Вид экономической деятельности</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.vid_econom_deyatel %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Организационно-правовая форма</div></td>
-        <td><div class="pull-left"><%= @enterprise.organiz_pravo_form %></div></td>
+        <td><div class="pull-right">Организационно-правовая форма</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.organiz_pravo_form %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Орган управления</div></td>
-        <td><div class="pull-left"><%= @enterprise.organ_upravlen %></div></td>
+        <td><div class="pull-right">Орган управления</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.organ_upravlen %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Единица измерения</div></td>
-        <td><div class="pull-left"><%= @enterprise.edinic_izmer %></div></td>
+        <td><div class="pull-right">Единица измерения</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.edinic_izmer %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Адрес</div></td>
-        <td><div class="pull-left"><%= @enterprise.adres %></div></td>
+        <td><div class="pull-right">Адрес</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.adres %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Норматив коэффициента текущей ликвидности (K1)</div></td>
-        <td><div class="pull-left"><%= @enterprise.K1 %></div></td>
+        <td colspan="2"><div class="pagination-centered"><strong>Нормативы коэффициентов</strong></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Норматив коэффициента обеспеченности собственными оборотными средствами (K2)</div></td>
-        <td><div class="pull-left"><%= @enterprise.K2 %></div></td>
+        <td><div class="pull-right">Текущей ликвидности (K1)</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.K1 %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Норматив коэффициента обеспеченности финансовых обязательств активами (K3)</div></td>
-        <td><div class="pull-left"><%= @enterprise.K3 %></div></td>
+        <td><div class="pull-right">Обеспеченности собственными оборотными средствами (K2)</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.K2 %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Начальная дата рабочего интервала</div></td>
-        <td><div class="pull-left"><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %></div></td>
+        <td><div class="pull-right">Обеспеченности финансовых обязательств активами (K3)</div></td>
+        <td><div class="pull-left"><em><%= @enterprise.K3 %></em></div></td>
       </tr>
       <tr>
-        <td><div class="pull-left">Конечная дата рабочего интервала</div></td>
-        <td><div class="pull-left"><%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></div></td>
+        <td colspan="2"><div class="pagination-centered"><strong>Рабочий интервал дат (ГГГГ-ММ-ДД)</strong></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-right">С :</div></td>
+        <td><div class="pull-left"><em><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %></em></div></td>
+      </tr>
+      <tr>
+        <td><div class="pull-right">ПО:</div></td>
+        <td><div class="pull-left"><em><%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></em></div></td>
       </tr>
     </tbody>    
   </table>  
