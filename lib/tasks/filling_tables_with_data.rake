@@ -184,7 +184,7 @@ def make_enterprises
                                       K1: 1.5,
                                       K2: 0.2,
                                       K3: 0.85,
-                                      rab_date_beg: '2012-01-01',
+                                      rab_date_beg: '2011-12-31',
                                       rab_date_end: '2012-12-31')
   user = User.find_by_id(1)
   user.enterprises << new_enterprise
@@ -199,7 +199,7 @@ def make_enterprises
                                       K1: 1.5,
                                       K2: 0.2,
                                       K3: 0.85,
-                                      rab_date_beg: '2012-01-01',
+                                      rab_date_beg: '2011-12-31',
                                       rab_date_end: '2012-12-31')
   user = User.find_by_id(2)
   user.enterprises << new_enterprise
@@ -214,7 +214,7 @@ def make_enterprises
                                       K1: 1.15,
                                       K2: 0.15,
                                       K3: 0.85,
-                                      rab_date_beg: '2012-01-01',
+                                      rab_date_beg: '2011-12-31',
                                       rab_date_end: '2012-12-31')
   user = User.find_by_id(2)
   user.enterprises << new_enterprise
@@ -229,7 +229,7 @@ def make_enterprises
                                       K1: 1.5,
                                       K2: 0.2,
                                       K3: 0.85,
-                                      rab_date_beg: '2012-01-01',
+                                      rab_date_beg: '2011-12-31',
                                       rab_date_end: '2012-12-31')
   
   user = User.find_by_id(3)
@@ -245,7 +245,7 @@ def make_enterprises
                                       K1: 1.5,
                                       K2: 0.2,
                                       K3: 0.85,
-                                      rab_date_beg: '2012-01-01',
+                                      rab_date_beg: '2011-12-31',
                                       rab_date_end: '2012-12-31')
   user = User.find_by_id(4)
   user.enterprises << new_enterprise
@@ -260,7 +260,7 @@ def make_enterprises
                                       K1: 1.5,
                                       K2: 0.2,
                                       K3: 0.85,
-                                      rab_date_beg: '2012-01-01',
+                                      rab_date_beg: '2011-12-31',
                                       rab_date_end: '2012-12-31')
   user = User.find_by_id(5)
   user.enterprises << new_enterprise
