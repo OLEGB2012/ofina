@@ -32,8 +32,8 @@ class CalculationsController < ApplicationController
       # данные строки 290/графы 3 (конец текущего периода) формы 1            
       @F1_S290_G3=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(form_two_report.date_period_end).first.S290
       # Рассчитаем окончательные показатели ...
-      @Kobk=(@F1_S300_G4+@F1_S300_G3)!=0?(form_two_report.S010.to_f/((@F1_S300_G4+@F1_S300_G3)/2)):0
-      @Kobs=(@F1_S290_G4+@F1_S290_G3)!=0?(form_two_report.S010.to_f/((@F1_S290_G4+@F1_S290_G3)/2)):0
+      @Kobk=(@F1_S300_G4+@F1_S300_G3)!=0?(form_two_report.S010.to_f/((@F1_S300_G4+@F1_S300_G3)/2)):0 # Коэфф. деловой активности.
+      @Kobs=(@F1_S290_G4+@F1_S290_G3)!=0?(form_two_report.S010.to_f/((@F1_S290_G4+@F1_S290_G3)/2)):0 # Коэфф. оборачиваемости краткосрочных активов.
       # Закинем в строчку массива ...
       form_two_report.update_attributes(Kobk: @Kobk, Kobs: @Kobs)
     end    

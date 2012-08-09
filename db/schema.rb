@@ -176,12 +176,12 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
     t.integer  "S670",                                        :default => 0
     t.integer  "S690",                                        :default => 0
     t.integer  "S700",                                        :default => 0
-    t.decimal  "K1",            :precision => 3, :scale => 2, :default => 0.0
-    t.decimal  "K2",            :precision => 3, :scale => 2, :default => 0.0
-    t.decimal  "K3",            :precision => 3, :scale => 2, :default => 0.0
-    t.decimal  "Kabsl",         :precision => 4, :scale => 3, :default => 0.0
-    t.decimal  "Kcap",          :precision => 4, :scale => 3, :default => 0.0
-    t.decimal  "Kfnez",         :precision => 4, :scale => 3, :default => 0.0
+    t.decimal  "K1",            :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "K2",            :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "K3",            :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kabsl",         :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kcap",          :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kfnez",         :precision => 6, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
   end
@@ -695,8 +695,8 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
     t.integer  "S240",                                          :default => 0
     t.integer  "S250",                                          :default => 0
     t.integer  "S260",                                          :default => 0
-    t.decimal  "Kobk",            :precision => 5, :scale => 2, :default => 0.0
-    t.decimal  "Kobs",            :precision => 5, :scale => 2, :default => 0.0
+    t.decimal  "Kobk",            :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kobs",            :precision => 6, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                     :null => false
     t.datetime "updated_at",                                                     :null => false
   end

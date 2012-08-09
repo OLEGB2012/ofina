@@ -7,8 +7,8 @@ class CreateFormTwoReports < ActiveRecord::Migration
                 "S103", "S104", "S110", "S111", "S112", "S120", "S121", "S122", "S130", "S131", "S132", "S133", 
                 "S140", "S150", "S160", "S170", "S180", "S190", "S200", "S210", "S211", "S212", "S213", "S214", 
                 "S220", "S230", "S240", "S250", "S260", default: 0
-      t.column   :Kobk, :decimal, :precision => 6, :scale => 4, :default => 0 # Коэфф. общей оборачиваемости капитала.
-      t.column   :Kobs, :decimal, :precision => 6, :scale => 4, :default => 0 # Коэфф. оборачиваемости оборотных средств.
+      t.column   :Kobk, :decimal, :precision => 6, :scale => 4, :default => 0 # Коэфф. общей оборачиваемости капитала (коэфф. деловой активности).
+      t.column   :Kobs, :decimal, :precision => 6, :scale => 4, :default => 0 # Коэфф. оборачиваемости оборотных средств (краткосрочных активов).
       t.timestamps
     end
     add_index :form_two_reports, [:enterprise_id,:date_period_beg,:date_period_end], name: 'two_enterpise_id_period'
