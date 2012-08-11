@@ -9,13 +9,18 @@ class FormTwoReport < ActiveRecord::Base
                   :S100, :S101, :S102, :S103, :S104, :S110, :S111, :S112, :S120,
                   :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
                   :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
-                  :S220, :S230, :S240, :S250, :S260, :Kobk, :Kobs
+                  :S220, :S230, :S240, :S250, :S260, 
+                  :Kobk, :Kobs, :Kobzs, :Kobgp, :Kobdz, :Kobkz,
+                  :Krenprod, :Krenact, :Krensk, :Krenpz, :Krenps, :Krenor, :Krenchp
                     
-  validates :S010, :S020, :S030, :S040, :S050, :S060, :S070, :S080, :S090, 
-            :S100, :S101, :S102, :S103, :S104, :S110, :S111, :S112, :S120,
-            :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
-            :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
-            :S220, :S230, :S240, :S250, :S260, :Kobk, :Kobs, numericality: true
+  validates_numericality_of :S010, :S020, :S030, :S040, :S050, :S060, :S070, :S080, :S090, 
+                            :S100, :S101, :S102, :S103, :S104, :S110, :S111, :S112, :S120,
+                            :S121, :S122, :S130, :S131, :S132, :S133, :S140, :S150, :S160,
+                            :S170, :S180, :S190, :S200, :S210, :S211, :S212, :S213, :S214,
+                            :S220, :S230, :S240, :S250, :S260, only_integer: true
+          
+  validates :Kobk, :Kobs, :Kobzs, :Kobgp, :Kobdz, :Kobkz,
+            :Krenprod, :Krenact, :Krensk, :Krenpz, :Krenps, :Krenor, :Krenchp , numericality: true
           
   # Валидация из гема validates_timeliness
   validates_date :date_period_beg, :before => :date_period_end  
@@ -29,7 +34,6 @@ class FormTwoReport < ActiveRecord::Base
   scope :WorkPeriod, lambda{|date_period_1, date_period_2|where("date_period_beg >= ? AND date_period_end <= ?", date_period_1, date_period_2)} 
   
   private
-  
   # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
   def normalize_end_date    
     self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)

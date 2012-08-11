@@ -62,16 +62,16 @@ class FormThreeReport < ActiveRecord::Base
       :G3_S190, :G4_S190, :G5_S190, :G6_S190, :G7_S190, :G8_S190, :G9_S190, :G10_S190,
       :G3_S200, :G4_S200, :G5_S200, :G6_S200, :G7_S200, :G8_S200, :G9_S200, :G10_S200
     
-  validates :G3_S010, :G4_S010, :G5_S010, :G6_S010, :G7_S010, :G8_S010, :G9_S010, :G10_S010,
-      :G3_S020, :G4_S020, :G5_S020, :G6_S020, :G7_S020, :G8_S020, :G9_S020, :G10_S020,
-      :G3_S030, :G4_S030, :G5_S030, :G6_S030, :G7_S030, :G8_S030, :G9_S030, :G10_S030,
-      :G3_S040, :G4_S040, :G5_S040, :G6_S040, :G7_S040, :G8_S040, :G9_S040, :G10_S040,
-      :G3_S050, :G4_S050, :G5_S050, :G6_S050, :G7_S050, :G8_S050, :G9_S050, :G10_S050,
-      :G3_S051, :G4_S051, :G5_S051, :G6_S051, :G7_S051, :G8_S051, :G9_S051, :G10_S051,
-      :G3_S052, :G4_S052, :G5_S052, :G6_S052, :G7_S052, :G8_S052, :G9_S052, :G10_S052,
-      :G3_S053, :G4_S053, :G5_S053, :G6_S053, :G7_S053, :G8_S053, :G9_S053, :G10_S053,
-      :G3_S054, :G4_S054, :G5_S054, :G6_S054, :G7_S054, :G8_S054, :G9_S054, :G10_S054,
-      :G3_S055, :G4_S055, :G5_S055, :G6_S055, :G7_S055, :G8_S055, :G9_S055, :G10_S055,
+ validates_numericality_of :G3_S010, :G4_S010, :G5_S010, :G6_S010, :G7_S010, :G8_S010, :G9_S010, :G10_S010,
+                           :G3_S020, :G4_S020, :G5_S020, :G6_S020, :G7_S020, :G8_S020, :G9_S020, :G10_S020,
+                           :G3_S030, :G4_S030, :G5_S030, :G6_S030, :G7_S030, :G8_S030, :G9_S030, :G10_S030,
+                           :G3_S040, :G4_S040, :G5_S040, :G6_S040, :G7_S040, :G8_S040, :G9_S040, :G10_S040,
+                           :G3_S050, :G4_S050, :G5_S050, :G6_S050, :G7_S050, :G8_S050, :G9_S050, :G10_S050,
+                           :G3_S051, :G4_S051, :G5_S051, :G6_S051, :G7_S051, :G8_S051, :G9_S051, :G10_S051,
+                           :G3_S052, :G4_S052, :G5_S052, :G6_S052, :G7_S052, :G8_S052, :G9_S052, :G10_S052,
+                           :G3_S053, :G4_S053, :G5_S053, :G6_S053, :G7_S053, :G8_S053, :G9_S053, :G10_S053,
+                           :G3_S054, :G4_S054, :G5_S054, :G6_S054, :G7_S054, :G8_S054, :G9_S054, :G10_S054,
+                           :G3_S055, :G4_S055, :G5_S055, :G6_S055, :G7_S055, :G8_S055, :G9_S055, :G10_S055,
       :G3_S056, :G4_S056, :G5_S056, :G6_S056, :G7_S056, :G8_S056, :G9_S056, :G10_S056,
       :G3_S057, :G4_S057, :G5_S057, :G6_S057, :G7_S057, :G8_S057, :G9_S057, :G10_S057,
       :G3_S058, :G4_S058, :G5_S058, :G6_S058, :G7_S058, :G8_S058, :G9_S058, :G10_S058,
@@ -117,16 +117,13 @@ class FormThreeReport < ActiveRecord::Base
       :G3_S170, :G4_S170, :G5_S170, :G6_S170, :G7_S170, :G8_S170, :G9_S170, :G10_S170,
       :G3_S180, :G4_S180, :G5_S180, :G6_S180, :G7_S180, :G8_S180, :G9_S180, :G10_S180,
       :G3_S190, :G4_S190, :G5_S190, :G6_S190, :G7_S190, :G8_S190, :G9_S190, :G10_S190,
-      :G3_S200, :G4_S200, :G5_S200, :G6_S200, :G7_S200, :G8_S200, :G9_S200, :G10_S200, numericality: true
+      :G3_S200, :G4_S200, :G5_S200, :G6_S200, :G7_S200, :G8_S200, :G9_S200, :G10_S200, only_integer: true
   
   # Валидация из гема validates_timeliness
   validates_date :date_period_beg, :before => :date_period_end  
   validates_date :date_period_end, :after  => :date_period_beg
   
-  # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
-  def normalize_end_date    
-    self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
-  end
+  
   
   self.per_page = 4 # число строк на страницу для гема пагинации ...
   
@@ -134,6 +131,11 @@ class FormThreeReport < ActiveRecord::Base
   scope :FormThreeEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
   
   private
+  # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
+  def normalize_end_date    
+    self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
+  end
+  
   def summa_for_g10
       
       self.G3_S040 = self.G3_S010+self.G3_S020+self.G3_S030

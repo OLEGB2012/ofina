@@ -11,20 +11,15 @@ class FormFourReport < ActiveRecord::Base
                   :S084, :S090, :S091, :S092, :S093, :S094, :S095, :S100, :S110,
                   :S120, :S130, :S140
                     
-  validates :S020, :S021, :S022, :S023, :S024, :S030, :S031, :S032, :S033,
-            :S034, :S040, :S050, :S051, :S052, :S053, :S054, :S055, :S060, 
-            :S061, :S062, :S063, :S064, :S070, :S080, :S081, :S082, :S083, 
-            :S084, :S090, :S091, :S092, :S093, :S094, :S095, :S100, :S110, 
-            :S120, :S130, :S140, numericality: true
+  validates_numericality_of :S020, :S021, :S022, :S023, :S024, :S030, :S031, :S032, :S033,
+                            :S034, :S040, :S050, :S051, :S052, :S053, :S054, :S055, :S060, 
+                            :S061, :S062, :S063, :S064, :S070, :S080, :S081, :S082, :S083, 
+                            :S084, :S090, :S091, :S092, :S093, :S094, :S095, :S100, :S110, 
+                            :S120, :S130, :S140, only_integer: true
           
    # Валидация из гема validates_timeliness
   validates_date :date_period_beg, :before => :date_period_end  
-  validates_date :date_period_end, :after  => :date_period_beg
-  
-  # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
-  def normalize_end_date    
-    self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
-  end
+  validates_date :date_period_end, :after  => :date_period_beg  
   
   self.per_page = 4 # число строк на страницу для гема пагинации ...
   
@@ -32,6 +27,12 @@ class FormFourReport < ActiveRecord::Base
   scope :FormFourEnterpriseFor, lambda{|enterprise_id_value|where(:enterprise_id => enterprise_id_value)}
   
   private
+  
+  # если пройдена валидация, то принудительно ставим конечную дату на тот же год, что и начальная...
+  def normalize_end_date    
+    self.date_period_end=self.date_period_end.years_ago(self.date_period_end.year-self.date_period_beg.year)
+  end
+  
   # Расчитаем итоговые строки для формы 4
   def calc_rows_f4
     self.S020 = self.S021+self.S022+self.S023+self.S024

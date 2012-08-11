@@ -176,12 +176,16 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
     t.integer  "S670",                                        :default => 0
     t.integer  "S690",                                        :default => 0
     t.integer  "S700",                                        :default => 0
+    t.decimal  "Kfnez",         :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kfzav",         :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kdfnez",        :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kcap",          :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kman",          :precision => 6, :scale => 4, :default => 0.0
     t.decimal  "K1",            :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kabsl",         :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kkrl",          :precision => 6, :scale => 4, :default => 0.0
     t.decimal  "K2",            :precision => 6, :scale => 4, :default => 0.0
     t.decimal  "K3",            :precision => 6, :scale => 4, :default => 0.0
-    t.decimal  "Kabsl",         :precision => 6, :scale => 4, :default => 0.0
-    t.decimal  "Kcap",          :precision => 6, :scale => 4, :default => 0.0
-    t.decimal  "Kfnez",         :precision => 6, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
   end
@@ -697,6 +701,17 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
     t.integer  "S260",                                          :default => 0
     t.decimal  "Kobk",            :precision => 6, :scale => 4, :default => 0.0
     t.decimal  "Kobs",            :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kobzs",           :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kobgp",           :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kobdz",           :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Kobkz",           :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krenprod",        :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krenact",         :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krensk",          :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krenpz",          :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krenps",          :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krenor",          :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "Krenchp",         :precision => 6, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                     :null => false
     t.datetime "updated_at",                                                     :null => false
   end

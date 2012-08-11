@@ -10,14 +10,16 @@ class FormOneReport < ActiveRecord::Base
                                 :S270, :S280, :S290, :S300, :S410, :S420, :S430, :S440, :S450, :S460, :S470, :S480,
                                 :S490, :S510, :S520, :S530, :S540, :S550, :S560, :S590, :S610, :S620, :S630, :S631, 
                                 :S632, :S633, :S634, :S635, :S636, :S637, :S638, :S640, :S650, :S660, :S670, :S690, 
-                                :S700, :K1,   :K2,   :K3,   :Kabsl,:Kcap, :Kfnez
+                                :S700, :K1,   :K2,   :K3,   :Kabsl,:Kcap, :Kfnez,:Kfzav,:Kdfnez, :Kman, :Kkrl
                     
-  validates :S110, :S120, :S130, :S131, :S132, :S133, :S140, :S150, :S160, :S170, :S180, :S190,
-            :S210, :S211, :S212, :S213, :S214, :S215, :S216, :S220, :S230, :S240, :S250, :S260, 
-            :S270, :S280, :S290, :S300, :S410, :S420, :S430, :S440, :S450, :S460, :S470, :S480,
-            :S490, :S510, :S520, :S530, :S540, :S550, :S560, :S590, :S610, :S620, :S630, :S631, 
-            :S632, :S633, :S634, :S635, :S636, :S637, :S638, :S640, :S650, :S660, :S670, :S690, 
-            :S700, :K1,   :K2,   :K3,   :Kabsl,:Kcap, :Kfnez, numericality: true
+  validates_numericality_of :S110, :S120, :S130, :S131, :S132, :S133, :S140, :S150, :S160, :S170, :S180, :S190,
+                            :S210, :S211, :S212, :S213, :S214, :S215, :S216, :S220, :S230, :S240, :S250, :S260, 
+                            :S270, :S280, :S290, :S300, :S410, :S420, :S430, :S440, :S450, :S460, :S470, :S480,
+                            :S490, :S510, :S520, :S530, :S540, :S550, :S560, :S590, :S610, :S620, :S630, :S631, 
+                            :S632, :S633, :S634, :S635, :S636, :S637, :S638, :S640, :S650, :S660, :S670, :S690, 
+                            :S700, only_integer: true
+          
+  validates :K1, :K2, :K3, :Kabsl,:Kcap, :Kfnez, :Kfzav, :Kdfnez, :Kman, :Kkrl, numericality: true
   
   # Валидация из гема validates_timeliness
   validates_date :date_period
