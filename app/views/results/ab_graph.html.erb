@@ -1,6 +1,50 @@
-
+<%= raw Seer::init_visualization %>
   <legend><%= image_tag("column chart 64.png") %> Аналитический баланс (Графически)</legend>
 
   <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
-
   
+  <table class="table table-striped table-bordered table-condensed">
+    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+              За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
+    <tbody>            
+       <tr>
+          <td> <div id="Dyn_Active" ></div></td>
+          <td> <div id="Dyn_Passive"></div></td>
+       </tr>            
+    </tbody>   
+  </table>
+  
+    <%= raw Seer::visualize(
+      @AB_Dyn_Active, 
+      :as => :column_chart,
+      :in_element =>'Dyn_Active', 
+      :series => {:series_label => 'G1', :data_method => 'G3'},
+      :chart_options => {
+        :height => 300,
+        :width => 460,
+        :is_3_d => true,
+        :legend => 'none',
+        :colors => "[{color:'#990000', darker:'#660000'}]",
+        :title => "Динамика Разделов Баланса",
+        :title_x => 'Разделы Баланса',
+        :title_y => 'Сумма, млн.руб.'
+      }
+    )%>
+
+  <%= raw Seer::visualize(
+      @AB_Dyn_Active, 
+      :as => :column_chart,
+      :in_element =>'Dyn_Passive', 
+      :series => {:series_label => 'G1', :data_method => 'G3'},
+      :chart_options => {
+        :height => 300,
+        :width => 460,
+        :is_3_d => true,
+        :legend => 'none',
+        :colors => "[{color:'#990000', darker:'#660000'}]",
+        :title => "Динамика Разделов Баланса",
+        :title_x => 'Разделы Баланса',
+        :title_y => 'Сумма, млн.руб.'
+      }
+    )%>
