@@ -10,4 +10,8 @@ class ResultsController < ApplicationController
     @enterprise=Enterprise.find_by_id(params[:id])
     @AB=AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("id")
   end
+  
+  def ab_graph
+    
+  end
 end
