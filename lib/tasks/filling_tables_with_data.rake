@@ -230,7 +230,7 @@ def make_enterprises
                                       K2: 0.2,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-03-31')
   
   user = User.find_by_id(3)
   user.enterprises << new_enterprise

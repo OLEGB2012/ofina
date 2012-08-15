@@ -23,7 +23,7 @@ module ApplicationHelper
     end 
   end
 
-  # Выводит в видах суммы с учётом особенностей их представления...
+  # Выводит в видах суммы с учётом особенностей их представления (используется в экранах просмотра Форм Отчётов)...
   def display_cell_data(cArrName,cFieldName)
     eval("@"+cArrName).nil? ? "х":eval("@"+cArrName+"."+cFieldName)==0?"-":eval("@"+cArrName+"."+cFieldName)<0?"("+number_with_delimiter(eval("@"+cArrName+"."+cFieldName), delimiter: ' ').to_s+")":number_with_delimiter(eval("@"+cArrName+"."+cFieldName), delimiter: ' ')
   end
