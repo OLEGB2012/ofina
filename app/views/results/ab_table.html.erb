@@ -1,0 +1,57 @@
+
+  <legend><%= image_tag("Generate tables 64.png") %> Аналитический баланс</legend>
+
+  <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+  <table class="table table-striped table-bordered table-condensed">
+    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+              За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
+    <thead>
+      <tr>
+        <th rowspan="2"><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 180px">Наименование строки</div></th>
+        <th rowspan="2"><div class="pagination-centered" style="line-height: 60px; vertical-align:middle;">Код</div></th>
+        <th colspan="2"><div class="pagination-centered">На начало периода</div></th>
+        <th colspan="2"><div class="pagination-centered">На конец периода</div></th>
+        <th colspan="2"><div class="pagination-centered">Отклонения по балансу</div></th>
+        <th colspan="2"><div class="pagination-centered">Отклонения по строке</div></th>
+      </tr>
+      <tr>
+        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle; min-width: 85px">Сумма</div></th>
+        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">% к бал.</div></th>
+        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle; min-width: 85px">Сумма</div></th>
+        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">% к бал.</div></th>
+        <th><div class="pagination-centered" style="min-width: 85px">По сумме </br>(гр.5-гр.3)</div></th>
+        <th><div class="pagination-centered">По %-ам </br>(гр.6-гр.4)</div></th>
+        <th><div class="pagination-centered">% </br>(гр.5*100/гр.3)</div></th>
+        <th><div class="pagination-centered">Темп роста,% </br>(гр.9-100)</div></th>
+      </tr>
+      <tr>
+        <th><div class="pagination-centered">1</div></th>
+        <th><div class="pagination-centered">2</div></th>
+        <th><div class="pagination-centered">3</div></th>
+        <th><div class="pagination-centered">4</div></th>
+        <th><div class="pagination-centered">5</div></th>
+        <th><div class="pagination-centered">6</div></th>
+        <th><div class="pagination-centered">7</div></th>
+        <th><div class="pagination-centered">8</div></th>
+        <th><div class="pagination-centered">9</div></th>
+        <th><div class="pagination-centered">10</div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @AB.each do |ab| %>        
+        <tr>
+          <td><div class="pull-left"><%= ab.G1%></div></td>
+          <td><div class="pagination-centered"><%= ab.G2%></div></td>
+          <td><div class="pagination-centered"><%= ab.G3%></div></td>
+          <td><div class="pagination-centered"><%= ab.G4%></div></td>
+          <td><div class="pagination-centered"><%= ab.G5%></div></td>
+          <td><div class="pagination-centered"><%= ab.G6%></div></td>
+          <td><div class="pagination-centered"><%= ab.G7%></div></td>
+          <td><div class="pagination-centered"><%= ab.G8%></div></td>
+          <td><div class="pagination-centered"><%= ab.G9%></div></td>
+          <td><div class="pagination-centered"><%= ab.G10%></div></td>
+        </tr>
+      <% end %>    
+    </tbody>   
+  </table>

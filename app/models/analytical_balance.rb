@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AnalyticalBalance < ActiveRecord::Base
   before_save :calc_rows_ab
   

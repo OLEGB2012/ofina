@@ -5,7 +5,6 @@ class CalculationsController < ApplicationController
   # здесь параметры берём из формата ?id=N, а не из пути RESTFull архитектуры resourse/N/action/...   
   def prompt    
     @enterprise=Enterprise.find_by_id(params[:id])
-    @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end)
   end
   
   def run

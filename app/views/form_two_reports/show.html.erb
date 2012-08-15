@@ -16,7 +16,7 @@
     <caption> Отчёт<strong> О ПРИБЫЛЯХ И УБЫТКАХ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
     <thead>
       <tr>
-        <th><div class="pagination-centered">Наименование показателя</div></th>
+        <th><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование показателя</div></th>
         <th><div class="pagination-centered">Код стр.</div></th>
         <th><div class="pagination-centered">За <%= Russian::strftime(@DatePeriod_beg,"%B")%> - <%= Russian::strftime(@DatePeriod_end,"%B %Y")%> г.</div></th>
         <th><div class="pagination-centered">За <%= Russian::strftime(@DatePeriod_beg_g4,"%B")%> - <%= Russian::strftime(@DatePeriod_end_g4,"%B %Y")%> г.</div></th>

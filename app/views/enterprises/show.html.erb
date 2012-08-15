@@ -12,11 +12,11 @@
       <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (Кол-во : "+@form_three_reports_count.to_s+")"     , enterprise_form_three_reports_path(@enterprise)%></li>
       <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%></li>
       <li class="nav-header">Контроль</li>
-      <li><%= link_to "Перейти ..."   , "#" %></li>      
+      <li><%= link_to "Выполнить ..."   , "#" %></li>      
       <li class="nav-header">РАСЧЁТЫ</li>
-      <li><%= link_to "Перейти ..."   , calc_prompt_path(id: @enterprise) %></li>      
+      <li><%= link_to "Выполнить ..."   , calc_prompt_path(id: @enterprise) %></li>      
       <li class="nav-header">РЕЗУЛЬТАТЫ</li>
-      <li><%= link_to "Просмотреть ...", results_path(id: @enterprise) %></li>      
+      <li><%= link_to "Смотреть ...", results_path(id: @enterprise) %></li>      
     </ul>  
   </div>  
 <% end  %>

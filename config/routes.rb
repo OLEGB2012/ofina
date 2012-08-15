@@ -4,16 +4,18 @@ Ofina::Application.routes.draw do
   
   devise_for :users
   
-  match '/help'           , to: 'static_pages#help'
-  match '/about'          , to: 'static_pages#about'  
-  match '/contact'        , to: 'static_pages#contact'
-  match '/news'           , to: 'static_pages#news'
-  match '/normativ'       , to: 'static_pages#normativ'
-  match '/glossary'       , to: 'static_pages#glossary'
-  match '/calc_prompt'    , to: 'calculations#prompt'
-  match '/calc_run'       , to: 'calculations#run'
-  match '/results'        , to: 'results#index'
-    
+  match '/help'              , to: 'static_pages#help'
+  match '/about'             , to: 'static_pages#about'  
+  match '/contact'           , to: 'static_pages#contact'
+  match '/news'              , to: 'static_pages#news'
+  match '/normativ'          , to: 'static_pages#normativ'
+  match '/glossary'          , to: 'static_pages#glossary'
+  match '/calc_prompt'       , to: 'calculations#prompt'
+  match '/calc_run'          , to: 'calculations#run'
+  match '/results'           , to: 'results#index'
+  match '/results_ab_table'  , to: 'results#ab_table'
+  match '/results_ab_graph'  , to: 'results#ab_graph'
+  
   resources :enterprises do
 #    shallow do 
       resources :form_one_reports

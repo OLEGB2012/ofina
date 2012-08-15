@@ -17,7 +17,7 @@
     <caption> Отчёт<strong> БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
     <thead>
       <tr>
-        <th><div class="pagination-centered">Наименование строки</div></th>
+        <th><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование строки</div></th>
         <th><div class="pagination-centered">Код стр.</div></th>
         <th><div class="pagination-centered">На <%= Russian::strftime(@DatePeriod,"%d %B %Y")%> года</div></th>
         <th><div class="pagination-centered">На <%= Russian::strftime((((@DatePeriod).to_date.prev_year).end_of_year),"%d %B %Y")%> года</div></th>
