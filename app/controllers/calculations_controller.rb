@@ -180,7 +180,7 @@ class CalculationsController < ApplicationController
                                               G5: @f1_end.S180, G6: (@f1_end.S180.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-                                              row_type: 6, G1: "ИТОГО по разделу I",G2: "190", 
+                                              row_type: 6, G1: "ИТОГО Раздел I",G2: "190", 
                                               G3: @f1_beg.S190, G4: (@f1_beg.S190.to_f/@f1_beg.S300)*100, 
                                               G5: @f1_end.S190, G6: (@f1_end.S190.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
@@ -261,7 +261,7 @@ class CalculationsController < ApplicationController
                                               G5: @f1_end.S280, G6: (@f1_end.S280.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-                                              row_type: 6, G1: "ИТОГО по разделу II",G2: "290", 
+                                              row_type: 6, G1: "ИТОГО Раздел II",G2: "290", 
                                               G3: @f1_beg.S290, G4: (@f1_beg.S290.to_f/@f1_beg.S300)*100, 
                                               G5: @f1_end.S290, G6: (@f1_end.S290.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
@@ -317,7 +317,7 @@ class CalculationsController < ApplicationController
                                               G5: @f1_end.S480, G6: (@f1_end.S480.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-                                              row_type: 6, G1: "ИТОГО по разделу III",G2: "490", 
+                                              row_type: 6, G1: "ИТОГО Раздел III",G2: "490", 
                                               G3: @f1_beg.S490, G4: (@f1_beg.S490.to_f/@f1_beg.S300)*100, 
                                               G5: @f1_end.S490, G6: (@f1_end.S490.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
@@ -355,7 +355,7 @@ class CalculationsController < ApplicationController
                                               G5: @f1_end.S560, G6: (@f1_end.S560.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-                                              row_type: 6, G1: "ИТОГО по разделу IV",G2: "590", 
+                                              row_type: 6, G1: "ИТОГО Раздел IV",G2: "590", 
                                               G3: @f1_beg.S590, G4: (@f1_beg.S590.to_f/@f1_beg.S300)*100, 
                                               G5: @f1_end.S590, G6: (@f1_end.S590.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
@@ -441,7 +441,7 @@ class CalculationsController < ApplicationController
                                               G5: @f1_end.S670, G6: (@f1_end.S670.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-                                              row_type: 6, G1: "ИТОГО по разделу V",G2: "690", 
+                                              row_type: 6, G1: "ИТОГО Раздел V",G2: "690", 
                                               G3: @f1_beg.S690, G4: (@f1_beg.S690.to_f/@f1_beg.S300)*100, 
                                               G5: @f1_end.S690, G6: (@f1_end.S690.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
