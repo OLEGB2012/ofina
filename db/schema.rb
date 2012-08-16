@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
     t.integer  "enterprise_id"
     t.date     "date_period_beg"
     t.date     "date_period_end"
-    t.integer  "row_type"
-    t.string   "G1"
-    t.string   "G2"
+    t.integer  "row_type",                                      :default => 0
+    t.string   "G1",                                            :default => ""
+    t.string   "G2",                                            :default => ""
     t.integer  "G3",                                            :default => 0
     t.decimal  "G4",              :precision => 7, :scale => 2, :default => 0.0
     t.integer  "G5",                                            :default => 0

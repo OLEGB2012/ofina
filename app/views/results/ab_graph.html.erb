@@ -1,50 +1,114 @@
 <%= raw Seer::init_visualization %>
+
   <legend><%= image_tag("column chart 64.png") %> Аналитический баланс (Графически)</legend>
 
   <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
   
-  <table class="table table-striped table-bordered table-condensed">
-    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+  
+  
+ <table class="table table-striped table-bordered table-condensed">
+    <caption style="font-size: 14px">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
-                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong> </caption>
+     <thead>
+      <tr>        
+        <th colspan="2"><div class="pagination-centered"  style="font-size: 15px">Динамика активов баланса</div></th>
+      </tr>
+      <tr>        
+        <th><div class="pagination-centered">На начало: <%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %></div></th>
+        <th><div class="pagination-centered">На конец:  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></div></th>
+      </tr>
+    </thead>
     <tbody>            
        <tr>
-          <td> <div id="Dyn_Active" ></div></td>
-          <td> <div id="Dyn_Passive"></div></td>
+          <td> <div id="Active_beg" ></div></td>
+          <td> <div id="Active_end"></div></td>
        </tr>            
     </tbody>   
   </table>
   
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>        
+        <th colspan="2"><div class="pagination-centered" style="font-size: 15px">Динамика пассивов баланса</div></th>
+      </tr>
+      <tr>        
+        <th><div class="pagination-centered">На начало: <%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %></div></th>
+        <th><div class="pagination-centered">На конец:  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></div></th>
+      </tr>
+    </thead>
+    <tbody>            
+       <tr>
+          <td> <div id="Passive_beg" ></div></td>
+          <td> <div id="Passive_end"></div></td>
+       </tr>            
+    </tbody>   
+  </table>
+  
+  <% unless @AB_Active.nil? %>
     <%= raw Seer::visualize(
-      @AB_Dyn_Active, 
+      @AB_Active, 
       :as => :column_chart,
-      :in_element =>'Dyn_Active', 
+      :in_element =>'Active_beg', 
       :series => {:series_label => 'G1', :data_method => 'G3'},
       :chart_options => {
         :height => 300,
         :width => 460,
         :is_3_d => true,
         :legend => 'none',
-        :colors => "[{color:'#990000', darker:'#660000'}]",
-        :title => "Динамика Разделов Баланса",
+        :colors => "[{color:'#009999', darker:'#006666'}]",       
         :title_x => 'Разделы Баланса',
         :title_y => 'Сумма, млн.руб.'
       }
     )%>
-
+  
   <%= raw Seer::visualize(
-      @AB_Dyn_Active, 
+      @AB_Active, 
       :as => :column_chart,
-      :in_element =>'Dyn_Passive', 
+      :in_element =>'Active_end', 
+      :series => {:series_label => 'G1', :data_method => 'G5'},
+      :chart_options => {
+        :height => 300,
+        :width => 460,
+        :is_3_d => true,
+        :legend => 'none',
+        :colors => "[{color:'#009900', darker:'#006600'}]",       
+        :title_x => 'Разделы Баланса',
+        :title_y => 'Сумма, млн.руб.'
+      }
+    )%>
+  <% end %>
+  
+  <% unless @AB_Passive.nil? %>
+    <%= raw Seer::visualize(
+      @AB_Passive, 
+      :as => :column_chart,
+      :in_element =>'Passive_beg', 
       :series => {:series_label => 'G1', :data_method => 'G3'},
       :chart_options => {
         :height => 300,
         :width => 460,
         :is_3_d => true,
         :legend => 'none',
-        :colors => "[{color:'#990000', darker:'#660000'}]",
-        :title => "Динамика Разделов Баланса",
+        :colors => "[{color:'#009999', darker:'#006666'}]",        
         :title_x => 'Разделы Баланса',
         :title_y => 'Сумма, млн.руб.'
       }
-    )%>
+    )%> 
+  
+  <%= raw Seer::visualize(
+      @AB_Passive, 
+      :as => :column_chart,
+      :in_element =>'Passive_end', 
+      :series => {:series_label => 'G1', :data_method => 'G5'},
+      :chart_options => {
+        :height => 300,
+        :width => 460,
+        :is_3_d => true,
+        :legend => 'none',
+        :colors => "[{color:'#009900', darker:'#006600'}]",        
+        :title_x => 'Разделы Баланса',
+        :title_y => 'Сумма, млн.руб.'
+      }
+    )%> 
+  <% end %>
