@@ -56,6 +56,18 @@
        <tr>
          <td colspan="3"><a name="G6"></a><div class="pagination-centered"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
+       <tr>
+          <td> <div id="Razdel_4"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G7"></a><div class="pagination-centered"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td> <div id="Razdel_5"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><div class="pagination-centered"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
     </tbody>   
   </table>
  <% end  %> 
@@ -72,7 +84,7 @@
         :data_series  => @DiagType1_series
       },
       :chart_options => {
-        :height => 300,
+        :height => 550,
         :width => 660,
         :axis_font_size => 11,
         :colors => ['#000099','#009900'],
@@ -92,7 +104,7 @@
         :data_series  => @DiagType2_series
       },
       :chart_options => {
-        :height => 300,
+        :height => 550,
         :width => 660,
         :axis_font_size => 11,
         :colors => ['#000099','#009900','#990000'],
@@ -112,7 +124,7 @@
         :data_series  => @DiagType3_series
       },
       :chart_options => {
-        :height => 300,
+        :height => 550,
         :width => 660,
         :axis_font_size => 11,
         :colors => ['#0033FF','#33FF00','#FF0000','#003366','#336600','#660000','#000033','#003300'],
@@ -132,7 +144,7 @@
         :data_series  => @DiagType4_series
       },
       :chart_options => {
-        :height => 300,
+        :height => 550,
         :width => 660,
         :axis_font_size => 11,
         :colors => ['#0033FF','#33FF00','#FF0000','#003366','#336600','#660000','#000033','#003300'],
@@ -152,7 +164,7 @@
         :data_series  => @DiagType5_series
       },
       :chart_options => {
-        :height => 300,
+        :height => 550,
         :width => 660,
         :axis_font_size => 11,
         :colors => ['#0033FF','#33FF00','#FF0000','#003366','#336600','#660000','#000033','#003300'],
@@ -160,7 +172,45 @@
         :point_size => 5})%>
   <% end %>
 
+<% unless @DiagType6_data.empty?%>
+    <%= raw Seer::visualize(
+      @DiagType6_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_4',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa',
+        :data_series  => @DiagType6_series
+      },
+      :chart_options => {
+        :height => 550,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#0033FF','#33FF00','#FF0000','#003366','#336600','#660000'],
+        :title => "Динамика статей Раздела IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА",
+        :point_size => 5})%>
+  <% end %>
 
+<% unless @DiagType7_data.empty?%>
+    <%= raw Seer::visualize(
+      @DiagType7_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_5',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa',
+        :data_series  => @DiagType7_series
+      },
+      :chart_options => {
+        :height => 550,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#0033FF','#33FF00','#FF0000','#003366','#336600','#660000','#000033'],
+        :title => "Динамика статей Раздела V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА",
+        :point_size => 5})%>
+  <% end %>
 
   <%#= debug(assigns) if Rails.env.development?%>
  
