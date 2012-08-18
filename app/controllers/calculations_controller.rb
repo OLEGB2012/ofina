@@ -8,10 +8,12 @@ class CalculationsController < ApplicationController
   end
   
   def run
+    #######################################################################################
     # 1 - считаем показатели на основе формы 1 (баланса)
     @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
-    @form_one_reports.each do |form_one_report| 
+    @form_one_reports.each do |form_one_report|
+      # Считаем показатели ...
       form_one_report.update_attributes(Kfnez:  form_one_report.S700!=0?((form_one_report.S490).to_f/form_one_report.S700):0,
                                         Kfzav:  form_one_report.S700!=0?((form_one_report.S590+form_one_report.S690).to_f/form_one_report.S700):0,
                                         Kdfnez: form_one_report.S300!=0?((form_one_report.S490+form_one_report.S590).to_f/form_one_report.S300):0,
@@ -23,6 +25,7 @@ class CalculationsController < ApplicationController
                                         K2:     form_one_report.S290!=0?((form_one_report.S490+form_one_report.S590-form_one_report.S190).to_f/form_one_report.S290):0, 
                                         K3:     form_one_report.S300!=0?((form_one_report.S690+form_one_report.S590).to_f/form_one_report.S300):0)
     end
+    #######################################################################################
     # 2 - считаем показатели на основе формы 2 (о прибылях и убытках) и формы 1 (баланс)
     @form_two_reports=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end)
     @form_two_reports.each do |form_two_report|
@@ -103,7 +106,8 @@ class CalculationsController < ApplicationController
       # Закинем в строчку массива ...
       form_two_report.update_attributes(Kobk: @Kobk, Kobs: @Kobs, Kobzs: @Kobzs, Kobgp: @Kobgp, Kobdz: @Kobdz, Kobkz: @Kobkz,
           Krenprod: @Krenprod, Krenact: @Krenact, Krensk: @Krensk, Krenpz: @Krenpz, Krenps: @Krenps, Krenor: @Krenor, Krenchp: @Krenchp)
-    end    
+    end
+    #######################################################################################    
     # 3 - считаем массив аналитического баланса за данный период.
     # Подготовим исходные массивы. 
     # Предприятие уже есть - @enterprise, 

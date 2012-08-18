@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802095641) do
+ActiveRecord::Schema.define(:version => 20120817020345) do
 
   create_table "analytical_balances", :force => true do |t|
     t.integer  "enterprise_id"
@@ -36,6 +36,31 @@ ActiveRecord::Schema.define(:version => 20120802095641) do
   add_index "analytical_balances", ["enterprise_id", "date_period_beg"], :name => "ab_enterpise_id_period_beg"
   add_index "analytical_balances", ["enterprise_id", "date_period_end"], :name => "ab_enterpise_id_period_end"
   add_index "analytical_balances", ["enterprise_id"], :name => "index_analytical_balances_on_enterprise_id"
+
+  create_table "balanse_rows", :force => true do |t|
+    t.integer  "enterprise_id"
+    t.integer  "diag_type",       :default => 0
+    t.date     "date_period_beg"
+    t.date     "date_period_end"
+    t.string   "name",            :default => ""
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "balanse_rows", ["enterprise_id", "date_period_beg", "date_period_end"], :name => "br_enterpise_id_period"
+  add_index "balanse_rows", ["enterprise_id", "date_period_beg"], :name => "br_enterpise_id_period_beg"
+  add_index "balanse_rows", ["enterprise_id", "date_period_end"], :name => "br_enterpise_id_period_end"
+  add_index "balanse_rows", ["enterprise_id"], :name => "index_balanse_rows_on_enterprise_id"
+
+  create_table "balanse_values", :force => true do |t|
+    t.integer  "balanse_row_id"
+    t.date     "date_period"
+    t.integer  "summa",          :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "balanse_values", ["balanse_row_id"], :name => "index_balanse_values_on_balanse_row_id"
 
   create_table "enterprises", :force => true do |t|
     t.integer  "parent_id",                                                      :default => 0

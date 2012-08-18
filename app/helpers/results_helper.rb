@@ -4,4 +4,5 @@ module ResultsHelper
   def display_result_data(eVar)
     eVar.nil? ? "х":eVar==0?"-":eVar<0?"("+number_with_delimiter(eVar, delimiter: ' ').to_s+")":number_with_delimiter(eVar, delimiter: ' ')
   end
+     
 end
