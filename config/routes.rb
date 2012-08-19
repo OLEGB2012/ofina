@@ -16,6 +16,7 @@ Ofina::Application.routes.draw do
   match '/results_ab_table'  , to: 'results#ab_table'
   match '/results_ab_graph'  , to: 'results#ab_graph'
   
+  
   resources :enterprises do
 #    shallow do 
       resources :form_one_reports
