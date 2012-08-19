@@ -1,0 +1,15 @@
+<%  provide(:title, 'Результаты|Таблично')%>  
+
+<legend><%= image_tag("Generate tables 64.png") %> Показатели Рентабельности (таблично)</legend>
+
+<%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+
+<%#*# Показатели рентабельности%>
+<%#*t.column :Krenprod, :decimal, :precision => 6, :scale => 4, :default => 0 # 1. Рентабельность продаж%>
+<%#*t.column :Krenact , :decimal, :precision => 6, :scale => 4, :default => 0 # 2. Рентабельность активов%>
+<%#*t.column :Krensk  , :decimal, :precision => 6, :scale => 4, :default => 0 # 3. Рентабельность собственного капитала%>
+<%#*t.column :Krenpz  , :decimal, :precision => 6, :scale => 4, :default => 0 # 4. Рентабельность производственных затрат, составляющих себестоимость продукции, работ, услуг%>
+<%#*t.column :Krenps  , :decimal, :precision => 6, :scale => 4, :default => 0 # 5. Рентабельность полной себестоимости реализованной продукции, работ, услуг%> 
+<%#*t.column :Krenor  , :decimal, :precision => 6, :scale => 4, :default => 0 # 6. Рентабельность общих расходов коммерческой организации%>
+<%#*t.column :Krenchp , :decimal, :precision => 6, :scale => 4, :default => 0 # 7. Рентабельность расходов, обусловивших получение чистой прибыли коммерческой организации%>       
+ 

@@ -5,12 +5,38 @@ class ResultsController < ApplicationController
   def index
     @enterprise=Enterprise.find_by_id(params[:id])
   end
-  
+  ###########################################################################
+  # Аналитический баланс (таблично)
   def ab_table
     @enterprise=Enterprise.find_by_id(params[:id])
     @AB=AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("id")
   end
-  
+  ###########################################################################
+  # Показатели финансовой устойчивости (таблично)
+  def fu_table
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @FU=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
+  end
+  ###########################################################################
+  # Показатели ликвидности и платёжеспособности (таблично)
+  def lp_table
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @LP=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")  
+  end
+  ###########################################################################
+  # Показатели деловой активности (таблично)
+  def da_table
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @DA=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
+  end
+  ###########################################################################
+  # Показатели рентабельности (таблично)
+  def ren_table
+   @enterprise=Enterprise.find_by_id(params[:id])
+   @REN=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
+  end
+  ###########################################################################
+  # Аналитический баланс (графики)
   def ab_graph      
     @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
@@ -78,5 +104,25 @@ class ResultsController < ApplicationController
                 @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
       end    
     end  
+  end
+  ###########################################################################
+  # Показатели финансовой устойчивости (графики)
+  def fu_graph
+    
+  end
+  ###########################################################################
+  # Показатели ликвидности и платёжеспособности (графики)
+  def lp_graph
+    
+  end
+  ###########################################################################
+  # Показатели деловой активности (графики)
+  def da_graph
+    
+  end
+  ###########################################################################
+  # Показатели рентабельности (графики)
+  def ren_graph
+    
   end
 end

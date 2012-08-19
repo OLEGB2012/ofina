@@ -15,6 +15,14 @@ Ofina::Application.routes.draw do
   match '/results'           , to: 'results#index'
   match '/results_ab_table'  , to: 'results#ab_table'
   match '/results_ab_graph'  , to: 'results#ab_graph'
+  match '/results_fu_table'  , to: 'results#fu_table'
+  match '/results_fu_graph'  , to: 'results#fu_graph'
+  match '/results_lp_table'  , to: 'results#lp_table'
+  match '/results_lp_graph'  , to: 'results#lp_graph'
+  match '/results_da_table'  , to: 'results#da_table'
+  match '/results_da_graph'  , to: 'results#da_graph'
+  match '/results_ren_table'  , to: 'results#ren_table'
+  match '/results_ren_graph'  , to: 'results#ren_graph'
   
   
   resources :enterprises do

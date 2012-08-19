@@ -1,0 +1,66 @@
+<%  provide(:title, 'Результаты|Таблично')%>
+
+<legend><%= image_tag("Generate tables 64.png") %> Показатели Ликвидности и Платёжеспособности (таблично)</legend>
+
+<%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+
+ <table class="table table-striped table-bordered table-condensed">
+    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+              За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
+    <thead>
+      <tr>
+        <th rowspan="3"><div class="pagination-centered" style="line-height: 130px; vertical-align:middle; min-width: 180px">Дата</div></th>
+        <th colspan="10"><div class="pagination-centered">Коэффициенты</div></th>        
+      </tr>
+      <tr>
+        <th colspan="2"><div class="pagination-centered">Текущей ликвидности (K1)</div></th>
+        <th colspan="2"><div class="pagination-centered">Абсолютной ликвидности</div></th>
+        <th colspan="2"><div class="pagination-centered">Критической (промежуточной) ликвидности</div></th>
+        <th colspan="2"><div class="pagination-centered">Обеспеченности собственными оборотными средствами (K2)</div></th>
+        <th colspan="2"><div class="pagination-centered">Обеспеченности финансовых обязательств активами (K3)</div></th>      
+      </tr>
+      <tr>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Норматив</div></th>
+      </tr>
+      <tr>
+        <th><div class="pagination-centered">1</div></th>
+        <th><div class="pagination-centered">2</div></th>
+        <th><div class="pagination-centered">3</div></th>
+        <th><div class="pagination-centered">4</div></th>
+        <th><div class="pagination-centered">5</div></th>
+        <th><div class="pagination-centered">6</div></th>
+        <th><div class="pagination-centered">7</div></th>
+        <th><div class="pagination-centered">8</div></th>
+        <th><div class="pagination-centered">9</div></th>
+        <th><div class="pagination-centered">10</div></th>
+        <th><div class="pagination-centered">11</div></th>
+      </tr>
+    </thead>
+    <tbody>      
+      <% @LP.each do |lp| %>      
+          <tr>       
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= Russian::strftime(lp.date_period,"%d %B %Y г.") %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.K1) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@enterprise.K1)%></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.Kabsl) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"> >=0.2</div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.Kkrl) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;">>=1</div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.K2) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@enterprise.K2)%></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.K3) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><=0.85</div></td>
+          </tr>          
+      <% end %>    
+    </tbody>   
+  </table>
