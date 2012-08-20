@@ -51,15 +51,15 @@
           <tr>       
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= Russian::strftime(lp.date_period,"%d %B %Y г.") %></div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.K1) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@enterprise.K1)%></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;">>=<%= display_result_data(@enterprise.K1)%></div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.Kabsl) %></div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"> >=0.2</div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.Kkrl) %></div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;">>=1</div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.K2) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@enterprise.K2)%></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;">>=<%= display_result_data(@enterprise.K2)%></div></td>
                <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(lp.K3) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><=0.85</div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><=<%= display_result_data(@enterprise.K3)%></div></td>
           </tr>          
       <% end %>    
     </tbody>   
