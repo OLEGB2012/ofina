@@ -16,6 +16,8 @@ class ResultsController < ApplicationController
   def fu_table
     @enterprise=Enterprise.find_by_id(params[:id])
     @FU=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
+    @FU_MIN_Kfzav =@FU.minimum(:Kfzav)
+    @FU_MAX_Kdfnez=@FU.maximum(:Kdfnez)
   end
   ###########################################################################
   # Показатели ликвидности и платёжеспособности (таблично)
@@ -28,12 +30,25 @@ class ResultsController < ApplicationController
   def da_table
     @enterprise=Enterprise.find_by_id(params[:id])
     @DA=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
+    @DA_MAX_Kobk =@DA.maximum(:Kobk)
+    @DA_MAX_Kobs =@DA.maximum(:Kobs)
+    @DA_MAX_Kobzs=@DA.maximum(:Kobzs)
+    @DA_MAX_Kobgp=@DA.maximum(:Kobgp)
+    @DA_MAX_Kobdz=@DA.maximum(:Kobdz)
+    @DA_MAX_Kobkz=@DA.maximum(:Kobkz)
   end
   ###########################################################################
   # Показатели рентабельности (таблично)
   def ren_table
    @enterprise=Enterprise.find_by_id(params[:id])
    @REN=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
+   @REN_MAX_Krenprod=@REN.maximum(:Krenprod)
+   @REN_MAX_Krenact =@REN.maximum(:Krenact)
+   @REN_MAX_Krensk  =@REN.maximum(:Krensk)
+   @REN_MAX_Krenpz  =@REN.maximum(:Krenpz)
+   @REN_MAX_Krenps  =@REN.maximum(:Krenps)
+   @REN_MAX_Krenor  =@REN.maximum(:Krenor)
+   @REN_MAX_Krenchp =@REN.maximum(:Krenchp)
   end
   ###########################################################################
   # Аналитический баланс (графики)
@@ -96,7 +111,7 @@ class ResultsController < ApplicationController
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
                                      name: "+'"'+"#{x[1]}"+'"'+")
-                @BR_rec=@enterprise.balanse_rows << @BR_new_rec      
+                @BR_rec=@enterprise.balanse_rows << @BR_new_rec
                 @form_one_reports.each do |data|
                    @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period,summa: data.#{x[2]}) 
                 end

@@ -4,11 +4,70 @@
 
 <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
 
-<%#*# Показатели деловой активности%>
-<%#*t.column :Kobk,  :decimal, :precision => 6, :scale => 4, :default => 0 # 1. Коэфф. общей оборачиваемости капитала (коэфф. деловой активности).%>
-<%#*t.column :Kobs,  :decimal, :precision => 6, :scale => 4, :default => 0 # 2. Коэфф. оборачиваемости оборотных средств (краткосрочных активов).%>
-<%#*t.column :Kobzs, :decimal, :precision => 6, :scale => 4, :default => 0 # 3. Коэффициент оборачиваемости запаса сырья, материалов и полуфабрикатов.%>
-<%#*t.column :Kobgp, :decimal, :precision => 6, :scale => 4, :default => 0 # 4. Коэффициент оборачиваемости готовой продукции.%>
-<%#*t.column :Kobdz, :decimal, :precision => 6, :scale => 4, :default => 0 # 5. Коэффициент оборачиваемости дебиторской задолженности.%>
-<%#*t.column :Kobkz, :decimal, :precision => 6, :scale => 4, :default => 0 # 6. Коэффициент оборачиваемости кредиторской задолженности%> 
-
+<table class="table table-striped table-bordered table-condensed" style="font-size: 11px">
+    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+              За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
+    <thead>
+      <tr>
+        <th rowspan="3"><div class="pagination-centered" style="line-height: 20px; vertical-align:middle; min-width: 120px">На дату (с начала года)</div></th>
+        <th colspan="12"><div class="pagination-centered">Коэффициенты Оборачиваемости</div></th>        
+      </tr>
+      <tr>
+        <th colspan="2"><div class="pagination-centered">Общей капитала</div></th>
+        <th colspan="2"><div class="pagination-centered">Оборотных средств</div></th>
+        <th colspan="2"><div class="pagination-centered">Запасов сырья, материалов и полуфабрикатов</div></th>
+        <th colspan="2"><div class="pagination-centered">Готовой продукции</div></th>
+        <th colspan="2"><div class="pagination-centered">Дебиторской задолженности</div></th>
+        <th colspan="2"><div class="pagination-centered">Кредиторской задолженности</div></th>
+      </tr>
+      <tr>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Макс.</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Макс.</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Макс.</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Макс.</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Макс.</div></th>
+        <th><div class="pagination-centered">Значение</div></th>
+        <th><div class="pagination-centered">Макс.</div></th>
+      </tr>
+      <tr>
+        <th><div class="pagination-centered">1</div></th>
+        <th><div class="pagination-centered">2</div></th>
+        <th><div class="pagination-centered">3</div></th>
+        <th><div class="pagination-centered">4</div></th>
+        <th><div class="pagination-centered">5</div></th>
+        <th><div class="pagination-centered">6</div></th>
+        <th><div class="pagination-centered">7</div></th>
+        <th><div class="pagination-centered">8</div></th>
+        <th><div class="pagination-centered">9</div></th>
+        <th><div class="pagination-centered">10</div></th>
+        <th><div class="pagination-centered">11</div></th>
+        <th><div class="pagination-centered">12</div></th>
+        <th><div class="pagination-centered">13</div></th>
+      </tr>
+    </thead>
+    <tbody>      
+      <% @DA.each do |da| %>      
+          <tr>       
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= Russian::strftime(da.date_period_end,"%d %B %Y г.") %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobk) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobk) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobs) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobs) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobzs) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobzs) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobgp) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobgp) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobdz) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobdz) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobkz) %></div></td>
+               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobkz) %></div></td>
+          </tr>          
+      <% end %>    
+    </tbody>   
+  </table>
