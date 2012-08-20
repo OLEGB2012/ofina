@@ -58,17 +58,17 @@
                <% end %>
                   <td><div class="pagination-centered">>=0.4-0.6</div></td>
                   
-               <% if fu.Kfzav<=@FU_MIN_Kfzav%>
+               <% if fu.Kfzav==@FU_MIN_Kfzav%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(fu.Kfzav) %></div></td>
                <% else %>
-                  <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(fu.Kfzav) %></div></td>
+                  <td><div class="pagination-centered"><%= display_result_data(fu.Kfzav) %></div></td>
                <% end %>
                <td><div class="pagination-centered"><%= display_result_data(@FU_MIN_Kfzav) %></div></td>   
                
-               <% if fu.Kdfnez>=@FU_MAX_Kdfnez%>
+               <% if fu.Kdfnez==@FU_MAX_Kdfnez%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(fu.Kdfnez) %></div></td>
                <% else %>
-                  <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(fu.Kdfnez) %></div></td>
+                  <td><div class="pagination-centered"><%= display_result_data(fu.Kdfnez) %></div></td>
                <% end %>
                <td><div class="pagination-centered"><%= display_result_data(@FU_MAX_Kdfnez) %></div></td>
                

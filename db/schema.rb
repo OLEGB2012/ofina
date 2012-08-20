@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120817020345) do
     t.date     "date_period_beg"
     t.date     "date_period_end"
     t.string   "name",            :default => ""
+    t.integer  "summa",           :default => 0
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end

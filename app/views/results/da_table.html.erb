@@ -54,19 +54,49 @@
     <tbody>      
       <% @DA.each do |da| %>      
           <tr>       
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= Russian::strftime(da.date_period_end,"%d %B %Y г.") %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobk) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobk) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobs) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobs) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobzs) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobzs) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobgp) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobgp) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobdz) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobdz) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(da.Kobkz) %></div></td>
-               <td><div class="pagination-centered" style="line-height: 20px; vertical-align:middle;"><%= display_result_data(@DA_MAX_Kobkz) %></div></td>
+               <td><div class="pagination-centered" ><%= Russian::strftime(da.date_period_end,"%d %B %Y г.") %></div></td>
+               
+               <% if da.Kobk==@DA_MAX_Kobk%>
+                  <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(da.Kobk) %></div></td>
+               <% else %>
+                  <td><div class="pagination-centered"><%= display_result_data(da.Kobk) %></div></td>
+               <% end %>
+               <td><div class="pagination-centered"><%= display_result_data(@DA_MAX_Kobk) %></div></td>
+               
+               <% if da.Kobs==@DA_MAX_Kobs%>
+                  <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(da.Kobs) %></div></td>
+               <% else %>
+                  <td><div class="pagination-centered"><%= display_result_data(da.Kobs) %></div></td>
+               <% end %>
+               <td><div class="pagination-centered"><%= display_result_data(@DA_MAX_Kobs) %></div></td>
+               
+               <% if da.Kobzs==@DA_MAX_Kobzs%>
+                  <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(da.Kobzs) %></div></td>
+               <% else %>
+                  <td><div class="pagination-centered"><%= display_result_data(da.Kobzs) %></div></td>
+               <% end %>
+               <td><div class="pagination-centered"><%= display_result_data(@DA_MAX_Kobzs) %></div></td>
+               
+               <% if da.Kobgp==@DA_MAX_Kobgp%>
+                  <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(da.Kobgp) %></div></td>
+               <% else %>
+                  <td><div class="pagination-centered"><%= display_result_data(da.Kobgp) %></div></td>
+               <% end %>
+               <td><div class="pagination-centered"><%= display_result_data(@DA_MAX_Kobgp) %></div></td>
+               
+               <% if da.Kobdz==@DA_MAX_Kobdz%>
+                  <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(da.Kobdz) %></div></td>
+               <% else %>
+                  <td><div class="pagination-centered"><%= display_result_data(da.Kobdz) %></div></td>
+               <% end %>
+               <td><div class="pagination-centered"><%= display_result_data(@DA_MAX_Kobdz) %></div></td>
+               
+               <% if da.Kobkz==@DA_MAX_Kobkz%>
+                  <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(da.Kobkz) %></div></td>
+               <% else %>
+                  <td><div class="pagination-centered"><%= display_result_data(da.Kobkz) %></div></td>
+               <% end %>
+               <td><div class="pagination-centered"><%= display_result_data(@DA_MAX_Kobkz) %></div></td>
           </tr>          
       <% end %>    
     </tbody>   

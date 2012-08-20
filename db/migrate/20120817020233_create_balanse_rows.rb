@@ -5,7 +5,8 @@ class CreateBalanseRows < ActiveRecord::Migration
       t.integer "diag_type", default:0  # тип диаграммы (см. Просмотр результатов аналитический баланс(графично) - расчёты в контроллере).
       t.date    "date_period_beg"       # Интервал дат сумм в сериях.
       t.date    "date_period_end"       # 
-      t.string  "name", default: ""     # имя серии - строка баланса. 
+      t.string  "name", default: ""     # имя серии - строка баланса.
+      t.integer "summa", default: 0     # Сумма серии (вспомагательное поле - для сумм в круговых диаграммах).
       t.timestamps
     end
     add_index :balanse_rows, [:enterprise_id,:date_period_beg,:date_period_end], name: 'br_enterpise_id_period'
