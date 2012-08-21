@@ -6,7 +6,8 @@ class CreateBalanseRows < ActiveRecord::Migration
       t.date    "date_period_beg"       # Интервал дат сумм в сериях.
       t.date    "date_period_end"       # 
       t.string  "name", default: ""     # имя серии - строка баланса.
-      t.integer "summa", default: 0     # Сумма серии (вспомагательное поле - для сумм в круговых диаграммах).
+      t.integer "summa", default: 0     # Сумма серии (вспомагательное поле - для целых сумм в круговых диаграммах).
+      t.column  :summa_dec ,:decimal, :precision => 6, :scale => 4, :default => 0 # Сумма серии (вспомагательное поле - для дробных сумм в круговых диаграммах).
       t.timestamps
     end
     add_index :balanse_rows, [:enterprise_id,:date_period_beg,:date_period_end], name: 'br_enterpise_id_period'

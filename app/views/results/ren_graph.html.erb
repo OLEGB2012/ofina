@@ -1,6 +1,235 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+<%= raw Seer::init_visualization %>
 
-<%= "ren_graph.html" %>
+<%  provide(:title, 'Результаты|Графически')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">ГРАФИКИ</li>       
+      <li><%= link_to "К странице Результаты", results_path(id: @enterprise) %></li>
+      <%= render 'ren_graph_anchors'%>      
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+<a name="BeginOfPage"></a>
+<legend><%= image_tag("column chart 64.png") %> Показатели Рентабельности (Графически)</legend>  
+ <table class="table table-striped table-bordered table-condensed">
+    <caption style="font-size: 14px">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+              За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong> </caption>
+     <thead>
+      <tr>        
+        <th><a name="G1"></a> <div class="pagination-centered"  style="font-size: 15px">Динамика Показателей (в абсолютных значениях)</div></th>
+      </tr>
+     </thead>
+    <tbody>
+       <tr>
+          <td colspan="3"><div class="pull-left">24. Рентабельность продаж</div></td>
+       </tr>  
+       <tr>
+         <td><div id="Razdel_1" ></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><a name="G2"></a> <div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">25. Рентабельность активов</div></td>
+       </tr> 
+       <tr>
+          <td><div id="Razdel_2"></div></td>
+       </tr>       
+       <tr>
+          <td colspan="3"><a name="G3"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">26. Рентабельность собственного капитала</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_3"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G4"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">27. Рентабельность производственных затрат, составляющих себестоимость продукции, работ, услуг</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_4"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G5"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">28. Рентабельность полной себестоимости реализованной продукции, работ, услуг</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_5"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G6"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">29. Рентабельность общих расходов коммерческой организации</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_6"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G7"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>  
+       <tr>
+          <td colspan="3"><div class="pull-left">30. Рентабельность расходов, обусловивших получение чистой прибыли коммерческой организации</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_7"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G8"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>  
+    </tbody>   
+  </table>
+ <% end  %> 
+    
+  <% unless @DiagType24_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType24_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_1',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType24_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#008000'],
+        :point_size => 5})%>
+  <% end %>
+  
+<% unless @DiagType25_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType25_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_2',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType25_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#8B4513'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType26_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType26_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_3',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType26_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#20B2AA'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType27_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType27_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_4',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType27_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#FF0000'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType28_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType28_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_5',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType28_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#0033FF'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType29_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType29_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_6',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType29_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#FF8C00'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType30_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType30_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_7',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType30_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#808080'],
+        :point_size => 5})%>
+  <% end %>
+
+  <%#= debug(assigns) if Rails.env.development?%>

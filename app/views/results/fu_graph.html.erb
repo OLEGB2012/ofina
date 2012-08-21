@@ -1,6 +1,177 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+<%= raw Seer::init_visualization %>
 
-<%= "fu_graph.html" %>
+<%  provide(:title, 'Результаты|Графически')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">ГРАФИКИ</li>       
+      <li><%= link_to "К странице Результаты", results_path(id: @enterprise) %></li>
+      <%= render 'fu_graph_anchors'%>      
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+<a name="BeginOfPage"></a>
+<legend><%= image_tag("column chart 64.png") %> Показатели Финансовой Устойчивости (Графически)</legend>  
+ <table class="table table-striped table-bordered table-condensed">
+    <caption style="font-size: 14px">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+              За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong> </caption>
+     <thead>
+      <tr>        
+        <th><a name="G1"></a> <div class="pagination-centered"  style="font-size: 15px">Динамика Показателей (в абсолютных значениях)</div></th>
+      </tr>
+     </thead>
+    <tbody>
+       <tr>
+          <td colspan="3"><div class="pull-left">8. Коэффициент автономии (финансовой независимости)</div></td>
+       </tr>  
+       <tr>
+         <td><div id="Razdel_1" ></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><a name="G2"></a> <div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">9. Коэффициент концентрации привлеченного капитала (финансовой зависимости)</div></td>
+       </tr> 
+       <tr>
+          <td><div id="Razdel_2"></div></td>
+       </tr>       
+       <tr>
+          <td colspan="3"><a name="G3"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">10. Коэффициент долгосрочной финансовой независимости</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_3"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G4"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">11. Коэффициент соотношения заемных и собственных средств (капитализации)</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_4"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G5"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>
+       <tr>
+          <td colspan="3"><div class="pull-left">12. Коэффициент маневренности собственного капитала</div></td>
+       </tr> 
+       <tr>
+          <td> <div id="Razdel_5"></div></td>
+       </tr>
+       <tr>
+         <td colspan="3"><a name="G6"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+       </tr>       
+    </tbody>   
+  </table>
+ <% end  %> 
+    
+  <% unless @DiagType8_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType8_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_1',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType8_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#008000'],
+        :point_size => 5})%>
+  <% end %>
+  
+<% unless @DiagType9_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType9_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_2',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType9_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#8B4513'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType10_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType10_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_3',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType10_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#20B2AA'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType11_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType11_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_4',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType11_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#FF0000'],
+        :point_size => 5})%>
+  <% end %>
+
+<% unless @DiagType12_data.nil?%>
+    <%= raw Seer::visualize(
+      @DiagType12_data, 
+      :as => :line_chart,
+      :in_element => 'Razdel_5',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa_dec',
+        :data_series  => @DiagType12_series
+      },
+      :chart_options => {
+        :legend_font_size => 10,
+        :height => 300,
+        :width => 660,
+        :axis_font_size => 11,
+        :colors => ['#0033FF'],
+        :point_size => 5})%>
+  <% end %>
+
+  <%#= debug(assigns) if Rails.env.development?%>

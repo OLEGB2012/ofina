@@ -2,7 +2,7 @@
 class BalanseValue < ActiveRecord::Base
   belongs_to :balanse_row
     
-  attr_accessible :date_period, :summa
+  attr_accessible :date_period, :summa, :summa_dec
   
   def rus_date_period
     Russian::strftime(self[:date_period],"%d %B %Y г.")

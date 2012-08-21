@@ -115,10 +115,11 @@ class CalculationsController < ApplicationController
     # @form_one_reports с помощью методов first и last
     @f1_beg=@form_one_reports.first
     @f1_end=@form_one_reports.last
-    # Почистим целевую таблицу от предыдущего аналогичного расчёта
-    AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).delete_all
-    # Хотя бы один отчёт на одну из дат должен иметься!))
-    unless @f1_beg.nil? or @f1_end.nil? 
+    # В интервале дат должны иметься отчёты!))
+    unless @f1_beg.nil? and @f1_end.nil? 
+      # Почистим целевую таблицу от предыдущего аналогичного расчёта
+      AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).delete_all
+
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 0, G1: "Активы")
       @enterprise.analytical_balances << @AB_new_rec
@@ -456,7 +457,7 @@ class CalculationsController < ApplicationController
       @enterprise.analytical_balances << @AB_new_rec
       flash[:success]="Расчёт показателей выполнен ..."
     else
-      flash[:alert]="За текущий интервал дат отсутствуют данные по формам баланса. Никаких расчётов не выполнилось..."
+      flash[:alert]="За указанный рабочий интервал дат отсутствуют данные по формам баланса. Никаких расчётов не выполнилось..."
     end   
     
     redirect_to enterprise_path(params[:id])

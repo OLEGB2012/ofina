@@ -39,13 +39,14 @@ ActiveRecord::Schema.define(:version => 20120817020345) do
 
   create_table "balanse_rows", :force => true do |t|
     t.integer  "enterprise_id"
-    t.integer  "diag_type",       :default => 0
+    t.integer  "diag_type",                                     :default => 0
     t.date     "date_period_beg"
     t.date     "date_period_end"
-    t.string   "name",            :default => ""
-    t.integer  "summa",           :default => 0
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.string   "name",                                          :default => ""
+    t.integer  "summa",                                         :default => 0
+    t.decimal  "summa_dec",       :precision => 6, :scale => 4, :default => 0.0
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
   end
 
   add_index "balanse_rows", ["enterprise_id", "date_period_beg", "date_period_end"], :name => "br_enterpise_id_period"
@@ -56,9 +57,10 @@ ActiveRecord::Schema.define(:version => 20120817020345) do
   create_table "balanse_values", :force => true do |t|
     t.integer  "balanse_row_id"
     t.date     "date_period"
-    t.integer  "summa",          :default => 0
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "summa",                                        :default => 0
+    t.decimal  "summa_dec",      :precision => 6, :scale => 4, :default => 0.0
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
   end
 
   add_index "balanse_values", ["balanse_row_id"], :name => "index_balanse_values_on_balanse_row_id"

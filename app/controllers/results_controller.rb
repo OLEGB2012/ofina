@@ -51,7 +51,7 @@ class ResultsController < ApplicationController
    @REN_MAX_Krenchp =@REN.maximum(:Krenchp)
   end
   ###########################################################################
-  # Аналитический баланс (графики)
+  # "аля" Аналитический баланс (графики) из формы 1 баланса.
   def ab_graph      
     @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
@@ -59,8 +59,9 @@ class ResultsController < ApplicationController
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике статей баланса (в абсолютных значениях)...
     # Делаем, если есть отчёты-балансы по Форме 1 за период ...
     unless @form_one_reports.empty?
-      # Готовим целевые таблицы - чистим ... (записи из balanse_values "уйдут" по каскаду)...
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).destroy_all
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 1 по 7"... 
+      # (записи из balanse_values "уйдут" по каскаду)...
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(1,7).destroy_all
       # ... и заполняем ...
       # ################################################################
       @Arr=[["1", "Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ", "S190"],
@@ -80,17 +81,17 @@ class ResultsController < ApplicationController
             ["4", "Долгосрочные активы для реал.", "S220"],
             ["4", "Расходы будущих периодов", "S230"],
             ["4", "Налог на добавл.стоим.по приобр.ТРУ", "S240"],
-            ["4", "Краткосрочная дебиторская задол-сть", "S250"],
-            ["4", "Краткосрочные финансовые вложения", "S260"],
-            ["4", "Денежные средства и их эквиваленты", "S270"],
+            ["4", "Краткоср-ая дебит-ая задол-сть", "S250"],
+            ["4", "Краткоср-ые фин. вложения", "S260"],
+            ["4", "Денежные сред-ва и их эквив-ты", "S270"],
             ["4", "Прочие краткосрочные активы", "S280"],
             ["5", "Уставный капитал", "S410"],
             ["5", "Неоплаченная часть уставного кап-ла", "S420"],
             ["5", "Собственные акции (доли в уст.кап.)", "S430"],
             ["5", "Резервный капитал", "S440"],
             ["5", "Добавочный капитал", "S450"],
-            ["5", "Нераспред-ная прибыль (непокр.убыт.)", "S460"],
-            ["5", "Чистая прибыль(убыток) отчетного года", "S470"],
+            ["5", "Нераспред-ная прибыль/непокр.убыт", "S460"],
+            ["5", "Чист. прибыль/уб-к отчетного года", "S470"],
             ["5", "Целевое финансирование", "S480"],
             ["6", "Долгосрочные кредиты и займы", "S510"],
             ["6", "Долгосрочные обяз-ва по лизинг.плат-м", "S520"],
@@ -98,13 +99,13 @@ class ResultsController < ApplicationController
             ["6", "Доходы будущих периодов", "S540"],
             ["6", "Резервы предстоящих платежей", "S550"],
             ["6", "Прочие долгосрочные обязательства", "S560"],
-            ["7", "Краткосрочные кредиты и займы", "S610"],
-            ["7", "Краткосрочная ч-ть долгосрочных обяз-тв", "S620"],
-            ["7", "Краткосрочная кредиторская задолж-ть", "S630"],
+            ["7", "Краткоср-ые кредиты и займы", "S610"],
+            ["7", "Краткоср-ая ч-ть долгосрочных обяз-тв", "S620"],
+            ["7", "Краткоср-ая кредиторская задолж-ть", "S630"],
             ["7", "Обязательств,предназ-ые для реал-ции", "S640"],
             ["7", "Доходы будущих периодов", "S650"],
             ["7", "Резервы предстоящих платежей", "S660"],
-            ["7", "Прочие краткосрочные обяз-ства", "S670"]]
+            ["7", "Прочие краткоср-ые обяз-ства", "S670"]]
             
       @Arr.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
@@ -121,23 +122,142 @@ class ResultsController < ApplicationController
     end  
   end
   ###########################################################################
-  # Показатели финансовой устойчивости (графики)
+  # Показатели финансовой устойчивости (графики) из формы 1 баланса
   def fu_graph
-    
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
+    #######################################################################################
+    # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
+    # Делаем, если есть отчёты-балансы по Форме 1 за период ...
+    unless @form_one_reports.empty?
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 8 по 12"... 
+      # (записи из balanse_values "уйдут" по каскаду)...
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(8,12).destroy_all
+      # ... и заполняем ...
+      # ################################################################
+      @Arr=[["8",  "Автономия", "Kfnez"],
+            ["9",  "Концентрация привлеченного капитала", "Kfzav"],
+            ["10", "Долгосрочная финансовая независимость", "Kdfnez"],
+            ["11", "Соотношение заемных и собственных средств", "Kcap"],
+            ["12", "Маневренность собственного капитала", "Kman"]]
+            
+      @Arr.each do |x|       
+          eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
+                                     date_period_end: @enterprise.rab_date_end, 
+                                     diag_type: #{x[0]}, 
+                                     name: "+'"'+"#{x[1]}"+'"'+")
+                @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+                @form_one_reports.each do |data|
+                   @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period,summa_dec: data.#{x[2]}) 
+                end
+                @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).all
+                @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
+      end    
+    end    
   end
   ###########################################################################
   # Показатели ликвидности и платёжеспособности (графики)
   def lp_graph
-    
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
+    #######################################################################################
+    # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
+    # Делаем, если есть отчёты-балансы по Форме 1 за период ...
+    unless @form_one_reports.empty?
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 8 по 12"... 
+      # (записи из balanse_values "уйдут" по каскаду)...
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(13,17).destroy_all
+      # ... и заполняем ...
+      ######################################################
+      @Arr=[["13", "Текущая ликвидность (K1)", "K1"],
+            ["14", "Абсолютная ликвидность", "Kabsl"],
+            ["15", "Критическая (промежуточная) ликвидность", "Kkrl"],
+            ["16", "Обеспеченность собственными оборотными средствами (K2)", "K2"],
+            ["17", "Обеспеченность финансовых обязательств активами (K3)", "K3"]]
+            
+      @Arr.each do |x|       
+          eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
+                                     date_period_end: @enterprise.rab_date_end, 
+                                     diag_type: #{x[0]}, 
+                                     name: "+'"'+"#{x[1]}"+'"'+")
+                @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+                @form_one_reports.each do |data|
+                   @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period,summa_dec: data.#{x[2]}) 
+                end
+                @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).all
+                @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
+      end    
+    end    
   end
   ###########################################################################
   # Показатели деловой активности (графики)
   def da_graph
-    
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @form_two_reports=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
+    #######################################################################################
+    # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
+    # Делаем, если есть отчёты по Форме 2 за период ...
+    unless @form_two_reports.empty?
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 18 по 23"... 
+      # (записи из balanse_values "уйдут" по каскаду)...
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(18,23).destroy_all
+      # ... и заполняем ...
+      ######################################################
+      @Arr=[["18", "Общая оборачиваемость капитала (деловая активность)", "Kobk"],
+            ["19", "Оборачиваемость оборотных средств (краткосрочных активов)", "Kobs"],
+            ["20", "Оборачиваемость запаса сырья, материалов и полуфабрикатов", "Kobzs"],
+            ["21", "Оборачиваемость готовой продукции", "Kobgp"],
+            ["22", "Оборачиваемость дебиторской задолженности", "Kobdz"],
+            ["23", "Оборачиваемость кредиторской задолженности", "Kobkz"]]
+            
+      @Arr.each do |x|       
+          eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
+                                     date_period_end: @enterprise.rab_date_end, 
+                                     diag_type: #{x[0]}, 
+                                     name: "+'"'+"#{x[1]}"+'"'+")
+                @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+                @form_two_reports.each do |data|
+                   @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period_end,summa_dec: data.#{x[2]}) 
+                end
+                @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).all
+                @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
+      end    
+    end      
   end
   ###########################################################################
   # Показатели рентабельности (графики)
   def ren_graph
-    
+    @enterprise=Enterprise.find_by_id(params[:id])
+    @form_two_reports=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
+    #######################################################################################
+    # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
+    # Делаем, если есть отчёты по Форме 2 за период ...
+    unless @form_two_reports.empty?
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 24 по 30"... 
+      # (записи из balanse_values "уйдут" по каскаду)...
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(24,30).destroy_all
+      # ... и заполняем ...
+      ######################################################
+      @Arr=[["24", "Рентабельность продаж", "Krenprod"],
+            ["25", "Рентабельность активов", "Krenact"],
+            ["26", "Рентабельность собственного капитала", "Krensk"],
+            ["27", "Рентабельность производственных затрат, составляющих себестоимость", "Krenpz"],
+            ["28", "Рентабельность полной себестоимости реализованной продукции", "Krenps"],
+            ["29", "Рентабельность общих расходов коммерческой организации", "Krenor"],
+            ["30", "Рентабельность расходов, обусловивших получение чистой прибыли", "Krenchp"]]
+            
+      @Arr.each do |x|       
+          eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
+                                     date_period_end: @enterprise.rab_date_end, 
+                                     diag_type: #{x[0]}, 
+                                     name: "+'"'+"#{x[1]}"+'"'+")
+                @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+                @form_two_reports.each do |data|
+                   @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period_end,summa_dec: data.#{x[2]}) 
+                end
+                @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).all
+                @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
+      end    
+    end
   end
 end
