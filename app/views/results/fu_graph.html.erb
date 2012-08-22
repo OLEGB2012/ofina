@@ -26,7 +26,7 @@
      </thead>
     <tbody>
        <tr>
-          <td colspan="3"><div class="pull-left">8. Коэффициент автономии (финансовой независимости)</div></td>
+          <td colspan="3"><div class="pull-left">16. Коэффициент автономии (финансовой независимости)</div></td>
        </tr>  
        <tr>
          <td><div id="Razdel_1" ></div></td>
@@ -35,7 +35,7 @@
           <td colspan="3"><a name="G2"></a> <div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">9. Коэффициент концентрации привлеченного капитала (финансовой зависимости)</div></td>
+          <td colspan="3"><div class="pull-left">17. Коэффициент концентрации привлеченного капитала (финансовой зависимости)</div></td>
        </tr> 
        <tr>
           <td><div id="Razdel_2"></div></td>
@@ -44,7 +44,7 @@
           <td colspan="3"><a name="G3"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">10. Коэффициент долгосрочной финансовой независимости</div></td>
+          <td colspan="3"><div class="pull-left">18. Коэффициент долгосрочной финансовой независимости</div></td>
        </tr> 
        <tr>
           <td> <div id="Razdel_3"></div></td>
@@ -53,7 +53,7 @@
          <td colspan="3"><a name="G4"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">11. Коэффициент соотношения заемных и собственных средств (капитализации)</div></td>
+          <td colspan="3"><div class="pull-left">19. Коэффициент соотношения заемных и собственных средств (капитализации)</div></td>
        </tr> 
        <tr>
           <td> <div id="Razdel_4"></div></td>
@@ -62,7 +62,7 @@
          <td colspan="3"><a name="G5"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">12. Коэффициент маневренности собственного капитала</div></td>
+          <td colspan="3"><div class="pull-left">20. Коэффициент маневренности собственного капитала</div></td>
        </tr> 
        <tr>
           <td> <div id="Razdel_5"></div></td>
@@ -74,16 +74,16 @@
   </table>
  <% end  %> 
     
-  <% unless @DiagType8_data.nil?%>
+  <% unless @DiagType16_data.nil?%>
     <%= raw Seer::visualize(
-      @DiagType8_data, 
+      @DiagType16_data, 
       :as => :line_chart,
       :in_element => 'Razdel_1',
       :series => {
         :series_label => 'name',
         :data_label   => 'rus_date_period',
         :data_method  => 'summa_dec',
-        :data_series  => @DiagType8_series
+        :data_series  => @DiagType16_series
       },
       :chart_options => {
         :legend_font_size => 10,
@@ -94,16 +94,16 @@
         :point_size => 5})%>
   <% end %>
   
-<% unless @DiagType9_data.nil?%>
+<% unless @DiagType17_data.nil?%>
     <%= raw Seer::visualize(
-      @DiagType9_data, 
+      @DiagType17_data, 
       :as => :line_chart,
       :in_element => 'Razdel_2',
       :series => {
         :series_label => 'name',
         :data_label   => 'rus_date_period',
         :data_method  => 'summa_dec',
-        :data_series  => @DiagType9_series
+        :data_series  => @DiagType17_series
       },
       :chart_options => {
         :legend_font_size => 10,
@@ -114,16 +114,16 @@
         :point_size => 5})%>
   <% end %>
 
-<% unless @DiagType10_data.nil?%>
+<% unless @DiagType18_data.nil?%>
     <%= raw Seer::visualize(
-      @DiagType10_data, 
+      @DiagType18_data, 
       :as => :line_chart,
       :in_element => 'Razdel_3',
       :series => {
         :series_label => 'name',
         :data_label   => 'rus_date_period',
         :data_method  => 'summa_dec',
-        :data_series  => @DiagType10_series
+        :data_series  => @DiagType18_series
       },
       :chart_options => {
         :legend_font_size => 10,
@@ -134,16 +134,16 @@
         :point_size => 5})%>
   <% end %>
 
-<% unless @DiagType11_data.nil?%>
+<% unless @DiagType19_data.nil?%>
     <%= raw Seer::visualize(
-      @DiagType11_data, 
+      @DiagType19_data, 
       :as => :line_chart,
       :in_element => 'Razdel_4',
       :series => {
         :series_label => 'name',
         :data_label   => 'rus_date_period',
         :data_method  => 'summa_dec',
-        :data_series  => @DiagType11_series
+        :data_series  => @DiagType19_series
       },
       :chart_options => {
         :legend_font_size => 10,
@@ -154,16 +154,16 @@
         :point_size => 5})%>
   <% end %>
 
-<% unless @DiagType12_data.nil?%>
+<% unless @DiagType20_data.nil?%>
     <%= raw Seer::visualize(
-      @DiagType12_data, 
+      @DiagType20_data, 
       :as => :line_chart,
       :in_element => 'Razdel_5',
       :series => {
         :series_label => 'name',
         :data_label   => 'rus_date_period',
         :data_method  => 'summa_dec',
-        :data_series  => @DiagType12_series
+        :data_series  => @DiagType20_series
       },
       :chart_options => {
         :legend_font_size => 10,

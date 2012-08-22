@@ -283,177 +283,177 @@ class CalculationsController < ApplicationController
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Уставный капитал",G2: "410", 
-                                              G3: @f1_beg.S410, G4: (@f1_beg.S410.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S410, G6: (@f1_end.S410.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S410, G4: (@f1_beg.S410.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S410, G6: (@f1_end.S410.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Неоплаченная часть уставного капитала",G2: "420", 
-                                              G3: @f1_beg.S420, G4: (@f1_beg.S420.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S420, G6: (@f1_end.S420.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S420, G4: (@f1_beg.S420.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S420, G6: (@f1_end.S420.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Собственные акции (доли в уставном капитале)",G2: "430", 
-                                              G3: @f1_beg.S430, G4: (@f1_beg.S430.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S430, G6: (@f1_end.S430.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S430, G4: (@f1_beg.S430.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S430, G6: (@f1_end.S430.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Резервный капитал",G2: "440", 
-                                              G3: @f1_beg.S440, G4: (@f1_beg.S440.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S440, G6: (@f1_end.S440.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S440, G4: (@f1_beg.S440.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S440, G6: (@f1_end.S440.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Добавочный капитал",G2: "450", 
-                                              G3: @f1_beg.S450, G4: (@f1_beg.S450.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S450, G6: (@f1_end.S450.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S450, G4: (@f1_beg.S450.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S450, G6: (@f1_end.S450.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Нераспределенная прибыль (непокрытый убыток)",G2: "460", 
-                                              G3: @f1_beg.S460, G4: (@f1_beg.S460.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S460, G6: (@f1_end.S460.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S460, G4: (@f1_beg.S460.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S460, G6: (@f1_end.S460.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Чистая прибыль(убыток) отчетного года",G2: "470", 
-                                              G3: @f1_beg.S470, G4: (@f1_beg.S470.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S470, G6: (@f1_end.S470.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S470, G4: (@f1_beg.S470.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S470, G6: (@f1_end.S470.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Целевое финансирование",G2: "480", 
-                                              G3: @f1_beg.S480, G4: (@f1_beg.S480.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S480, G6: (@f1_end.S480.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S480, G4: (@f1_beg.S480.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S480, G6: (@f1_end.S480.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 6, G1: "ИТОГО Раздел III",G2: "490", 
-                                              G3: @f1_beg.S490, G4: (@f1_beg.S490.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S490, G6: (@f1_end.S490.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S490, G4: (@f1_beg.S490.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S490, G6: (@f1_end.S490.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 1, G1: "Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА")
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Долгосрочные кредиты и займы",G2: "510", 
-                                              G3: @f1_beg.S510, G4: (@f1_beg.S510.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S510, G6: (@f1_end.S510.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S510, G4: (@f1_beg.S510.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S510, G6: (@f1_end.S510.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Долгосрочные обязательства по лизинговым платежам",G2: "520", 
-                                              G3: @f1_beg.S520, G4: (@f1_beg.S520.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S520, G6: (@f1_end.S520.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S520, G4: (@f1_beg.S520.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S520, G6: (@f1_end.S520.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Отложенные налоговые обязательства",G2: "530", 
-                                              G3: @f1_beg.S530, G4: (@f1_beg.S530.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S530, G6: (@f1_end.S530.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S530, G4: (@f1_beg.S530.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S530, G6: (@f1_end.S530.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Доходы будущих периодов",G2: "540", 
-                                              G3: @f1_beg.S540, G4: (@f1_beg.S540.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S540, G6: (@f1_end.S540.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S540, G4: (@f1_beg.S540.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S540, G6: (@f1_end.S540.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Резервы предстоящих платежей",G2: "550", 
-                                              G3: @f1_beg.S550, G4: (@f1_beg.S550.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S550, G6: (@f1_end.S550.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S550, G4: (@f1_beg.S550.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S550, G6: (@f1_end.S550.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Прочие долгосрочные обязательства",G2: "560", 
-                                              G3: @f1_beg.S560, G4: (@f1_beg.S560.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S560, G6: (@f1_end.S560.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S560, G4: (@f1_beg.S560.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S560, G6: (@f1_end.S560.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 6, G1: "ИТОГО Раздел IV",G2: "590", 
-                                              G3: @f1_beg.S590, G4: (@f1_beg.S590.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S590, G6: (@f1_end.S590.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S590, G4: (@f1_beg.S590.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S590, G6: (@f1_end.S590.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 1, G1: "Раздел V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА")
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Краткосрочные кредиты и займы",G2: "610", 
-                                              G3: @f1_beg.S610, G4: (@f1_beg.S610.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S610, G6: (@f1_end.S610.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S610, G4: (@f1_beg.S610.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S610, G6: (@f1_end.S610.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Краткосрочная часть долгосрочных обязательств",G2: "620", 
-                                              G3: @f1_beg.S620, G4: (@f1_beg.S620.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S620, G6: (@f1_end.S620.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S620, G4: (@f1_beg.S620.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S620, G6: (@f1_end.S620.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 3, G1: "Краткосрочная кредиторская задолженность",G2: "630", 
-                                              G3: @f1_beg.S630, G4: (@f1_beg.S630.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S630, G6: (@f1_end.S630.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S630, G4: (@f1_beg.S630.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S630, G6: (@f1_end.S630.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 4, G1: "В том числе:")
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- поставщикам, подрядчикам, исполнителям",G2: "631", 
-                                              G3: @f1_beg.S631, G4: (@f1_beg.S631.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S631, G6: (@f1_end.S631.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S631, G4: (@f1_beg.S631.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S631, G6: (@f1_end.S631.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- по авансам полученным",G2: "632", 
-                                              G3: @f1_beg.S632, G4: (@f1_beg.S632.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S632, G6: (@f1_end.S632.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S632, G4: (@f1_beg.S632.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S632, G6: (@f1_end.S632.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- по налогам и сборам",G2: "633", 
-                                              G3: @f1_beg.S633, G4: (@f1_beg.S633.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S633, G6: (@f1_end.S633.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S633, G4: (@f1_beg.S633.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S633, G6: (@f1_end.S633.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- по социальному страхованию и обеспечению",G2: "634", 
-                                              G3: @f1_beg.S634, G4: (@f1_beg.S634.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S634, G6: (@f1_end.S634.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S634, G4: (@f1_beg.S634.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S634, G6: (@f1_end.S634.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- по оплате труда",G2: "635", 
-                                              G3: @f1_beg.S635, G4: (@f1_beg.S635.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S635, G6: (@f1_end.S635.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S635, G4: (@f1_beg.S635.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S635, G6: (@f1_end.S635.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- по лизинговым платежам",G2: "636", 
-                                              G3: @f1_beg.S636, G4: (@f1_beg.S636.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S636, G6: (@f1_end.S636.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S636, G4: (@f1_beg.S636.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S636, G6: (@f1_end.S636.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- собственнику имущества (учредителям, участникам)",G2: "637", 
-                                              G3: @f1_beg.S637, G4: (@f1_beg.S637.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S637, G6: (@f1_end.S637.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S637, G4: (@f1_beg.S637.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S637, G6: (@f1_end.S637.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 5, G1: "- прочим кредиторам",G2: "638", 
-                                              G3: @f1_beg.S638, G4: (@f1_beg.S638.to_f/@f1_beg.S300)*100,
-                                              G5: @f1_end.S638, G6: (@f1_end.S638.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S638, G4: (@f1_beg.S638.to_f/@f1_beg.S700)*100,
+                                              G5: @f1_end.S638, G6: (@f1_end.S638.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Обязательства, предназначенные для реализации",G2: "640", 
-                                              G3: @f1_beg.S640, G4: (@f1_beg.S640.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S640, G6: (@f1_end.S640.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S640, G4: (@f1_beg.S640.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S640, G6: (@f1_end.S640.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Доходы будущих периодов",G2: "650", 
-                                              G3: @f1_beg.S650, G4: (@f1_beg.S650.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S650, G6: (@f1_end.S650.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S650, G4: (@f1_beg.S650.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S650, G6: (@f1_end.S650.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Резервы предстоящих платежей",G2: "660", 
-                                              G3: @f1_beg.S660, G4: (@f1_beg.S660.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S660, G6: (@f1_end.S660.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S660, G4: (@f1_beg.S660.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S660, G6: (@f1_end.S660.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 2, G1: "Прочие краткосрочные обязательства",G2: "670", 
-                                              G3: @f1_beg.S670, G4: (@f1_beg.S670.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S670, G6: (@f1_end.S670.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S670, G4: (@f1_beg.S670.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S670, G6: (@f1_end.S670.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 6, G1: "ИТОГО Раздел V",G2: "690", 
-                                              G3: @f1_beg.S690, G4: (@f1_beg.S690.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S690, G6: (@f1_end.S690.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S690, G4: (@f1_beg.S690.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S690, G6: (@f1_end.S690.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 7, G1: "БАЛАHС (490+590+690)",G2: "700", 
-                                              G3: @f1_beg.S700, G4: (@f1_beg.S700.to_f/@f1_beg.S300)*100, 
-                                              G5: @f1_end.S700, G6: (@f1_end.S700.to_f/@f1_end.S300)*100)
+                                              G3: @f1_beg.S700, G4: (@f1_beg.S700.to_f/@f1_beg.S700)*100, 
+                                              G5: @f1_end.S700, G6: (@f1_end.S700.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
       flash[:success]="Расчёт показателей выполнен ..."
     else
