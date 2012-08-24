@@ -64,7 +64,7 @@ class ResultsController < ApplicationController
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(1,7).destroy_all
       # ... и заполняем ...
       # ################################################################
-      @Arr=[["1", "Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ", "S190"],
+      @Arr_abs=[["1", "Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ", "S190"],
             ["1", "Раздел II. КРАТКОСРОЧНЫЕ АКТИВЫ", "S290"],
             ["2", "Раздел III. СОБСТВЕННЫЙ КАПИТАЛ", "S490"],
             ["2", "Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА", "S590"],
@@ -107,7 +107,7 @@ class ResultsController < ApplicationController
             ["7", "Резервы предстоящих платежей", "S660"],
             ["7", "Прочие краткоср-ые обяз-ства", "S670"]]
             
-      @Arr.each do |x|       
+      @Arr_abs.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
@@ -129,7 +129,7 @@ class ResultsController < ApplicationController
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(8,14).destroy_all
       # ... и заполняем ...
       # ################################################################
-      @Arr=[["8", "Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ",         "(data.S190.to_f/data.S300)*100"],
+      @Arr_udel=[["8", "Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ",    "(data.S190.to_f/data.S300)*100"],
             ["8", "Раздел II. КРАТКОСРОЧНЫЕ АКТИВЫ",       "(data.S290.to_f/data.S300)*100"],
             ["9", "Раздел III. СОБСТВЕННЫЙ КАПИТАЛ",       "(data.S490.to_f/data.S300)*100"],
             ["9", "Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА", "(data.S590.to_f/data.S700)*100"],
@@ -171,7 +171,7 @@ class ResultsController < ApplicationController
             ["14", "Доходы будущих периодов",              "(data.S650.to_f/data.S700)*100"],
             ["14", "Резервы предстоящих платежей",         "(data.S660.to_f/data.S700)*100"],
             ["14", "Прочие краткоср-ые обяз-ства",         "(data.S670.to_f/data.S700)*100"]]
-      @Arr.each do |x|       
+      @Arr_udel.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
@@ -184,10 +184,10 @@ class ResultsController < ApplicationController
                 @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
       end
       #################################################################################################
-      # Готовим таблицу для круговых диаграм по тому же массиву @Arr, тип - 15xxx ... и заполняем поля ...
+      # Готовим таблицу для круговых диаграм по тому же массиву @Arr_udel, тип - 15xxx ... и заполняем поля ...
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(15000,99999).destroy_all
        @form_one_reports.each do |data|              
-          @Arr.each do |x|
+          @Arr_udel.each do |x|
              @nDT=x[0].to_i
              result = case @nDT
                 when (10..11); 1
@@ -232,13 +232,13 @@ class ResultsController < ApplicationController
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(16,20).destroy_all
       # ... и заполняем ...
       # ################################################################
-      @Arr=[["16", "Автономия", "Kfnez"],
+      @Arr_fu=[["16", "Автономия", "Kfnez"],
             ["17", "Концентрация привлеченного капитала", "Kfzav"],
             ["18", "Долгосрочная финансовая независимость", "Kdfnez"],
             ["19", "Соотношение заемных и собственных средств", "Kcap"],
             ["20", "Маневренность собственного капитала", "Kman"]]
             
-      @Arr.each do |x|       
+      @Arr_fu.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
@@ -266,13 +266,13 @@ class ResultsController < ApplicationController
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(21,25).destroy_all
       # ... и заполняем ...
       ######################################################
-      @Arr=[["21", "Текущая ликвидность (K1)", "K1"],
+      @Arr_lp=[["21", "Текущая ликвидность (K1)", "K1"],
             ["22", "Абсолютная ликвидность", "Kabsl"],
             ["23", "Критическая (промежуточная) ликвидность", "Kkrl"],
             ["24", "Обеспеченность собственными оборотными средствами (K2)", "K2"],
             ["25", "Обеспеченность финансовых обязательств активами (K3)", "K3"]]
             
-      @Arr.each do |x|       
+      @Arr_lp.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
@@ -300,14 +300,14 @@ class ResultsController < ApplicationController
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(26,31).destroy_all
       # ... и заполняем ...
       ######################################################
-      @Arr=[["26", "Общая оборачиваемость капитала (деловая активность)", "Kobk"],
+      @Arr_da=[["26", "Общая оборачиваемость капитала (деловая активность)", "Kobk"],
             ["27", "Оборачиваемость оборотных средств (краткосрочных активов)", "Kobs"],
             ["28", "Оборачиваемость запаса сырья, материалов и полуфабрикатов", "Kobzs"],
             ["29", "Оборачиваемость готовой продукции", "Kobgp"],
             ["30", "Оборачиваемость дебиторской задолженности", "Kobdz"],
             ["31", "Оборачиваемость кредиторской задолженности", "Kobkz"]]
             
-      @Arr.each do |x|       
+      @Arr_da.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
@@ -335,7 +335,7 @@ class ResultsController < ApplicationController
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(32,38).destroy_all
       # ... и заполняем ...
       ######################################################
-      @Arr=[["32", "Рентабельность продаж", "Krenprod"],
+      @Arr_ren=[["32", "Рентабельность продаж", "Krenprod"],
             ["33", "Рентабельность активов", "Krenact"],
             ["34", "Рентабельность собственного капитала", "Krensk"],
             ["35", "Рентабельность производственных затрат, составляющих себестоимость", "Krenpz"],
@@ -343,7 +343,7 @@ class ResultsController < ApplicationController
             ["37", "Рентабельность общих расходов коммерческой организации", "Krenor"],
             ["38", "Рентабельность расходов, обусловивших получение чистой прибыли", "Krenchp"]]
             
-      @Arr.each do |x|       
+      @Arr_ren.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
                                      diag_type: #{x[0]}, 
