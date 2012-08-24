@@ -171,7 +171,6 @@ class ResultsController < ApplicationController
             ["14", "Доходы будущих периодов",              "(data.S650.to_f/data.S700)*100"],
             ["14", "Резервы предстоящих платежей",         "(data.S660.to_f/data.S700)*100"],
             ["14", "Прочие краткоср-ые обяз-ства",         "(data.S670.to_f/data.S700)*100"]]
-            
       @Arr.each do |x|       
           eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
                                      date_period_end: @enterprise.rab_date_end, 
@@ -183,7 +182,39 @@ class ResultsController < ApplicationController
                 end
                 @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).all
                 @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
-      end    
+      end
+      #################################################################################################
+      # Готовим таблицу для круговых диаграм по тому же массиву @Arr, тип - 15xxx ... и заполняем поля ...
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(15000,99999).destroy_all
+       @form_one_reports.each do |data|              
+          @Arr.each do |x|
+             @nDT=x[0].to_i
+             result = case @nDT
+                when (10..11); 1
+                when (12..14); 2
+                else; 0
+             end
+             @nVar=15000+result             
+             @BR_new_rec=BalanseRow.create!(date_period_beg: data.date_period, 
+                                            date_period_end: data.date_period, 
+                                            diag_type: @nVar, 
+                                            name: x[1],
+                                            summa_dec: eval(x[2]))
+             @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+             eval("@DiagType_#{@nVar}_#{data.date_period.to_s.gsub("-","_")}_data=
+                          BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{@nVar}).
+                             WorkPeriod(data.date_period,data.date_period).order("+'"'+"id"+'"'+").all")
+             eval("@Dates=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{@nVar}).
+                             WorkPeriod(@enterprise.rab_date_beg,data.date_period).order("+'"'+"date_period_end"+'"'+").
+                               select("+'"'+"date_period_end"+'"'+").group("+'"'+"date_period_end"+'"'+")")
+          end                
+      end
+      # массивы для хранения наборов данных для круговых диаграмм: каждый элемент - массив полей на определённую дату...
+      @Arr_act=Array.new 
+      @Arr_pas=Array.new 
+      # для хранения айдишников для диаграмм по датам: каждый элемент - для конкретной даты ...  
+      @Arr_act_id=Array.new 
+      @Arr_pas_id=Array.new  
     end
   end
   ###########################################################################

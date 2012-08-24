@@ -164,9 +164,87 @@
        </tr>
     </tbody>   
   </table>
- <% end  %> 
 
- <%####################################################################################################################%>
+<%#############################################################################################################################%>
+<table class="table table-bordered table-condensed">
+     <thead>
+      <tr>        
+        <th colspan="3"><a name="G15"></a> <div class="pagination-centered"  style="font-size: 15px">Вертикальный Анализ (по удельным весам статей)</div></th>
+      </tr>
+     </thead>
+    <tbody>
+      <% @Dates.each do |date_line| %>
+         <%  @Arr_act << eval("@DiagType_15001_#{date_line.date_period_end.to_s.gsub('-','_')}_data") %>
+         <%  @Arr_pas << eval("@DiagType_15002_#{date_line.date_period_end.to_s.gsub('-','_')}_data") %>
+         <%  @Arr_act_id << @act_id="Pie_1_"+date_line.date_period_end.to_s.gsub('-','_') %>
+         <%  @Arr_pas_id << @pas_id="Pie_2_"+date_line.date_period_end.to_s.gsub('-','_') %>
+         <tr>
+           <td><div class="pagination-centered" style="line-height: 250px; vertical-align:middle;"><%= Russian::strftime(date_line.date_period_end,"%d %B %Y г.") %></div></td>
+           <td><div class='pagination-centered' id="<%=@act_id%>"></div></td>
+           <td><div class="pagination-centered" id="<%=@pas_id%>" ></div></td>
+         </tr>         
+      <% end %>    
+      <tr>
+        <td colspan="3"><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
+      </tr>
+    </tbody>   
+  </table>
+
+ <% end  %>
+
+ <%#############################################################################################################%>
+ <%# Для круговых диаграмм ...%>
+<% @Arr_act.each_with_index do |act,acti| %> 
+  <%= raw  Seer::visualize(
+           act, 
+           :as => :pie_chart,
+           :in_element => @Arr_act_id[acti],
+           :series => {
+                :series_label => 'name',
+                :data_method =>  'summa_dec'
+           },
+      :chart_options => { 
+      :height => 250,
+      :width => 250,
+      :axis_font_size => 11,
+      :title => 'Активы',
+      :legend => 'none',
+      :tooltip_font_size => 14,
+      :colors => ['#800000','#FF0000','#FFA500','#FFFF00',
+                  '#808000','#008000','#800080','#FF00FF',
+                  '#00FF00','#008080','#008080','#0000FF',
+                  '#000080','#000000','#808080','#C0C0C0'],
+      :point_size => 5,
+      :is_3_d => true
+    })%>
+<% end %>
+
+<% @Arr_pas.each_with_index do |pas,pasi| %>
+  <%= raw  Seer::visualize(
+           pas, 
+           :as => :pie_chart,
+           :in_element => @Arr_pas_id[pasi],
+           :series => {
+                :series_label => 'name',
+                :data_method =>  'summa_dec'
+           },
+      :chart_options => { 
+      :height => 250,
+      :width => 250,
+      :axis_font_size => 11,
+      :title => 'Пассивы',
+      :legend => 'none',
+      :tooltip_font_size => 14,
+      :colors => ['#800000','#FA8072','#FF0000','#FF1493','#808000',
+                  '#008000','#800080','#FF00FF','#00FF00','#4682B4',
+                  '#008080','#0000FF','#000080','#000000','#808080',
+                  '#C0C0C0','#FFA500','#FFFF00','#F0E68C','#BC8F8F','#A52A2A'],
+      :point_size => 5,
+      :is_3_d => true
+    })%>
+<% end %>
+
+<%####################################################################################################################%>
  <%# Диаграммы в абсолютных значениях #%>
   <% unless @DiagType1_data.nil? %>  
     <%= raw Seer::visualize(
