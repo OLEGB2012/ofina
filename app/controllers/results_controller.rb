@@ -199,7 +199,8 @@ class ResultsController < ApplicationController
                                             date_period_end: data.date_period, 
                                             diag_type: @nVar, 
                                             name: x[1],
-                                            summa_dec: eval(x[2]))
+                                            summa: eval(x[2])==0?1:eval(x[2])*data.S300/100)  
+                                            ## 1 - эта фича важна, чтобы цвета одинаково выбирались для одних и тех же сегментов диаграммы...
              @BR_rec=@enterprise.balanse_rows << @BR_new_rec
              eval("@DiagType_#{@nVar}_#{data.date_period.to_s.gsub("-","_")}_data=
                           BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{@nVar}).
