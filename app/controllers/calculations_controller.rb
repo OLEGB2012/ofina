@@ -1,16 +1,14 @@
 # encoding: utf-8
 class CalculationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :get_enterprise
   
-  # здесь параметры берём из формата ?id=N, а не из пути RESTFull архитектуры resourse/N/action/...   
   def prompt    
-    @enterprise=Enterprise.find_by_id(params[:id])
+    
   end
   
   def run
     #######################################################################################
     # 1 - считаем показатели на основе формы 1 (баланса)
-    @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
     @form_one_reports.each do |form_one_report|
       # Считаем показатели ...
@@ -461,5 +459,12 @@ class CalculationsController < ApplicationController
     end   
     
     redirect_to enterprise_path(params[:id])
-  end  
+  end
+
+  private 
+  # здесь параметры берём из формата ?id=N, а не из пути RESTFull архитектуры resourse/N/action/...
+  def get_enterprise
+    @enterprise=Enterprise.find_by_id(params[:id])
+  end
+  
 end

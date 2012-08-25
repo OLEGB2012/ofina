@@ -1,20 +1,18 @@
 # encoding: utf-8
 class ResultsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :get_enterprise
   
   def index
-    @enterprise=Enterprise.find_by_id(params[:id])
+    
   end
   ###########################################################################
   # Аналитический баланс (таблично)
   def ab_table
-    @enterprise=Enterprise.find_by_id(params[:id])
     @AB=AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("id")
   end
   ###########################################################################
   # Показатели финансовой устойчивости (таблично)
   def fu_table
-    @enterprise=Enterprise.find_by_id(params[:id])
     @FU=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
     @FU_MIN_Kfzav =@FU.minimum(:Kfzav)
     @FU_MAX_Kdfnez=@FU.maximum(:Kdfnez)
@@ -22,13 +20,11 @@ class ResultsController < ApplicationController
   ###########################################################################
   # Показатели ликвидности и платёжеспособности (таблично)
   def lp_table
-    @enterprise=Enterprise.find_by_id(params[:id])
     @LP=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")  
   end
   ###########################################################################
   # Показатели деловой активности (таблично)
   def da_table
-    @enterprise=Enterprise.find_by_id(params[:id])
     @DA=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
     @DA_MAX_Kobk =@DA.maximum(:Kobk)
     @DA_MAX_Kobs =@DA.maximum(:Kobs)
@@ -40,7 +36,6 @@ class ResultsController < ApplicationController
   ###########################################################################
   # Показатели рентабельности (таблично)
   def ren_table
-   @enterprise=Enterprise.find_by_id(params[:id])
    @REN=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
    @REN_MAX_Krenprod=@REN.maximum(:Krenprod)
    @REN_MAX_Krenact =@REN.maximum(:Krenact)
@@ -53,7 +48,6 @@ class ResultsController < ApplicationController
   ###########################################################################
   # "аля" Аналитический баланс (графики) из формы 1 баланса.
   def ab_graph      
-    @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике статей баланса (в абсолютных значениях)...
@@ -221,7 +215,6 @@ class ResultsController < ApplicationController
   ###########################################################################
   # Показатели финансовой устойчивости (графики) из формы 1 баланса
   def fu_graph
-    @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
@@ -255,7 +248,6 @@ class ResultsController < ApplicationController
   ###########################################################################
   # Показатели ликвидности и платёжеспособности (графики)
   def lp_graph
-    @enterprise=Enterprise.find_by_id(params[:id])
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
@@ -289,7 +281,6 @@ class ResultsController < ApplicationController
   ###########################################################################
   # Показатели деловой активности (графики)
   def da_graph
-    @enterprise=Enterprise.find_by_id(params[:id])
     @form_two_reports=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
@@ -324,7 +315,6 @@ class ResultsController < ApplicationController
   ###########################################################################
   # Показатели рентабельности (графики)
   def ren_graph
-    @enterprise=Enterprise.find_by_id(params[:id])
     @form_two_reports=FormTwoReport.FormTwoEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period_end")
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
@@ -356,5 +346,10 @@ class ResultsController < ApplicationController
                 @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")        
       end    
     end
+  end
+  
+  private
+  def get_enterprise
+    @enterprise=Enterprise.find_by_id(params[:id])
   end
 end

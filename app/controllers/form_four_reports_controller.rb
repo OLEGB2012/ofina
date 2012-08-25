@@ -1,15 +1,13 @@
 # encoding: utf-8
 class FormFourReportsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :get_enterprise
   
   def index
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_four_reports=FormFourReport.FormFourEnterpriseFor(params[:enterprise_id]).Sorted.paginate(page: params[:page])
     @OrgName=@enterprise.org_name
   end
   
   def show
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_four_report=FormFourReport.find(params[:id])    
     @OrgName=@enterprise.org_name
     @DatePeriod_beg=@form_four_report.date_period_beg
@@ -21,13 +19,11 @@ class FormFourReportsController < ApplicationController
   end
   
   def new
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_four_report=@enterprise.form_four_reports.build
     @OrgName=@enterprise.org_name    
   end
   
   def create
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_four_report=@enterprise.form_four_reports.build(params[:form_four_report])
     if @form_four_report.save
       flash[:notice]="Отчёт создан."
@@ -38,13 +34,11 @@ class FormFourReportsController < ApplicationController
   end
   
   def edit
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_four_report=@enterprise.form_four_reports.find_by_id(params[:id])
     @OrgName=@enterprise.org_name    
   end
 
   def update
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
     @form_four_report=@enterprise.form_four_reports.find_by_id(params[:id])
     if @form_four_report.update_attributes(params[:form_four_report])
       flash[:notice]="Отчёт обновлен."
@@ -58,11 +52,15 @@ class FormFourReportsController < ApplicationController
     @form_four_report=FormFourReport.find(params[:id])
   end
     
-  def destroy
-    @enterprise=Enterprise.find_by_id(params[:enterprise_id])
+  def destroy    
     @form_four_report=@enterprise.form_four_reports.find_by_id(params[:id])
     @form_four_report.destroy
     flash[:notice]="Отчёт удалён."
     redirect_to enterprise_form_four_reports_path
+  end
+  
+  private
+  def get_enterprise
+    @enterprise=Enterprise.find_by_id(params[:enterprise_id])    
   end
 end
