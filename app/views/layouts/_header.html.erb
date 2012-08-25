@@ -7,9 +7,9 @@
       <%= link_to "Онлайн Финансовый Анализ", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "На главную",root_path %></li>
-          <li><%= link_to "Документация",help_path %></li>
+          <li><%= link_to "На главную",root_path %></li>          
           <% if user_signed_in? %>
+            <li><%= link_to "Документация",help_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.username %> <b class="caret"></b>

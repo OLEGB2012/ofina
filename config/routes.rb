@@ -21,8 +21,8 @@ Ofina::Application.routes.draw do
   match '/results_lp_graph'  , to: 'results#lp_graph'
   match '/results_da_table'  , to: 'results#da_table'
   match '/results_da_graph'  , to: 'results#da_graph'
-  match '/results_ren_table'  , to: 'results#ren_table'
-  match '/results_ren_graph'  , to: 'results#ren_graph'
+  match '/results_ren_table' , to: 'results#ren_table'
+  match '/results_ren_graph' , to: 'results#ren_graph'
   
   
   resources :enterprises do
