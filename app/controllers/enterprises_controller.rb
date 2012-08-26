@@ -3,7 +3,11 @@ class EnterprisesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @enterprises=Enterprise.UserAreaFor(current_user.id).paginate(page: params[:page])    
+    unless current_user.try(:admin?)
+      @enterprises=Enterprise.UserAreaFor(current_user.id).paginate(page: params[:page])
+    else
+      @enterprises=Enterprise.paginate(page: params[:page])
+    end  
   end
   
   def show

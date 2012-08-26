@@ -116,7 +116,7 @@ class CalculationsController < ApplicationController
     # В интервале дат должны иметься отчёты!))
     unless @f1_beg.nil? and @f1_end.nil? 
       # Почистим целевую таблицу от предыдущего аналогичного расчёта
-      AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).delete_all
+      AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).destroy_all
 
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
                                               row_type: 0, G1: "Активы")

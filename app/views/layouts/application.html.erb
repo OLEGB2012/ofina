@@ -24,11 +24,11 @@
 
             <% if user_signed_in? %>
               <%# тут ещё добавить логику для пользователя, если он админ ... %>
-              <%  if current_user.admin %>
-                <% provide(:title, 'Административная Область') %>
-          
-              <% else %>
-                <% provide(:title, 'Пользовательская Область') %>
+                <%#  if current_user.admin %>
+                   <%# provide(:title, 'Административная Область') %>
+                <%# else %>
+                   <%# provide(:title, 'Пользовательская Область') %>
+                <%# end %>
                 <div class="container-fluid">
                   <div class="row-fluid">
                     <div class="span3">  
@@ -43,7 +43,7 @@
                     </div>
                   </div>  
                 </div>
-              <% end %>
+              
             <% else %>
               <% provide(:title, 'Гостевая Область') %>
               <% if content_for?(:guest_area) %>  

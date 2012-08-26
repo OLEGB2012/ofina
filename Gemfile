@@ -6,6 +6,8 @@ gem 'simple_form'                  # https://github.com/plataformatec/simple_for
 gem 'seer'                         # https://github.com/Bantik/seer
 
 gem 'active_scaffold'
+gem 'rails_admin'                  # https://github.com/sferik/rails_admin 
+                                   # https://github.com/gregbell/active_admin/wiki/How-to-work-with-will_paginate
 
 gem 'validates_timeliness' # https://github.com/adzap/validates_timeliness/
 

@@ -4,11 +4,31 @@ class ApplicationController < ActionController::Base
   
   # Проверим, чтобы id-предприятия в Url-параметрах соответствовало текущему авторизованному пользователю. 
   # Если нет, то направлять на список предприятий текущего пользователя...
-  before_filter :enterprise_belongs_to_sing_in_user?
+  before_filter :enterprise_belongs_to_sing_in_user?, unless: :is_admin? # админу можно всё, т.е. переходить на все предприятия ...)))
+  before_filter :reload_rails_admin, if: :rails_admin_path?
   
   private
   
-  def enterprise_belongs_to_sing_in_user?    
+#################################################
+  def is_admin? # функция-затычка для фильтра ...
+    current_user.try(:admin?)
+  end
+##########################################################################################
+  def reload_rails_admin # Для автоперегрузки сведений по моделям во время девелопмента...
+    models = ActiveRecord::Base.models
+    models.each do |m|
+      RailsAdmin::Config.reset_model(m)
+    end
+    RailsAdmin::Config::Actions.reset
+
+    load("#{Rails.root}/config/initializers/rails_admin.rb")
+  end
+
+  def rails_admin_path?
+    controller_path =~ /rails_admin/ && Rails.env == "development"
+  end
+#########################################################################################################################
+  def enterprise_belongs_to_sing_in_user?    # Пользователям не-админам должны ограничит доступ к другим предприятиям ....
     if current_user.nil?
       #      flash[:error] = "Пользователя нет..."
     else
@@ -47,8 +67,8 @@ class ApplicationController < ActionController::Base
       end            
     end    
   end
-  
-  def check_belong(checked_ent_id)
+############################################################################################# 
+  def check_belong(checked_ent_id)  # работает в связке с enterprise_belongs_to_sing_in_user?
     @enterprise=Enterprise.find_by_id(checked_ent_id.to_i)
     if not @enterprise.nil?
       if @enterprise.user_id==current_user.id

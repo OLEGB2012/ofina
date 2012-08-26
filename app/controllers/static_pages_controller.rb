@@ -3,7 +3,11 @@ class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
       @current_year            = Time.now.year
-      @enterprises             = Enterprise.UserAreaFor(current_user.id)
+      unless current_user.try(:admin?)
+         @enterprises = Enterprise.UserAreaFor(current_user.id)
+      else
+         @enterprises = Enterprise.all
+      end  
       @enterprise_count        = @enterprises.count
       @form_one_reports_count  = 0
       @form_two_reports_count  = 0

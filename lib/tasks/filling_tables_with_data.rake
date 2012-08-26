@@ -12,7 +12,7 @@ namespace :db do
 end
 
 def make_form_four_report
-  FormFourReport.delete_all
+  FormFourReport.destroy_all
   
   new_form4 = FormFourReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31', 
                   S021: 176345, S022: 0, S023: 0, S024: 4756, S031: 82997, S032: 32328, S033: 13178, 
@@ -34,7 +34,7 @@ def make_form_four_report
 end
 
 def make_form_three_report
-  FormThreeReport.delete_all
+  FormThreeReport.destroy_all
 
   # '110' => 'Остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year.end_of_year),"%d %B %Y").to_s+' года'
   # '140' => 'Cкорректированный остаток на '+Russian::strftime((('2012-03-31').to_date.prev_year.end_of_year),"%d %B %Y").to_s+' года' 
@@ -96,7 +96,7 @@ def make_form_three_report
 end
 
 def make_form_two_report
-  FormTwoReport.delete_all
+  FormTwoReport.destroy_all
   
   new_form2 = FormTwoReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31', 
                   S010: 229282, S020: 143297, S040: 29166, S050: 2100, 
@@ -120,7 +120,7 @@ def make_form_two_report
 end
 
 def make_form_one_report
-  FormOneReport.delete_all
+  FormOneReport.destroy_all
   
   new_form1 = FormOneReport.create!(date_period: '2012-03-31', 
                                     S110:  816528, S120:   6862, S131:       0, 
@@ -172,7 +172,7 @@ def make_form_one_report
 end
 
 def make_enterprises
-  Enterprise.delete_all
+  Enterprise.destroy_all
   
   new_enterprise = Enterprise.create!(org_name: 'ЁКЛМЭНЭ-холдинг', 
                                       uch_nomer_plat: '123456789',
@@ -282,7 +282,7 @@ def make_enterprises
 end
 
 def make_users
-  User.delete_all
+  User.destroy_all
   admin = User.create(username: "Example User", 
                       email: "example@railstutorial.org", 
                       password: "foobar", 
