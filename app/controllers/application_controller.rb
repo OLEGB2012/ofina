@@ -7,9 +7,8 @@ class ApplicationController < ActionController::Base
   before_filter :enterprise_belongs_to_sing_in_user?, unless: :is_admin? # админу можно всё, т.е. переходить на все предприятия ...)))
   before_filter :reload_rails_admin, if: :rails_admin_path?
   
-  private
   
-#################################################
+################################################
   def is_admin? # функция-затычка для фильтра ...
     current_user.try(:admin?)
   end

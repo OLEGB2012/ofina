@@ -2,7 +2,7 @@ Ofina::Application.routes.draw do
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   
-  devise_for :users 
+  devise_for :users, :controllers => {registrations: 'registrations'}
   root to: 'static_pages#home'  
   
   match '/help'              , to: 'static_pages#help'
