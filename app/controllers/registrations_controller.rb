@@ -1,3 +1,4 @@
+# encoding: utf-8
 class  RegistrationsController < Devise::RegistrationsController
   # The path used after sign up. You need to overwrite this method
   # in your own RegistrationsController.
