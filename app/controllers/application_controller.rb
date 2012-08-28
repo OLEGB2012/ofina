@@ -8,6 +8,18 @@ class ApplicationController < ActionController::Base
   append_before_filter  :reload_rails_admin, if: :rails_admin_path?
     
 
+#######################################################################
+# Проверка для контроллеров по защите доступа для не активных аккаунтов
+def check_activation
+  unless current_user.nil?
+    if current_user.is_active
+      true
+    else  
+      flash[:alert] = "Учётная запись пользователя #{current_user.username} не активна ..."
+      redirect_to root_path
+    end
+  end 
+end  
 ################################################
   def is_admin? # функция-затычка для фильтра ...
     current_user.try(:admin?)

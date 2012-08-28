@@ -1,35 +1,35 @@
 <footer class="footer">
   <small>
     <div class="container">
- <% unless current_user.nil? %>
-      <div class="span1">
-        <% if current_user.is_active %>
-          <%= image_tag("User Active 64.png") %>
-         <% else %>
-          <%= image_tag("User UnActive 64.png") %>
-         <% end %>
-      </div>
-      <div class="row">        
-        <div class="span7">
-          <%@result = case current_user.get_balanse%>
-                   <%when (0..25)  ; "progress-danger"%>
-                   <%when (26..50) ; "progress-warning"%>
-                   <%when (51..75) ; "progress-info"%>
-                   <%when (76..100); "progress-success"%>
-                 <%end%>
+      <% unless current_user.nil? %>
+        <div class="span1">
           <% if current_user.is_active %>
-            <h5>До конца активации имеется <%= distance_of_time_in_words(Time.now,current_user.activation_end)%>.
-                Последний день: <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года</h5>
+            <%= image_tag("User Active 64.png") %>
           <% else %>
-            <h5>В настоящее время учётная запись не активна. 
-                Последний день: <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года</h5>
+            <%= image_tag("User UnActive 64.png") %>
           <% end %>
-          <div class="progress <%= @result%>">
-            <div class="bar" style="width: <%= current_user.get_balanse.to_s+'%' %>;"></div>
+        </div>
+        <div class="row">        
+          <div class="span7">
+            <%@result = case current_user.get_balanse%>
+            <%when (0..25)  ; "progress-danger"%>
+            <%when (26..50) ; "progress-warning"%>
+            <%when (51..75) ; "progress-info"%>
+            <%when (76..100); "progress-success"%>
+            <%end%>
+            <% if current_user.is_active %>
+              <h5>До конца активации - <%= distance_of_time_in_words(Time.now,current_user.activation_end)%>.
+                  Последний день: <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года.</h5>
+              <%= number_with_precision(current_user.get_balanse, precision: 0).to_s+'%'%>
+              <div class="progress <%= (current_user.is_active)?@result:'progress-danger'%>">
+                <div class="bar" style="width: <%= current_user.get_balanse.to_s+'%' %>;"></div>
+              </div>              
+            <% else %>
+              <h5>В настоящее время учётная запись не активна (c <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года).</h5>
+              <div class="progress progress-danger"></div>
+            <% end %>          
           </div>
-        </div>        
-        <%= number_with_precision(current_user.get_balanse, precision: 0).to_s+'%'%>
-<% end %>
+        <% end %>
         <nav>
           <ul>
             <li><%= link_to "О проекте", about_path %></li>

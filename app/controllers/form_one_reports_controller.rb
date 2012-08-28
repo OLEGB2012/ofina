@@ -1,6 +1,6 @@
 # encoding: utf-8
 class FormOneReportsController < ApplicationController
-  before_filter :authenticate_user!, :get_enterprise
+  before_filter :authenticate_user!, :check_activation, :get_enterprise
   
   def index
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:enterprise_id]).Sorted.paginate(page: params[:page])

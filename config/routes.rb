@@ -24,7 +24,7 @@ Ofina::Application.routes.draw do
   match '/results_da_graph'  , to: 'results#da_graph'
   match '/results_ren_table' , to: 'results#ren_table'
   match '/results_ren_graph' , to: 'results#ren_graph'
-  match '/user'              , to: 'users#edit'
+  match '/user'              , to: 'users#show'
   
   resources :enterprises do
 #    shallow do

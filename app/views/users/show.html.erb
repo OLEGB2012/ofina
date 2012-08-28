@@ -1,0 +1,56 @@
+<%  provide(:title, 'Свойства Учётной Записи')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Просмотр</li>  
+      <li><%= link_to "Вернуться на главную", root_path %></li>
+  <%#= render 'anchors'%>
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+<legend>Свойства Учётной Записи</legend>
+  <table class="table table-striped table-bordered table-condensed">
+    <caption><strong>Пользователь: </strong> <%= current_user.email%><em>(<%= current_user.username%>)</em></caption>        
+    <tbody>      
+      <tr>
+        <td colspan="2"><div class="pagination-centered"><strong>Договор</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div class="pull-right"><strong>Номер</strong></div></td>
+        <td><div class="pull-left" ><em><%= current_user.dogovor_nomer %></em></div></td>       
+      </tr>
+      <tr>
+        <td><div class="pull-right"><strong>Дата начала</strong></div></td>
+        <td><div class="pull-left" ><em><%= Russian::strftime(current_user.dogovor_begin,"%d %B %Y")%> года</em></div></td>       
+      </tr>
+      <tr>
+        <td><div class="pull-right"><strong>Дата окончания</strong></div></td>
+        <td><div class="pull-left" ><em><%= Russian::strftime(current_user.dogovor_end,"%d %B %Y")%> года</em></div></td>       
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pagination-centered"><strong>Активация</strong></div></td>        
+      </tr>
+      <tr>
+        <td><div class="pull-right"><strong>Дата начала</strong></div></td>
+        <td><div class="pull-left" ><em><%= Russian::strftime(current_user.activation_begin,"%d %B %Y")%> года</em></div></td>       
+      </tr>
+      <tr>
+        <td><div class="pull-right"><strong>Дата окончания</strong></div></td>
+        <td><div class="pull-left" ><em><%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года</em></div></td>       
+      </tr>
+      <tr>
+        <td><div class="pull-right"><strong>Активация разрешена?</strong></div></td>
+        <td><div class="pull-left" ><em><%= (current_user.activation_allowed)?'Да, разрешена':'Нет, запрещена' %></em></div></td>       
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pagination-centered"><strong>Контактная информация</strong></div></td>        
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pull-left"><%= current_user.contact_info %></div></td>
+      </tr>
+    </tbody>    
+  </table>   
+<% end  %>

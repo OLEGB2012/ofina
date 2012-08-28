@@ -12,8 +12,10 @@
       <%= f.password_field :password, :autocomplete => "off" %>
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
-      <%= f.label :current_password %> <i>(нам нужен Ваш текущий пароль для подтверждения его изменения)</i>
+      <%= f.label :current_password %> <i>(нам нужен Ваш текущий пароль для подтверждения изменений)</i>
       <%= f.password_field :current_password %>
+      <%= f.label 'Контактная информация' %>
+      <%= f.text_area :contact_info, placeholder: 'Поле для примечаний ...', rows: 15%>
       <%= f.submit "Сохранить изменения", :class => "btn btn-large btn-primary" %>
     </div>
   </div>

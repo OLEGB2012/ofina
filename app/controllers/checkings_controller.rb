@@ -1,6 +1,6 @@
 # encoding: utf-8
 class CheckingsController < ApplicationController
-  before_filter :authenticate_user!, :get_enterprise
+  before_filter :authenticate_user!, :check_activation, :get_enterprise
   
   def index
     

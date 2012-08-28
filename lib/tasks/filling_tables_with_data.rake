@@ -286,7 +286,9 @@ def make_users
   admin = User.create(username: "Example User", 
                       email: "example@railstutorial.org", 
                       password: "foobar", 
-                      remember_me: false)
+                      remember_me: false,
+                      activation_begin: Date.Today.to_date,
+                      activation_end: '2999-12-31')
   admin.toggle!(:admin)
   5.times do |n|
     username = Faker::Name.name
