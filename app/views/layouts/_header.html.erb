@@ -9,6 +9,9 @@
         <ul class="nav pull-right">
           <li><%= link_to "На главную",root_path %></li>          
           <% if user_signed_in? %>
+            <% if current_user.admin %>
+              <li><%= link_to "Админка",rails_admin_path %></li>
+            <% end %>
             <li><%= link_to "Документация",help_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

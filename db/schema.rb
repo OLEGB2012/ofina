@@ -763,8 +763,8 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",    :null => false
-    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "email",                  :default => "",           :null => false
+    t.string   "encrypted_password",     :default => "",           :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -774,9 +774,16 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  :default => false
-    t.string   "username"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.string   "username",               :default => ""
+    t.text     "contact_info",           :default => ""
+    t.string   "dogovor_nomer",          :default => ""
+    t.date     "dogovor_begin",          :default => '2012-08-28'
+    t.date     "dogovor_end",            :default => '2013-08-28'
+    t.date     "last_pay_date"
+    t.date     "last_active_date",       :default => '2012-09-12'
+    t.boolean  "curent_status",          :default => true
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

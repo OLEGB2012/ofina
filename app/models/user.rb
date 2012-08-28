@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :last_sign_in_at
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :last_sign_in_at,
+                  :admin, :username, :contact_info, :dogovor_nomer, :dogovor_begin, :dogovor_end, :last_pay_date, :last_active_date, :curent_status
     
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
@@ -30,5 +31,10 @@ class User < ActiveRecord::Base
 ### def self.find_for_database_authentication(warden_conditions)
 ### end  
 
+  # Валидация из гема validates_timeliness
+  validates_date :dogovor_begin, :before => :dogovor_end
+  validates_date :dogovor_end,   :after  => :dogovor_begin
+    
+  
   self.per_page = 12 # число страниц для гема пагинации ...
 end
