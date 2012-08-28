@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   
   # Проверим, чтобы id-предприятия в Url-параметрах соответствовало текущему авторизованному пользователю. 
   # Если нет, то направлять на список предприятий текущего пользователя...
-  before_filter :enterprise_belongs_to_sing_in_user?, unless: :is_admin? # админу можно всё, т.е. переходить на все предприятия ...)))
-  before_filter :reload_rails_admin, if: :rails_admin_path?
-  
-  
+  prepend_before_filter :enterprise_belongs_to_sing_in_user?, unless: :is_admin? # админу можно всё, т.е. переходить на все предприятия ...)))
+  append_before_filter  :reload_rails_admin, if: :rails_admin_path?
+    
+
 ################################################
   def is_admin? # функция-затычка для фильтра ...
     current_user.try(:admin?)
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     controller_path =~ /rails_admin/ && Rails.env == "development"
   end
 #########################################################################################################################
-  def enterprise_belongs_to_sing_in_user?    # Пользователям не-админам должны ограничит доступ к другим предприятиям ....
+  def enterprise_belongs_to_sing_in_user?    # Пользователям не-админам должны ограничить доступ к другим предприятиям ....
     if current_user.nil?
       #      flash[:error] = "Пользователя нет..."
     else

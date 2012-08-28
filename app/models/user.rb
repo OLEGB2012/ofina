@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :last_sign_in_at,
-                  :admin, :username, :contact_info, :dogovor_nomer, :dogovor_begin, :dogovor_end, :last_pay_date, :last_active_date, :curent_status
+                  :admin, :contact_info, :dogovor_nomer, :dogovor_begin, :dogovor_end, :activation_begin, :activation_end, :activation_allowed
     
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
@@ -34,7 +34,25 @@ class User < ActiveRecord::Base
   # Валидация из гема validates_timeliness
   validates_date :dogovor_begin, :before => :dogovor_end
   validates_date :dogovor_end,   :after  => :dogovor_begin
-    
+  validates_date :activation_begin, :before => :activation_end
+  validates_date :activation_end,   :after  => :activation_begin  
   
   self.per_page = 12 # число страниц для гема пагинации ...
+  
+  # Процент оставшихся дней в интервале активности ...
+  def get_balanse
+      unless self.activation_begin.nil? and self.activation_end.nil?
+        return 100-(((Date.today.to_date.mjd-self.activation_begin.to_date.mjd).to_f/(self.activation_end.to_date.mjd-self.activation_begin.to_date.mjd))*100)
+      else
+        return 0
+      end 
+  end
+  # Проверка активности учётной записи ...
+  def is_active
+    if ((self.activation_begin.to_date..self.activation_end.to_date) === Date.today.to_date)
+      self.activation_allowed
+    else
+      false     
+    end
+  end  
 end

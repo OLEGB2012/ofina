@@ -779,9 +779,9 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.string   "dogovor_nomer",          :default => ""
     t.date     "dogovor_begin",          :default => '2012-08-28'
     t.date     "dogovor_end",            :default => '2013-08-28'
-    t.date     "last_pay_date"
-    t.date     "last_active_date",       :default => '2012-09-12'
-    t.boolean  "curent_status",          :default => true
+    t.date     "activation_begin",       :default => '2012-08-28'
+    t.date     "activation_end",         :default => '2012-09-12'
+    t.boolean  "activation_allowed",     :default => true
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
   end

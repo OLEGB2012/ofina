@@ -1,5 +1,7 @@
 # encoding: utf-8
 class StaticPagesController < ApplicationController
+  
+  
   def home
     if user_signed_in?
       @current_year            = Time.now.year
