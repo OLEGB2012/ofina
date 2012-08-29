@@ -287,7 +287,7 @@ def make_users
                       email: "example@railstutorial.org", 
                       password: "foobar", 
                       remember_me: false,
-                      activation_begin: Date.Today.to_date,
+                      activation_begin: Date.today.to_date,
                       activation_end: '2999-12-31')
   admin.toggle!(:admin)
   5.times do |n|
