@@ -59,10 +59,43 @@
 <% end  %>
 
 <% content_for :guest_area do %>
-  <div class="hero-unit">
-    <p>Андер конструктион ...</p>
-  </div>
-  <div class="center"> 
-    <%= link_to "Регистрация...", new_user_registration_path , class: "btn btn-large btn-primary" %> 
-  </div>
+<div class="container">
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="leaderboard">  
+   <div class="row"><div class="span2"><%= image_tag("Column Chart 128.png")%></div> 
+      <div class="span8"><h1>Автоматизированная Система </br>"On-Line Финансовый Анализ"</h1></div>
+   </div>
+   <p>
+     Приветствуем Вас на сайте нашего проекта. Он адресован . С его помощью . Также будет интересен ... объективная оценка ... извлечь максимальную выгоду.
+   </p>
+   <p><%= link_to "Регистрация + бесплатный 15-дневный доступ...", new_user_registration_path , class: "btn btn-large btn-success" %></p>
+</div>
+<!-- Example row of columns -->
+<div class="row">
+<div class="span4">
+<h2>О проекте</h2>
+<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+<p><%= link_to "Подробнее...", about_path , class: "btn btn-large btn-success" %></p>
+</div>
+<div class="span4">
+<h2>Наши контакты</h2>
+<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+<p><%= link_to "Подробнее...", contact_path , class: "btn btn-large btn-success" %></p>
+</div>
+<div class="span4">
+<h2>Новости</h2>
+<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+<p><%= link_to "Подробнее...", news_path , class: "btn btn-large btn-success" %></p>
+</div>
+</div>
+
+
+
+
+  <%#*<div class="hero-unit">%>
+    <%#*<p>Андер конструктион ...</p>%>
+  <%#*</div>%>
+  <%#*<div class="center">%> 
+    <%#= link_to "Регистрация + бесплатный 15-дневный доступ ...", new_user_registration_path , class: "btn btn-large btn-primary" %> 
+  <%#*</div>%>
   <% end  %>
