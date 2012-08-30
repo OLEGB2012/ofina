@@ -65,30 +65,58 @@
    <div class="row"><div class="span2"><%= image_tag("Column Chart 128.png")%></div> 
       <div class="span8"><h1>Автоматизированная Система </br>"On-Line Финансовый Анализ"</h1></div>
    </div>
-   <p>
-     Приветствуем Вас на сайте нашего проекта. Он адресован . С его помощью . Также будет интересен ... объективная оценка ... извлечь максимальную выгоду.
-   </p>
-   <p><%= link_to "Регистрация + бесплатный 15-дневный доступ...", new_user_registration_path , class: "btn btn-large btn-success" %></p>
+  <div style="text-align: justify; 
+            border: solid darkgray ; 
+            border-left: double; 
+            color: black; 
+            background-color:#f2eeee;
+            line-height: 1.3em; font-size: 10pt; padding: 5pt ">
+    <strong>Приветствуем Вас</strong>! Вы - на сайте проекта <strong><em>"Автоматизированная система On-Line Финансовый Анализ"</em>!</strong>
+     Сервис адресован профессионалам в области финансового анализа хозяйственной деятельности и бизнес-планирования.</br>
+     С помощью наших инструментов Вы сможете провести <em><strong>комплексный анализ хозяйственной деятельности</em></strong> 
+     предприятия. </br>
+     Возможности нашего сервиса оценят:
+      <ul >
+        <li style="line-height: 1.3em;">Специалисты аналитических групп планово-экономических отделов(управлений) предприятий, которые смогут подготовить для рассмотрения 
+          руководством объективную картину финансово-экономического состояния предприятия хорошо структурированным набором числовых таблиц и графических элементов. Всё это также - незаменимый
+          материал при подготовке бизнес-планов.</li>
+        <li style="line-height: 1.3em;">Владельцы бизнеса, инвесторы, кредитодатели, получая объективную комплексную оценку финансового состояния предприятия, что позволит им извлечь максимальную выгоду при принятии необходимых 
+          управленческих и инвестиционных решений, а банки снижением операционных рисков при оказании кредитных услуг данному предприятию.</li> 
+        <li style="line-height: 1.3em;">Независимые аудиторы, бухгалтеры и финансовые аналитики также сумеют получить максимум пользы от работы с нашим сервисом. 
+          Одной из его ключевых особенностей является то, что при необходимости <strong><em>под одним аккаунтом система позволяет вести информационную 
+          базу для неограниченного количества предприятий/организаций</em></strong>.</li> 
+      </ul>
+     Пройдите <%= link_to "бесплатную регистрацию", new_user_registration_path%> и получите свободный доступ в течение <strong><em>15-ти календарных дней</em></strong> для опробации 
+     всех возможностей сервиса. При этом для Вас система автоматически сгенерирует <strong><em>"тестовое предприятие"</em></strong> 
+     с предопределённым набором исходных данных для ознакомительных целей. Разумеется, вы сможете вводить и обрабатывать свои собственные данные 
+     без каких либо ограничений по функциональности в течение отведённого времени. 
+     О подробностях работы с системой можно прочитать в разделе 
+     <%= link_to "О проекте", about_path%>.</br> 
+     Порядок и условия подключения для работы с сервисом <strong><em>на постоянной основе</em></strong> описаны в разделе 
+     <%= link_to "Наши контакты", contact_path %>.</br>
+     Если Вы уже являетесь нашим <strong><em>постоянным клиентом</em></strong>, то для доступа к Вашим данным, выполните авторизацию по ссылке <%= link_to "Войти", new_user_session_path %>.
+   </div>
+   <div style="margin-top: 5pt; margin-bottom: 5pt"><%= link_to "Бесплатная регистрация + полный 15-дневный доступ...", new_user_registration_path , class: "btn btn-large btn-success" %></div>
 </div>
 <!-- Example row of columns -->
 <div class="row">
-<div class="span4">
+<div class="span4" style="text-align: justify;">
 <h2>О проекте</h2>
-<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+<p>Будучи WEB-приложением, Вы можете работать с нашим сервисом в любом месте, где есть постоянное соединение с Интернетом...</p>
 <p><%= link_to "Подробнее...", about_path , class: "btn btn-large btn-success" %></p>
 </div>
-<div class="span4">
+<div class="span4" style="text-align: justify;">
 <h2>Наши контакты</h2>
 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 <p><%= link_to "Подробнее...", contact_path , class: "btn btn-large btn-success" %></p>
 </div>
-<div class="span4">
+<div class="span4" style="text-align: justify;">
 <h2>Новости</h2>
 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 <p><%= link_to "Подробнее...", news_path , class: "btn btn-large btn-success" %></p>
 </div>
 </div>
-
+</div>
 
 
 
