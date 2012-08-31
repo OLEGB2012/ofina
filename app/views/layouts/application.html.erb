@@ -23,12 +23,25 @@
             <% end %>
 
             <% if user_signed_in? %>
-              <%# тут ещё добавить логику для пользователя, если он админ ... %>
-                <%#  if current_user.admin %>
-                   <%# provide(:title, 'Административная Область') %>
-                <%# else %>
-                   <%# provide(:title, 'Пользовательская Область') %>
-                <%# end %>
+               <div class="container-fluid">
+                  <div class="row-fluid">
+                    <div class="span3">  
+                      <% if content_for?(:span3) %>  
+                        <%= yield :span3 %>
+                      <% end %>
+                    </div>
+                    <div class="span9">  
+                      <% if content_for?(:span9) %>  
+                        <%= yield :span9 %>
+                      <% end %>                      
+                    </div>
+                  </div>  
+                </div>              
+            <% else %>
+              <% provide(:title, 'Гостевая Область') %>
+              <% if content_for?(:guest_area) %>  
+                 <%= yield :guest_area %>
+              <% else %>
                 <div class="container-fluid">
                   <div class="row-fluid">
                     <div class="span3">  
@@ -43,11 +56,6 @@
                     </div>
                   </div>  
                 </div>
-              
-            <% else %>
-              <% provide(:title, 'Гостевая Область') %>
-              <% if content_for?(:guest_area) %>  
-                 <%= yield :guest_area %>
               <% end %>
             <% end %>
             <%= yield %>
