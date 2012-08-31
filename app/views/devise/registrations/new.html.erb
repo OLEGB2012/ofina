@@ -12,6 +12,8 @@
       <%= f.password_field :password %>
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
+      <%= f.label 'Контактная информация' %>
+      <%= f.text_area :contact_info, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться ...', rows: 15%>
       <%= f.submit "Выполнить", :class => "btn btn-large btn-primary" %>
     </div>
   </div>

@@ -38,10 +38,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :username,           default: ""
       t.text    :contact_info,       default: ""
       t.string  :dogovor_nomer,      default: ""
-      t.date    :dogovor_begin,      default: Time.now
-      t.date    :dogovor_end,        default: Time.now+1.year
-      t.date    :activation_begin,   default: Time.now
-      t.date    :activation_end,     default: Time.now+15.days 
+      t.date    :dogovor_begin,      default: Date.today.to_date
+      t.date    :dogovor_end,        default: Date.today.to_date+1.year
+      t.date    :activation_begin,   default: Date.today.to_date
+      t.date    :activation_end,     default: Date.today.to_date+15.days 
       t.boolean :activation_allowed, default: true
       
       t.timestamps
