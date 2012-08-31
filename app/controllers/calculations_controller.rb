@@ -453,7 +453,7 @@ class CalculationsController < ApplicationController
                                               G3: @f1_beg.S700, G4: (@f1_beg.S700.to_f/@f1_beg.S700)*100, 
                                               G5: @f1_end.S700, G6: (@f1_end.S700.to_f/@f1_end.S700)*100)
       @enterprise.analytical_balances << @AB_new_rec
-      flash[:success]="Расчёт показателей выполнен ..."
+      flash[:success]="Анализ за рабочий интервал дат проведён ..."
     else
       flash[:alert]="За указанный рабочий интервал дат отсутствуют данные по формам баланса. Никаких расчётов не выполнилось..."
     end   

@@ -1,16 +1,16 @@
-<%  provide(:title, 'Расчёты')%>
+<%  provide(:title, 'Анализ')%>
 
 <% content_for :span3 do %>      
   <div class="well sidebar-nav">  
     <ul class="nav nav-list">  
-      <li class="nav-header">РАСЧЁТЫ</li>       
+      <li class="nav-header">АНАЛИЗ</li>       
       <li><%= link_to "К сведениям об Организации", enterprise_path(params[:id]) %></li>      
     </ul>  
   </div>  
 <% end  %>
 
 <% content_for :span9 do %>
-  <legend><%= image_tag("Abacus 64.png") %> Расчёт финансовых показателей</legend> 
+  <legend><%= image_tag("Abacus 64.png") %>Анализ финансово-экономического состояния</legend> 
   <%#= params.inspect %>
   <%#= @form_one_reports.inspect %>
   <table class="table table-striped table-bordered table-condensed">
@@ -30,6 +30,6 @@
     </tbody>    
   </table>  
   <div class="form-actions">
-    <%= link_to "Выполнить", calc_run_path(id: params[:id]) , class: "btn btn-large btn-primary" %> 
+    <%= link_to "Провести", calc_run_path(id: params[:id]) , class: "btn btn-large btn-primary" %> 
   </div>
 <% end  %>
