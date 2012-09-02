@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  
+  before_create :set_dates_to
+    
   has_many :enterprises, :dependent => :destroy
     
   # Include default devise modules. Others available are:
@@ -54,5 +55,12 @@ class User < ActiveRecord::Base
     else
       false     
     end
-  end  
+  end 
+  # Даты выставим для при первоначале
+  def set_dates_to   
+    self.dogovor_begin   =Date.today.to_date
+    self.dogovor_end     =Date.today.to_date+1.year
+    self.activation_begin=Date.today.to_date
+    self.activation_end  =Date.today.to_date+15.days 
+  end
 end

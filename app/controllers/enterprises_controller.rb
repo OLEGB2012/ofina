@@ -13,10 +13,10 @@ class EnterprisesController < ApplicationController
   def show
     @enterprise=Enterprise.find_by_id(params[:id])
     if not @enterprise.nil?
-      @form_one_reports_count  =@enterprise.form_one_reports.where(["date_period>=? AND date_period<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
-      @form_two_reports_count  =@enterprise.form_two_reports.where(["date_period_beg>=? AND date_period_beg<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
-      @form_three_reports_count=@enterprise.form_three_reports.where(["date_period_beg>=? AND date_period_beg<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
-      @form_four_reports_count =@enterprise.form_four_reports.where(["date_period_beg>=? AND date_period_beg<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
+#      @form_one_reports_count  =@enterprise.form_one_reports.where(["date_period>=? AND date_period<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
+#      @form_two_reports_count  =@enterprise.form_two_reports.where(["date_period_beg>=? AND date_period_beg<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
+#      @form_three_reports_count=@enterprise.form_three_reports.where(["date_period_beg>=? AND date_period_beg<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
+#      @form_four_reports_count =@enterprise.form_four_reports.where(["date_period_beg>=? AND date_period_beg<=?",@enterprise.rab_date_beg,@enterprise.rab_date_end]).count
     else
       redirect_to enterprises_path
     end

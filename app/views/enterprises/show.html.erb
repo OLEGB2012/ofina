@@ -1,16 +1,28 @@
-<%  provide(:title, 'Организация')%>
+<%  provide(:title, 'Панель Управления')%>
 
 <% content_for :span3 do %>      
   <div class="well sidebar-nav">  
     <ul class="nav nav-list">  
-      <li class="nav-header">Организация</li>  
-      <li><%= link_to "Редактировать", edit_enterprise_path%></li>
-      <li><%= link_to "К списку организаций", enterprises_path %></li>
+      <li class="nav-header">Панель Управления</li>  
+      <li><%= link_to "Редактировать Организацию", edit_enterprise_path%></li>
+      <li><%= link_to "К списку Организаций", enterprises_path %></li>
       <li class="nav-header">ОТЧЁТЫ</li>
-      <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС (Кол-во : "+@form_one_reports_count.to_s+")"        , enterprise_form_one_reports_path(@enterprise) %></li>
-      <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ (Кол-во : "+@form_two_reports_count.to_s+")"        , enterprise_form_two_reports_path(@enterprise) %></li>
-      <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (Кол-во : "+@form_three_reports_count.to_s+")"     , enterprise_form_three_reports_path(@enterprise)%></li>
-      <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%></li>
+      <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС"       , enterprise_form_one_reports_path(@enterprise) %></li>
+      <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ"       , enterprise_form_two_reports_path(@enterprise) %></li>
+      <li><%= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА"      , enterprise_form_three_reports_path(@enterprise)%></li>
+      <li><%= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ", enterprise_form_four_reports_path(@enterprise)%></li>      
+      <%#*<li>%>
+<%#= link_to "БУХГАЛТЕРСКИЙ БАЛАНС (Кол-во : "+@form_one_reports_count.to_s+")"        , enterprise_form_one_reports_path(@enterprise) %>
+      <%#*</li>%>
+      <%#*<li>%>
+<%#= link_to "О ПРИБЫЛЯХ И УБЫТКАХ (Кол-во : "+@form_two_reports_count.to_s+")"        , enterprise_form_two_reports_path(@enterprise) %>
+      <%#*</li>%>
+      <%#*<li>%>
+<%#= link_to "ОБ ИЗМЕНЕНИИ КАПИТАЛА (Кол-во : "+@form_three_reports_count.to_s+")"     , enterprise_form_three_reports_path(@enterprise)%>
+      <%#*</li>%>
+      <%#*<li>%>
+<%#= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%>
+      <%#*</li>%>
       <li class="nav-header">Контроль</li>
       <li><%= link_to "Выполнить ..."   , "#" %></li>      
       <li class="nav-header">АНАЛИЗ</li>
