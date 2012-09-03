@@ -4,5 +4,5 @@
 
 <% content_for :span9 do %> 
   <legend><%= image_tag("books 64.png") %> Документация и справочные материалы</legend>
-  <p>Ссылка на скачивание файла в формате PDF: <em><%= link_to  "Руководство пользователя.",'roganov-roganova.pdf'%></em></p>
+  <p>Ссылка на скачивание файла <strong>"Руководство пользователя"</strong> в формате PDF: <%= link_to image_tag('ext_pdf.png') ,'roganov-roganova.pdf'%></p>
 <% end %>

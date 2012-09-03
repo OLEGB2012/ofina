@@ -6,12 +6,42 @@
        color: black; 
        background-color:#f2eeee;
        line-height: 1.3em; font-size: 10pt; padding: 5pt ">
-       
-    
+             
+    <table class="table table-striped table-bordered table-condensed">
+      <caption><strong>Вы можете связаться с нами любым удобным Вам способом!</strong></caption>
+          <tbody>
+            <tr>
+              <td><div class="pull-right">По телефону <%=image_tag "kcall.png"%> :</div></td>
+              <td><div class="pagination-centered">Velcom +375(29)-XXX-XX-XX</div></td>                    
+            </tr>
+             <tr>
+              <td><div class="pull-right">Skype <%=image_tag "Skype-32.png"%> :</div></td>
+              <td><div class="pagination-centered">XXXXXXXX</div></td>                   
+            </tr>
+            <tr>
+              <td><div class="pull-right">ICQ <%=image_tag "ICQ-32.png"%> :</div></td>
+              <td><div class="pagination-centered">XXXXXXXXX</div></td>                      
+            </tr>          
+            <tr>
+              <td><div class="pull-right">E-mail <%=image_tag "contact_email.png"%> :</div></td>
+              <td><div class="pagination-centered">@@@@@@@@@@</div></td>                
+            </tr>
+            <tr>
+              <td><div class="pull-right">Адрес для корреспонденций <%=image_tag "mail.png"%> :</div></td>
+              <td><div>Республика Беларусь, Минский р-н, Боровлянский с-т..., ул.выаыаываыв, д.аыа </br>
+                       Свидетельство Государственной регистрации № ХХХХХХХХХХХХ от ХХХХХХХХХХХХХ,</br> выдано йцуйуйуйюйуй.й.уй   
+               </div>
+                      
+              </td>                
+            </tr>  
+          </tbody>    
+        </table>    
+    <hr>
         <table class="table table-striped table-bordered table-condensed">
+          
           <caption>Перечень тарифов и расценок на услугу </br>
                <strong>Подключение к Автоматизированной Системе "On-line Финансовый Анализ"</strong></caption>
-          <thead>
+          <tbody>
             <tr>
               <td><div class="pull-right"><strong>Тариф</strong></div></td>
               <td><div class="pagination-centered"><span class="badge badge-important">Начальный  </span></div></td>
@@ -19,9 +49,6 @@
               <td><div class="pagination-centered"><span class="badge badge-success"  >Полугодовой</span></div></td>
               <td><div class="pagination-centered"><span class="badge badge-info"     >Годовой    </span></div></td>        
             </tr>
-          </thead>
-          <tbody>
-            <tr>
              <tr>
               <td><div class="pull-right"><strong>Срок действия</strong></div></td>
               <td><div class="pagination-centered"><span class="badge badge-important">1 месяц   </span></div></td>
@@ -44,9 +71,16 @@
               <td><div class="pagination-centered"><span class="badge badge-info"     >20 %</span></div></td>     
             </tr>
             <tr>
-              <td colspan="5"><div style="text-align: justify;"><em>В стоимость услуги включены работы по внедрению, консультированию пользователей, 
-                    технической поддержке работы системы и сопровождению (развитию) её программного кода. </em></div></td>
+              <td colspan="5"><div style="text-align: justify;"><em>В состав услуги включаются работы по консультированию пользователей 
+                    в процессе освоения и использования ими сервиса, его технической поддержке и сопровождению (развитию) программного кода. </em></div></td>
             </tr>
           </tbody>    
-        </table>        
+        </table>    
+       Обращаем Ваше внимание, что наш проект взаимодействует с российской системой управления обратной связью с пользователями <%=link_to "Reformal.ru", "http://www.reformal.ru" %>. 
+       На сайте она представлена виджетом <strong>"Отзывы и предложения"</strong>. Выполнив щелчок мыши по нему, Вам открывается форма, с помощью которой Вы можете составить 
+       отзыв о нашей работе, сообщить о проблемах, задать вопрос, предложить идею. Всё ваши записи будут видны другим пользователям, равно как и им Ваши. 
+       </br></br>
+       <strong>Ссылка для скачивания договора:</strong> <%= link_to image_tag("ext_word.png"), "#" %>
+       </br>
+       <strong>Ссылка для скачивания акта выполненных работ:</strong> <%= link_to image_tag("ext_word.png"), "#" %>
   </div>
