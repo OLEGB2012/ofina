@@ -1,4 +1,14 @@
 <% provide(:title, 'Контакты') %>
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">КОНТАКТЫ</li>  
+      <li><%= link_to "На главную страницу", root_path %></li>
+    </ul>  
+  </div>  
+<% end %>
+
+<% content_for :span9 do %>
   <legend><%= image_tag("Column Chart 64.png")%>Наши Контакты</legend>
   <div style="text-align: justify; 
        border: solid darkgray ; 
@@ -11,29 +21,35 @@
       <caption><strong>Вы можете связаться с нами любым удобным Вам способом!</strong></caption>
           <tbody>
             <tr>
-              <td><div class="pull-right">По телефону <%=image_tag "kcall.png"%> :</div></td>
-              <td><div class="pagination-centered">Velcom +375(29)-XXX-XX-XX</div></td>                    
+              <td><div class="pull-left">По телефону :</div></td>
+              <td><div class="pagination-centered"><%=image_tag "kcall.png"%></div></td>
+              <td><div class="pull-left">Velcom +375(29)-XXX-XX-XX</div></td>              
             </tr>
              <tr>
-              <td><div class="pull-right">Skype <%=image_tag "Skype-32.png"%> :</div></td>
-              <td><div class="pagination-centered">XXXXXXXX</div></td>                   
+              <td><div class="pull-left">Skype :</div></td>
+              <td><div class="pagination-centered"><%=image_tag "Skype-32.png"%></div></td>
+              <td><div class="pull-left">XXXXXXXX</div></td>              
             </tr>
             <tr>
-              <td><div class="pull-right">ICQ <%=image_tag "ICQ-32.png"%> :</div></td>
-              <td><div class="pagination-centered">XXXXXXXXX</div></td>                      
+              <td><div class="pull-left">ICQ :</div></td>
+              <td><div class="pagination-centered"><%=image_tag "ICQ-32.png"%></div></td>
+              <td><div class="pull-left">XXXXXXXXX</div></td>              
             </tr>          
             <tr>
-              <td><div class="pull-right">E-mail <%=image_tag "contact_email.png"%> :</div></td>
-              <td><div class="pagination-centered">@@@@@@@@@@</div></td>                
+              <td><div class="pull-left">E-mail :</div></td>
+              <td><div class="pagination-centered"><%=image_tag "contact_email.png"%></div></td>
+              <td><div class="pull-left">@@@@@@@@@@</div></td>             
             </tr>
             <tr>
-              <td><div class="pull-right">Адрес для корреспонденций <%=image_tag "mail.png"%> :</div></td>
-              <td><div>Республика Беларусь, Минский р-н, Боровлянский с-т..., ул.выаыаываыв, д.аыа </br>
-                       Свидетельство Государственной регистрации № ХХХХХХХХХХХХ от ХХХХХХХХХХХХХ,</br> выдано йцуйуйуйюйуй.й.уй   
-               </div>
-                      
-              </td>                
-            </tr>  
+              <td><div class="pull-left">Адрес для почтовых отправлений :</div></td>
+              <td><div class="pagination-centered"><%=image_tag "mail.png"%></div></td>
+              <td><div>Республика Беларусь, Минский р-н, Боровлянский с-т..., ул.выаыаываыв, д.аыа</div></td>              
+            </tr>
+            <tr>
+              <td><div class="pull-left">Разработка и техническое сопровождение :</div></td>
+              <td><div class="pagination-centered"><%=image_tag "software.png"%></div></td>
+              <td><div>Свидетельство Государственной регистрации № ХХХХХХХХХХХХ от ХХХХХХХХХХХХХ,</br> выдано йцуйуйуйюйуй.й.уй</div></td>              
+            </tr>
           </tbody>    
         </table>    
     <hr>
@@ -77,10 +93,11 @@
           </tbody>    
         </table>    
        Обращаем Ваше внимание, что наш проект взаимодействует с российской системой управления обратной связью с пользователями <%=link_to "Reformal.ru", "http://www.reformal.ru" %>. 
-       На сайте она представлена виджетом <strong>"Отзывы и предложения"</strong>. Выполнив щелчок мыши по нему, Вам открывается форма, с помощью которой Вы можете составить 
+       Для этого в систему встроен виджет <strong>"Отзывы и предложения"</strong>. Выполнив щелчок мыши по нему, открывается форма, с помощью которой Вы можете составить 
        отзыв о нашей работе, сообщить о проблемах, задать вопрос, предложить идею. Всё ваши записи будут видны другим пользователям, равно как и им Ваши. 
        </br></br>
        <strong>Ссылка для скачивания договора:</strong> <%= link_to image_tag("ext_word.png"), "#" %>
        </br>
        <strong>Ссылка для скачивания акта выполненных работ:</strong> <%= link_to image_tag("ext_word.png"), "#" %>
   </div>
+<% end %>
