@@ -7,7 +7,7 @@
 
 <%= "На дату :" %>
  <%= f.input :date_period, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
-    <span class="add-on">(ГГГГ-ММ-ДД)</span><%= f.input_field :date_period, :as => :string, :class => "span3",:maxlength => 10 %>
+    <span class="add-on">ГГГГ-ММ-ДД</span><%= f.input_field :date_period, :as => :string, :class => "span3",:maxlength => 10 %>
  <%end%>  
 
 <%#= f.input :date_period, :label=>"(ГГГГ-ММ-ДД)", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
