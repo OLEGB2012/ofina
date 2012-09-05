@@ -15,19 +15,19 @@
     <caption>Список отчётов<strong> О ПРИБЫЛЯХ И УБЫТКАХ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>
     <thead>
       <tr>
-        <th><div class="pagination-centered">За период</div></th>
-        <th><div class="pagination-centered">Валовая прибыль</div></th>
-        <th><div class="pagination-centered">Совокупная прибыль(убыток)</div></th>
-        <th colspan="2"><div class="pagination-centered">Действия</div></th>
+        <th><div class="pagination-centered" style="min-width: 80pt; line-height: 50px; vertical-align:middle;">За период</div></th>
+        <th><div class="pagination-centered">Приб/убыт от текущей</br> деятельности</div></th>
+        <th><div class="pagination-centered">Совокупная </br>прибыль(убыток)</div></th>
+        <th colspan="2"><div class="pagination-centered" style="line-height: 50px; vertical-align:middle;">Действия</div></th>
       </tr>
     </thead>
     <tbody>
      <% @form_two_reports.each do |form_two_report| %>        
         <tr>          
-          <td><div class="pull-left">C <%= Russian::strftime(form_two_report.date_period_beg,"%d %B %Y") %><br/> По <%= Russian::strftime(form_two_report.date_period_end,"%d %B %Y") %></div></td>
-          <td><div class="pull-right"><%= number_with_delimiter(form_two_report.S030, delimiter: ' ') %></div></td>
-          <td><div class="pull-right"><%= number_with_delimiter(form_two_report.S240, delimiter: ' ') %></div></td>
-          <td>
+          <td style="padding: 2px"><div class="pull-left">C <%= Russian::strftime(form_two_report.date_period_beg,"%d %B %Y") %><br/> По <%= Russian::strftime(form_two_report.date_period_end,"%d %B %Y") %></div></td>
+          <td style="padding: 2px"><div class="pull-right"><%= number_with_delimiter(form_two_report.S090, delimiter: ' ') %></div></td>
+          <td style="padding: 2px"><div class="pull-right"><%= number_with_delimiter(form_two_report.S210, delimiter: ' ') %></div></td>
+          <td style="padding: 2px">
             <div class="pagination-centered">
               <%= link_to ([@enterprise,form_two_report]), 
                    class: "btn btn-small btn-danger", 
@@ -38,7 +38,7 @@
               <% end %>
              </div>
           </td>
-          <td>
+          <td style="padding: 2px">
             <div class="pagination-centered">
               <%= link_to (enterprise_form_two_report_path(@enterprise,form_two_report)), class: "btn btn-small btn-info" do %>
                 Подробно...<i class="icon-info-sign icon-white"></i>

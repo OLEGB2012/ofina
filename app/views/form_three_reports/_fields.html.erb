@@ -5,8 +5,14 @@
 <div class="form-inputs">
 
     <%= "За период (ГГГГ-ММ-ДД)" %>
-    <%= f.input :date_period_beg, label: " С : ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>  
-    <%= f.input :date_period_end, label: " По: ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
+    <%= f.input :date_period_beg, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
+       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span3",:maxlength => 10 %>
+    <%end%>  
+    <%= f.input :date_period_end, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
+       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span3",:maxlength => 10 %>
+    <%end%>  
+    <%#= f.input :date_period_beg, label: " С : ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>  
+    <%#= f.input :date_period_end, label: " По: ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
  
   <a name="BeginOfPage"></a> 
   

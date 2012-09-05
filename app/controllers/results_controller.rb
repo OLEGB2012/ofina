@@ -14,7 +14,7 @@ class ResultsController < ApplicationController
   # Показатели финансовой устойчивости (таблично)
   def fu_table
     @FU=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
-    @FU_MIN_Kfzav =@FU.minimum(:Kfzav)
+#    @FU_MIN_Kfzav =@FU.minimum(:Kfzav)
     @FU_MAX_Kdfnez=@FU.maximum(:Kdfnez)
   end
   ###########################################################################

@@ -1,4 +1,5 @@
-<%= simple_form_for(@enterprise, html: {class: "well form-vertical"}, defaults: { :input_html => { :class => 'span12' } }) do |f| %>
+<%= simple_form_for(@enterprise, html: {class: "well form-vertical"},
+    defaults: {label: false, :input_html => { :class => 'span12'} }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-inputs">
@@ -10,12 +11,22 @@
       <%= f.input :edinic_izmer,       :label => 'Единица измерения:' %>
       <%= f.input :adres,              :label => 'Адрес:' %>
       <legend>Нормативы коэффициентов</legend>
-        <%= f.input :K1,                 :label => 'Текущей ликвидности (K1):' %>
-        <%= f.input :K2,                 :label => 'Обеспеченности собственными оборотными средствами (K2):' %>
-        <%= f.input :K3,                 :label => 'Обеспеченности финансовых обязательств активами (K3):' %>
-      <legend>Рабочий интервал дат (ГГГГ-ММ-ДД)</legend>     
-        <%= f.input :rab_date_beg,       :label => 'С :' , :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>
-        <%= f.input :rab_date_end,       :label => 'ПО:' , :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 } %>        
+        <%= f.input :K1,:label => 'Текущей ликвидности (K1):', :input_html => {:class => "span3"}, :wrapper => :prepend do %>
+           <span class="add-on">>=</span><%= f.input_field :K1, :class => "span3" %>
+        <%end%>
+        <%= f.input :K2,:label => 'Обеспеченности собственными оборотными средствами (K2):', :input_html => {:class => "span3"}, :wrapper => :prepend do %>
+           <span class="add-on">>=</span><%= f.input_field :K2, :class => "span3" %>
+        <%end%>
+        <%= f.input :K3,:label => 'Обеспеченности финансовых обязательств активами (K3):', :input_html => {:class => "span3"}, :wrapper => :prepend do %>
+           <span class="add-on"><=</span><%= f.input_field :K3, :class => "span3" %>
+        <%end%>          
+      <legend>Рабочий интервал дат (ГГГГ-ММ-ДД)</legend> 
+        <%= f.input :rab_date_beg, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
+           <span class="add-on">С </span><%= f.input_field :rab_date_beg, :as => :string, :class => "span2",:maxlength => 10 %>
+        <%end%> 
+        <%= f.input :rab_date_end, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
+           <span class="add-on">ПО</span><%= f.input_field :rab_date_end, :as => :string, :class => "span2",:maxlength => 10 %>
+        <%end%>           
     </div>   
     <div class="form-actions">
       <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>

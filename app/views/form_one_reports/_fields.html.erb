@@ -6,7 +6,11 @@
 <div class="form-inputs">
 
 <%= "На дату :" %>
-<%= f.input :date_period, :label=>"(ГГГГ-ММ-ДД)", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
+ <%= f.input :date_period, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
+    <span class="add-on">(ГГГГ-ММ-ДД)</span><%= f.input_field :date_period, :as => :string, :class => "span3",:maxlength => 10 %>
+ <%end%>  
+
+<%#= f.input :date_period, :label=>"(ГГГГ-ММ-ДД)", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
 
   <div class="form-actions">
     <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
