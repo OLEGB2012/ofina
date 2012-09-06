@@ -1,2105 +1,642 @@
+<%= link_to "Отменить операцию", enterprise_form_three_report_path %>
+
 <%= simple_form_for([@enterprise,@form_three_report], 
   html: {class: "well form-inline", style: "font-size: 7pt"}, 
-  defaults: { label: false, :input_html => { :class => 'span12', style: "font-size: 7pt" } }) do |f| %>
+  defaults: { label: false, :input_html => { :class => 'span2', style: "text-align: right;max-width: 55pt;font-size: 8pt; margin-top: 0px; margin-bottom: -8px; padding: 1pt" } }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
 
-<div class="form-inputs">
-
     <%= "За период (ГГГГ-ММ-ДД)" %>
-    <%= f.input :date_period_beg, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
-       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span3",:maxlength => 10 %>
+
+    <%= f.input :date_period_beg, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
+       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span2", style: "font-size: 8pt; max-width: 45pt",:maxlength => 10 %>
     <%end%>  
-    <%= f.input :date_period_end, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
-       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span3",:maxlength => 10 %>
+
+    <%= f.input :date_period_end, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
+       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span2", style: "font-size: 8pt; max-width: 45pt",:maxlength => 10 %>
     <%end%>  
-    
-  <a name="BeginOfPage"></a> 
-  
-  <div class="form-actions">   
-   <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
-  </div>
-    
-  <table class="table table-striped table-bordered table-condensed">
-    <caption> Отчёт<strong> ОБ ИЗМЕНЕНИИ КАПИТАЛА</strong> предприятия <strong><em><%= @OrgName %></em></strong>
-    </caption>       
+
+<div class="form-inputs">
+  <table class="table table-striped table-bordered table-condensed" style="font-size: 7pt">
+    <caption> Отчёт<strong> ОБ ИЗМЕНЕНИИ КАПИТАЛА</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
     <thead>
       <tr>
-        <th><a name="G3"></a><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование</div></th>
-        <th><div class="pagination-centered">Код стр.</div></th>
-        <th><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Сумма</div></th>
+        <th><div class="pagination-centered" style="line-height: 70px; vertical-align:middle; max-width: 165pt">Наименование</div></th>
+        <th><div class="pagination-centered" style="max-width: 15pt">Код стр.</div></th>
+        <th><div class="pagination-centered">Уставный</br>капитал</div></th>
+        <th><div class="pagination-centered" style="max-width: 55pt">Неоплаченная часть уставного капитала</div></th>
+        <th><div class="pagination-centered" style="max-width: 55pt">Собственные акции (доли в уставном капитале)</div></th>
+        <th><div class="pagination-centered">Резервный</br>капитал</div></th>
+        <th><div class="pagination-centered">Добавочный</br>капитал</div></th>
+        <th><div class="pagination-centered">Нераспределенная</br>прибыль</br>(непокрытый убыток)</div></th>
+        <th><div class="pagination-centered">Чистая прибыль</br>(убыток)</div></th>        
       </tr>
       <tr>
         <th><div class="pagination-centered">1</div></th>
         <th><div class="pagination-centered">2</div></th>
         <th><div class="pagination-centered">3</div></th>
+        <th><div class="pagination-centered">4</div></th>
+        <th><div class="pagination-centered">5</div></th>
+        <th><div class="pagination-centered">6</div></th> 
+        <th><div class="pagination-centered">7</div></th> 
+        <th><div class="pagination-centered">8</div></th> 
+        <th><div class="pagination-centered">9</div></th>        
       </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 3 : Уставный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G3_S010 %></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S020 %></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S030 %></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G3_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G3_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G4"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G3_S190%></div></td>
-    </tr>
-    
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 4 : Неоплаченная часть уставного капитала</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G4_S010%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S020%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S030%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G4_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G4_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G5"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G4_S190%></div></td>
-    </tr>
-    
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 5 : Собственные акции (доли в уставном капитале)</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G5_S010%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S020%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S030%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G5_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G5_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G6"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G5_S190%></div></td>
-    </tr>
-    
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 6 : Резервный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G6_S010%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S020%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S030%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G6_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G6_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G7"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G6_S190%></div></td>
-    </tr>
-
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 7 : Добавочный капитал</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G7_S010%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S020%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S030%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G7_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G7_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G8"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G7_S190%></div></td>
-    </tr>
-        
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 8 : Нераспределенная прибыль (непокрытый убыток)</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G8_S010%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S020%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S030%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G8_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G8_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G9"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G8_S190%></div></td>
-    </tr>
-    
-    <tr>
-      <td colspan="3"><div class="pagination-centered"><strong>Графа 9 : Чистая прибыль (убыток)</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец года, предществующего предыдущему году</strong></div></td>
-        <td><div class="pagination-centered"><strong>010</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G9_S010%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">020</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S020%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">030</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S030%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За период предыдущего года, аналогичный отчетному периоду</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>050</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>051</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S051%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>052</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S052%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>053</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S053%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>054</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S054%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>055</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S055%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>056</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S056%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>057</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S057%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>058</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S058%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>059</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S059%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>060</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>061</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S061%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>062</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S062%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>063</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S063%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>064</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S064%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>065</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S065%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>066</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S066%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>067</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S067%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>068</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S068%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>069</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S069%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">070</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S070%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">080</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S080%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">090</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S090%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Остаток на конец предыдущего года</strong></div></td>
-        <td><div class="pagination-centered"><strong>110</strong></div></td>
-        <td><div class="pagination-centered"><strong><%= f.input :G9_S110%></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с изменением учетной политики</div></td>
-        <td><div class="pagination-centered">120</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S120%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Корректировки в связи с исправлением ошибок</div></td>
-        <td><div class="pagination-centered">130</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S130%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>За текущий период</strong></div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Увеличение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>150</strong></div></td>
-        <td><div></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - чистая прибыль</em></div></td>
-        <td><div class="pagination-centered"><em>151</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S151%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>152</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S152%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>153</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S153%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выпуск дополнительных акций</em></div></td>
-        <td><div class="pagination-centered"><em>154</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S154%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - увеличение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>155</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S155%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
-        <td><div class="pagination-centered"><em>156</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S156%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>157</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S157%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>158</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S158%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>159</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S159%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
-        <td><div class="pagination-centered"><strong>160</strong></div></td>
-        <td><div class="pagination-centered"><strong></strong></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">В том числе:</div></td>
-        <td><div class="pagination-centered"></div></td>
-        <td><div class="pagination-centered"></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - убыток</em></div></td>
-        <td><div class="pagination-centered"><em>161</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S161%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - переоценка долгосрочных активов</em></div></td>
-        <td><div class="pagination-centered"><em>162</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S162%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
-        <td><div class="pagination-centered"><em>163</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S163%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> -  уменьшение номинальной стоимости акций</em></div></td>
-        <td><div class="pagination-centered"><em>164</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S164%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
-        <td><div class="pagination-centered"><em>165</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S165%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
-        <td><div class="pagination-centered"><em>166</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S166%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - реорганизация</em></div></td>
-        <td><div class="pagination-centered"><em>167</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S167%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em></em></div></td>
-        <td><div class="pagination-centered"><em>168</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S168%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left"><em> - прочие</em></div></td>
-        <td><div class="pagination-centered"><em>169</em></div></td>
-        <td><div class="pagination-centered"><em><%= f.input :G9_S169%></em></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение уставного капитала</div></td>
-        <td><div class="pagination-centered">170</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S170%></div></td>
-    </tr>
-    <tr>
-        <td><div class="pull-left">Изменение резервного капитала</div></td>
-        <td><div class="pagination-centered">180</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S180%></div></td>
-    </tr>
-    <tr>
-        <td><a name="G10"></a><div class="pull-left">Изменение добавочного капитала</div></td>
-        <td><div class="pagination-centered">190</div></td>
-        <td><div class="pagination-centered"><%= f.input :G9_S190%></div></td>
-    </tr>
-        
-     <tr>
-        <td colspan="3"><div class="pagination-centered"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
-     </tr>    
-   </tbody>    
-  </table>  
- </div>
+  <tbody>    
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><strong>Остаток на конец года, предшествующего предыдущему году</strong></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><strong>010</strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G3_S010 %></strong></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><strong><%= f.input :G4_S010 %></strong></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><strong><%= f.input :G5_S010 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G6_S010 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G7_S010 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G8_S010 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G9_S010 %></strong></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Корректировки в связи с изменением учетной политики</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">020</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S020 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S020 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S020 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S020 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S020 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S020 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S020 %></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Корректировки в связи с исправлением ошибок</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">030</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S030 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S030 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S030 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S030 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S030 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S030 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S030 %></div></td>
+    </tr>
+    <tr>
+      <td colspan="9"><div class="pull-left"><strong>За период предыдущего года, аналогичный отчётному периоду</strong></div></td>
+    </tr>
+    <tr>
+      <td colspan="9"><div class="pull-left" style="max-width: 165pt"><strong>Увеличение собственного капитала</strong></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">В том числе:</div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - чистая прибыль</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>051</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S051%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S051%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S051%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S051%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S051%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S051%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S051%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - переоценка долгосрочных активов</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>052</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S052%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S052%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S052%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S052%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S052%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S052%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S052%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>053</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S053%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S053%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S053%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S053%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S053%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S053%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S053%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - выпуск дополнительных акций</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>054</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S054%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S054%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S054%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S054%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S054%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S054%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S054%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - увеличение номинальной стоимости акций</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>055</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S055%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S055%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S055%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S055%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S055%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S055%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S055%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>056</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S056%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S056%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S056%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S056%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S056%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S056%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S056%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - реорганизация</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>057</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S057%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S057%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S057%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S057%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S057%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S057%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S057%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>058</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S058%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S058%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S058%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S058%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S058%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S058%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S058%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - прочие</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>059</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S059%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S059%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S059%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S059%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S059%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S059%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S059%></em></div></td>
+    </tr>
+    <tr>
+      <td colspan="9"><div class="pull-left"><strong>Уменьшение собственного капитала</strong></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">В том числе:</div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - убыток</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>061</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S061%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S061%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S061%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S061%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S061%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S061%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S061%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - переоценка долгосрочных активов</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>062</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S062%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S062%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S062%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S062%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S062%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S062%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S062%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>063</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S063%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S063%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S063%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S063%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S063%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S063%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S063%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - уменьшение номинальной стоимости акций</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>064</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S064%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S064%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S064%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S064%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S064%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S064%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S064%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>065</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S065%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S065%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S065%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S065%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S065%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S065%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S065%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>066</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S066%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S066%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S066%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S066%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S066%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S066%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S066%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - реорганизация</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>067</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S067%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S067%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S067%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S067%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S067%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S067%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S067%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>068</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S068%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S068%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S068%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S068%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S068%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S068%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S068%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - прочие</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>069</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S069%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S069%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S069%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S069%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S069%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S069%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S069%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Изменение уставного капитала</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">070</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S070%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S070%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S070%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S070%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S070%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S070%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S070%></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Изменение резервного капитала</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">080</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S080%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S080%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S080%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S080%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S080%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S080%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S080%></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Изменение добавочного капитала</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">090</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S090%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S090%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S090%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S090%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S090%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S090%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S090%></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><strong>Остаток на конец предыдущего года</strong></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><strong>110</strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G3_S110 %></strong></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><strong><%= f.input :G4_S110 %></strong></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><strong><%= f.input :G5_S110 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G6_S110 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G7_S110 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G8_S110 %></strong></div></td>
+      <td><div class="pagination-centered"><strong><%= f.input :G9_S110 %></strong></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Корректировки в связи с изменением учетной политики</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">120</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S120 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S120 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S120 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S120 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S120 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S120 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S120 %></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Корректировки в связи с исправлением ошибок</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">130</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S130 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S130 %></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S130 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S130 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S130 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S130 %></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S130 %></div></td>
+    </tr>
+    <tr>
+      <td colspan="9"><div class="pull-left"><strong>За текущий отчётный период</strong></div></td>
+    </tr>
+    <tr>
+      <td colspan="9"><div class="pull-left" style="max-width: 165pt"><strong>Увеличение собственного капитала</strong></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">В том числе:</div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - чистая прибыль</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>151</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S151%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S151%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S151%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S151%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S151%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S151%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S151%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - переоценка долгосрочных активов</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>152</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S152%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S152%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S152%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S152%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S152%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S152%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S152%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - доходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>153</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S153%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S153%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S153%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S153%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S153%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S153%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S153%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - выпуск дополнительных акций</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>154</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S154%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S154%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S154%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S154%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S154%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S154%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S154%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - увеличение номинальной стоимости акций</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>155</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S155%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S155%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S155%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S155%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S155%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S155%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S155%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - вклады собственника имущества (учредителей, участников)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>156</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S156%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S156%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S156%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S156%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S156%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S156%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S156%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - реорганизация</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>157</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S157%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S157%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S157%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S157%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S157%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S157%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S157%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>158</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S158%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S158%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S158%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S158%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S158%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S158%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S158%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - прочие</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>159</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S159%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S159%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S159%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S159%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S159%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S159%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S159%></em></div></td>
+    </tr>
+    <tr>
+      <td colspan="9"><div class="pull-left" style="max-width: 165pt"><strong>Уменьшение собственного капитала</strong></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">В том числе:</div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+      <td><div class="pagination-centered"></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - убыток</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>161</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S161%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S161%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S161%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S161%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S161%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S161%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S161%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - переоценка долгосрочных активов</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>162</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S162%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S162%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S162%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S162%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S162%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S162%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S162%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - расходы от прочих операций, не включаемые в чистую прибыль (убыток)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>163</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S163%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S163%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S163%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S163%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S163%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S163%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S163%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> -  уменьшение номинальной стоимости акций</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>164</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S164%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S164%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S164%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S164%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S164%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S164%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S164%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - выкуп акций (долей в уставном капитале)</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>165</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S165%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S165%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S165%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S165%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S165%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S165%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S165%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - дивиденды и другие доходы от участия в уставном капитале организации</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>166</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S166%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S166%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S166%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S166%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S166%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S166%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S166%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - реорганизация</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>167</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S167%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S167%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S167%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S167%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S167%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S167%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S167%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>168</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S168%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S168%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S168%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S168%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S168%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S168%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S168%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt"><em> - прочие</em></div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt"><em>169</em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G3_S169%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G4_S169%></em></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><em><%= f.input :G5_S169%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G6_S169%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G7_S169%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G8_S169%></em></div></td>
+      <td><div class="pagination-centered"><em><%= f.input :G9_S169%></em></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Изменение уставного капитала</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">170</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S170%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S170%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S170%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S170%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S170%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S170%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S170%></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Изменение резервного капитала</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">180</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S180%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S180%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S180%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S180%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S180%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S180%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S180%></div></td>
+    </tr>
+    <tr>
+      <td><div class="pull-left" style="max-width: 165pt">Изменение добавочного капитала</div></td>
+      <td><div class="pagination-centered" style="max-width: 15pt">190</div></td>
+      <td><div class="pagination-centered"><%= f.input :G3_S190%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G4_S190%></div></td>
+      <td><div class="pagination-centered" style="max-width: 55pt"><%= f.input :G5_S190%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G6_S190%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G7_S190%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G8_S190%></div></td>
+      <td><div class="pagination-centered"><%= f.input :G9_S190%></div></td>
+    </tr>    
+  </tbody>    
+ </table>
+</div>
  
   <div class="form-actions">   
    <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>

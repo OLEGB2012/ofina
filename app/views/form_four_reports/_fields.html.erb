@@ -1,4 +1,5 @@
-<%= simple_form_for([@enterprise,@form_four_report], html: {class: "well form-inline"}, defaults: { label: false, :input_html => { :class => 'span12' } }) do |f| %>
+<%= simple_form_for([@enterprise,@form_four_report], html: {class: "well form-inline"}, 
+    defaults: { label: false, :input_html => { :class => 'span12', style: "text-align: right; min-width: 50pt; font-size: 9pt; margin-top: 0px; margin-bottom: -8px; padding: 0pt" } }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
 
