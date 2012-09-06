@@ -1,4 +1,6 @@
-<%= simple_form_for([@enterprise,@form_three_report], html: {class: "well form-inline"}, defaults: { label: false, :input_html => { :class => 'span12' } }) do |f| %>
+<%= simple_form_for([@enterprise,@form_three_report], 
+  html: {class: "well form-inline", style: "font-size: 7pt"}, 
+  defaults: { label: false, :input_html => { :class => 'span12', style: "font-size: 7pt" } }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
 
@@ -11,9 +13,7 @@
     <%= f.input :date_period_end, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
        <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span3",:maxlength => 10 %>
     <%end%>  
-    <%#= f.input :date_period_beg, label: " С : ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>  
-    <%#= f.input :date_period_end, label: " По: ", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
- 
+    
   <a name="BeginOfPage"></a> 
   
   <div class="form-actions">   
@@ -25,7 +25,7 @@
     </caption>       
     <thead>
       <tr>
-        <th><a name="G3"></a><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование показателя</div></th>
+        <th><a name="G3"></a><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование</div></th>
         <th><div class="pagination-centered">Код стр.</div></th>
         <th><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Сумма</div></th>
       </tr>
