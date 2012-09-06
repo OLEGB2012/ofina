@@ -1,16 +1,4 @@
 <%  provide(:title, 'Редактирование Отчёта об изменении капитала')%>
 
-<%# content_for :span3 do %>      
-  <%#*<div class="well sidebar-nav">%>  
-    <%#*<ul class="nav nav-list">%>  
-      <%#*<li class="nav-header">Редактирование</li>%>  
-      <%#*<li><%= link_to "Отменить операцию", enterprise_form_three_report_path%>
-      <%#*</li>%>
-      <%#= render 'anchors'%>
-    <%#*</ul>%>  
-  <%#*</div>%>  
-<%# end  %>
-
-<%# content_for :span9 do %>
+<%= link_to "Отменить операцию редактирования", enterprise_form_three_report_path %>
   <%= render 'fields'%>
-<%# end  %>
