@@ -5,16 +5,11 @@ class ResultsController < ApplicationController
   def index
     
   end
-  ###########################################################################
-  # Аналитический баланс (таблично)
-  def ab_table
-    @AB=AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("id")
-  end
+  
   ###########################################################################
   # Показатели финансовой устойчивости (таблично)
   def fu_table
     @FU=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
-#    @FU_MIN_Kfzav =@FU.minimum(:Kfzav)
     @FU_MAX_Kdfnez=@FU.maximum(:Kdfnez)
   end
   ###########################################################################
@@ -45,9 +40,42 @@ class ResultsController < ApplicationController
    @REN_MAX_Krenor  =@REN.maximum(:Krenor)
    @REN_MAX_Krenchp =@REN.maximum(:Krenchp)
   end
+  #########################################################№№№№№№№№№№№№№№№№№№############################################
+  # Общий (таблица+графики) обработчик для аналитического баланса с двумя параметрами - предприятие :id и тип анализа :ab
+  def ab
+  ###########################################################################
+  case params[:ab].to_i
+   when 1
+     @C0="Активов баланса"
+     
+   when 2
+     @C0="Раздела I баланса (Долгосрочные активы)"
+     
+   when 3
+     @C0="Раздела II баланса (Краткосрочные активы)"
+     
+   when 4
+     @C0="Пассивов баланса"
+     
+   when 5
+     @C0="Раздела III баланса (Собственный капитал)"
+     
+   when 6
+     @C0="Раздела IV баланса (Долгосрочные обязательства)"
+     
+   when 7
+     @C0="Раздела V баланса (Краткосрочные обязательства)"
+     
+end
+    
+  
+  # Аналитический баланс (таблично)
+  
+  
+  # Читаем расчёты из таблицы
+  @AB=AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("id")
   ###########################################################################
   # "аля" Аналитический баланс (графики) из формы 1 баланса.
-  def ab_graph      
     @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике статей баланса (в абсолютных значениях)...

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.integer  "enterprise_id"
     t.date     "date_period_beg"
     t.date     "date_period_end"
+    t.integer  "ab_type",                                       :default => 0
     t.integer  "row_type",                                      :default => 0
     t.string   "G1",                                            :default => ""
     t.string   "G2",                                            :default => ""
@@ -763,8 +764,8 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",           :null => false
-    t.string   "encrypted_password",     :default => "",           :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -777,13 +778,13 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.string   "username",               :default => ""
     t.text     "contact_info",           :default => ""
     t.string   "dogovor_nomer",          :default => ""
-    t.date     "dogovor_begin",          :default => '2012-09-01'
-    t.date     "dogovor_end",            :default => '2013-09-01'
-    t.date     "activation_begin",       :default => '2012-09-01'
-    t.date     "activation_end",         :default => '2012-09-16'
+    t.date     "dogovor_begin"
+    t.date     "dogovor_end"
+    t.date     "activation_begin"
+    t.date     "activation_end"
     t.boolean  "activation_allowed",     :default => true
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

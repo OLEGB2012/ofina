@@ -300,4 +300,18 @@ def make_users
                  password_confirmation: password, 
                  remember_me: false)
   end
+#   5.times do |n|
+#    username = Faker::Name.name
+#    email = "example-#{n+1}@railstutorial.org"
+#    password = "password"
+#    User.create!(username: username, 
+#                 email: email, 
+#                 password: password, 
+#                 password_confirmation: password, 
+#                 remember_me: false,
+#                 dogovor_begin: Date.today.to_date,
+#                 dogovor_end:   Date.today.to_date+1.year,
+#                 activation_begin: Date.today.to_date,
+#                 activation_end:   Date.today.to_date+15.days    )
+#  end
 end

@@ -1,11 +1,10 @@
-
 <%  provide(:title, 'Результаты')%>
 
 <% content_for :span3 do %>      
   <div class="well sidebar-nav">  
     <ul class="nav nav-list">  
       <li class="nav-header">РЕЗУЛЬТАТЫ</li>       
-      <li><%= link_to "К Панели Управления", enterprise_path(params[:id]) %></li>      
+      <li><%= link_to "К Панели Управления", @enterprise %></li>      
     </ul>  
   </div>  
 <% end  %>
@@ -19,7 +18,7 @@
     <thead>
       <tr>
         <th rowspan="2"><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">№ п.п.</div></th>
-        <th rowspan="2"><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Категория показателей</div></th>
+        <th rowspan="2"><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Вид Анализа</div></th>
         <th colspan="2"><div class="pagination-centered" >Просмотр</div></th>
       </tr>
       <tr>
@@ -29,10 +28,33 @@
   </thead>
   <tbody>
     <tr>
-      <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">1.</div></td>
-      <td><div class="pull-left" style="line-height: 30px; vertical-align:middle;">АНАЛИТИЧЕСКИЙ БАЛАНС</div></td>
-      <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;"><%= link_to image_tag("Generate tables 32.png"), results_ab_table_path(id: @enterprise) %></div></td>
-      <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;"><%= link_to image_tag("column chart 32.png"),    results_ab_graph_path(id: @enterprise) %></div></td>
+      <td><div class="pagination-centered" style="line-height: 140px; vertical-align:middle;">1.</div></td>
+      <td colspan="3">
+        <div class="pull-left" style="line-height: 30px; vertical-align:middle;">АНАЛИЗ БАЛАНСА :</br>
+         <ul>
+           <li>
+             <%= link_to "Анализ Активов баланса", results_ab_path(id: @enterprise, ab: 1) %>
+           </li>
+           <li>
+             <%= link_to "Анализ Раздела I баланса (Долгосрочные активы)", results_ab_path(id: @enterprise, ab: 2) %>
+           </li>
+           <li>
+             <%= link_to "Анализ Раздела II баланса (Краткосрочные активы)", results_ab_path(id: @enterprise, ab: 3) %>
+           </li>
+           <li>
+             <%= link_to "Анализ Пассивов баланса", results_ab_path(id: @enterprise, ab: 4) %>
+           </li>
+           <li>
+             <%= link_to "Анализ Раздела III баланса (Собственный капитал)", results_ab_path(id: @enterprise, ab: 5) %>
+           </li>
+           <li>
+             <%= link_to "Анализ Раздела IV баланса (Долгосрочные обязательства)", results_ab_path(id: @enterprise, ab: 6) %>
+           </li>
+           <li>
+             <%= link_to "Анализ Раздела V баланса (Краткосрочные обязательства)", results_ab_path(id: @enterprise, ab: 7) %>
+           </li>
+         </ul>  
+        </div></td>
     </tr>      
     <tr>
       <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">2.</div></td>

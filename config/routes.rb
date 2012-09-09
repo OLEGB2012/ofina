@@ -14,8 +14,7 @@ Ofina::Application.routes.draw do
   match '/calc_prompt'       , to: 'calculations#prompt'
   match '/calc_run'          , to: 'calculations#run'
   match '/results'           , to: 'results#index'
-  match '/results_ab_table'  , to: 'results#ab_table'
-  match '/results_ab_graph'  , to: 'results#ab_graph'
+  match '/results_ab'        , to: 'results#ab'  
   match '/results_fu_table'  , to: 'results#fu_table'
   match '/results_fu_graph'  , to: 'results#fu_graph'
   match '/results_lp_table'  , to: 'results#lp_table'
@@ -34,6 +33,12 @@ Ofina::Application.routes.draw do
       resources :form_four_reports
 #    end         
   end  
+  
+#  resources :users do
+#    member do
+#      get :following, :followers
+#    end
+#  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

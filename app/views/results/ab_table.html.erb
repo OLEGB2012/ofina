@@ -1,9 +1,12 @@
 <%  provide(:title, 'Результаты|Таблично')%>
 
+<% content_for :span3 do %>      
+  <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+<% end  %>
+
 <legend><%= image_tag("Generate tables 64.png") %> Аналитический баланс (таблично)</legend>
 
-<%= link_to "К странице Результаты", results_path(id: @enterprise) %>
-  <table class="table table-striped table-bordered table-condensed">
+<table class="table table-striped table-bordered table-condensed">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
                                   <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
@@ -13,16 +16,16 @@
         <th rowspan="2"><div class="pagination-centered" style="line-height: 60px; vertical-align:middle;">Код</div></th>
         <th colspan="2"><div class="pagination-centered">На начало периода</div></th>
         <th colspan="2"><div class="pagination-centered">На конец периода</div></th>
-        <th colspan="2"><div class="pagination-centered">Отклонения по балансу</div></th>
-        <th colspan="2"><div class="pagination-centered">Темп</div></th>
+        <th colspan="2"><div class="pagination-centered">Изменения</div></th>
+        <th colspan="2"><div class="pagination-centered">Темпы</div></th>
       </tr>
       <tr>
-        <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 85px">Сумма</div></th>
-        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">% к бал.</div></th>
-        <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 85px">Сумма</div></th>
-        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">% к бал.</div></th>
-        <th><div class="pagination-centered" style="min-width: 85px; line-height: 30px; vertical-align:middle;">По сумме, (гр.5-гр.3)</div></th>
-        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">По %-ам, (гр.6-гр.4)</div></th>
+        <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 85px">сумма</div></th>
+        <th><div class="pagination-centered" style="margin-bottom: 7pt" id="rotate90">% к балансу</div></th>
+        <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 85px">сумма</div></th>
+        <th><div class="pagination-centered" style="margin-bottom: 7pt" id="rotate90">% к балансу</div></th>
+        <th><div class="pagination-centered" style="min-width: 85px; line-height: 30px; vertical-align:middle;">по сумме, (гр.5-гр.3)</div></th>
+        <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">по %-ам, (гр.6-гр.4)</div></th>
         <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">роста,% (гр.5*100/гр.3)</div></th>
         <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">прироста,% </br>(гр.9-100)</div></th>
       </tr>

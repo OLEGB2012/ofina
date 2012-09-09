@@ -1,0 +1,7 @@
+<%  provide(:title, 'Анализ баланса')%>
+
+<% content_for :span3 do %>      
+  <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+<% end  %>
+
+<legend>Анализ <%= @C0 %></legend>

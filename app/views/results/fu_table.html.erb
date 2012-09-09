@@ -1,8 +1,10 @@
 <%  provide(:title, 'Результаты|Таблично')%>
 
-<legend><%= image_tag("Generate tables 64.png") %> Показатели Финансовой Устойчивости (таблично)</legend>
+<% content_for :span3 do %>      
+  <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+<% end  %>
 
-<%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+<legend><%= image_tag("Generate tables 64.png") %> Показатели Финансовой Устойчивости (таблично)</legend>
 
 <table class="table table-striped table-bordered table-condensed">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
