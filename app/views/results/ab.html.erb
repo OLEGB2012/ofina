@@ -6,7 +6,7 @@
 
 <legend>Анализ <%= @C0 %></legend>
 
-<table class="table table-striped table-bordered table-condensed" style="font-size: 11px">
+<table class="table table-striped table-bordered table-condensed" style="font-size: 12px">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
                                   <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
@@ -21,9 +21,9 @@
       </tr>
       <tr>
         <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 85px">сумма</div></th>
-        <th><div class="pagination-centered" style="margin-bottom: 7pt" id="rotate90"><%= @C4 %></div></th>
+        <th><div class="pagination-centered" style="margin-bottom: 3pt" id="rotate90"><%= @C4 %></div></th>
         <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 85px">сумма</div></th>
-        <th><div class="pagination-centered" style="margin-bottom: 7pt" id="rotate90"><%= @C4 %></div></th>
+        <th><div class="pagination-centered" style="margin-bottom: 3pt" id="rotate90"><%= @C4 %></div></th>
         <th><div class="pagination-centered" style="min-width: 85px; line-height: 30px; vertical-align:middle;">по сумме, (гр.5-гр.3)</div></th>
         <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">по %-ам, (гр.6-гр.4)</div></th>
         <th><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">роста,% (гр.5*100/гр.3)</div></th>

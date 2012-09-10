@@ -18,8 +18,8 @@
             <%when (76..100); "progress-success"%>
             <%end%>
             <% if current_user.is_active %>
-              <h5>До конца активации - <%= distance_of_time_in_words(Time.now,current_user.activation_end)%>.
-                  Последний день: <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года.</h5>
+              <h5>До конца активации - <%= distance_of_time_in_words(Date.today,current_user.activation_end)%>.
+                  Последний день: <%= Russian::strftime(current_user.activation_end-1,"%d %B %Y")%> года.</h5>
               <%= number_with_precision(current_user.get_balanse, precision: 0).to_s+'%'%>
               <div class="progress <%= (current_user.is_active)?@result:'progress-danger'%>">
                 <div class="bar" style="width: <%= current_user.get_balanse.to_s+'%' %>;"></div>
