@@ -44,7 +44,6 @@ class ResultsController < ApplicationController
   # Общий (таблица+графики) обработчик для аналитического баланса с двумя параметрами - предприятие :id и тип анализа :ab
   def ab
   ###########################################################################
-  @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
   @f1_beg=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(@enterprise.rab_date_beg).first
   @f1_end=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(@enterprise.rab_date_end).first
   # В интервале дат должны иметься отчёты!))
@@ -75,6 +74,19 @@ class ResultsController < ApplicationController
                                               G3: @f1_beg.S300, G4: (@f1_beg.S300.to_f/@f1_beg.S300)*100, 
                                               G5: @f1_end.S300, G6: (@f1_end.S300.to_f/@f1_end.S300)*100)
       @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="разделов Актива баланса"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+      
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
       
      when 2
       @C0="Раздела I баланса (Долгосрочные активы)"
@@ -162,6 +174,20 @@ class ResultsController < ApplicationController
                                               G3: @f1_beg.S190, G4: (@f1_beg.S190.to_f/@f1_beg.S190)*100, 
                                               G5: @f1_end.S190, G6: (@f1_end.S190.to_f/@f1_end.S190)*100)
       @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="строк Раздела I"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+            
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
+      
     when 3
       @C0="Раздела II баланса (Краткосрочные активы)"
       @C4="% к итогу Раздела II"
@@ -265,7 +291,21 @@ class ResultsController < ApplicationController
                                               G1: "ИТОГО Раздел II",G2: "290", 
                                               G3: @f1_beg.S290, G4: (@f1_beg.S290.to_f/@f1_beg.S290)*100, 
                                               G5: @f1_end.S290, G6: (@f1_end.S290.to_f/@f1_end.S290)*100)
-      @enterprise.analytical_balances << @AB_new_rec        
+      @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="строк Раздела II"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+            
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
+      
     when 4
       @C0="Пассивов баланса"
       @C4="% к балансу"
@@ -298,7 +338,21 @@ class ResultsController < ApplicationController
                                               G1: "БАЛАHС (490+590+690)",G2: "700", 
                                               G3: @f1_beg.S700, G4: (@f1_beg.S700.to_f/@f1_beg.S700)*100, 
                                               G5: @f1_end.S700, G6: (@f1_end.S700.to_f/@f1_end.S700)*100)
-      @enterprise.analytical_balances << @AB_new_rec      
+      @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="разделов Пассива баланса"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+            
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
+      
     when 5
       @C0="Раздела III баланса (Собственный капитал)"
       @C4="% к итогу Раздела III"
@@ -363,6 +417,20 @@ class ResultsController < ApplicationController
                                               G3: @f1_beg.S490, G4: (@f1_beg.S490.to_f/@f1_beg.S490)*100, 
                                               G5: @f1_end.S490, G6: (@f1_end.S490.to_f/@f1_end.S490)*100)
       @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="строк Раздела III"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+            
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
+      
     when 6
       @C0="Раздела IV баланса (Долгосрочные обязательства)"
       @C4="% к итогу Раздела IV"
@@ -415,6 +483,20 @@ class ResultsController < ApplicationController
                                               G3: @f1_beg.S590, G4: (@f1_beg.S590.to_f/@f1_beg.S590)*100, 
                                               G5: @f1_end.S590, G6: (@f1_end.S590.to_f/@f1_end.S590)*100)
       @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="строк Раздела IV"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+            
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
+      
     when 7
      @C0="Раздела V баланса (Краткосрочные обязательства)"
      @C4="% к итогу Раздела V"
@@ -525,6 +607,20 @@ class ResultsController < ApplicationController
                                               G3: @f1_beg.S690, G4: (@f1_beg.S690.to_f/@f1_beg.S690)*100, 
                                               G5: @f1_end.S690, G6: (@f1_end.S690.to_f/@f1_end.S690)*100)
       @enterprise.analytical_balances << @AB_new_rec
+      
+      @C1="строк Раздела V"
+      # Готовим массив для графика Динамика значений за интервал.
+      #
+            
+      # Готовим массив для графика Изменение значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп роста значений за интервал.
+      #
+      
+      # Готовим массив для графика Темп прироста значений за интервал.
+      #
+      
     end
   else
     if @f1_beg.nil?
@@ -540,7 +636,8 @@ class ResultsController < ApplicationController
  
   ###########################################################################
   # "аля" Аналитический баланс (графики) из формы 1 баланса.
-    @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
+  @form_one_reports=FormOneReport.FormOneEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).order("date_period")
+  
     #######################################################################################
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике статей баланса (в абсолютных значениях)...
     # Делаем, если есть отчёты-балансы по Форме 1 за период ...

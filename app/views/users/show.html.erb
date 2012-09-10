@@ -16,7 +16,7 @@
     <caption><strong>Пользователь: </strong> <%= current_user.email%><em>(<%= current_user.username%>)</em></caption>        
     <tbody>      
       <tr>
-        <td colspan="2"><div class="pagination-centered"><strong>Договор</strong></div></td>        
+        <td colspan="2"><div class="pagination-centered"><em><strong>ДОГОВОР</strong></em></div></td>        
       </tr>
       <tr>
         <td><div class="pull-right"><strong>Номер</strong></div></td>
@@ -31,7 +31,7 @@
         <td><div class="pull-left" ><em><%= Russian::strftime(current_user.dogovor_end,"%d %B %Y")%> года</em></div></td>       
       </tr>
       <tr>
-        <td colspan="2"><div class="pagination-centered"><strong>Активация</strong></div></td>        
+        <td colspan="2"><div class="pagination-centered"><em><strong>АКТИВАЦИЯ</strong></em></div></td>        
       </tr>
       <tr>
         <td><div class="pull-right"><strong>Дата начала</strong></div></td>
@@ -46,7 +46,7 @@
         <td><div class="pull-left" ><em><%= (current_user.activation_allowed)?'Да, разрешена':'Нет, запрещена' %></em></div></td>       
       </tr>
       <tr>
-        <td colspan="2"><div class="pagination-centered"><strong>Контактная информация</strong></div></td>        
+        <td colspan="2"><div class="pagination-centered"><em><strong>КОНТАКТНАЯ ИНФОРМАЦИЯ</strong></em></div></td>        
       </tr>
       <tr>
         <td colspan="2"><div class="pull-left"><%= current_user.contact_info %></div></td>
