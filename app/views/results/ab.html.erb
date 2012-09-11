@@ -1,3 +1,5 @@
+<%= raw Seer::init_visualization %>
+
 <%  provide(:title, 'Анализ баланса')%>
 
 <% content_for :span3 do %>      
@@ -135,3 +137,47 @@
       <% end %>    
     </tbody>   
   </table>
+
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+      <tr>
+        <td><div class="pagination-centered"  style="font-size: 15px">1.Динамика <%= @C1 %></div></td>
+      </tr>
+      <tr>
+        <td><div id="D1"></div></td>
+      </tr>
+      <tr>
+        <td><div class="pagination-centered"  style="font-size: 15px">2.Изменения <%= @C1 %></div></td>
+      </tr>
+      <tr>
+         <td><div id="D2" ></div></td>
+      </tr>
+    </tbody>   
+  </table>
+
+<%####################################################################################################################%>
+ <%# Диаграммы в абсолютных значениях #%>
+  <% unless @DiagType1_data.nil? %>  
+    <%= raw Seer::visualize(
+      @DiagType1_data, 
+      :as => :line_chart,
+      :in_element => 'D1',
+      :series => {
+        :series_label => 'name',
+        :data_label   => 'rus_date_period',
+        :data_method  => 'summa',
+        :data_series  => @DiagType1_series
+      },
+      :chart_options => {
+        :title_y => 'Сумма, млн.руб.',
+        :legend_font_size => 9,
+        :height => 300,
+        :width => 930,
+        :axis_font_size => 11,
+        :colors => ['#000099','#009900','#990000','#FF0000','#FFA500','#FFFF00',
+                    '#808000','#008000','#800080','#FF00FF',
+                    '#00FF00','#008080','#FA8072','#0000FF',
+                    '#000080','#000000','#808088','#C0C0C0',
+                    '#9400D3','#FF1493','#4682B4','#F0E68C','#BC8F8F'],
+        :point_size => 5})%>
+  <% end %>

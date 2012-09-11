@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.datetime "updated_at",                                                     :null => false
   end
 
-  add_index "balanse_rows", ["enterprise_id", "date_period_beg", "date_period_end"], :name => "br_enterpise_id_period"
-  add_index "balanse_rows", ["enterprise_id", "date_period_beg"], :name => "br_enterpise_id_period_beg"
-  add_index "balanse_rows", ["enterprise_id", "date_period_end"], :name => "br_enterpise_id_period_end"
+  add_index "balanse_rows", ["enterprise_id", "diag_type", "date_period_beg", "date_period_end"], :name => "br_enterpise_id_diag_type_period"
+  add_index "balanse_rows", ["enterprise_id", "diag_type", "date_period_beg"], :name => "br_enterpise_id_diag_type_period_beg"
+  add_index "balanse_rows", ["enterprise_id", "diag_type", "date_period_end"], :name => "br_enterpise_id_diag_type_period_end"
   add_index "balanse_rows", ["enterprise_id"], :name => "index_balanse_rows_on_enterprise_id"
 
   create_table "balanse_values", :force => true do |t|
