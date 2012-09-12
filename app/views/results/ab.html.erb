@@ -139,24 +139,24 @@
   </table>
 
 <table class="table table-striped table-bordered table-condensed">
-    <tbody>
-      <tr>
-        <td><div class="pagination-centered"  style="font-size: 15px">1.Динамика <%= @C1 %></div></td>
-      </tr>
+    <tbody>      
       <tr>
         <td><div id="D1"></div></td>
       </tr>
       <tr>
-        <td><div class="pagination-centered"  style="font-size: 15px">2.Изменения <%= @C1 %></div></td>
+        <td><div id="D2" ></div></td>
       </tr>
       <tr>
-         <td><div id="D2" ></div></td>
+        <td><div id="D3" ></div></td>
+      </tr>
+      <tr>
+        <td><div id="D4" ></div></td>
       </tr>
     </tbody>   
   </table>
 
 <%####################################################################################################################%>
- <%# Диаграммы в абсолютных значениях #%>
+ 
   <% unless @DiagType1_data.nil? %>  
     <%= raw Seer::visualize(
       @DiagType1_data, 
@@ -169,8 +169,10 @@
         :data_series  => @DiagType1_series
       },
       :chart_options => {
+        :title => 'Динамика '+ @C1,
         :title_y => 'Сумма, млн.руб.',
-        :legend_font_size => 9,
+        :legend => 'right',
+        :legend_font_size => 10,
         :height => 300,
         :width => 930,
         :axis_font_size => 11,
@@ -181,3 +183,57 @@
                     '#9400D3','#FF1493','#4682B4','#F0E68C','#BC8F8F'],
         :point_size => 5})%>
   <% end %>
+
+<% unless @DiagType2_data.nil? %> 
+ <%= raw Seer::visualize(
+   @DiagType2_data,
+   :as => :bar_chart,
+   :in_element => 'D2',
+   :series => {:series_label => 'name', :data_method => 'summa'},
+   :chart_options => {
+   :height => 300,
+   :width => 930,
+   :is_3_d => true,
+   :legend => 'none',
+   :axis_font_size => 11,
+   :colors => "[{color:'#000099', darker:'#000066'}]",
+   :title => 'Изменения '+ @C1,
+   :title_x => 'Сумма, млн.руб. (графа 7)',
+   :title_y => 'Раздел/Строка'})%>
+<% end %>
+
+<% unless @DiagType3_data.nil? %> 
+ <%= raw Seer::visualize(
+   @DiagType3_data,
+   :as => :bar_chart,
+   :in_element => 'D3',
+   :series => {:series_label => 'name', :data_method => 'summa_dec'},
+   :chart_options => {
+   :height => 300,
+   :width => 930,
+   :is_3_d => true,
+   :legend => 'none',
+   :axis_font_size => 11,
+   :colors => "[{color:'#009900', darker:'#006600'}]",
+   :title => 'Темп роста '+ @C1,
+   :title_x => 'в % (графа 9)',
+   :title_y => 'Раздел/Строка'})%>
+<% end %>
+
+<% unless @DiagType4_data.nil? %> 
+ <%= raw Seer::visualize(
+   @DiagType4_data,
+   :as => :bar_chart,
+   :in_element => 'D4',
+   :series => {:series_label => 'name', :data_method => 'summa_dec'},
+   :chart_options => {
+   :height => 300,
+   :width => 930,
+   :is_3_d => true,
+   :legend => 'none',
+   :axis_font_size => 11,
+   :colors => "[{color:'#990000', darker:'#660000'}]",
+   :title => 'Темп прироста '+ @C1,
+   :title_x => 'в % (графа 10)',
+   :title_y => 'Раздел/Строка'})%>
+<% end %>
