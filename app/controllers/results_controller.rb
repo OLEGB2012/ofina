@@ -53,13 +53,7 @@ class ResultsController < ApplicationController
     unless @f1_beg.nil? and @f1_end.nil?
     # Почистим целевую таблицу от предыдущего аналогичного расчёта
       AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(params[:ab].to_i).destroy_all 
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(1+params[:ab].to_i).destroy_all
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(2+params[:ab].to_i).destroy_all
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(3+params[:ab].to_i).destroy_all
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(4+params[:ab].to_i).destroy_all
-#      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(5+params[:ab].to_i).destroy_all
-#      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(6+params[:ab].to_i).destroy_all
-#      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).DiagramType(7+params[:ab].to_i).destroy_all
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).Diagram(7*params[:ab].to_i-6,7*params[:ab].to_i).destroy_all
     case params[:ab].to_i
       when 1
         @C0="Активов баланса"
@@ -181,15 +175,15 @@ class ResultsController < ApplicationController
         @C1="строк Раздела I"
         
         unless @form_one_reports.empty?          
-          @Arr_ab=[["1", "ИТОГО Раздел I", "S190"],
-                   ["1", "Основные средства", "S110"],
-                   ["1", "Нематериальные активы", "S120"],
-                   ["1", "Доходные вложения в матер-ые активы", "S130"],
-                   ["1", "Вложения в долгосрочные активы", "S140"],
-                   ["1", "Долгосрочные финансовые вложения", "S150"],
-                   ["1", "Отложенные налоговые активы", "S160"],
-                   ["1", "Долгосрочная дебиторская задол-сть", "S170"],
-                   ["1", "Прочие долгосрочные активы", "S180"]]
+          @Arr_ab=[["8", "ИТОГО Раздел I", "S190"],
+                   ["8", "Основные средства", "S110"],
+                   ["8", "Нематериальные активы", "S120"],
+                   ["8", "Доходные вложения в матер-ые активы", "S130"],
+                   ["8", "Вложения в долгосрочные активы", "S140"],
+                   ["8", "Долгосрочные финансовые вложения", "S150"],
+                   ["8", "Отложенные налоговые активы", "S160"],
+                   ["8", "Долгосрочная дебиторская задол-сть", "S170"],
+                   ["8", "Прочие долгосрочные активы", "S180"]]
         end
       when 3
         @C0="Раздела II баланса (Краткосрочные активы)"
@@ -297,15 +291,15 @@ class ResultsController < ApplicationController
         @C1="строк Раздела II"
        
         unless @form_one_reports.empty?
-            @Arr_ab=[["1", "ИТОГО Раздел II", "S290"],
-                     ["1", "Запасы", "S210"],
-                     ["1", "Долгосрочные активы для реал.", "S220"],
-                     ["1", "Расходы будущих периодов", "S230"],
-                     ["1", "Налог на добавл.стоим.по приобр.ТРУ", "S240"],
-                     ["1", "Краткоср-ая дебит-ая задол-сть", "S250"],
-                     ["1", "Краткоср-ые фин. вложения", "S260"],
-                     ["1", "Денежные сред-ва и их эквив-ты", "S270"],
-                     ["1", "Прочие краткосрочные активы", "S280"]]
+            @Arr_ab=[["15", "ИТОГО Раздел II", "S290"],
+                     ["15", "Запасы", "S210"],
+                     ["15", "Долгосрочные активы для реал.", "S220"],
+                     ["15", "Расходы будущих периодов", "S230"],
+                     ["15", "Налог на добавл.стоим.по приобр.ТРУ", "S240"],
+                     ["15", "Краткоср-ая дебит-ая задол-сть", "S250"],
+                     ["15", "Краткоср-ые фин. вложения", "S260"],
+                     ["15", "Денежные сред-ва и их эквив-ты", "S270"],
+                     ["15", "Прочие краткосрочные активы", "S280"]]
         end
       when 4
         @C0="Пассивов баланса"
@@ -342,10 +336,10 @@ class ResultsController < ApplicationController
         @C1="разделов Пассива баланса"
         
         unless @form_one_reports.empty?
-            @Arr_ab=[["1", "Раздел III. СОБСТВЕННЫЙ КАПИТАЛ", "S490"],
-                     ["1", "Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА", "S590"],
-                     ["1", "Раздел V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА", "S690"],
-                     ["1", "БАЛАHС (490+590+690)", "S700"]]
+            @Arr_ab=[["22", "Раздел III. СОБСТВЕННЫЙ КАПИТАЛ", "S490"],
+                     ["22", "Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА", "S590"],
+                     ["22", "Раздел V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА", "S690"],
+                     ["22", "БАЛАHС (490+590+690)", "S700"]]
         end
       when 5
         @C0="Раздела III баланса (Собственный капитал)"
@@ -413,15 +407,15 @@ class ResultsController < ApplicationController
         @C1="строк Раздела III"
         
         unless @form_one_reports.empty?
-           @Arr_ab=[["1","ИТОГО Раздел III","S490"],
-                    ["1", "Уставный капитал", "S410"],
-                    ["1", "Неоплаченная часть уставного кап-ла", "S420"],
-                    ["1", "Собственные акции (доли в уст.кап.)", "S430"],
-                    ["1", "Резервный капитал", "S440"],
-                    ["1", "Добавочный капитал", "S450"],
-                    ["1", "Нераспред-ная прибыль/непокр.убыт", "S460"],
-                    ["1", "Чист. прибыль/уб-к отчетного года", "S470"],
-                    ["1", "Целевое финансирование", "S480"]]
+           @Arr_ab=[["29","ИТОГО Раздел III","S490"],
+                    ["29", "Уставный капитал", "S410"],
+                    ["29", "Неоплаченная часть уставного кап-ла", "S420"],
+                    ["29", "Собственные акции (доли в уст.кап.)", "S430"],
+                    ["29", "Резервный капитал", "S440"],
+                    ["29", "Добавочный капитал", "S450"],
+                    ["29", "Нераспред-ная прибыль/непокр.убыт", "S460"],
+                    ["29", "Чист. прибыль/уб-к отчетного года", "S470"],
+                    ["29", "Целевое финансирование", "S480"]]
         end
       when 6
         @C0="Раздела IV баланса (Долгосрочные обязательства)"
@@ -477,13 +471,13 @@ class ResultsController < ApplicationController
         @C1="строк Раздела IV"
         
         unless @form_one_reports.empty?              
-              @Arr_ab=[["1", "ИТОГО Раздел IV", "S590"],
-                       ["1", "Долгосрочные кредиты и займы", "S510"],
-                       ["1", "Долгосрочные обяз-ва по лизинг.плат-м", "S520"],
-                       ["1", "Отложенные налоговые обяз-ства", "S530"],
-                       ["1", "Доходы будущих периодов", "S540"],
-                       ["1", "Резервы предстоящих платежей", "S550"],
-                       ["1", "Прочие долгосрочные обязательства", "S560"]]
+              @Arr_ab=[["36", "ИТОГО Раздел IV", "S590"],
+                       ["36", "Долгосрочные кредиты и займы", "S510"],
+                       ["36", "Долгосрочные обяз-ва по лизинг.плат-м", "S520"],
+                       ["36", "Отложенные налоговые обяз-ства", "S530"],
+                       ["36", "Доходы будущих периодов", "S540"],
+                       ["36", "Резервы предстоящих платежей", "S550"],
+                       ["36", "Прочие долгосрочные обязательства", "S560"]]
         end
       when 7
         @C0="Раздела V баланса (Краткосрочные обязательства)"
@@ -596,14 +590,14 @@ class ResultsController < ApplicationController
       
         @C1="строк Раздела V"
         unless @form_one_reports.empty?         
-           @Arr_ab=[["1", "ИТОГО Раздел V", "S690"],
-                    ["1", "Краткоср-ые кредиты и займы", "S610"],
-                    ["1", "Краткоср-ая ч-ть долгосрочных обяз-тв", "S620"],
-                    ["1", "Краткоср-ая кредиторская задолж-ть", "S630"],
-                    ["1", "Обязательств,предназ-ые для реал-ции", "S640"],
-                    ["1", "Доходы будущих периодов", "S650"],
-                    ["1", "Резервы предстоящих платежей", "S660"],
-                    ["1", "Прочие краткоср-ые обяз-ства", "S670"]]
+           @Arr_ab=[["43", "ИТОГО Раздел V", "S690"],
+                    ["43", "Краткоср-ые кредиты и займы", "S610"],
+                    ["43", "Краткоср-ая ч-ть долгосрочных обяз-тв", "S620"],
+                    ["43", "Краткоср-ая кредиторская задолж-ть", "S630"],
+                    ["43", "Обязательств,предназ-ые для реал-ции", "S640"],
+                    ["43", "Доходы будущих периодов", "S650"],
+                    ["43", "Резервы предстоящих платежей", "S660"],
+                    ["43", "Прочие краткоср-ые обяз-ства", "S670"]]
         end
       end # от case
       # Разложим массивы по таблицам для каждого вида диаграмм ...
@@ -612,14 +606,14 @@ class ResultsController < ApplicationController
         #
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                      date_period_end: @f1_end.date_period, 
-                                     diag_type: #{x[0]}+params[:ab].to_i, 
+                                     diag_type: #{x[0]}, 
                                      name: "+'"'+"#{x[1]}"+'"'+")
                 @BR_rec=@enterprise.balanse_rows << @BR_new_rec
                 @form_one_reports.each do |data|
                    @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period,summa: data.#{x[2]}) 
                 end
-                @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}+params[:ab].to_i).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
-                @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")
+                @DiagType1_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
+                @DiagType1_series=@DiagType1_data.map{|w|w.balanse_values}")
       end
     else
       if @f1_beg.nil?
@@ -638,7 +632,7 @@ class ResultsController < ApplicationController
       #      
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
-                                       diag_type: 2+params[:ab].to_i, 
+                                       diag_type: 7*params[:ab].to_i-5, 
                                        name: ab.G1,
                                        summa: ab.G5-ab.G3)
         @BR_rec=@enterprise.balanse_rows << @BR_new_rec
@@ -646,7 +640,7 @@ class ResultsController < ApplicationController
       #
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
-                                       diag_type: 3+params[:ab].to_i, 
+                                       diag_type: 7*params[:ab].to_i-4, 
                                        name: ab.G1,
                                        summa_dec: ab.G9)
         @BR_rec=@enterprise.balanse_rows << @BR_new_rec  
@@ -654,15 +648,15 @@ class ResultsController < ApplicationController
       #
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
-                                       diag_type: 4+params[:ab].to_i, 
+                                       diag_type: 7*params[:ab].to_i-3, 
                                        name: ab.G1,
                                        summa_dec: ab.G10)
         @BR_rec=@enterprise.balanse_rows << @BR_new_rec
       end
     end
-    @DiagType2_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(2+params[:ab].to_i).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
-    @DiagType3_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(3+params[:ab].to_i).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
-    @DiagType4_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(4+params[:ab].to_i).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
+    @DiagType2_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-5).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
+    @DiagType3_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-4).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
+    @DiagType4_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-3).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).all
   end
  
   
@@ -712,16 +706,16 @@ class ResultsController < ApplicationController
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
     # Делаем, если есть отчёты-балансы по Форме 1 за период ...
     unless @form_one_reports.empty?
-      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 16 по 20"... 
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 50 по 54"... 
       # (записи из balanse_values "уйдут" по каскаду)...
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(16,20).destroy_all
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(50,54).destroy_all
       # ... и заполняем ...
       # ################################################################
-      @Arr_fu=[["16", "Автономия", "Kfnez"],
-        ["17", "Концентрация привлеченного капитала", "Kfzav"],
-        ["18", "Долгосрочная финансовая независимость", "Kdfnez"],
-        ["19", "Соотношение заемных и собственных средств", "Kcap"],
-        ["20", "Маневренность собственного капитала", "Kman"]]
+      @Arr_fu=[["50", "Автономия", "Kfnez"],
+               ["51", "Концентрация привлеченного капитала", "Kfzav"],
+               ["52", "Долгосрочная финансовая независимость", "Kdfnez"],
+               ["53", "Соотношение заемных и собственных средств", "Kcap"],
+               ["54", "Маневренность собственного капитала", "Kman"]]
             
       @Arr_fu.each do |x|       
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
@@ -745,16 +739,16 @@ class ResultsController < ApplicationController
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
     # Делаем, если есть отчёты-балансы по Форме 1 за период ...
     unless @form_one_reports.empty?
-      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 21 по 25"... 
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 55 по 59"... 
       # (записи из balanse_values "уйдут" по каскаду)...
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(21,25).destroy_all
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(55,59).destroy_all
       # ... и заполняем ...
       ######################################################
-      @Arr_lp=[["21", "Текущая ликвидность (K1)", "K1"],
-        ["22", "Абсолютная ликвидность", "Kabsl"],
-        ["23", "Критическая (промежуточная) ликвидность", "Kkrl"],
-        ["24", "Обеспеченность собственными оборотными средствами (K2)", "K2"],
-        ["25", "Обеспеченность финансовых обязательств активами (K3)", "K3"]]
+      @Arr_lp=[["55", "Текущая ликвидность (K1)", "K1"],
+               ["56", "Абсолютная ликвидность", "Kabsl"],
+               ["57", "Критическая (промежуточная) ликвидность", "Kkrl"],
+               ["58", "Обеспеченность собственными оборотными средствами (K2)", "K2"],
+               ["59", "Обеспеченность финансовых обязательств активами (K3)", "K3"]]
             
       @Arr_lp.each do |x|       
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
@@ -778,17 +772,17 @@ class ResultsController < ApplicationController
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
     # Делаем, если есть отчёты по Форме 2 за период ...
     unless @form_two_reports.empty?
-      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 26 по 31"... 
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 60 по 65"... 
       # (записи из balanse_values "уйдут" по каскаду)...
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(26,31).destroy_all
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(60,65).destroy_all
       # ... и заполняем ...
       ######################################################
-      @Arr_da=[["26", "Общая оборачиваемость капитала (деловая активность)", "Kobk"],
-        ["27", "Оборачиваемость оборотных средств (краткосрочных активов)", "Kobs"],
-        ["28", "Оборачиваемость запаса сырья, материалов и полуфабрикатов", "Kobzs"],
-        ["29", "Оборачиваемость готовой продукции", "Kobgp"],
-        ["30", "Оборачиваемость дебиторской задолженности", "Kobdz"],
-        ["31", "Оборачиваемость кредиторской задолженности", "Kobkz"]]
+      @Arr_da=[["60", "Общая оборачиваемость капитала (деловая активность)", "Kobk"],
+               ["61", "Оборачиваемость оборотных средств (краткосрочных активов)", "Kobs"],
+               ["62", "Оборачиваемость запаса сырья, материалов и полуфабрикатов", "Kobzs"],
+               ["63", "Оборачиваемость готовой продукции", "Kobgp"],
+               ["64", "Оборачиваемость дебиторской задолженности", "Kobdz"],
+               ["65", "Оборачиваемость кредиторской задолженности", "Kobkz"]]
             
       @Arr_da.each do |x|       
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 
@@ -812,18 +806,18 @@ class ResultsController < ApplicationController
     # 1 - сформируем массив для рисования линейчатых диаграмм по динамике расчитанных показателей (в абсолютных значениях)...
     # Делаем, если есть отчёты по Форме 2 за период ...
     unless @form_two_reports.empty?
-      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 32 по 38"... 
+      # Готовим целевые таблицы - чистим за период по предприятию определённый тип диаграмм "с 66 по 72"... 
       # (записи из balanse_values "уйдут" по каскаду)...
-      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(32,38).destroy_all
+      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(66,72).destroy_all
       # ... и заполняем ...
       ######################################################
-      @Arr_ren=[["32", "Рентабельность продаж", "Krenprod"],
-        ["33", "Рентабельность активов", "Krenact"],
-        ["34", "Рентабельность собственного капитала", "Krensk"],
-        ["35", "Рентабельность производственных затрат, составляющих себестоимость", "Krenpz"],
-        ["36", "Рентабельность полной себестоимости реализованной продукции", "Krenps"],
-        ["37", "Рентабельность общих расходов коммерческой организации", "Krenor"],
-        ["38", "Рентабельность расходов, обусловивших получение чистой прибыли", "Krenchp"]]
+      @Arr_ren=[["66", "Рентабельность продаж", "Krenprod"],
+                ["67", "Рентабельность активов", "Krenact"],
+                ["68", "Рентабельность собственного капитала", "Krensk"],
+                ["69", "Рентабельность производственных затрат, составляющих себестоимость", "Krenpz"],
+                ["70", "Рентабельность полной себестоимости реализованной продукции", "Krenps"],
+                ["71", "Рентабельность общих расходов коммерческой организации", "Krenor"],
+                ["72", "Рентабельность расходов, обусловивших получение чистой прибыли", "Krenchp"]]
             
       @Arr_ren.each do |x|       
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @enterprise.rab_date_beg, 

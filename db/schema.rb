@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.date     "date_period_end"
     t.string   "name",                                          :default => ""
     t.integer  "summa",                                         :default => 0
-    t.decimal  "summa_dec",       :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "summa_dec",       :precision => 8, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                     :null => false
     t.datetime "updated_at",                                                     :null => false
   end
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.integer  "balanse_row_id"
     t.date     "date_period"
     t.integer  "summa",                                        :default => 0
-    t.decimal  "summa_dec",      :precision => 6, :scale => 4, :default => 0.0
+    t.decimal  "summa_dec",      :precision => 8, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                    :null => false
     t.datetime "updated_at",                                                    :null => false
   end
