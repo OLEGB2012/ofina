@@ -26,17 +26,11 @@
      </thead>
     <tbody>
        <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент общей оборачиваемости капитала (деловой активности)</div></td>
-       </tr>  
-       <tr>
          <td><div id="Razdel_1" ></div></td>
        </tr>
        <tr>
           <td colspan="3"><a name="G2"></a> <div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
-       <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент оборачиваемости оборотных средств (краткосрочных активов)</div></td>
-       </tr> 
        <tr>
           <td><div id="Razdel_2"></div></td>
        </tr>       
@@ -44,34 +38,22 @@
           <td colspan="3"><a name="G3"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент оборачиваемости запаса сырья, материалов и полуфабрикатов</div></td>
-       </tr> 
-       <tr>
           <td> <div id="Razdel_3"></div></td>
        </tr>
        <tr>
          <td colspan="3"><a name="G4"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
-       <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент оборачиваемости готовой продукции</div></td>
-       <tr>
           <td> <div id="Razdel_4"></div></td>
        </tr>
        <tr>
          <td colspan="3"><a name="G5"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент оборачиваемости дебиторской задолженности</div></td>
-       </tr> 
-       <tr>
           <td> <div id="Razdel_5"></div></td>
        </tr>
        <tr>
          <td colspan="3"><a name="G6"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
-       <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент оборачиваемости кредиторской задолженности</div></td>
-       </tr> 
        <tr>
           <td> <div id="Razdel_6"></div></td>
        </tr>
@@ -94,6 +76,7 @@
         :data_series  => @DiagType60_series
       },
       :chart_options => {
+        :title => 'Коэффициент общей оборачиваемости капитала (деловой активности)',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -114,6 +97,7 @@
         :data_series  => @DiagType61_series
       },
       :chart_options => {
+        :title => 'Коэффициент оборачиваемости оборотных средств (краткосрочных активов)',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -134,6 +118,7 @@
         :data_series  => @DiagType62_series
       },
       :chart_options => {
+        :title => 'Коэффициент оборачиваемости запаса сырья, материалов и полуфабрикатов',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -154,6 +139,7 @@
         :data_series  => @DiagType63_series
       },
       :chart_options => {
+        :title => 'Коэффициент оборачиваемости готовой продукции',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -174,6 +160,7 @@
         :data_series  => @DiagType64_series
       },
       :chart_options => {
+        :title => 'Коэффициент оборачиваемости дебиторской задолженности',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -194,6 +181,7 @@
         :data_series  => @DiagType65_series
       },
       :chart_options => {
+        :title => 'Коэффициент оборачиваемости кредиторской задолженности',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,

@@ -699,7 +699,10 @@ class ResultsController < ApplicationController
     @DiagType3_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-4).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).order("id").all
     @DiagType4_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-3).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).order("id").all
     @DiagType6_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-1).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).order("id").all
-  end
+    
+    # Круговые диаграммы по датам ...
+    
+  end # def ab
  
   
   #    unless @form_one_reports.empty?

@@ -26,17 +26,11 @@
      </thead>
     <tbody>
        <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент автономии (финансовой независимости)</div></td>
-       </tr>  
-       <tr>
          <td><div id="Razdel_1" ></div></td>
        </tr>
        <tr>
           <td colspan="3"><a name="G2"></a> <div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
-       <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент концентрации заёмного капитала (финансовой зависимости)</div></td>
-       </tr> 
        <tr>
           <td><div id="Razdel_2"></div></td>
        </tr>       
@@ -44,26 +38,17 @@
           <td colspan="3"><a name="G3"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент долгосрочной финансовой независимости</div></td>
-       </tr> 
-       <tr>
           <td> <div id="Razdel_3"></div></td>
        </tr>
        <tr>
          <td colspan="3"><a name="G4"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
        <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент соотношения заемных и собственных средств (капитализации)</div></td>
-       </tr> 
-       <tr>
           <td> <div id="Razdel_4"></div></td>
        </tr>
        <tr>
          <td colspan="3"><a name="G5"></a><div class="pull-left"><%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>
        </tr>
-       <tr>
-          <td colspan="3"><div class="pull-left">Коэффициент маневренности собственного капитала</div></td>
-       </tr> 
        <tr>
           <td> <div id="Razdel_5"></div></td>
        </tr>
@@ -86,6 +71,7 @@
         :data_series  => @DiagType50_series
       },
       :chart_options => {
+        :title => 'Коэффициент автономии (финансовой независимости)',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -106,6 +92,7 @@
         :data_series  => @DiagType51_series
       },
       :chart_options => {
+        :title => 'Коэффициент концентрации заёмного капитала (финансовой зависимости)',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -126,6 +113,7 @@
         :data_series  => @DiagType52_series
       },
       :chart_options => {
+        :title =>'Коэффициент долгосрочной финансовой независимости',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -146,6 +134,7 @@
         :data_series  => @DiagType53_series
       },
       :chart_options => {
+        :title =>'Коэффициент соотношения заемных и собственных средств (капитализации)',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
@@ -166,6 +155,7 @@
         :data_series  => @DiagType54_series
       },
       :chart_options => {
+        :title => 'Коэффициент маневренности собственного капитала',
         :legend_font_size => 10,
         :height => 300,
         :width => 660,
