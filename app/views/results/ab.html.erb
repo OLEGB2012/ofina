@@ -2,11 +2,20 @@
 
 <%  provide(:title, 'Анализ баланса')%>
 
-<% content_for :span3 do %>      
-  <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+<% content_for :span9 do %>
+  <%= link_to results_path(id: @enterprise), class: "btn btn-small btn-info" do %>
+     К странице Результаты
+  <% end %>  
+  <%= link_to "#Gorizontal", class: "btn btn-small btn-success" do %>
+     Горизонтальный Анализ
+  <% end %> 
+  <%= link_to "#Vertical", class: "btn btn-small btn-success" do %>
+     Вертикальный Анализ
+  <% end %>  
 <% end  %>
 
-<legend>Анализ <%= @C0 %></legend>
+<a name="BeginOfPage"></a>
+<legend><%= image_tag("AB-64.png") %> Анализ <%= @C0 %></legend>
 
 <table class="table table-striped table-bordered table-condensed" style="font-size: 12px">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
@@ -137,38 +146,102 @@
       <% end %>    
     </tbody>   
   </table>
-
+<a name="Gorizontal"></a>
 <table class="table table-striped table-bordered table-condensed">
-    <tbody>
-      <tr>
+  <thead>
+    <tr>
         <td><div class="pagination-centered" ><strong>Горизонтальный Анализ</strong></div></td>
-      </tr>
+    </tr>
+  </thead>
+    <tbody>      
       <tr>
         <td><div id="D1"></div></td>
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %></div></td>
       </tr>
       <tr>
         <td><div id="D2" ></div></td>
       </tr>
       <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %></div></td>
+      </tr>
+      <tr>
         <td><div id="D3" ></div></td>
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %></div></td>
       </tr>
       <tr>
         <td><div id="D4" ></div></td>
       </tr>
       <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %></div></td>
+      </tr>
+       </tbody>   
+  </table>
+<a name="Vertical"></a>
+<table class="table table-striped table-bordered table-condensed">
+   <thead>
+      <tr>
         <td><div class="pagination-centered" ><strong>Вертикальный Анализ</strong></div></td>
       </tr>
+   </thead>     
       <tr>
         <td><div id="D5" ></div></td>
       </tr>
       <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %></div></td>
+      </tr>
+      <tr>
         <td><div id="D6" ></div></td>
+      </tr>
+      <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %></div></td>
       </tr>
     </tbody>   
   </table>
-
+<%#############################################################################################################################%>
+<table class="table table-bordered table-condensed">
+     <thead style="font-size: 14px">
+      <tr>        
+        <th><div class="pagination-centered">На Дату</div></th>
+        <th><div class="pagination-centered">Удельные веса <%= @C1%></div></th>
+      </tr>
+     </thead>
+    <tbody>
+      <% unless @Dates.nil? %>
+        <% @Dates.each do |date_line| %>
+           <%  @Arr_data << eval("@DiagType_#{7*params[:ab].to_i}_#{date_line.date_period_end.to_s.gsub('-','_')}_data") %>           
+           <%  @Arr_data_id << @data_id="Pie_1_#{date_line.date_period_end.to_s.gsub('-','_')}" %>           
+           <tr>
+             <td><div class="pagination-centered" style="line-height: 250px; vertical-align:middle;"><%= Russian::strftime(date_line.date_period_end,"%d %B %Y г.") %></div></td>
+             <td><div class='pagination-centered' id="<%=@data_id%>"></div></td>             
+           </tr>            
+        <% end %> 
+      <% end %>     
+      <tr>
+        <td colspan="2"><div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+                                                        В начало страницы
+                                               <% end %> </div></td>
+      </tr>
+    </tbody>   
+  </table>
 <%####################################################################################################################%>
- 
+
+
   <% unless @DiagType1_data.nil? %>  
     <%= raw Seer::visualize(
       @DiagType1_data, 
@@ -183,7 +256,7 @@
       :chart_options => {
         :title => 'Динамика '+ @C1,
         :title_y => 'Сумма, млн.руб.',
-        :legend => 'right',
+        :legend => 'left',
         :legend_font_size => 10,
         :height => 300,
         :width => 930,
@@ -264,7 +337,7 @@
       :chart_options => {
         :title => 'Динамика структуры '+ @C1,
         :title_y => 'в %-ах',
-        :legend => 'right',
+        :legend => 'left',
         :legend_font_size => 10,
         :height => 300,
         :width => 930,
@@ -293,4 +366,35 @@
    :title => 'Изменения удельного веса '+ @C1,
    :title_x => 'в % (графа 8)',
    :title_y => 'Раздел/Строка'})%>
+<% end %>
+
+<%#############################################################################################################%>
+<%# Для круговых диаграмм ...%>
+<% unless @Arr_data.nil? %>
+  <% @Arr_data.each_with_index do |data,datai| %> 
+    <%= raw  Seer::visualize(
+             data, 
+             :as => :pie_chart,
+             :in_element => @Arr_data_id[datai],
+             :series => {
+                  :series_label => 'name',
+                  :data_method =>  'summa'
+             },
+        :chart_options => { 
+        :height => 300,
+        :width => 800,
+        :axis_font_size => 11,
+        :title => '',
+        :legend => 'left',
+        :legend_font_size => 10,
+        :tooltip_font_size => 14,
+        :colors => ['#000099','#009900','#990000','#FF0000','#FFA500','#FFFF00',
+                    '#808000','#008000','#800080','#FF00FF',
+                    '#00FF00','#008080','#FA8072','#0000FF',
+                    '#000080','#000000','#808088','#C0C0C0',
+                    '#9400D3','#FF1493','#4682B4','#F0E68C','#BC8F8F'],
+        :point_size => 5,
+        :is_3_d => false
+      })%>
+  <% end %>
 <% end %>

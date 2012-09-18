@@ -1,7 +1,9 @@
 <%  provide(:title, 'Результаты|Таблично')%> 
 
-<% content_for :span3 do %>      
-  <%= link_to "К странице Результаты", results_path(id: @enterprise) %>
+<% content_for :span3 do %>
+ <%= link_to results_path(id: @enterprise), class: "btn btn-small btn-info" do %>
+     К странице Результаты
+ <% end %>  
 <% end  %>
 
 <legend><%= image_tag("Generate tables 64.png") %> Показатели Деловой Активности (таблично)</legend>

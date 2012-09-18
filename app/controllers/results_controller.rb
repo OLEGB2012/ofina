@@ -51,7 +51,7 @@ class ResultsController < ApplicationController
     @f1_end=FormOneReport.FormOneEnterpriseFor(params[:id]).ReportOnDate(@enterprise.rab_date_end).first
     # В интервале дат должны иметься отчёты!))
     unless @f1_beg.nil? and @f1_end.nil?
-    # Почистим целевую таблицу от предыдущего аналогичного расчёта
+    # Почистим целевые таблицы от предыдущего аналогичного расчёта
       AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(params[:ab].to_i).destroy_all 
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).Diagram(7*params[:ab].to_i-6,7*params[:ab].to_i).destroy_all
     case params[:ab].to_i
@@ -600,11 +600,11 @@ class ResultsController < ApplicationController
                     ["43", "ИТОГО Раздел V", "S690",100]]
         end
       end # от case
-      # Читаем расчёты для таблицы аналитического баланса ...
+      # Читаем расчёты из таблицы аналитического баланса ...
       @AB=AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(params[:ab].to_i).order('id')
       # Разложим массивы по таблицам для каждого вида диаграмм ...
       @Arr_ab.each do |x|
-        # Готовим массив для графика Динамика значений за интервал. (для горизонтального анализа)
+        # Готовим массив для :line_chart-графика Динамика значений за интервал. (для горизонтального анализа)
         #
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                      date_period_end: @f1_end.date_period, 
@@ -618,7 +618,7 @@ class ResultsController < ApplicationController
                 @DiagType1_series=@DiagType1_data.map{|w|w.balanse_values}")
       end
       @Arr_ab.each do |x|
-        # Готовим массив для графика Динамика структуры за интервал. (для вертикального анализа)
+        # Готовим массив для :line_chart-графика Динамика структуры за интервал. (для вертикального анализа)
         #
         unless x[3]==100 # итоговую строку надо выкинуть
         eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
@@ -634,9 +634,8 @@ class ResultsController < ApplicationController
                 @DiagType5_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-2).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).order("+'"'+"id"+'"'+").all
                 @DiagType5_series=@DiagType5_data.map{|w|w.balanse_values}")
         end
-      end
-      
-    else
+      end      
+    else  # unless @f1_beg.nil? and @f1_end.nil?
       if @f1_beg.nil?
         flash[:alert]="На начало рабочего интервала дат отсутствуют данные по форме баланса..."
       end
@@ -647,7 +646,7 @@ class ResultsController < ApplicationController
     # Готовим массивы для графиков горизонтального анализа
     @AB.each do |ab|
       if (ab.row_type==2 or ab.row_type==3 or ab.row_type==5 or ab.row_type==6 or ab.row_type==7)   # Пропустим строку-заголовок раздела и строку "В том числе:"
-      #  для графика Изменение значений за интервал.
+      #  для :bar_chart-графика Изменение значений за интервал.
       #      
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
@@ -659,7 +658,7 @@ class ResultsController < ApplicationController
      end
     @AB.each do |ab|
       if (ab.row_type==2 or ab.row_type==3 or ab.row_type==5 or ab.row_type==6 or ab.row_type==7)   # Пропустим строку-заголовок раздела и строку "В том числе:"     
-      # для графика Темп роста значений за интервал.
+      # для :bar_chart-графика Темп роста значений за интервал.
       #
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
@@ -671,7 +670,7 @@ class ResultsController < ApplicationController
      end   
     @AB.each do |ab|
       if  (ab.row_type==2 or ab.row_type==3 or ab.row_type==5 or ab.row_type==6 or ab.row_type==7)   # Пропустим строку-заголовок раздела и строку "В том числе:"
-      # графика Темп прироста значений за интервал.
+      # :bar_chart-графика Темп прироста значений за интервал.
       #
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
@@ -685,7 +684,7 @@ class ResultsController < ApplicationController
     @AB.each do |ab|
       # только по строкам с данными (обычная и с итогом по группе без итогов раздела/баланса)
       if (ab.row_type==2 or ab.row_type==3 or ab.row_type==5)
-        # Готовим массив для графика Изменение удельного веса за интервал.
+        # Готовим массив для :bar_chart-графика Изменение удельного веса за интервал.
         #
         @BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
                                        date_period_end: @f1_end.date_period, 
@@ -701,48 +700,35 @@ class ResultsController < ApplicationController
     @DiagType6_data=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(7*params[:ab].to_i-1).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).order("id").all
     
     # Круговые диаграммы по датам ...
-    
-  end # def ab
+    unless @form_one_reports.empty?      
+       @form_one_reports.each do |data|              
+          @Arr_ab.each do |x|
+          # Готовим массив для :pie_chart-графика Удельные веса на дату. (для вертикального анализа)
+          #
+          unless x[3]==100 # итоговую строку надо выкинуть       
+             @BR_new_rec=BalanseRow.create!(date_period_beg: data.date_period, 
+                                            date_period_end: data.date_period, 
+                                            diag_type: 7*params[:ab].to_i, 
+                                            name: x[1],
+                                            summa: eval("data.#{x[2]}")==0?1:eval("data.#{x[2]}"))  # в "пироге" удельные веса сами считаются
+                                            # 1 - эта фича важна, чтобы цвета одинаково выбирались для одних и тех же сегментов диаграммы...
+             @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+             eval("@DiagType_#{7*params[:ab].to_i}_#{data.date_period.to_s.gsub("-","_")}_data=
+                          BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{7*params[:ab].to_i}).
+                             WorkPeriod(data.date_period,data.date_period).order("+'"'+"id"+'"'+").all")
+             eval("@Dates=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{7*params[:ab].to_i}).
+                             WorkPeriod(@enterprise.rab_date_beg,data.date_period).order("+'"'+"date_period_end"+'"'+").
+                               select("+'"'+"date_period_end"+'"'+").group("+'"'+"date_period_end"+'"'+")")
+          end
+        end
+      end
+      # массив для хранения наборов данных для круговых диаграмм: каждый элемент - массив полей на определённую дату...
+      @Arr_data=Array.new
+      # для хранения айдишников для диаграмм по датам: каждый элемент - для конкретной даты ...  
+      @Arr_data_id=Array.new
+    end
  
-  
-  #    unless @form_one_reports.empty?
-  #      #################################################################################################
-  #      # Готовим таблицу для круговых диаграм по тому же массиву @Arr_udel, тип - 15xxx ... и заполняем поля ...
-  #      BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@enterprise.rab_date_beg,@enterprise.rab_date_end).Diagram(15000,99999).destroy_all
-  #       @form_one_reports.each do |data|              
-  #          @Arr_udel.each do |x|
-  #             @nDT=x[0].to_i
-  #             result = case @nDT
-  #                when (10..11); 1
-  #                when (12..14); 2
-  #                else; 0
-  #             end
-  #             @nVar=15000+result             
-  #             @BR_new_rec=BalanseRow.create!(date_period_beg: data.date_period, 
-  #                                            date_period_end: data.date_period, 
-  #                                            diag_type: @nVar, 
-  #                                            name: x[1],
-  #                                            summa: eval(x[2])==0?1:eval(x[2])*data.S300/100)  
-  #                                            # 1 - эта фича важна, чтобы цвета одинаково выбирались для одних и тех же сегментов диаграммы...
-  #             @BR_rec=@enterprise.balanse_rows << @BR_new_rec
-  #             eval("@DiagType_#{@nVar}_#{data.date_period.to_s.gsub("-","_")}_data=
-  #                          BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{@nVar}).
-  #                             WorkPeriod(data.date_period,data.date_period).order("+'"'+"id"+'"'+").all")
-  #             eval("@Dates=BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{@nVar}).
-  #                             WorkPeriod(@enterprise.rab_date_beg,data.date_period).order("+'"'+"date_period_end"+'"'+").
-  #                               select("+'"'+"date_period_end"+'"'+").group("+'"'+"date_period_end"+'"'+")")
-  #          end                
-  #      end
-  #      # массивы для хранения наборов данных для круговых диаграмм: каждый элемент - массив полей на определённую дату...
-  #      @Arr_act=Array.new 
-  #      @Arr_pas=Array.new 
-  #      # для хранения айдишников для диаграмм по датам: каждый элемент - для конкретной даты ...  
-  #      @Arr_act_id=Array.new 
-  #      @Arr_pas_id=Array.new  
-  #    end
-  #  end
-  
-  
+  end # def ab
   ###########################################################################
   # Показатели финансовой устойчивости (графики) из формы 1 баланса
   def fu_graph

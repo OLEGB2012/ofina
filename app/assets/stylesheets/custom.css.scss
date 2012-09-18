@@ -168,3 +168,9 @@ color:#FF9900;
  -ms-transform: rotate(-90deg);
  -o-transform: rotate(-90deg);
 }
+
+@media print {
+.noPrint {
+    display:none;
+         }
+}
