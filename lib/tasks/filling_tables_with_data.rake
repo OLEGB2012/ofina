@@ -31,6 +31,24 @@ def make_form_four_report
   
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_four_reports << new_form4
+  
+   new_form4 = FormFourReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-06-30', 
+                  S021: 377132, S022: 0, S023: 0, S024: 3722, S031: 166930, S032: 59225, S033: 23855, 
+                  S034: 33086, S051: 130, S052: 72, S053: 85, S054: 0, S055: 0,
+                  S061: 20834, S062: 562, S063: 0, S064: 791, S081: 72063, S082: 0, S083: 0,
+                  S084: 219, S091: 129591, S092: 328, S093:  10871, S094: 0, S095: 12359, S120: 7451, S140: 174)
+  
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_four_reports << new_form4
+  
+  new_form4 = FormFourReport.create!(date_period_beg: '2011-01-01', date_period_end: '2011-06-30', 
+                  S021: 152537, S022: 0, S023: 0, S024: 283, S031: 55178, S032: 42218, S033: 15241,
+                  S034: 5963, S051: 0, S052: 24, S053: 32, S054: 0, S055: 136,
+                  S061: 10358, S062: 141, S063: 0, S064: 926, S081: 21419, S082: 0, S083: 0,
+                  S084: 3982, S091: 50931, S092: 614, S093: 3698, S094: 0, S095: 35, S120: 9934, S140: 889)
+  
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_four_reports << new_form4
 end
 
 def make_form_three_report
@@ -69,15 +87,15 @@ def make_form_three_report
               G3_S110: 404165, G4_S110: 0, G5_S110: 0, G6_S110: 167, G7_S110: 527160, G8_S110: 17908, G9_S110: 0,
               G3_S120:      0, G4_S120: 0, G5_S120: 0, G6_S120:   0, G7_S120:      0, G8_S120:     0, G9_S120: 0,
               G3_S130:      0, G4_S130: 0, G5_S130: 0, G6_S130:   0, G7_S130:      0, G8_S130:     0, G9_S130: 0,
-              G3_S151:      0, G4_S151: 0, G5_S151: 0, G6_S151:   0, G7_S151:      0, G8_S151:     0, G9_S151: 5,
+              G3_S151:      0, G4_S151: 0, G5_S151: 0, G6_S151: 231, G7_S151:      0, G8_S151:     0, G9_S151: 5,
               G3_S152:      0, G4_S152: 0, G5_S152: 0, G6_S152:   0, G7_S152:      0, G8_S152:     0, G9_S152: 0,
               G3_S153:      0, G4_S153: 0, G5_S153: 0, G6_S153:   0, G7_S153:      0, G8_S153:     0, G9_S153: 0,
-              G3_S154:      0, G4_S154: 0, G5_S154: 0, G6_S154:   0, G7_S154:      0, G8_S154:     0, G9_S154: 0,
+              G3_S154:  13501, G4_S154: 0, G5_S154: 0, G6_S154:   0, G7_S154:      0, G8_S154:     0, G9_S154: 0,
               G3_S155:      0, G4_S155: 0, G5_S155: 0, G6_S155:   0, G7_S155:      0, G8_S155:     0, G9_S155: 0,
               G3_S156:      0, G4_S156: 0, G5_S156: 0, G6_S156:   0, G7_S156:      0, G8_S156:     0, G9_S156: 0,
               G3_S157:      0, G4_S157: 0, G5_S157: 0, G6_S157:   0, G7_S157:      0, G8_S157:     0, G9_S157: 0,
               G3_S158:      0, G4_S158: 0, G5_S158: 0, G6_S158:   0, G7_S158:      0, G8_S158:     0, G9_S158: 0,
-              G3_S159:  13501, G4_S159: 0, G5_S159: 0, G6_S159: 231, G7_S159:     84, G8_S159:     0, G9_S159: 0,
+              G3_S159:      0, G4_S159: 0, G5_S159: 0, G6_S159:   0, G7_S159:     84, G8_S159:     0, G9_S159: 0,
               G3_S161:      0, G4_S161: 0, G5_S161: 0, G6_S161:   0, G7_S161:      0, G8_S161:     0, G9_S161: 0,
               G3_S162:      0, G4_S162: 0, G5_S162: 0, G6_S162:   0, G7_S162:      0, G8_S162:     0, G9_S162: 0,
               G3_S163:      0, G4_S163: 0, G5_S163: 0, G6_S163:   0, G7_S163:      0, G8_S163:     0, G9_S163: 0,
@@ -90,7 +108,60 @@ def make_form_three_report
               G3_S170:      0, G4_S170: 0, G5_S170: 0, G6_S170:   0, G7_S170:      0, G8_S170:     0, G9_S170: 0,
               G3_S180:      0, G4_S180: 0, G5_S180: 0, G6_S180:   0, G7_S180:      0, G8_S180:     0, G9_S180: 0,
               G3_S190:      0, G4_S190: 0, G5_S190: 0, G6_S190:   0, G7_S190:      0, G8_S190:     0, G9_S190: 0)
-          
+  
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_three_reports << new_form3
+  
+  new_form3 = FormThreeReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-06-30',
+              G3_S010: 317474, G4_S010: 0, G5_S010: 0, G6_S010:   0, G7_S010: 108359, G8_S010: 18465, G9_S010: 0,
+              G3_S020:      0, G4_S020: 0, G5_S020: 0, G6_S020:   0, G7_S020:      0, G8_S020:     0, G9_S020: 0,
+              G3_S030:      0, G4_S030: 0, G5_S030: 0, G6_S030:   0, G7_S030:      0, G8_S030:     0, G9_S030: 0,
+              G3_S051:      0, G4_S051: 0, G5_S051: 0, G6_S051: 167, G7_S051:      0, G8_S051:   152, G9_S051: 0,
+              G3_S052:      0, G4_S052: 0, G5_S052: 0, G6_S052:   0, G7_S052:      0, G8_S052:     0, G9_S052: 0,
+              G3_S053:      0, G4_S053: 0, G5_S053: 0, G6_S053:   0, G7_S053:      0, G8_S053:     0, G9_S053: 0,
+              G3_S054:  13505, G4_S054: 0, G5_S054: 0, G6_S054:   0, G7_S054:      0, G8_S054:     0, G9_S054: 0,
+              G3_S055:      0, G4_S055: 0, G5_S055: 0, G6_S055:   0, G7_S055:      0, G8_S055:     0, G9_S055: 0,
+              G3_S056:      0, G4_S056: 0, G5_S056: 0, G6_S056:   0, G7_S056:      0, G8_S056:     0, G9_S056: 0,
+              G3_S057:      0, G4_S057: 0, G5_S057: 0, G6_S057:   0, G7_S057:      0, G8_S057:     0, G9_S057: 0,
+              G3_S058:      0, G4_S058: 0, G5_S058: 0, G6_S058:   0, G7_S058:      0, G8_S058:     0, G9_S058: 0,
+              G3_S059:      0, G4_S059: 0, G5_S059: 0, G6_S059:   0, G7_S059:   1259, G8_S059:     0, G9_S059: 0,
+              G3_S061:      0, G4_S061: 0, G5_S061: 0, G6_S061:   0, G7_S061:      0, G8_S061:     0, G9_S061: 0,
+              G3_S062:      0, G4_S062: 0, G5_S062: 0, G6_S062:   0, G7_S062:      0, G8_S062:     0, G9_S062: 0,
+              G3_S063:      0, G4_S063: 0, G5_S063: 0, G6_S063:   0, G7_S063:      0, G8_S063:     0, G9_S063: 0,
+              G3_S064:      0, G4_S064: 0, G5_S064: 0, G6_S064:   0, G7_S064:      0, G8_S064:     0, G9_S064: 0,
+              G3_S065:      0, G4_S065: 0, G5_S065: 0, G6_S065:   0, G7_S065:      0, G8_S065:     0, G9_S065: 0,
+              G3_S066:      0, G4_S066: 0, G5_S066: 0, G6_S066:   0, G7_S066:      0, G8_S066:   621, G9_S066: 0,
+              G3_S067:      0, G4_S067: 0, G5_S067: 0, G6_S067:   0, G7_S067:      0, G8_S067:     0, G9_S067: 0,
+              G3_S068:      0, G4_S068: 0, G5_S068: 0, G6_S068:   0, G7_S068:      0, G8_S068:     0, G9_S068: 0,
+              G3_S069:      0, G4_S069: 0, G5_S069: 0, G6_S069:   0, G7_S069:   7046, G8_S069:  1691, G9_S069: 0,
+              G3_S070:      0, G4_S070: 0, G5_S070: 0, G6_S070:   0, G7_S070:      0, G8_S070:     0, G9_S070: 0,
+              G3_S080:      0, G4_S080: 0, G5_S080: 0, G6_S080:   0, G7_S080:      0, G8_S080:     0, G9_S080: 0,
+              G3_S090:      0, G4_S090: 0, G5_S090: 0, G6_S090:   0, G7_S090:      0, G8_S090:     0, G9_S090: 0,
+              G3_S110: 404165, G4_S110: 0, G5_S110: 0, G6_S110: 167, G7_S110: 527160, G8_S110: 17908, G9_S110: 0,
+              G3_S120:      0, G4_S120: 0, G5_S120: 0, G6_S120:   0, G7_S120:      0, G8_S120:     0, G9_S120: 0,
+              G3_S130:      0, G4_S130: 0, G5_S130: 0, G6_S130:   0, G7_S130:      0, G8_S130:     0, G9_S130: 0,
+              G3_S151:      0, G4_S151: 0, G5_S151: 0, G6_S151: 231, G7_S151:      0, G8_S151:     0, G9_S151: 8,
+              G3_S152:      0, G4_S152: 0, G5_S152: 0, G6_S152:   0, G7_S152:      0, G8_S152:     0, G9_S152: 0,
+              G3_S153:      0, G4_S153: 0, G5_S153: 0, G6_S153:   0, G7_S153:      0, G8_S153:     0, G9_S153: 0,
+              G3_S154:  13501, G4_S154: 0, G5_S154: 0, G6_S154:   0, G7_S154:      0, G8_S154:     0, G9_S154: 0,
+              G3_S155:      0, G4_S155: 0, G5_S155: 0, G6_S155:   0, G7_S155:      0, G8_S155:     0, G9_S155: 0,
+              G3_S156:      0, G4_S156: 0, G5_S156: 0, G6_S156:   0, G7_S156:      0, G8_S156:     0, G9_S156: 0,
+              G3_S157:      0, G4_S157: 0, G5_S157: 0, G6_S157:   0, G7_S157:      0, G8_S157:     0, G9_S157: 0,
+              G3_S158:      0, G4_S158: 0, G5_S158: 0, G6_S158:   0, G7_S158:      0, G8_S158:     0, G9_S158: 0,
+              G3_S159:      0, G4_S159: 0, G5_S159: 0, G6_S159:   0, G7_S159:     33, G8_S159:     0, G9_S159: 0,
+              G3_S161:      0, G4_S161: 0, G5_S161: 0, G6_S161:   0, G7_S161:      0, G8_S161:     0, G9_S161: 0,
+              G3_S162:      0, G4_S162: 0, G5_S162: 0, G6_S162:   0, G7_S162:      0, G8_S162:     0, G9_S162: 0,
+              G3_S163:      0, G4_S163: 0, G5_S163: 0, G6_S163:   0, G7_S163:      0, G8_S163:     0, G9_S163: 0,
+              G3_S164:      0, G4_S164: 0, G5_S164: 0, G6_S164:   0, G7_S164:      0, G8_S164:     0, G9_S164: 0,
+              G3_S165:      0, G4_S165: 0, G5_S165: 0, G6_S165:   0, G7_S165:      0, G8_S165:     0, G9_S165: 0,
+              G3_S166:      0, G4_S166: 0, G5_S166: 0, G6_S166:   0, G7_S166:      0, G8_S166:   301, G9_S166: 0,
+              G3_S167:      0, G4_S167: 0, G5_S167: 0, G6_S167:   0, G7_S167:      0, G8_S167:     0, G9_S167: 0,
+              G3_S168:      0, G4_S168: 0, G5_S168: 0, G6_S168:   0, G7_S168:      0, G8_S168:     0, G9_S168: 0,
+              G3_S169:      0, G4_S169: 0, G5_S169: 0, G6_S169:   0, G7_S169:   2137, G8_S169:   231, G9_S169: 0,
+              G3_S170:      0, G4_S170: 0, G5_S170: 0, G6_S170:   0, G7_S170:      0, G8_S170:     0, G9_S170: 0,
+              G3_S180:      0, G4_S180: 0, G5_S180: 0, G6_S180:   0, G7_S180:      0, G8_S180:     0, G9_S180: 0,
+              G3_S190:      0, G4_S190: 0, G5_S190: 0, G6_S190:   0, G7_S190:      0, G8_S190:     0, G9_S190: 0)
+  
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_three_reports << new_form3
 end
@@ -115,6 +186,26 @@ def make_form_two_report
                   S170: 393, S180: 0, S190: 0, S200: 0, S211: 1, S212: 508, S213: 0, S214: 0,
                   S220: 0, S230: 0, S250: 0, S260: 0)
   
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_two_reports << new_form2
+  
+  new_form2 = FormTwoReport.create!(date_period_beg: '2011-01-01', date_period_end: '2011-06-30', 
+                  S010: 169346, S020: 154914, S040: 0, S050: 2214, 
+                  S070: 84803, S080: 73948, S101: 32, S102: 32, S103: 17, S104: 3371, 
+                  S111: 0, S112: 1632, S121: 4614, S122: 0, S131: 3698, S132: 25000, S133: 0, 
+                  S140: 0, S170: 657, S180: 0, S190: 0, S200: 0, S211: 1, 
+                  S212: 152, S213: 0, S214: 0, S220: 0, S230: 0, S250: 0, S260: 0)
+                
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_two_reports << new_form2
+  
+  new_form2 = FormTwoReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-06-30', 
+                  S010: 453582, S020: 276329, S040: 61057, S050: 4092, 
+                  S070: 147984, S080: 152522, S101: 995, S102: 186, S103: 236, S104: 315, 
+                  S111: 60, S112: 196, S121: -61, S122: 0, S131: 11046, S132: 97123, S133: 0, 
+                  S140: 0, S170: 910, S180: 141, S190: 0, S200: 35, S211: 1, 
+                  S212: 8, S213: 0, S214: 0, S220: 0, S230: 0, S250: 0, S260: 0)
+   
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_two_reports << new_form2
 end
@@ -161,6 +252,26 @@ def make_form_one_report
           
   enterprise = Enterprise.find_by_id(4)
   enterprise.form_one_reports << new_form1
+  
+  new_form1 = FormOneReport.create!(date_period: '2012-06-30', 
+                                    S110:  810747, S120:   8086, S131:      0, 
+                                    S132:       0, S133:      0, S140:  99380, S150:   74013, 
+                                    S160:     141, S170:    181, S180:   6183,
+                                    S211:   64088, S212:      0, S213:  51215, 
+                                    S214:   68591, S215:      0, S216:      0, S220:       0, 
+                                    S230:  119512, S240:   5279, S250:  82856, S260:     673, 
+                                    S270:    2442, S280:  83491,
+                                    S410:  417666, S420:      0, S430:      0, S440:     398, 
+                                    S450:  525056, S460:  17376, S470:      8, S480:       0,
+                                    S510:  235916, S520:      0, S530:      0, 
+                                    S540:       0, S550:      0, S560:      0, 
+                                    S610:  182487, S620:      0, S631:  26265, 
+                                    S632:   32392, S633:   5850, S634:   5003, S635:   13954, 
+                                    S636:       0, S637:   3400, S638:   7049, S640:       0, 
+                                    S650:    1278, S660:      0, S670:   2780)
+
+  enterprise = Enterprise.find_by_id(4)
+  enterprise.form_one_reports << new_form1
 #    
 #  
 #  users = User.all
@@ -185,7 +296,7 @@ def make_enterprises
                                       K2: 0.2,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-06-30')
   user = User.find_by_id(1)
   user.enterprises << new_enterprise
 
@@ -200,7 +311,7 @@ def make_enterprises
                                       K2: 0.2,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-06-30')
   user = User.find_by_id(2)
   user.enterprises << new_enterprise
 
@@ -215,7 +326,7 @@ def make_enterprises
                                       K2: 0.15,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-06-30')
   user = User.find_by_id(2)
   user.enterprises << new_enterprise
   
@@ -230,7 +341,7 @@ def make_enterprises
                                       K2: 0.2,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-03-31')
+                                      rab_date_end: '2012-06-30')
   
   user = User.find_by_id(3)
   user.enterprises << new_enterprise
@@ -246,7 +357,7 @@ def make_enterprises
                                       K2: 0.2,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-06-30')
   user = User.find_by_id(4)
   user.enterprises << new_enterprise
 
@@ -261,7 +372,7 @@ def make_enterprises
                                       K2: 0.2,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-06-30')
   user = User.find_by_id(5)
   user.enterprises << new_enterprise
 
@@ -276,7 +387,7 @@ def make_enterprises
                                       K2: 0.1,
                                       K3: 0.85,
                                       rab_date_beg: '2011-12-31',
-                                      rab_date_end: '2012-12-31')
+                                      rab_date_end: '2012-06-30')
   user = User.find_by_id(6)
   user.enterprises << new_enterprise
 end

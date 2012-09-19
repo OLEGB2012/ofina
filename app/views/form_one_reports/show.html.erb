@@ -14,7 +14,9 @@
 <% content_for :span9 do %>
   <a name="BeginOfPage"></a>
   <table class="table table-striped table-bordered table-condensed">
-    <caption> Отчёт<strong> БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
+    <caption> Отчёт<strong> БУХГАЛТЕРСКИЙ БАЛАНС</strong> предприятия <strong><em><%= @OrgName %></em></strong></br>
+              На <%= Russian::strftime(@DatePeriod,"%d %B %Y")%> года
+    </caption>       
     <thead>
       <tr>
         <th><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование строки</div></th>
@@ -34,7 +36,7 @@
         <td colspan="4"><div class="pagination-centered"><strong>Активы</strong></div></td>        
       </tr>
       <tr>
-        <td colspan="4"><div class="pull-left"><strong>Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+        <td colspan="4"><div class="pull-left"><strong>Раздел I. ДОЛГОСРОЧНЫЕ АКТИВЫ</strong></div></td>        
       </tr>
       <tr>
         <td><div>Основные средства</div></td>
@@ -115,7 +117,7 @@
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S190") %></strong></div></td>
       </tr>
       <tr>
-        <td colspan="4"><div class="pull-left"><strong>Раздел II. КРАТКОСРОЧНЫЕ АКТИВЫ</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+        <td colspan="4"><div class="pull-left"><strong>Раздел II. КРАТКОСРОЧНЫЕ АКТИВЫ</strong> <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %></div></td>        
       </tr>
       <tr>
         <td><div><strong>Запасы</strong></div></td>
@@ -223,7 +225,7 @@
         <td colspan="4"><div class="pagination-centered"><strong>Собственный капитал и обязательства</strong></div></td>        
       </tr>
       <tr>
-        <td colspan="4"><div class="pull-left"><strong>Раздел III. СОБСТВЕННЫЙ КАПИТАЛ</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+        <td colspan="4"><div class="pull-left"><strong>Раздел III. СОБСТВЕННЫЙ КАПИТАЛ</strong> <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %></div></td>        
       </tr>
       <tr>
         <td><div>Уставный капитал</div></td>
@@ -280,7 +282,7 @@
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S490") %></strong></div></td>
       </tr>
       <tr>
-        <td colspan="4"><div class="pull-left"><strong>Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+        <td colspan="4"><div class="pull-left"><strong>Раздел IV. ДОЛГОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА</strong> <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %></div></td>        
       </tr>
       <tr>
         <td><div>Долгосрочные кредиты и займы</div></td>
@@ -325,7 +327,7 @@
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S590") %></strong></div></td>
       </tr>
       <tr>
-        <td colspan="4"><div class="pull-left"><strong>Раздел V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА</strong>  <%= link_to " (В начало страницы)", "#BeginOfPage"  %></div></td>        
+        <td colspan="4"><div class="pull-left"><strong>Раздел V. КРАТКОСРОЧНЫЕ ОБЯЗАТЕЛЬСТВА</strong> <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %></div></td>        
       </tr>
       <tr>
         <td><div>Краткосрочные кредиты и займы</div></td>
@@ -436,5 +438,6 @@
         <td><div class="pagination-centered"><strong><%= display_cell_data("form_one_report_g4","S700") %></strong></div></td>
       </tr>
     </tbody>    
-  </table>  
+  </table>
+<%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %>  
 <% end %>

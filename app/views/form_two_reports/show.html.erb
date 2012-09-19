@@ -13,7 +13,9 @@
 
 <% content_for :span9 do %>  
   <table class="table table-striped table-bordered table-condensed">
-    <caption> Отчёт<strong> О ПРИБЫЛЯХ И УБЫТКАХ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
+    <caption> Отчёт<strong> О ПРИБЫЛЯХ И УБЫТКАХ</strong> предприятия <strong><em><%= @OrgName %></em></strong></br>
+              За <%= Russian::strftime(@DatePeriod_beg,"%B")%> - <%= Russian::strftime(@DatePeriod_end,"%B %Y")%> г.
+    </caption>       
     <thead>
       <tr>
         <th><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Наименование</div></th>
