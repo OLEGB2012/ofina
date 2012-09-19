@@ -1,3 +1,4 @@
+<a name="BeginOfPage"></a>
 <%= simple_form_for([@enterprise,@form_three_report], 
   html: {class: "well form-inline", style: "font-size: 7pt"}, 
   defaults: { label: false, :input_html => { :class => 'span2', style: "text-align: right;max-width: 55pt;font-size: 8pt; margin-top: 0px; margin-bottom: -8px; padding: 1pt" } }) do |f| %>
@@ -12,7 +13,11 @@
 
     <%= f.input :date_period_end, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
        <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span2", style: "font-size: 8pt; max-width: 45pt",:maxlength => 10 %>
-    <%end%>  
+    <%end%>
+       
+  <div class="form-actions">   
+   <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
+  </div>
 
 <div class="form-inputs">
   <table class="table table-striped table-bordered table-condensed" style="font-size: 7pt">
@@ -634,6 +639,7 @@
     </tr>    
   </tbody>    
  </table>
+ <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %> 
 </div>
  
   <div class="form-actions">   

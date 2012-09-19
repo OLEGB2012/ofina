@@ -1,5 +1,5 @@
 <%  provide(:title, 'Отчёт об изменении капитала')%>
-
+<a name="BeginOfPage"></a>
 <% content_for :span3 do %>      
   <%= link_to (edit_enterprise_form_three_report_path(@enterprise,@form_three_report)), class: "btn btn-small btn-primary" do %>
       Редактировать...<i class="icon-pencil icon-white"></i>
@@ -786,4 +786,5 @@
     </tr> 
   </tbody>    
  </table>
+ <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %>  
 </div>

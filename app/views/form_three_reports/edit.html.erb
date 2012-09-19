@@ -1,4 +1,9 @@
 <%  provide(:title, 'Редактирование Отчёта об изменении капитала')%>
 
-<%= link_to "Отменить операцию редактирования", enterprise_form_three_report_path %>
+<% content_for :span3 do %>
+  <%= link_to enterprise_form_three_report_path, class: "btn btn-small btn-warning" do %>
+      Отменить<i class="icon-trash icon-white"></i>
+  <% end %>
+<% end %>
+
   <%= render 'fields'%>
