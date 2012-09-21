@@ -162,12 +162,25 @@ font-size: 18px;
 color:#FF9900;  
 }
 
+/* Мои навороты ... */
 #rotate90 {
  -webkit-transform: rotate(-90deg);
  -moz-transform: rotate(-90deg);
  -ms-transform: rotate(-90deg);
  -o-transform: rotate(-90deg);
 }
+
+span.status
+     { display: block; 
+       width: 10px; 
+       height: 10px; 
+       margin: 0.25em ; 
+       padding: 0; 
+       boarder: 1px solid #000000; 
+     }
+span.status.true  {background: green; color: green}
+span.status.false {background: red;   color: red}
+
 
 @media print {
 .noPrint {
