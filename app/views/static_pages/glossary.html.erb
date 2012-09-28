@@ -3,8 +3,8 @@
 <%= render 'navbar4help' %>
 
 <% content_for :span9 do %> 
-  <a name="BegOfPage"></a> 
-  <legend><%= image_tag("books 64.png") %> Показатели финансовой устойчивости</legend>
+  <a name="BeginOfPage"></a> 
+  <legend><strong>Показатели финансовой устойчивости</strong></legend>
   <dl> 
     <dt> 1. Коэффициент автономии (финансовой независимости) <%= link_to "(см. сноску 1)", "#EndOfPage" %> </dt>
     <dd style="text-align: justify;"> Определяет отношение величины собственного капитала организации к общей сумме средств организации. 
@@ -86,8 +86,8 @@
       </tbody>    
     </table>
   </dl>
-  <%= link_to "К началу страницы", "#BegOfPage" %>
-  <legend><%= image_tag("books 64.png") %> Показатели ликвидности и платежеспособности</legend> 
+  <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %>
+  <legend><strong>Показатели ликвидности и платежеспособности</strong></legend> 
   <dl> 
     <dt> 1. Коэффициент текущей ликвидности <%= link_to "(см. сноску 1)", "#EndOfPage" %> </dt>
     <dd style="text-align: justify;">Этот коэффициент показывает платежные возможности организации, оцениваемые при условии не только своевременных расчетов с дебиторами и 
@@ -165,8 +165,8 @@
       </tbody>    
     </table>
   </dl>
-  <%= link_to "К началу страницы", "#BegOfPage" %>  
-  <legend><%= image_tag("books 64.png") %> Показатели деловой активности</legend>
+  <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %> 
+  <legend><strong>Показатели деловой активности</strong></legend>
   <dl> 
     <dt> 1. Коэффициент оборачиваемости активов (Коэффициент деловой активности) <%= link_to "(см. сноску 1)", "#EndOfPage" %></dt>
     <dd style="text-align: justify;">Показывает, сколько раз обернулись активы, какой доход получен с рубля активов. Деловая активность резко увеличивается 
@@ -253,8 +253,8 @@
       </tbody>    
     </table>
   </dl>
-  <%= link_to "К началу страницы", "#BegOfPage" %>
-  <legend><%= image_tag("books 64.png") %> Показатели рентабельности </legend>
+  <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %>
+  <legend><strong>Показатели рентабельности</strong> </legend>
   <dl> 
     <dt> 1. Рентабельность продаж</dt>
     <dd style="text-align: justify;">Демонстрирует, какова доля прибыли от реализации товаров, продукции, работ, услуг в выручке от реализации товаров, продукции, работ, услуг. 
@@ -347,9 +347,8 @@
         </tr>          
       </tbody>    
     </table>
-  </dl>
-  <a name="EndOfPage"></a> 
-  <%= link_to "К началу страницы", "#BegOfPage" %>
+  </dl>  
+  <%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>В начало страницы<% end %>
   <hr>
   <div style="text-align: justify; 
        border: solid darkgray ; 
