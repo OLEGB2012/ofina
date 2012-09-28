@@ -11,7 +11,7 @@
 <% end  %>
 
 <% content_for :span9 do %>
-<legend><%= image_tag("Account_properties.png") %> Свойства Учётной Записи</legend>
+<legend><%= image_tag("Account_properties.png") %><strong>Свойства Учётной Записи</strong></legend>
   <table class="table table-striped table-bordered table-condensed">
     <caption><strong>Пользователь: </strong> <%= current_user.email%><em>(<%= current_user.username%>)</em></caption>        
     <tbody>      
