@@ -10,7 +10,7 @@ listen "/tmp/ofina.socket", :backlog => 64
 # nuke workers after 30 seconds instead of 60 seconds (the default) timeout 30 
 # feel free to point this anywhere accessible on the filesystem 
 user 'deployer', 'staff' 
-shared_path = “/home/deployer/ofina/shared” 
+shared_path "/home/deployer/ofina/shared" 
 pid "#{shared_path}/pids/unicorn.pid" 
 stderr_path "#{shared_path}/log/unicorn.stderr.log" 
 stdout_path "#{shared_path}/log/unicorn.stdout.log" 
