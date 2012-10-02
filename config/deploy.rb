@@ -18,6 +18,26 @@ role :app, "33.33.13.37"
 role :web, "33.33.13.37" 
 role :db, "33.33.13.37", :primary => true 
 
+namespace :deploy do 
+task :start do 
+sudo "/etc/init.d/unicorn start" 
+end 
+task :stop do 
+sudo "/etc/init.d/unicorn stop" 
+end 
+task :restart do
+sudo "/etc/init.d/unicorn reload" 
+end 
+desc "Restart the application"
+task :restart, :roles => :app, :except => { :no_release => true } do
+run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+end
+desc "Copy the database.yml file into the latest release"
+task :copy_in_database_yml do
+run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
+end
+end 
+before "deploy:assets:precompile", "deploy:copy_in_database_yml"
 
 
 
