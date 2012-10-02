@@ -47,12 +47,9 @@ namespace :deploy do
   task :restart do
     sudo "/etc/init.d/unicorn reload" 
   end
-  desc "Copy the database.yml file into the latest release"
-  task :copy_in_database_yml do
-    run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
-  end
+  
 end 
-before "deploy:assets:precompile", "deploy:copy_in_database_yml"
+before "deploy:assets:precompile"
 #set :application, "set your application name here"
 #set :repository,  "set your repository location here"
 
