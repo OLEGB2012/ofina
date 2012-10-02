@@ -38,17 +38,21 @@ role :web, "localhost"
 role :db, "localhost", :primary => true 
 
 namespace :deploy do 
-task :start do 
-sudo "/etc/init.d/unicorn start" 
+  task :start do 
+    sudo "/etc/init.d/unicorn start" 
+  end 
+  task :stop do 
+    sudo "/etc/init.d/unicorn stop" 
+  end 
+  task :restart do
+    sudo "/etc/init.d/unicorn reload" 
+  end
+  desc "Copy the database.yml file into the latest release"
+  task :copy_in_database_yml do
+    run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
+  end
 end 
-task :stop do 
-sudo "/etc/init.d/unicorn stop" 
-end 
-task :restart do
-sudo "/etc/init.d/unicorn reload" 
-end 
-end 
-
+before "deploy:assets:precompile", "deploy:copy_in_database_yml"
 #set :application, "set your application name here"
 #set :repository,  "set your repository location here"
 
