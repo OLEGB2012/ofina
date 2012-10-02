@@ -53,6 +53,7 @@ group :production do
   gem 'pg'
   # Use unicorn as the app server
   gem 'unicorn'
+  gem 'unicorn-rails'
 end
 
 # To use Jbuilder templates for JSON

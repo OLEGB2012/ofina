@@ -30,8 +30,8 @@ set :repository, "git://github.com/OLEGB2012/#{application}.git"
 set :scm, :git 
 set :real_revision, lambda { source.query_revision(revision) { |cmd| capture(cmd) } } #options necessary to make Ubuntu’s SSH happy 
 ssh_options[:paranoid] = false
-#ssh_options[:port] = 2222
-#ssh_options[:keys] = "~/.ssh/id_dsa"
+ssh_options[:port] = 2222
+ssh_options[:keys] = "~/.ssh/id_dsa"
 default_run_options[:pty] = true 
 role :app, "localhost" 
 role :web, "localhost" 

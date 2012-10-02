@@ -224,6 +224,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unicorn-rails (0.0.1)
+      rack
+      unicorn
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.6)
     warden (1.2.1)
@@ -261,5 +264,6 @@ DEPENDENCIES
   therubyracer
   uglifier (= 1.2.4)
   unicorn
+  unicorn-rails
   validates_timeliness
   will_paginate
