@@ -1,10 +1,12 @@
 require 'bundler/capistrano'
 set :application, "ofina"
 set :scm, :git
-set :repository, "git@github.com:OLEGB2012/ofina.git"
-server "33.33.13.37", :web, :app, :db, :primary => true
+set :repository, "ssh@github.com:OLEGB2012/ofina.git"
+server "localhost", :web, :app, :db, :primary => true
 ssh_options[:port] = 2222
+#ssh_options[:keys] = "~/.vagrant.d/insecure_private_key"
 ssh_options[:keys] = "~/.ssh/id_rsa"
+#ssh_options[:keys] = "~/.ssh/autherized_keys2"
 set :user, "deployer"
 set :group, "deployer"
 set :deploy_to, "/home/deployer/ofina"
