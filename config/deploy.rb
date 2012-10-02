@@ -1,36 +1,39 @@
-require 'bundler/capistrano'
-set :application, "ofina"
-set :scm, :git
-set :repository, "ssh@github.com:/OLEGB2012/ofina.git master"
-server "localhost", :web, :app, :db, :primary => true
-ssh_options[:port] = 2222
-#ssh_options[:keys] = "~/.vagrant.d/insecure_private_key"
-ssh_options[:keys] = "~/.ssh/id_rsa"
-#ssh_options[:keys] = "~/.ssh/autherized_keys2"
-set :user, "deployer"
-set :group, "deployer"
-set :deploy_to, "/home/deployer/ofina"
-set :use_sudo, false
-set :deploy_via, :copy
-set :copy_strategy, :export
+#require 'bundler/capistrano'
+#set :application, "ofina"
+#set :scm, :git
+#set :repository, "git@github.com:OLEGB2012/#{application}.git"
+#set :branch, "master" 
+#server "localhost", :web, :app, :db, :primary => true
+#ssh_options[:port] = 2222
+##ssh_options[:keys] = "~/.vagrant.d/insecure_private_key"
+#ssh_options[:keys] = "~/.ssh/id_rsa"
+##ssh_options[:keys] = "~/.ssh/autherized_keys2"
+#set :user, "deployer"
+#set :group, "deployer"
+#set :deploy_to, "/home/deployer/ofina"
+#set :use_sudo, false
+#set :deploy_via, :copy
+#set :copy_strategy, :export
 
-#set :use_sudo, false 
+set :use_sudo, false 
 #tell git to clone only the latest revision and not the whole repository 
-#set :git_shallow_clone, 1 
-#set :keep_releases, 5 
-#set :application, "ofina" 
-#set :user, "deployer" 
-#set :password, "deployer" 
-#set :deploy_to, "/home/deployer/ofina" 
-#set :runner, "deployer" 
-#set :repository, "git@github.com:OLEGB2012/ofina.git" 
-#set :scm, :git 
-#set :real_revision, lambda { source.query_revision(revision) { |cmd| capture(cmd) } } #options necessary to make Ubuntu’s SSH happy 
-#ssh_options[:paranoid] = false 
-#default_run_options[:pty] = true 
-#role :app, "33.33.13.37" 
-#role :web, "33.33.13.37" 
-#role :db, "33.33.13.37", :primary => true 
+set :git_shallow_clone, 1 
+set :keep_releases, 5 
+set :application, "ofina" 
+set :user, "deployer" 
+set :password, "deployer" 
+set :deploy_to, "/home/deployer/ofina" 
+set :runner, "deployer" 
+set :repository, "git@github.com:OLEGB2012/ofina.git"
+set :scm, :git 
+set :real_revision, lambda { source.query_revision(revision) { |cmd| capture(cmd) } } #options necessary to make Ubuntu’s SSH happy 
+ssh_options[:paranoid] = false
+ssh_options[:port] = 2222
+ssh_options[:keys] = "~/.ssh/id_rsa"
+default_run_options[:pty] = true 
+role :app, "localhost" 
+role :web, "localhost" 
+role :db, "localhost", :primary => true 
 
 namespace :deploy do 
 task :start do 
