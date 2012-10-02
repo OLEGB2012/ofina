@@ -1,22 +1,34 @@
 require 'bundler/capistrano'
+set :application, "ofina"
+set :scm, :git
+set :repository, "git@github.com:OLEGB2012/ofina.git"
+server "33.33.13.37", :web, :app, :db, :primary => true
+ssh_options[:port] = 2222
+ssh_options[:keys] = "~/.ssh/id_rsa"
+set :user, "deployer"
+set :group, "deployer"
+set :deploy_to, "/home/deployer/ofina"
+set :use_sudo, false
+set :deploy_via, :copy
+set :copy_strategy, :export
 
-set :use_sudo, false 
+#set :use_sudo, false 
 #tell git to clone only the latest revision and not the whole repository 
-set :git_shallow_clone, 1 
-set :keep_releases, 5 
-set :application, "ofina" 
-set :user, "deployer" 
-set :password, "deployer" 
-set :deploy_to, "/home/deployer/ofina" 
-set :runner, "deployer" 
-set :repository, "git@github.com:OLEGB2012/ofina.git" 
-set :scm, :git 
-set :real_revision, lambda { source.query_revision(revision) { |cmd| capture(cmd) } } #options necessary to make Ubuntu’s SSH happy 
-ssh_options[:paranoid] = false 
-default_run_options[:pty] = true 
-role :app, "33.33.13.37" 
-role :web, "33.33.13.37" 
-role :db, "33.33.13.37", :primary => true 
+#set :git_shallow_clone, 1 
+#set :keep_releases, 5 
+#set :application, "ofina" 
+#set :user, "deployer" 
+#set :password, "deployer" 
+#set :deploy_to, "/home/deployer/ofina" 
+#set :runner, "deployer" 
+#set :repository, "git@github.com:OLEGB2012/ofina.git" 
+#set :scm, :git 
+#set :real_revision, lambda { source.query_revision(revision) { |cmd| capture(cmd) } } #options necessary to make Ubuntu’s SSH happy 
+#ssh_options[:paranoid] = false 
+#default_run_options[:pty] = true 
+#role :app, "33.33.13.37" 
+#role :web, "33.33.13.37" 
+#role :db, "33.33.13.37", :primary => true 
 
 namespace :deploy do 
 task :start do 
@@ -28,18 +40,7 @@ end
 task :restart do
 sudo "/etc/init.d/unicorn reload" 
 end 
-desc "Restart the application"
-task :restart, :roles => :app, :except => { :no_release => true } do
-run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-end
-desc "Copy the database.yml file into the latest release"
-task :copy_in_database_yml do
-run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
-end
 end 
-before "deploy:assets:precompile", "deploy:copy_in_database_yml"
-
-
 
 #set :application, "set your application name here"
 #set :repository,  "set your repository location here"
