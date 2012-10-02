@@ -47,9 +47,8 @@ namespace :deploy do
   task :restart do
     sudo "/etc/init.d/unicorn reload" 
   end
-  
 end 
-before "deploy:assets:precompile"
+
 #set :application, "set your application name here"
 #set :repository,  "set your repository location here"
 
