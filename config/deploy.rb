@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 set :application, "ofina"
 set :scm, :git
-set :repository, "ssh@github.com:OLEGB2012/ofina.git"
+set :repository, "ssh@github.com:/OLEGB2012/ofina.git master"
 server "localhost", :web, :app, :db, :primary => true
 ssh_options[:port] = 2222
 #ssh_options[:keys] = "~/.vagrant.d/insecure_private_key"
