@@ -3,8 +3,7 @@
 worker_processes 4 
 # Help ensure your application will always spawn in the symlinked 
 # "current" directory that Capistrano sets up. 
-#working_directory "/home/deployer/ofina/current"
-working_directory "/home/deployer/ofina" 
+working_directory "/home/deployer/ofina/current"
 # listen on both a Unix domain socket and a TCP port, 
 # we use a shorter backlog for quicker failover when busy 
 listen "/tmp/ofina.socket", :backlog => 64 
