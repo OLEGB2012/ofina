@@ -3,11 +3,6 @@ Ofina::Application.configure do
   
   # поставить какой надо хост для почты config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
-  #Using Devise on Heroku with Ruby on Rails 3.1 requires setting:
-  #config.assets.initialize_on_precompile = false
-  
-  config.assets.initialize_on_precompile = true
-  
   # Code is not reloaded between requests
   config.cache_classes = true
 
