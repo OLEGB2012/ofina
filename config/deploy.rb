@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
 set :scm,             :git
-set :repository,      "git://github.com/OLEGB2012/ofina.git"
+set :repository,      "git://github.com/OLEGB2012/ofina.git HEAD"
 set :branch,          "origin/master"
 set :migrate_target,  :current
 set :ssh_options,     { :forward_agent => true }
