@@ -34,15 +34,15 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string :authentication_token
 
       # Добавим своих полей ...
-      t.boolean :admin,              default: false
-      t.string  :username,           default: ""
-      t.text    :contact_info,       default: ""
-      t.string  :dogovor_nomer,      default: ""
+      t.boolean :admin,              :default => false
+      t.string  :username,           :default => ""
+      t.text    :contact_info,       :default => ""
+      t.string  :dogovor_nomer,      :default => ""
       t.date    :dogovor_begin
       t.date    :dogovor_end   
       t.date    :activation_begin 
       t.date    :activation_end 
-      t.boolean :activation_allowed, default: true
+      t.boolean :activation_allowed, :default => true
       
       t.timestamps
     end
