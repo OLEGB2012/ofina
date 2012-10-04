@@ -61,9 +61,9 @@ class CreateFormThreeReports < ActiveRecord::Migration
       t.integer  "G3_S200", "G4_S200", "G5_S200", "G6_S200", "G7_S200", "G8_S200", "G9_S200", "G10_S200", default: 0
       t.timestamps
     end
-    add_index :form_three_reports, [:enterprise_id,:date_period_beg,:date_period_end], name: 'three_enterpise_id_period'
-    add_index :form_three_reports, [:enterprise_id,:date_period_beg], name: 'three_enterpise_id_period_beg'
-    add_index :form_three_reports, [:enterprise_id,:date_period_end], name: 'three_enterpise_id_period_end'
+    add_index :form_three_reports, [:enterprise_id,:date_period_beg,:date_period_end], :name => 'three_enterpise_id_period'
+    add_index :form_three_reports, [:enterprise_id,:date_period_beg], :name => 'three_enterpise_id_period_beg'
+    add_index :form_three_reports, [:enterprise_id,:date_period_end], :name => 'three_enterpise_id_period_end'
     add_index :form_three_reports, :enterprise_id
   end
 end
