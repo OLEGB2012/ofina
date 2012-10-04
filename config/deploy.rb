@@ -31,7 +31,7 @@ default_environment["RAILS_ENV"] = 'production'
 default_environment["PATH"]         = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 default_environment["GEM_HOME"]     = "/usr/local/lib/ruby/gems/1.9.1"
 default_environment["GEM_PATH"]     = "/usr/local/lib/ruby/gems/1.9.1"
-default_environment["RUBY_VERSION"] = "1.9.3"
+default_environment["RUBY_VERSION"] = "ruby-1.9.3-p194"
 
 default_run_options[:shell] = 'bash'
 
