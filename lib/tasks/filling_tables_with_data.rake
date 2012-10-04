@@ -1,8 +1,8 @@
 # encoding: utf-8
 namespace :db do
   desc "Fill database with sample data"
-  
-  task populate: :environment do
+  #task :t, [args] => [deps]
+  task :populate, [:mess] => [:environment] do
     make_users
     make_enterprises
     make_form_one_report
