@@ -8,6 +8,7 @@ set :ssh_options,     { :forward_agent => true }
 set :rails_env,       "production"
 set :deploy_to,       "/home/deployer/apps/ofina"
 set :normalize_asset_timestamps, false
+set :keep_releases, 3
 
 set :user,            "deployer"
 set :group,           "staff"
