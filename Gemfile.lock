@@ -28,8 +28,6 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts_as_tree (1.1.0)
-      activerecord (>= 3.0.0)
     addressable (2.3.2)
     annotate (2.5.0)
       rake
@@ -235,7 +233,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_tree (~> 1.1.0)
   annotate
   bcrypt-ruby
   bootstrap-sass (~> 2.0.4.0)
