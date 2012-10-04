@@ -15,7 +15,7 @@ end
 def make_form_four_report
   FormFourReport.destroy_all
   
-  new_form4 = FormFourReport.create!(date_period_beg: '2012-01-01', date_period_end: '2012-03-31', 
+  new_form4 = FormFourReport.create!(:date_period_beg => '2012-01-01', :date_period_end => '2012-03-31', 
                   S021: 176345, S022: 0, S023: 0, S024: 4756, S031: 82997, S032: 32328, S033: 13178, 
                   S034: 13151, S051: 0, S052: 60, S053: 0, S054: 0, S055: 0,
                   S061: 10488, S062: 42, S063: 0, S064: 0, S081: 27219, S082: 0, S083: 0,
