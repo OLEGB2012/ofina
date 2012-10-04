@@ -13,13 +13,17 @@ set :user,            "deployer"
 set :group,           "staff"
 set :use_sudo,        false
 
-ssh_options[:paranoid] = false
-ssh_options[:port] = 2222
-ssh_options[:keys] = "~/.ssh/id_dsa"
+#ssh_options[:paranoid] = false
+#ssh_options[:port] = 2222
+#ssh_options[:keys] = "~/.ssh/id_dsa"
 
-role :web,    "localhost"
-role :app,    "localhost"
-role :db,     "localhost", :primary => true
+#role :web,    "localhost"
+#role :app,    "localhost"
+#role :db,     "localhost", :primary => true
+
+role :web,    "rvm"
+role :app,    "rvm"
+role :db,     "rvm", :primary => true
 
 set(:latest_release)  { fetch(:current_path) }
 set(:release_path)    { fetch(:current_path) }
