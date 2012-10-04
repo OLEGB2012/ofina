@@ -13,6 +13,10 @@ set :user,            "deployer"
 set :group,           "staff"
 set :use_sudo,        false
 
+ssh_options[:paranoid] = false
+ssh_options[:port] = 2222
+ssh_options[:keys] = "~/.ssh/id_dsa"
+
 role :web,    "localhost"
 role :app,    "localhost"
 role :db,     "localhost", :primary => true
