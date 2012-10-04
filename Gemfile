@@ -53,6 +53,7 @@ group :production do
   gem 'pg'
   # Use unicorn as the app server
   gem 'unicorn'
+  gem 'fastercsv'
 end
 
 # To use Jbuilder templates for JSON
