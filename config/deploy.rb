@@ -13,9 +13,9 @@ set :user,            "deployer"
 set :group,           "staff"
 set :use_sudo,        false
 
-role :web,    "rvm"
-role :app,    "rvm"
-role :db,     "rvm", :primary => true
+role :web,    "localhost"
+role :app,    "localhost"
+role :db,     "localhost", :primary => true
 
 set(:latest_release)  { fetch(:current_path) }
 set(:release_path)    { fetch(:current_path) }
