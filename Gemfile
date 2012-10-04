@@ -16,8 +16,6 @@ gem 'faker'
 gem 'will_paginate'            # https://github.com/mislav/will_paginate
 gem 'bootstrap-will_paginate'  # https://github.com/yrgoldteeth/bootstrap-will_paginate
 
-gem "acts_as_tree", "~> 1.1.0"
-
 gem 'devise'
 gem 'russian', '~> 0.6.0' # см. https://github.com/yaroslav/russian
 
