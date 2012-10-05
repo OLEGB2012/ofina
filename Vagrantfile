@@ -10,8 +10,8 @@ Vagrant::Config.run do |config|
       
       config.vm.forward_port 22, 2222, :auto => true
       config.vm.forward_port 80, 4567
-
-       config.ssh.max_tries = 150
+      
+      config.ssh.max_tries = 150
 
       # Assign this VM to a host-only network IP, allowing you to access it
       # via the IP. Host-only networks can talk to the host machine as well as
@@ -24,5 +24,5 @@ Vagrant::Config.run do |config|
       # folder, and the third is the path on the host to the actual folder.
       config.vm.share_folder "ofina","/etc/ofina","../ofina_share"
 
-      #config.vm.boot_mode = :gui
+      config.vm.boot_mode = :gui
 end
