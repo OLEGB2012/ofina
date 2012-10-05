@@ -9,7 +9,7 @@ Vagrant::Config.run do |config|
       config.vm.host_name = "rvm"
       
       config.vm.forward_port 22, 2222, :auto => true
-      config.vm.forward_port 80, 4567
+      config.vm.forward_port 80, 8080      
       
       config.ssh.max_tries = 150
 
