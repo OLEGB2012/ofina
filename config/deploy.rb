@@ -1,13 +1,13 @@
 require "bundler/capistrano"
 
-set :rvm_bin_path,    "/home/deployer/.rvm/bin"
-##set :rvm_bin_path,    "/usr/local/rvm/bin"
-set :rvm_type, :user
-
-#set :rvm_type, :system    # :user is the default
-set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"") # Read from local system
-
-require "rvm/capistrano"  # Load RVM's capistrano plugin.
+#set :rvm_bin_path,    "/home/deployer/.rvm/bin"
+###set :rvm_bin_path,    "/usr/local/rvm/bin"
+##set :rvm_type, :user
+#
+set :rvm_type, :system    # :user is the default
+#set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"") # Read from local system
+#
+#require "rvm/capistrano"  # Load RVM's capistrano plugin.
 
 
 set :scm,             :git
@@ -46,14 +46,14 @@ set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEA
 
 default_environment["RAILS_ENV"] = 'production'
 
-# Запускаем $ rvm info и там всё показывает ... 
-default_environment["PATH"]         = "/home/deployer/.rvm/gems/ruby-1.9.3-p194/bin:/home/deployer/.rvm/gems/ruby-1.9.3-p194@global/bin:/home/deployer/.rvm/rubies/ruby-1.9.3-p194/bin:/home/deployer/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:"
-default_environment["GEM_HOME"]     = "/home/deployer/.rvm/gems/ruby-1.9.3-p194"
-default_environment["GEM_PATH"]     = "/home/deployer/.rvm/gems/ruby-1.9.3-p194:/home/deployer/.rvm/gems/ruby-1.9.3-p194@global"
+# Запускаем # rvm info и там всё показывает ... 
+default_environment["PATH"]         = "/usr/local/rvm/gems/ruby-1.9.3-p194/bin:/usr/local/rvm/gems/ruby-1.9.3-p194@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+default_environment["GEM_HOME"]     = "/usr/local/rvm/gems/ruby-1.9.3-p194"
+default_environment["GEM_PATH"]     = "/usr/local/rvm/gems/ruby-1.9.3-p194:/usr/local/rvm/gems/ruby-1.9.3-p194@global"
 default_environment["RUBY_VERSION"] = "1.9.3p194"
 
 default_run_options[:shell] = 'bash'
-#default_run_options[:pty] = true
+
 namespace :deploy do
   desc "Deploy your application"
   task :default do
