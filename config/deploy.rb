@@ -43,7 +43,7 @@ default_environment["GEM_PATH"]     = "/home/deployer/.rvm/gems/ruby-1.9.3-p194:
 default_environment["RUBY_VERSION"] = "1.9.3p194"
 
 default_run_options[:shell] = 'bash'
-
+#default_run_options[:pty] = true
 namespace :deploy do
   desc "Deploy your application"
   task :default do
