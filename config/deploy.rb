@@ -36,11 +36,18 @@ set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEA
 
 default_environment["RAILS_ENV"] = 'production'
 
-# Use our ruby-1.9.3-p194@ofina gemset
-default_environment["PATH"]         = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-default_environment["GEM_HOME"]     = "/usr/local/lib/ruby/gems/1.9.1"
-default_environment["GEM_PATH"]     = "/usr/local/lib/ruby/gems/1.9.1:/home/vagrant/.gem/ruby/1.9.1"
-default_environment["RUBY_VERSION"] = "ruby-1.9.3-p194"
+# Запускаем $ rvm info и там всё показывает ... 
+default_environment["PATH"]         = "/home/deployer/.rvm/gems/ruby-1.9.3-p194/bin:
+                                       /home/deployer/.rvm/gems/ruby-1.9.3-p194@global/bin:
+                                       /home/deployer/.rvm/rubies/ruby-1.9.3-p194/bin:
+                                       /home/deployer/.rvm/bin:/usr/local/sbin:
+                                       /usr/local/bin:
+                                       /usr/sbin:
+                                       /usr/bin:
+                                       /sbin:"
+default_environment["GEM_HOME"]     = "/home/deployer/.rvm/gems/ruby-1.9.3-p194"
+default_environment["GEM_PATH"]     = "/home/deployer/.rvm/gems/ruby-1.9.3-p194:/home/deployer/.rvm/gems/ruby-1.9.3-p194@global"
+default_environment["RUBY_VERSION"] = "1.9.3p194"
 
 default_run_options[:shell] = 'bash'
 
