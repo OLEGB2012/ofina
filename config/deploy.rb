@@ -1,11 +1,14 @@
 require "bundler/capistrano"
 
-#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))  # Add RVM's lib directory to the load path.
-#require "rvm/capistrano"                                # Load RVM's capistrano plugin.
-#set :rvm_ruby_string, 'ruby-1.9.3-p194@global'          # Or whatever env you want it to run in.
-#set :rvm_bin_path,    "/home/deployer/.rvm/bin"
+set :rvm_bin_path,    "/home/deployer/.rvm/bin"
 ##set :rvm_bin_path,    "/usr/local/rvm/bin"
-#set :rvm_type, :user
+set :rvm_type, :user
+
+#set :rvm_type, :system    # :user is the default
+set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"") # Read from local system
+
+require "rvm/capistrano"  # Load RVM's capistrano plugin.
+
 
 set :scm,             :git
 set :repository,      "git://github.com/OLEGB2012/ofina.git"
