@@ -5,9 +5,13 @@ env = ENV["RAILS_ENV"] || "development"
 # documentation.
 worker_processes 4
 
+# Help ensure your application will always spawn in the symlinked
+# "current" directory that Capistrano sets up.
+working_directory "/home/deployer/apps/ofina/current"
+
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen "/tmp/ofina.socket", :backlog => 64
+listen "#{working_directory}/tmp/ofina.socket", :backlog => 64
 
 # Preload our app for more speed
 preload_app true
@@ -15,13 +19,10 @@ preload_app true
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
-pid "/tmp/unicorn.ofina.pid"
+pid "#{working_directory}/tmp/unicorn.ofina.pid"
 
 # Production specific settings
 if env == "production"
-  # Help ensure your application will always spawn in the symlinked
-  # "current" directory that Capistrano sets up.
-  working_directory "/home/deployer/apps/ofina/current"
 
   # feel free to point this anywhere accessible on the filesystem
   user 'deployer', 'staff'
