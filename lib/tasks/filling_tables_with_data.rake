@@ -395,13 +395,12 @@ end
 
 def make_users
   User.destroy_all
-  admin = User.create(:username => "Example User", 
+  admin = User.create!(:username => "Example User", 
                       :email => "example@railstutorial.org", 
                       :password => "foobar", 
                       :remember_me => false,
-                      :activation_begin => Date.today.to_date,
-                      :activation_end => '2999-12-31')
-  admin.toggle!(:admin)
+                      :admin => true)
+  #admin.toggle!(:admin)
   5.times do |n|
     username = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
@@ -410,7 +409,8 @@ def make_users
                  :email => email, 
                  :password => password, 
                  :password_confirmation => password, 
-                 :remember_me => false)
+                 :remember_me => false,
+                 :admin => false)
   end
 #   5.times do |n|
 #    username = Faker::Name.name

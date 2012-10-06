@@ -2,12 +2,15 @@ class User < ActiveRecord::Base
   before_validation(:on => :create) do
     self.dogovor_begin   =Date.today.to_date
     self.dogovor_end     =Date.today.to_date+1.year
-    unless self.admin
+    if self.admin
+      self.activation_begin = Date.today.to_date
+      self.activation_end   = '2999-12-31'
+    else
       self.activation_begin=Date.today.to_date
-      self.activation_end  =Date.today.to_date+7.days  
+      self.activation_end  =Date.today.to_date+7.days     
     end
   end
-
+  
   has_many :enterprises, :dependent => :destroy
     
   # Include default devise modules. Others available are:
@@ -62,5 +65,5 @@ class User < ActiveRecord::Base
     else
       false     
     end
-  end  
+  end 
 end
