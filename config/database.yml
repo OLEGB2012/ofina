@@ -26,7 +26,7 @@
 
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: UTF8
   database: ofina_development
   pool: 5
   username: postgres
@@ -34,7 +34,7 @@ development:
 
 test:
   adapter: postgresql
-  encoding: unicode
+  encoding: UTF8
   database: ofina_test
   pool: 5
   username: postgres
@@ -42,8 +42,14 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: UTF-8
   database: ofina_production
   pool: 5
   username: postgres
   password: qwerty
+  owner: postgres
+  tablespace: pg_default
+  connection_limit: -1
+  lc_ctype: en_US.utf-8
+  lc_collate: en_US.utf-8
+  template: template0  

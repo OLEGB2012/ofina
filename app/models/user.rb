@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   before_validation(:on => :create) do
     self.dogovor_begin   =Date.today.to_date
     self.dogovor_end     =Date.today.to_date+1.year
-    self.activation_begin=Date.today.to_date
-    self.activation_end  =Date.today.to_date+7.days  
+    unless self.admin
+      self.activation_begin=Date.today.to_date
+      self.activation_end  =Date.today.to_date+7.days  
+    end
   end
 
   has_many :enterprises, :dependent => :destroy
