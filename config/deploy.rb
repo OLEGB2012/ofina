@@ -3,7 +3,7 @@ require "bundler/capistrano"
 set :rvm_type, :system    # :user is the default
 
 set :scm,             :git
-set :repository,      "git://github.com/OLEGB2012/ofina.git"
+set :repository,      "git://github.com/OLEGB2012/ofina.git HEAD"
 set :branch,          "origin/master"
 set :deploy_via, :remote_cache
 set :migrate_target,  :current
