@@ -1,14 +1,6 @@
 require "bundler/capistrano"
 
-#set :rvm_bin_path,    "/home/deployer/.rvm/bin"
-###set :rvm_bin_path,    "/usr/local/rvm/bin"
-##set :rvm_type, :user
-#
 set :rvm_type, :system    # :user is the default
-#set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"") # Read from local system
-#
-#require "rvm/capistrano"  # Load RVM's capistrano plugin.
-
 
 set :scm,             :git
 set :repository,      "git://github.com/OLEGB2012/ofina.git"
@@ -24,14 +16,6 @@ set :keep_releases, 3
 set :user,            "deployer"
 set :group,           "staff"
 set :use_sudo,        false
-
-#ssh_options[:paranoid] = false
-#ssh_options[:port] = 2222
-#ssh_options[:keys] = "~/.ssh/id_dsa"
-
-#role :web,    "localhost"
-#role :app,    "localhost"
-#role :db,     "localhost", :primary => true
 
 role :web,    "rvm"
 role :app,    "rvm"
