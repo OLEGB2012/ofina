@@ -1,7 +1,6 @@
 <a name="BeginOfPage"></a>
 <%= simple_form_for([@enterprise,@form_one_report], html: {class: "well form-inline"}, 
-    defaults: { label: false, :input_html => { :class => 'span12', style: "text-align: right; min-width: 50pt; font-size: 9pt; margin-top: 0px; margin-bottom: -8px; padding: 0pt" } }) do |f| %>
-
+    defaults: { label: false, :input_html => { :class => 'span12', style: "text-align: right; min-width: 50pt; font-size: 9pt; margin-top: 0px; margin-bottom: -8px; padding: 1pt" } }) do |f| %>
     
 <%= render 'shared/error_messages', object: f.object %>
 
@@ -11,8 +10,6 @@
  <%= f.input :date_period, :input_html => {:class => "span3"}, :wrapper => :prepend do %>
     <span class="add-on">ГГГГ-ММ-ДД</span><%= f.input_field :date_period, :as => :string, :class => "span3",style: "max-width: 180pt;",:maxlength => 10 %>
  <%end%>  
-
-<%#= f.input :date_period, :label=>"(ГГГГ-ММ-ДД)", :as => :string, :input_html  => { :class => 'span2',:maxlength => 10 }%>
 
   <div class="form-actions">
     <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>

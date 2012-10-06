@@ -1,22 +1,54 @@
-<h2>Регистрация в системе</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="row">
-    <div class="span6 offset3">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-      <%= f.label 'Контактная информация' %>
-      <%= f.text_area :contact_info, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться ...', rows: 15%>
-      <%= f.submit "Выполнить", :class => "btn btn-large btn-primary" %>
-    </div>
-  </div>
-<% end %>
+<% content_for :span3 do %>
+  <%= render :partial => "devise/shared/links" %> 
+<% end  %>
 
-<%= render :partial => "devise/shared/links" %>
+
+<% content_for :span9 do %>
+
+ <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
+    html: {class: "well form-inline", style: "padding: 11px"}, 
+      defaults: { label: false, 
+        :input_html => { :class => 'span12', 
+          style: "text-align: left; 
+          min-width: 50pt; 
+          font-size: 9pt; 
+          margin-top: 0px; 
+          margin-bottom: -8px; 
+          padding: 1pt" } }) do |f| %>
+      
+      <div class="form-actions" style="border-top-style: none; margin-bottom: 5px; margin-top: 0px; padding: 0px;">
+            <%= image_tag("user_group_new.png", :style => "margin-right: 15px;")%> <%= f.submit "Выполнить Регистрацию", :class => "btn btn-large btn-primary" %>
+      </div>  
+      
+      <div class="form-inputs">
+
+        <%= devise_error_messages! %>
+
+        <table class="table table-bordered table-condensed">
+          <tbody>          
+            <tr>
+                <td><div class="pull-right" style="line-height: 30px; vertical-align:middle"><%= f.label :username %>:</div></td>
+                <td><div><%= f.input :username %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right"><%= f.label :email %>:</div></td>
+                <td><div><%= f.input :email %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right"><%= f.label :password %>:</div></td>
+                <td><div><%= f.input :password %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right"><%= f.label :password_confirmation %>:</div></td>
+                <td><div><%= f.input :password_confirmation %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right"><%= f.label 'Контактная информация:' %></div></td>
+                <td><div><%= f.input :contact_info, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться ...', rows: 3 %></div></td>        
+            </tr>
+          </tbody>
+        </table>
+     </div>
+   <% end %>
+ <% end  %>
