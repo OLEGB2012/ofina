@@ -28,24 +28,24 @@
         <table class="table table-bordered table-condensed">
           <tbody>          
             <tr>
-                <td><div class="pull-right" style="line-height: 30px; vertical-align:middle"><%= f.label :username %>:</div></td>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :username %>:</div></td>
                 <td><div><%= f.input :username %></div></td>        
             </tr>
             <tr>
-                <td><div class="pull-right"><%= f.label :email %>:</div></td>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :email %>:</div></td>
                 <td><div><%= f.input :email %></div></td>        
             </tr>
             <tr>
-                <td><div class="pull-right"><%= f.label :password %>:</div></td>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :password %>:</div></td>
                 <td><div><%= f.input :password %></div></td>        
             </tr>
             <tr>
-                <td><div class="pull-right"><%= f.label :password_confirmation %>:</div></td>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :password_confirmation %>:</div></td>
                 <td><div><%= f.input :password_confirmation %></div></td>        
             </tr>
             <tr>
-                <td><div class="pull-right"><%= f.label 'Контактная информация:' %></div></td>
-                <td><div><%= f.input :contact_info, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться ...', rows: 3 %></div></td>        
+                <td><div class="pull-right" style="line-height: 28x; vertical-align:middle"><%= f.label 'Контактная информация:' %></div></td>
+                <td><div><%= f.input :contact_info, :input_html => { :rows => 10 }, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться ...'%></div></td>        
             </tr>
           </tbody>
         </table>
