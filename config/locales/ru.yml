@@ -9,7 +9,7 @@ ru:
         username: "Имя пользователя"
         email: "Адрес e-mail"
         current_password: "Текущий пароль"
-        
+        contact_info: "Контактная информация"
     errors:
       models:
         user:

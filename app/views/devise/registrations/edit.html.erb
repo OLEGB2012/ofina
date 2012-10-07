@@ -1,29 +1,68 @@
 
-<legend><%= image_tag("News-64.png")%><strong>Редактирование пользователя <%= current_user.username %> </strong></legend>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="row">
-    <div class="span6 offset3">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <%= f.label :password %> <i>(оставьте поле пустым, если Вы не хотите менять пароль)</i>
-      <%= f.password_field :password, :autocomplete => "off" %>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-      <%= f.label :current_password %> <i>(нам нужен Ваш текущий пароль для подтверждения изменений)</i>
-      <%= f.password_field :current_password %>
-      <%= f.label 'Контактная информация' %>
-      <%= f.text_area :contact_info, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться ...', rows: 15%>
-      <%= f.submit "Сохранить изменения", :class => "btn btn-large btn-primary" %>
-    </div>
-  </div>
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Авторизация</li>  
+      <li><%= link_to "Удалить мою учётную запись", registration_path(resource_name), 
+             :confirm => "Вы подтверждаете удаление своей учётной записи?", 
+             :method => :delete %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Вернуться назад", :back %></li>
+    </ul>  
+  </div>  
 <% end %>
 
-<h3>Удалить мою учётную запись</h3>
+<% content_for :span9 do %>
 
-<p>Что-то пошло не так? <%= link_to "Удалить мою учётную запись", registration_path(resource_name), :confirm => "Вы подтверждаете удаление своей учётной записи?", :method => :delete %>.</p>
+ <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
+    html: {:method => :put, class: "well form-inline", style: "padding: 11px"}, 
+      defaults: { label: false, 
+        :input_html => { :class => 'span12', 
+          style: "text-align: left; 
+          min-width: 50pt; 
+          font-size: 10pt; 
+          margin-top: 0px; 
+          margin-bottom: -8px; 
+          padding: 1pt" } }) do |f| %>
+      
+      <div class="form-actions" style="border-top-style: none; margin-bottom: 5px; margin-top: 0px; padding: 0px; font-size: 20px">
+            <%= image_tag("User Active 64.png", :style => "margin-right: 15px;")%> 
+            <%= f.submit "Сохранить изменения", :class => "btn btn-large btn-primary" %>
+            <%= current_user.username %>
+      </div>  
+      
+      <div class="form-inputs">
 
-<%= link_to "Вернуться назад", :back %>
+        <%= devise_error_messages! %>
+
+        <table class="table table-bordered table-condensed">
+          <tbody>          
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :username %>:</div></td>
+                <td><div><%= f.input :username %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :email %>:</div></td>
+                <td><div><%= f.input :email %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :password %>:
+                <td><div><%= f.input :password, :autocomplete => "off", placeholder: "Оставьте поле пустым, если Вы не хотите менять пароль..." %></div></td>        
+            </tr>            
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :password_confirmation %>:
+                <td><div><%= f.input :password_confirmation%></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :current_password %>:
+                <td><div><%= f.input :current_password, placeholder: "Нам нужен Ваш текущий пароль для подтверждения изменений..." %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :contact_info %>:</div></td>
+                <td><div><%= f.input :contact_info, :input_html => { :rows => 10 }, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться...'%></div></td>        
+            </tr>
+          </tbody>
+        </table>
+     </div>
+   <% end %>
+ <% end  %>

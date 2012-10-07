@@ -1,19 +1,47 @@
 
-<legend><%= image_tag("News-64.png")%><strong>Вход в систему</strong></legend>
+<% content_for :span3 do %>
+  <%= render :partial => "devise/shared/links" %> 
+<% end  %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="row">
-    <div class="span6 offset3">
-      <%= f.label :login %>
-      <%= f.text_field :login %>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-      <% if devise_mapping.rememberable? -%>
-        <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-      <% end %>
-      <%= f.submit "Выполнить", :class => "btn btn-large btn-primary" %>
-    </div>
-  </div>  
-<% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<% content_for :span9 do %>
+
+ <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name),
+    html: {class: "well form-inline", style: "padding: 11px"}, 
+      defaults: { label: false, 
+        :input_html => { :class => 'span12', 
+          style: "text-align: left; 
+          min-width: 50pt; 
+          font-size: 10pt; 
+          margin-top: 0px; 
+          margin-bottom: -8px; 
+          padding: 1pt" } }) do |f| %>
+      
+      <div class="form-actions" style="border-top-style: none; margin-bottom: 5px; margin-top: 0px; padding: 0px;">
+            <%= image_tag("User Active 64.png", :style => "margin-right: 15px;")%> <%= f.submit "Войти в Систему", :class => "btn btn-large btn-primary" %>
+      </div>  
+      
+      <div class="form-inputs">
+
+        <%= devise_error_messages! %>
+
+        <table class="table table-bordered table-condensed">
+          <tbody>          
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :login %>:</div></td>
+                <td><div><%= f.input :login %></div></td>        
+            </tr>
+            <tr>
+                <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :password %>:</div></td>
+                <td><div><%= f.input :password %></div></td>        
+            </tr>
+             <% if devise_mapping.rememberable? -%>
+                 <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :remember_me %>:</div></td>
+                 <td><div><%= f.input :remember_me, as: :boolean, :input_html => { :style => "line-height: 28px; vertical-align:middle"} %></div></td>
+             <% end %>  
+            </tr>
+          </tbody>
+        </table>
+     </div>
+   <% end %>
+ <% end  %>
