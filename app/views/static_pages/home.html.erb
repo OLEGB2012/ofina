@@ -80,12 +80,9 @@
         </div>
       </div>
 
-        <div style="text-align: justify; 
+        <div class="well sidebar-nav"style="text-align: justify; 
              border: solid darkgray ; 
-             border-left:  double;
-             border-top:   double;
              color: black; 
-             background-color:#f2eeee;
              line-height: 1.3em; font-size: 11pt; padding: 5pt ">
           <strong>Приветствуем Вас</strong> на сайте проекта <strong><em>"Автоматизированная система On-Line Финансовый Анализ"</em>!</strong>
           Он адресован профессионалам в области финансового анализа хозяйственной деятельности и бизнес-планирования.
@@ -130,17 +127,17 @@
           <h2 style="margin-top: 10pt; margin-bottom: 5pt">О проекте</h2>
           <p>Вы можете работать с нашим сервисом в любом месте, где есть постоянное соединение с Интернетом...</p>
           <p><%= link_to "Подробнее...", about_path , class: "btn btn-large btn-info" %></p>
-          </div>
-          <div class="span4" style="text-align: justify;">
-            <h2 style="margin-top: 10pt; margin-bottom: 5pt">Наши контакты</h2>
-            <p>Для решения технических и оперативных вопросов Вы можете держать с нами связь различными способами... </p>
-            <p><%= link_to "Подробнее...", contact_path , class: "btn btn-large btn-success" %></p>
-            </div>
-            <div class="span4" style="text-align: justify;">
-              <h2 style="margin-top: 10pt; margin-bottom: 5pt">Новости</h2>
-              <p>Наш проект - это постоянно развивающийся "организм", с жизнью которого связаны те или иные события...</p>
-              <p><%= link_to "Подробнее...", news_path , class: "btn btn-large btn-warning" %></p>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div class="span4" style="text-align: justify;">
+          <h2 style="margin-top: 10pt; margin-bottom: 5pt">Наши контакты</h2>
+          <p>Для решения технических и оперативных вопросов Вы можете держать с нами связь различными способами... </p>
+          <p><%= link_to "Подробнее...", contact_path , class: "btn btn-large btn-success" %></p>
+        </div>
+        <div class="span4" style="text-align: justify;">
+          <h2 style="margin-top: 10pt; margin-bottom: 5pt">Новости</h2>
+          <p>Наш проект - это постоянно развивающийся "организм", с жизнью которого связаны те или иные события...</p>
+          <p><%= link_to "Подробнее...", news_path , class: "btn btn-large btn-warning" %></p>
+        </div>
+      </div>
+  </div>
 <% end  %>
