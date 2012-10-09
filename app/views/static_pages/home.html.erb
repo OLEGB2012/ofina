@@ -6,8 +6,11 @@
       <li class="nav-header">Операции</li>  
       <li><%= link_to "Список Организаций", enterprises_path%></li>  
       <li><%= link_to "Свойства Учётной Записи", user_path%></li>
-      <li class="divider"></li>
-      <li><%= link_to "Сервис Базы Данных", "#"%></li>  
+      <li class="divider"></li>      
+      <%#*<li>%>
+         <%#= link_to "Сервис Базы Данных", "#"%>
+      <%#*</li>%>  
+      <li><%= link_to "Выйти из системы", destroy_user_session_path, method: "delete" %></li>
     </ul>  
   </div>  
 <% end  %>
