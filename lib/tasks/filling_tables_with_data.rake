@@ -399,6 +399,7 @@ def make_users
                       :email => "example@railstutorial.org", 
                       :password => "foobar", 
                       :remember_me => false,
+                      :activation_allowed => true,
                       :admin => true)
   #admin.toggle!(:admin)
   5.times do |n|
