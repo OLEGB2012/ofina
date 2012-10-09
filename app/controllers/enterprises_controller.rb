@@ -1,6 +1,7 @@
 # encoding: utf-8
 class EnterprisesController < ApplicationController
-  before_filter :authenticate_user!, :check_activation
+  before_filter :authenticate_user!
+  before_filter :check_activation, except: [:index,:show]
   
   def index
     unless current_user.try(:admin?)

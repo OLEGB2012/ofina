@@ -42,7 +42,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.date    :dogovor_end   
       t.date    :activation_begin 
       t.date    :activation_end 
-      t.boolean :activation_allowed, :default => true
+      t.boolean :activation_allowed, :default => false
       
       t.timestamps
     end

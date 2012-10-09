@@ -25,7 +25,7 @@
                 <div class="bar" style="width: <%= current_user.get_balanse.to_s+'%' %>;"></div>
               </div>              
             <% else %>
-              <h5>В настоящее время учётная запись не активна (c <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года).</h5>
+              <h5>В настоящее время Вы в Демо-режиме (c <%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года).</h5>
               <div class="progress progress-danger"></div>
             <% end %>          
           </div>

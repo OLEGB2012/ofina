@@ -23,8 +23,13 @@
       <%#*<li>%>
 <%#= link_to "О ДВИЖЕНИИ ДЕНЕЖНЫХ СРЕДСТВ (Кол-во : "+@form_four_reports_count.to_s+")", enterprise_form_four_reports_path(@enterprise)%>
       <%#*</li>%>
-      <li class="nav-header">Контроль</li>
-      <li><%= link_to "Выполнить ..."   , "#" %></li>      
+      
+      <%#*<li class="nav-header">%>
+        <%#*Контроль%>
+      <%#*</li>%>      
+      <%#*<li>%>
+        <%#= link_to "Выполнить ..."   , "#" %>
+      <%#*</li>%>      
       <li class="nav-header">АНАЛИЗ</li>
       <li><%= link_to "Провести ..."   , calc_prompt_path(id: @enterprise) %></li>      
       <li class="nav-header">РЕЗУЛЬТАТЫ</li>

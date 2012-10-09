@@ -1,6 +1,7 @@
 # encoding: utf-8
 class FormFourReportsController < ApplicationController
-  before_filter :authenticate_user! , :check_activation , :get_enterprise
+  before_filter :authenticate_user!, :get_enterprise
+  before_filter :check_activation, except: [:index,:show]
   
   def index
     @form_four_reports=FormFourReport.FormFourEnterpriseFor(params[:enterprise_id]).Sorted.paginate(page: params[:page])

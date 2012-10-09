@@ -42,8 +42,8 @@
         <td><div class="pull-left" ><em><%= Russian::strftime(current_user.activation_end,"%d %B %Y")%> года</em></div></td>       
       </tr>
       <tr>
-        <td><div class="pull-right"><strong>Активация разрешена?</strong></div></td>
-        <td><div class="pull-left" ><em><%= (current_user.activation_allowed)?'Да, разрешена':'Нет, запрещена' %></em></div></td>       
+        <td><div class="pull-right"><strong>Статус:</strong></div></td>
+        <td><div class="pull-left" ><em><%= (current_user.activation_allowed)?'Полный доступ':'Демо-режим' %></em></div></td>       
       </tr>
       <tr>
         <td colspan="2"><div class="pagination-centered"><em><strong>КОНТАКТНАЯ ИНФОРМАЦИЯ</strong></em></div></td>        

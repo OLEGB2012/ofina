@@ -782,7 +782,7 @@ ActiveRecord::Schema.define(:version => 20120825141210) do
     t.date     "dogovor_end"
     t.date     "activation_begin"
     t.date     "activation_end"
-    t.boolean  "activation_allowed",     :default => true
+    t.boolean  "activation_allowed",     :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
       self.activation_end   = '2999-12-31'
     else
       self.activation_begin=Date.today.to_date
-      self.activation_end  =Date.today.to_date+7.days     
+      self.activation_end  =Date.today.to_date     
     end
   end
   
@@ -45,8 +45,6 @@ class User < ActiveRecord::Base
   # Валидация из гема validates_timeliness
   validates_date :dogovor_begin, :before => :dogovor_end
   validates_date :dogovor_end,   :after  => :dogovor_begin
-  validates_date :activation_begin, :before => :activation_end
-  validates_date :activation_end,   :after  => :activation_begin  
   
   self.per_page = 12 # число страниц для гема пагинации ...
   

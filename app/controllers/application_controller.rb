@@ -15,8 +15,10 @@ def check_activation
     if current_user.is_active
       true
     else  
-      flash[:alert] = "Учётная запись пользователя #{current_user.username} не активна ..."
-      redirect_to root_path
+      flash[:alert] = "Учётная запись пользователя #{current_user.username} находится в Демо-режиме ..."
+      #redirect_to root_path
+      redirect_to :back
+      false
     end
   end 
 end  
