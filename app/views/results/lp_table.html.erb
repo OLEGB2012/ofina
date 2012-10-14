@@ -6,7 +6,9 @@
   <% end %> 
 <% end  %>
 
-<legend><%= image_tag("Generate tables 64.png") %> Показатели Ликвидности и Платёжеспособности (таблично)</legend>
+<% content_for :span9 do %>     
+  <legend><%= image_tag("Generate tables 64.png") %> Показатели Ликвидности и Платёжеспособности</legend>
+<% end  %>
 
  <table class="table table-striped table-bordered table-condensed">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
@@ -18,23 +20,23 @@
         <th colspan="10"><div class="pagination-centered">Коэффициенты</div></th>        
       </tr>
       <tr>
-        <th colspan="2"><div class="pagination-centered">Текущей ликвидности (K1)</div></th>
-        <th colspan="2"><div class="pagination-centered">Абсолютной ликвидности</div></th>
-        <th colspan="2"><div class="pagination-centered">Критической (промежуточной) ликвидности</div></th>
-        <th colspan="2"><div class="pagination-centered">Обеспеченности собственными оборотными средствами (K2)</div></th>
-        <th colspan="2"><div class="pagination-centered">Обеспеченности финансовых обязательств активами (K3)</div></th>      
+        <th colspan="2"><div class="pagination-centered">Текущей ликвидности (K1) Норматив: <span class="badge badge-info">>=<%= display_result_data(@enterprise.K1)%></span></div></th>
+        <th colspan="2"><div class="pagination-centered">Абсолютной ликвидности Норматив: <span class="badge badge-info">>=0.2</span></div></th>
+        <th colspan="2"><div class="pagination-centered">Критической (промежуточной) ликвидности Норматив: <span class="badge badge-info">>=1</span></div></th>
+        <th colspan="2"><div class="pagination-centered">Обеспеченности собственными оборотными средствами (K2) Норматив: <span class="badge badge-info">>=<%= display_result_data(@enterprise.K2)%></span></div></th>
+        <th colspan="2"><div class="pagination-centered">Обеспеченности финансовых обязательств активами (K3) Норматив: <span class="badge badge-info"><=<%= display_result_data(@enterprise.K3)%></span></div></th>      
       </tr>
       <tr>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">гр.2-Норм.</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">гр.4-Норм.</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">гр.6-Норм.</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">гр.8-Норм.</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Норматив</div></th>
+        <th><div class="pagination-centered">Норм.-гр.10</div></th>
       </tr>
       <tr>
         <th><div class="pagination-centered">1</div></th>
@@ -59,31 +61,35 @@
                <% else %>
                   <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(lp.K1) %></div></td>
                <% end %>
-               <td><div class="pagination-centered">>=<%= display_result_data(@enterprise.K1)%></div></td>
+                  <td><div class="pagination-centered"><%= number_with_precision(lp.K1-@enterprise.K1, precision: 4) %></div></td>
+               
                <% if lp.Kabsl>=0.2 %>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(lp.Kabsl) %></div></td>
                <% else %>
                   <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(lp.Kabsl) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"> >=0.2</div></td>
+                  <td><div class="pagination-centered"><%= number_with_precision(lp.Kabsl-0.2, precision: 4) %></div></td>
+               
                <% if lp.Kkrl>=1 %>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(lp.Kkrl) %></div></td>
                <% else %>
                   <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(lp.Kkrl) %></div></td>
                <% end %>   
-               <td><div class="pagination-centered">>=1</div></td>
+                  <td><div class="pagination-centered"><%= number_with_precision(lp.Kkrl-1, precision: 4) %></div></td>
+               
                <% if lp.K2>=@enterprise.K2 %>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(lp.K2) %></div></td>
                <% else %>
                   <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(lp.K2) %></div></td>
                <% end %>
-               <td><div class="pagination-centered">>=<%= display_result_data(@enterprise.K2)%></div></td>
+                  <td><div class="pagination-centered"><%= number_with_precision(lp.K2-@enterprise.K2, precision: 4) %></div></td>
+               
                <% if lp.K3<=@enterprise.K3 %>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(lp.K3) %></div></td>
                <% else %>
                   <td><div class="pagination-centered" style="background-color: #FFA07A"><%= display_result_data(lp.K3) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><=<%= display_result_data(@enterprise.K3)%></div></td>
+                  <td><div class="pagination-centered"><%= number_with_precision(@enterprise.K3-lp.K3, precision: 4) %></div></td>
           </tr>          
       <% end %>    
     </tbody>   

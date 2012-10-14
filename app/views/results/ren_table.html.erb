@@ -6,7 +6,9 @@
   <% end %> 
 <% end  %>
 
-<legend><%= image_tag("Generate tables 64.png") %> Показатели Рентабельности (таблично)</legend>
+<% content_for :span9 do %>
+  <legend><%= image_tag("Generate tables 64.png") %> Показатели Рентабельности</legend>
+<% end  %>     
 
 <table class="table table-striped table-bordered table-condensed" style="font-size: 11px">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
@@ -14,7 +16,7 @@
                                   <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
     <thead>
       <tr>
-        <th rowspan="3"><div class="pagination-centered" style="line-height: 20px; vertical-align:middle; min-width: 100px">На дату (за период с начала года)</div></th>
+        <th rowspan="3"><div class="pagination-centered" style="line-height: 20px; vertical-align:middle; min-width: 100px">На дату </br>(за период с начала года)</div></th>
         <th colspan="14"><div class="pagination-centered">Коэффициенты Рентабельности</div></th>        
       </tr>
       <tr>
@@ -28,19 +30,19 @@
       </tr>
       <tr>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.2</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.4</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.6</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.8</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.10</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.12</div></th>
         <th><div class="pagination-centered">Значение</div></th>
-        <th><div class="pagination-centered">Максимум</div></th>
+        <th><div class="pagination-centered">MAX-гр.14</div></th>
       </tr>
       <tr>
         <th><div class="pagination-centered">1</div></th>
@@ -70,49 +72,49 @@
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krenprod) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krenprod) %></div></td>
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krenprod-ren.Krenprod, precision: 4) %></div></td>
                
                <% if ren.Krenact==@REN_MAX_Krenact%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(ren.Krenact) %></div></td>
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krenact) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krenact) %></div></td>
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krenact-ren.Krenact, precision: 4) %></div></td>
                
                <% if ren.Krensk==@REN_MAX_Krensk%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(ren.Krensk) %></div></td>
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krensk) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krensk) %></div></td>
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krensk-ren.Krensk, precision: 4) %></div></td>
                
                <% if ren.Krenpz==@REN_MAX_Krenpz%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(ren.Krenpz) %></div></td>
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krenpz) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krenpz) %></div></td>
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krenpz-ren.Krenpz, precision: 4) %></div></td>
                
                <% if ren.Krenps==@REN_MAX_Krenps%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(ren.Krenps) %></div></td>
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krenps) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krenps) %></div></td>
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krenps-ren.Krenps, precision: 4) %></div></td>
                
                <% if ren.Krenor==@REN_MAX_Krenor%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(ren.Krenor) %></div></td>
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krenor) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krenor) %></div></td>
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krenor-ren.Krenor, precision: 4) %></div></td>
                
                <% if ren.Krenchp==@REN_MAX_Krenchp%>
                   <td><div class="pagination-centered" style="background-color: #90EE90"><%= display_result_data(ren.Krenchp) %></div></td>
                <% else %>
                   <td><div class="pagination-centered"><%= display_result_data(ren.Krenchp) %></div></td>
                <% end %>
-               <td><div class="pagination-centered"><%= display_result_data(@REN_MAX_Krenchp) %></div></td>             
+               <td><div class="pagination-centered"><%= number_with_precision(@REN_MAX_Krenchp-ren.Krenchp, precision: 4) %></div></td>             
           </tr>          
       <% end %>    
     </tbody>   
