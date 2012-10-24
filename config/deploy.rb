@@ -5,7 +5,7 @@ set :rvm_type, :system    # :user is the default
 set :scm,             :git
 set :repository,      "git://github.com/OLEGB2012/ofina.git HEAD"
 set :branch,          "origin/master"
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :migrate_target,  :current
 set :ssh_options,     { :forward_agent => true }
 set :rails_env,       "production"
