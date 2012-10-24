@@ -1,6 +1,6 @@
 <a name="BeginOfPage"></a>
 <%= simple_form_for([@enterprise,@form_three_report], 
-  html: {class: "well form-inline", style: "font-size: 7pt"}, 
+  html: {class: "well form-inline shadow", style: "font-size: 8pt"}, 
   defaults: { label: false, :input_html => { :class => 'span2', style: "text-align: right;max-width: 55pt;font-size: 9pt; margin-top: 0px; margin-bottom: -8px; padding: 1pt" } }) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
@@ -8,11 +8,11 @@
     <%= "За период (ГГГГ-ММ-ДД)" %>
 
     <%= f.input :date_period_beg, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
-       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span2", style: "font-size: 9pt; max-width: 45pt",:maxlength => 10 %>
+       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span2", style: "max-width: 55pt",:maxlength => 10 %>
     <%end%>  
 
     <%= f.input :date_period_end, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
-       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span2", style: "font-size: 9pt; max-width: 45pt",:maxlength => 10 %>
+       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span2", style: "max-width: 55pt", :maxlength => 10 %>
     <%end%>
        
   <div class="form-actions">   

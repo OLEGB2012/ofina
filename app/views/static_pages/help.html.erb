@@ -2,7 +2,10 @@
 
 <%= render 'navbar4help' %>
 
-<% content_for :span9 do %> 
+<% content_for :span9 do %>
+<div class="well sidebar-nav shadow"style="text-align: justify;
+             color: black; padding: 5pt ">
   <legend><%= image_tag("books 64.png") %><strong>Документация и справочные материалы</strong></legend>
   <p>Ссылка на скачивание файла <strong>"Руководство пользователя"</strong> в формате PDF: <%= link_to image_tag('ext_pdf.png') ,'roganov-roganova.pdf'%></p>
+</div>  
 <% end %>

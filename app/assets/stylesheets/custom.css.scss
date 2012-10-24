@@ -14,7 +14,7 @@ html {
 }
 body {
     padding-top: 60px;
-    background-image: 'fon.gif';
+    background-image: 'ICQ-32.png';
     background-repeat:repeat;
 }
 section {
@@ -181,9 +181,57 @@ span.status
 span.status.true  {background: green; color: green}
 span.status.false {background: red;   color: red}
 
-
 @media print {
  noPrint {
     display:none;
          }
+}
+
+.shadow {
+ -moz-box-shadow: 4px 4px 5px 4px #ccc;
+ -webkit-box-shadow: 4px 4px 5px 4px #ccc;
+ box-shadow: 4px 4px 5px 4px #ccc;
+}
+
+.box {
+ position: relative;
+ /*width: 60%;*/
+ background: $grayMediumLight;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ padding: 0.7em;
+ color: rgba(0,0,0, .8);
+ text-shadow: 0 1px 0 #fff;
+ line-height: 1.5;
+ margin: 20px 10px auto;
+}
+.box:before,
+.box:after {
+ z-index: -1;
+ position: absolute;
+ content: "";
+ bottom: 15px;
+ left: 10px;
+ width: 50%;
+ top: 80%;
+ max-width:300px;
+ background: rgba(0, 0, 0, 0.7);
+ -webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);
+ -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+ box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+ -webkit-transform: rotate(-3deg);
+ -moz-transform: rotate(-3deg);
+ -o-transform: rotate(-3deg);
+ -ms-transform: rotate(-3deg);
+ transform: rotate(-3deg);
+}
+	 
+.box:after {
+ -webkit-transform: rotate(3deg);
+ -moz-transform: rotate(3deg);
+ -o-transform: rotate(3deg);
+ -ms-transform: rotate(3deg);
+ transform: rotate(3deg);
+ right: 10px;
+ left: auto;
 }

@@ -1,7 +1,7 @@
 <%  provide(:title, 'Анализ')%>
 
 <% content_for :span3 do %>      
-  <div class="well sidebar-nav">  
+  <div class="well sidebar-nav shadow shadow">  
     <ul class="nav nav-list">  
       <li class="nav-header">АНАЛИЗ</li>       
       <li><%= link_to "К Панели Управления", enterprise_path(params[:id]) %></li>      
@@ -10,7 +10,7 @@
 <% end  %>
 
 <% content_for :span9 do %>
-<div class="well sidebar-nav" style=" padding: 5pt ">
+<div class="well sidebar-nav shadow" style=" padding: 5pt ">
   <legend><%= image_tag("Abacus 64.png") %>Анализ финансово-экономического состояния</legend> 
   <%#= params.inspect %>
   <%#= @form_one_reports.inspect %>

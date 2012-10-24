@@ -1,7 +1,7 @@
 <%  provide(:title, 'Организации')%>
 
 <% content_for :span3 do %>      
-  <div class="well sidebar-nav">  
+  <div class="well sidebar-nav shadow">  
     <ul class="nav nav-list">  
       <li class="nav-header">Организации</li>  
       <li><%= link_to "Новая", new_enterprise_path%></li>  
@@ -11,6 +11,7 @@
 <% end  %>
 
 <% content_for :span9 do %>
+<div class="well sidebar-nav shadow" style="padding: 0.6em;">
 <legend><%= image_tag("companies 64.png") %><strong>Список Организаций</strong></legend>
 <table class="table table-striped table-bordered table-condensed">
     <thead>
@@ -28,7 +29,7 @@
           <td><div class="pagination-centered"><%= enterprise.uch_nomer_plat %></div></td>
           <td><div class="pull-left"><%= enterprise.vid_econom_deyatel %></div></td>
           <td>
-            <div class="pagination-centered">
+            <div class="pagination-centered" style="min-width: 95px;">
               <%= link_to (enterprise), 
                    class: "btn btn-small btn-danger", 
                    method: :delete,                                             
@@ -38,7 +39,7 @@
              </div>
           </td>
           <td>
-            <div class="pagination-centered">
+            <div class="pagination-centered" style="min-width: 95px;">
               <%= link_to (enterprise_path(enterprise)), class: "btn btn-small btn-info" do %>
                 Подробно...<i class="icon-info-sign icon-white"></i>
               <% end %>  
@@ -49,4 +50,5 @@
     </tbody>    
   </table>
   <%= will_paginate %>
+</div>
 <% end  %>
