@@ -17,9 +17,9 @@ set :user,            "deployer"
 set :group,           "staff"
 set :use_sudo,        false
 
-role :web,    "hitex"
-role :app,    "hitex"
-role :db,     "hitex", :primary => true
+role :web,    "93.84.117.217"
+role :app,    "93.84.117.217"
+role :db,     "93.84.117.217", :primary => true
 
 set(:latest_release)  { fetch(:current_path) }
 set(:release_path)    { fetch(:current_path) }
