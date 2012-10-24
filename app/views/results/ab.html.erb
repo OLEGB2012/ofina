@@ -2,11 +2,13 @@
 
 <%  provide(:title, 'Анализ баланса')%>
 
-<% content_for :span9 do %>
-
+<% content_for :span3 do %>
   <%= link_to results_path(id: @enterprise), class: "btn btn-small btn-info" do %>
      К странице Результаты
-  <% end %>  
+  <% end %>    
+<% end  %>
+
+<% content_for :span9 do %>   
   <%= link_to "#Gorizontal", class: "btn btn-small btn-success" do %>
      Горизонтальный Анализ
   <% end %> 
