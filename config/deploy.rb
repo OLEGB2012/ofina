@@ -17,9 +17,9 @@ set :user,            "deployer"
 set :group,           "staff"
 set :use_sudo,        false
 
-role :web,    "rvm"
-role :app,    "rvm"
-role :db,     "rvm", :primary => true
+role :web,    "hitex"
+role :app,    "hitex"
+role :db,     "hitex", :primary => true
 
 set(:latest_release)  { fetch(:current_path) }
 set(:release_path)    { fetch(:current_path) }
@@ -32,10 +32,10 @@ set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEA
 default_environment["RAILS_ENV"] = 'production'
 
 # Запускаем # rvm info и там всё показывает ... 
-default_environment["PATH"]         = "/usr/local/rvm/gems/ruby-1.9.3-p194/bin:/usr/local/rvm/gems/ruby-1.9.3-p194@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-default_environment["GEM_HOME"]     = "/usr/local/rvm/gems/ruby-1.9.3-p194"
-default_environment["GEM_PATH"]     = "/usr/local/rvm/gems/ruby-1.9.3-p194:/usr/local/rvm/gems/ruby-1.9.3-p194@global"
-default_environment["RUBY_VERSION"] = "1.9.3p194"
+default_environment["PATH"]         = "/usr/local/rvm/gems/ruby-1.9.3-p286/bin:/usr/local/rvm/gems/ruby-1.9.3-p286@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p286/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+default_environment["GEM_HOME"]     = "/usr/local/rvm/gems/ruby-1.9.3-p286"
+default_environment["GEM_PATH"]     = "/usr/local/rvm/gems/ruby-1.9.3-p286:/usr/local/rvm/gems/ruby-1.9.3-p286@global"
+default_environment["RUBY_VERSION"] = "1.9.3p286"
 
 default_run_options[:shell] = 'bash'
 
