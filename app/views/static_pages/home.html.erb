@@ -70,8 +70,11 @@
   <div class="container">
     <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="leaderboard">  
-   <div class="row">
-     <div class="span12 box" style="width: 920px">  
+     <div class="row">
+      <div class="span12 box" style="width: 920px">
+        <div style="text-align: center; margin-bottom: -10pt; margin-top: -25pt; margin-left: 20pt">
+          <%= image_tag("Black-pin-48.png")%>
+        </div> 
         <div class="span2">
           <%= image_tag("Column Chart 256.png")%>
         </div> 
@@ -87,7 +90,10 @@
     </div>
     
       <div class="row">
-        <div class="span6 box" style="text-align: justify; width: 440px">  
+        <div class="span6 box" style="text-align: justify; width: 440px">
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
+            <%= image_tag("Red-pin-32.png")%>
+          </div> 
           <strong>Приветствуем Вас</strong> на сайте проекта <strong><em>"Автоматизированная система On-Line Финансовый Анализ"</em>!</strong>
           Он адресован профессионалам в области финансового анализа хозяйственной деятельности и бизнес-планирования.
           С помощью наших инструментов Вы сможете провести <em><strong>комплексный анализ хозяйственной деятельности 
@@ -116,6 +122,9 @@
           </ul>
           </div>
         <div class="span6 box" style="text-align: justify; width: 440px">
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
+            <%= image_tag("Red-pin-32.png")%>
+          </div> 
           Пройдите <%= link_to "Бесплатную регистрацию", new_user_registration_path%> и получите доступ в <strong><em>Демо-режиме</em></strong> 
           для опробации возможностей сервиса. При этом для Вас система автоматически сгенерирует <strong><em>"тестовое предприятие"</em></strong> 
           с предопределённым условным набором исходных данных для ознакомительных целей в режиме <strong><em>только просмотр</em></strong>. 
@@ -130,17 +139,26 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4 box" style="text-align: justify; width: 280px">
-          <h2 style="margin-top: 10pt; margin-bottom: 5pt">О проекте</h2>
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
+            <%= image_tag("Blue-pin-32.png")%>
+          </div> 
+          <h2 style="margin-top: 5pt; margin-bottom: 5pt">О проекте</h2>
           <p>Вы можете работать с нашим сервисом когда угодно и где угодно. Ваше рабочее место находится там, где есть Интернет!</p>
           <p><%= link_to "Подробнее...", about_path , class: "btn btn-large btn-info" %></p>
         </div>
         <div class="span4 box" style="text-align: justify; width: 280px">
-          <h2 style="margin-top: 10pt; margin-bottom: 5pt">Наши контакты</h2>
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
+            <%= image_tag("Green-pin-32.png")%>
+          </div>           
+          <h2 style="margin-top: 5pt; margin-bottom: 5pt">Наши контакты</h2>
           <p>Для решения технических и оперативных вопросов Вы можете держать с нами связь различными способами... </p>
           <p><%= link_to "Подробнее...", contact_path , class: "btn btn-large btn-success" %></p>
         </div>
         <div class="span4 box" style="text-align: justify; width: 280px">
-          <h2 style="margin-top: 10pt; margin-bottom: 5pt">Новости <span class="badge badge-important">Обновлено 11 октября 2012</span></h2>
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
+            <%= image_tag("Yellow-pin-32.png")%>
+          </div>
+          <h2 style="margin-top: 5pt; margin-bottom: 5pt">Новости <span class="badge badge-important">Обновлено 11 октября 2012</span></h2>
           <p>Наш проект - это постоянно развивающийся "организм", с жизнью которого связаны те или иные события...</p>
           <p><%= link_to "Подробнее...", news_path , class: "btn btn-large btn-warning" %></p>
         </div>
