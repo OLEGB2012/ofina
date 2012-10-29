@@ -72,8 +72,8 @@
     <div class="leaderboard">  
      <div class="row">
       <div class="span12 box" style="width: 920px">
-        <div style="text-align: center; margin-bottom: -10pt; margin-top: -25pt; margin-left: 20pt">
-          <%= image_tag("Black-pin-48.png")%>
+        <div style="text-align: center; margin-bottom: -5pt; margin-top: -15pt; margin-left: 20pt">
+          <%= image_tag("Red-pin-32.png")%>          
         </div> 
         <div class="span2">
           <%= image_tag("Column Chart 256.png")%>
@@ -91,9 +91,9 @@
     
       <div class="row">
         <div class="span6 box" style="text-align: justify; width: 440px">
-          <div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">
-            <%= image_tag("Red-pin-32.png")%>
-          </div> 
+          <%#*<div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">%>
+            <%#= image_tag("Red-pin-32.png")%>
+          <%#*</div>%> 
           <strong>Приветствуем Вас</strong> на сайте проекта <strong><em>"Автоматизированная система On-Line Финансовый Анализ"</em>!</strong>
           Он адресован профессионалам в области финансового анализа хозяйственной деятельности и бизнес-планирования.
           С помощью наших инструментов Вы сможете провести <em><strong>комплексный анализ хозяйственной деятельности 
@@ -114,7 +114,7 @@
               Более полусотни различного вида диаграмм, делающих процесс анализа наглядным в сочетании с табличными сводами с расчётными данными.
             </li>
             <li>
-              Возможность проведения анализа за любой период, от месяца до нескольких лет, без ограничений.
+              Возможность проведения анализа за любой период: от месяца до нескольких лет - без ограничений.
             </li>
             <li>
               Возможность работы из любой точки доступа - нужная информация <strong><em>всегда On-Line, всегда под рукой !</em></strong>
@@ -122,39 +122,51 @@
           </ul>
           </div>
         <div class="span6 box" style="text-align: justify; width: 440px">
-          <div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">
-            <%= image_tag("Red-pin-32.png")%>
-          </div> 
-          Для того, чтобы начать работу достаточно:</br>
-          <ul style="margin-top: 10pt">
+          <%#*<div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">%>
+            <%#= image_tag("Red-pin-32.png")%>
+          <%#*</div>%> 
+          Для знакомства с возможностями системы <em>достаточно</em>:</br>
+          <ul style="margin-top: 5pt">
           <li>
-            Пройти <%= link_to "Бесплатную регистрацию", new_user_registration_path%> и получить доступ в <strong><em>Демо-режиме</em></strong> 
-            для опробации возможностей сервиса. При этом для Вас система автоматически сгенерирует <strong><em>"тестовое предприятие"</em></strong> 
-            с предопределённым условным набором исходных данных для ознакомительных целей в режиме <strong><em>только просмотр</em></strong>.
+            Пройти <%= link_to "Бесплатную регистрацию", new_user_registration_path%> и получить доступ к <strong><em>Демо-режиму</em></strong>.
+            Система автоматически сгенерирует <strong><em>"тестовое предприятие"</em></strong> 
+            с предопределённым условным набором исходных данных в режиме <strong><em>только просмотр</em></strong>.
           </li>
           <li>
-            Обратиться к списку предприятий, выбрать нужный элемент по ссылке <em>Подробно</em>.
+            В списке предприятий выбрать его элемент по кнопке <em>Подробно</em>.
           </li>
           <li>
-            Провести <em>Анализ</em> на Панели Управления, после которого Вы можете просматривать <em>Результаты</em> по выбранному предприятию.
+            В открывшейся Панели Управления выбрать команду  <em>Анализ->Провести...</em>.
+          </li>
+          <li>
+            В Панели Управления выбрать команду <em>Результаты->Смотреть...</em> по текущему предприятию, 
+            где Вы можете просмотреть результаты расчётов и анализа в виде таблиц и графических диаграмм .
           </li>
           </ul>
-          О подробностях работы с системой и условиях получения полного доступа к всем режимам системы, а также о политике безопасности
-          можно прочитать в разделе <%= link_to "О проекте", about_path%>.</br> 
-          О том как связаться с нами и начать сотрудничество (включая условия, тарифы) можно узнать в разделе <%= link_to "Наши контакты", contact_path %>.</br>
-          <strong><em>Зарегистрировавшиеся пользователи</em></strong> могут выполнить авторизацию по ссылке <%= link_to "Войти в систему", new_user_session_path %>.</br>
-          ваильдльи  дльи дльи двльидвль ива и</br>
-          ваирлвадьидлвь длвьдиьв </br>
-          и иавьбд и дв двл д вди </br>
-          иьлвадиьдвальидлвьаи </br>          
-          вапвапвап вап  вап ва
+           Для получения <strong>полного доступа</strong> к системе <em>необходимо</em>:</br>
+           <ul style="margin-top: 5pt">
+          <li>
+            Ознакомиться с содержанием <%= link_to "Договора публичной оферты",'Public_offer_12-10-2012.pdf'%>.
+          </li>
+          <li>
+            Прочитать в разделе <%= link_to "О проекте", about_path%> о некоторых подробностях проекта.            
+          </li>
+          <li>
+            Произвести банковский безналичный платёж согласно выбранному тарифу (акцепт оферты).
+          </li>
+          <li>
+            При желании связаться с нами, воспользовавшись информацией в разделе <%= link_to "Наши контакты", contact_path %>, и задать интересующий Вас вопрос.
+          </li>
+          </ul>          
+          <strong><em>Зарегистрировавшиеся пользователи</em></strong> могут выполнить авторизацию по ссылке <%= link_to "Войти в систему", new_user_session_path %>
+          и начать свою работу.</br>
         </div>
-      </div>
+       </div>
       </div>
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4 box" style="text-align: justify; width: 280px">
-          <div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
             <%= image_tag("Blue-pin-32.png")%>
           </div> 
           <h2 style="margin-top: 5pt; margin-bottom: 5pt">О проекте</h2>
@@ -162,7 +174,7 @@
           <p><%= link_to "Подробнее...", about_path , class: "btn btn-large btn-info" %></p>
         </div>
         <div class="span4 box" style="text-align: justify; width: 280px">
-          <div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
             <%= image_tag("Green-pin-32.png")%>
           </div>           
           <h2 style="margin-top: 5pt; margin-bottom: 5pt">Наши контакты</h2>
@@ -170,7 +182,7 @@
           <p><%= link_to "Подробнее...", contact_path , class: "btn btn-large btn-success" %></p>
         </div>
         <div class="span4 box" style="text-align: justify; width: 280px">
-          <div style="text-align: left; margin-bottom: -5pt; margin-top: -20pt;">
+          <div style="text-align: center; margin-bottom: -5pt; margin-top: -20pt;">
             <%= image_tag("Yellow-pin-32.png")%>
           </div>
           <h2 style="margin-top: 5pt; margin-bottom: 5pt">Новости <span class="badge badge-important">Обновлено 11 октября 2012</span></h2>
