@@ -8,7 +8,10 @@
     <%= render 'layouts/shim' %>    
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%# На страницах, где выводятся результаты, убираем хидер, чтобы красиво можно было распечатать...%>
+    <% unless params[:controller]=='results' and params[:action]!='index'%>
+      <%= render 'layouts/header' %>
+    <% end %>
     <div class="container">
       <% flash.each do |key, value| %>
         <%  if key.to_s=='alert' or key.to_s=='error' %>
