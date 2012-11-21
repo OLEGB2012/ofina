@@ -8,7 +8,14 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- * 
+ *= require jquery.ui.all
+ * My notes. To use custom theme: add 2 require-lines below
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ * Download theme from http://jqueryui.com/themeroller/
+ * Put css files in app/assets/stylesheets/  
+ * Put images in app/assets/images/images
+ *
  *= require_self
- *= require_tree .
+ *= require_tree . 
 */

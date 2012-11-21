@@ -38,7 +38,8 @@ group :assets do
   gem 'uglifier', '1.2.4'
 end
 
-gem 'jquery-rails'
+#gem 'jquery-rails'
+gem 'jquery-ui-rails'  # https://github.com/joliss/jquery-ui-rails.git
 
 group :test do
   gem 'cucumber-rails'
