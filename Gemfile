@@ -39,9 +39,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'jquery-ui-themes' # https://github.com/fatdude/jquery-ui-themes-rails (см. там же список имён тем)
-gem 'jquery-ui-bootstrap-rails' # https://github.com/jaimie-van-santen/jquery-ui-bootstrap-rails
+#gem 'jquery-ui-rails'
+#gem 'jquery-ui-themes' # https://github.com/fatdude/jquery-ui-themes-rails (см. там же список имён тем)
+#gem 'jquery-ui-bootstrap-rails' # https://github.com/jaimie-van-santen/jquery-ui-bootstrap-rails
 
 group :test do
   gem 'cucumber-rails'

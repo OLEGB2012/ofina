@@ -11,11 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
-//= require jquery.ui.datepicker-ru
 //= require bootstrap
 //= require_tree .
-
-$(function() {
-  $(".datepicker").datepicker();
-});
