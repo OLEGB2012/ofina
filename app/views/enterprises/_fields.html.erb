@@ -20,12 +20,12 @@
         <%= f.input :K3,:label => 'Обеспеченности финансовых обязательств активами (K3):', :input_html => {:class => "span3"}, :wrapper => :prepend do %>
            <span class="add-on"><=</span><%= f.input_field :K3, :class => "span3" %>
         <%end%>          
-      <legend>Рабочий интервал дат (ДД.ММ.ГГГГ)</legend> 
+      <legend>Рабочий интервал дат (ГГГГ-ММ-ДД)</legend> 
         <%= f.input :rab_date_beg, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
-           <span class="add-on">С </span><%= f.input_field :rab_date_beg, :value => @enterprise.rab_date_beg.strftime('%d.%m.%Y'),:as => :string, :class => "span2", :maxlength => 10 %>
+           <span class="add-on">С </span><%= f.input_field :rab_date_beg,:as => :string, :class => "span2", :maxlength => 10 %>
         <%end%> 
         <%= f.input :rab_date_end, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
-           <span class="add-on">ПО</span><%= f.input_field :rab_date_end, :value => @enterprise.rab_date_end.strftime('%d.%m.%Y'),:as => :string, :class => "span2",:maxlength => 10 %>
+           <span class="add-on">ПО</span><%= f.input_field :rab_date_end,:as => :string, :class => "span2",:maxlength => 10 %>
         <%end%>           
     </div>   
     <div class="form-actions">
