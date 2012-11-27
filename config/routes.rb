@@ -23,8 +23,10 @@ Ofina::Application.routes.draw do
   match '/results_da_graph'  , :to => 'results#da_graph'
   match '/results_ren_table' , :to => 'results#ren_table'
   match '/results_ren_graph' , :to => 'results#ren_graph'
-  match '/user'              , :to => 'users#show'
   
+  match '/user'              , :to => 'users#show'  
+  match '/get_enterprises'   , :to => 'users#get_enterprises_by_user_email'
+   
   resources :enterprises do
 #    shallow do
       resources :form_one_reports
