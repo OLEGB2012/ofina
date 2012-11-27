@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   def get_enterprises_by_user_email
     @user_api=User.find_by_email(params[:email])
     respond_to do |format|
-      format.xml { render :xml => [@user_api, @user_api.enterprises], :only => [:id,:username,:email,:user_id,:org_name] }
+      if not @user_api.nil?
+        format.xml { render :xml => [@user_api, @user_api.enterprises], :only => [:id,:username,:email,:user_id,:org_name] }
+      end
     end
   end  
 end
