@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <td><div class="pull-right" style="line-height: 28px; vertical-align:middle"><%= f.label :contact_info %>:</div></td>
-                <td><div><%= f.input :contact_info, :input_html => { :rows => 10 }, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться...'%></div></td>        
+                <td><div><%= f.input :contact_info, :as => :ckeditor ,:input_html => { :rows => 10 }, placeholder: 'Укажите, пожалуйста, данные как с Вами связаться...'%></div></td>        
             </tr>
           </tbody>
         </table>
