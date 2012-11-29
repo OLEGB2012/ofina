@@ -4,8 +4,6 @@ Ofina::Application.routes.draw do
   
   devise_for :users, :controllers => {:registrations => 'registrations'} 
   
-  mount Ckeditor::Engine => '/ckeditor'
-  
   root :to => 'static_pages#home'  
   
   match '/help'              , :to => 'static_pages#help'
