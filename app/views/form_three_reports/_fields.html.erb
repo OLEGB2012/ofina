@@ -8,11 +8,11 @@
     <%= "За период (ГГГГ-ММ-ДД)" %>
 
     <%= f.input :date_period_beg, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
-       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span2", style: "max-width: 55pt",:maxlength => 10 %>
+       <span class="add-on">С</span><%= f.input_field :date_period_beg, :as => :string, :class => "span2", style: "max-width: 60pt",:maxlength => 10 %>
     <%end%>  
 
     <%= f.input :date_period_end, :input_html => {:class => "span2"}, :wrapper => :prepend do %>
-       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span2", style: "max-width: 55pt", :maxlength => 10 %>
+       <span class="add-on">ПО</span><%= f.input_field :date_period_end, :as => :string, :class => "span2", style: "max-width: 60pt", :maxlength => 10 %>
     <%end%>
        
   <div class="form-actions">   
