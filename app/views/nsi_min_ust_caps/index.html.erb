@@ -1,0 +1,93 @@
+<%  provide(:title, 'Справочник: Минимальный уставной капитал')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav shadow">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Справочник "МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ"</li>  
+      <li><%= link_to "Новый", new_enterprise_nsi_min_ust_cap_path%></li>  
+      <li><%= link_to "К Панели Управления", @enterprise %></li>      
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+  <table class="table table-striped table-bordered table-condensed">
+    <caption> Список записей <strong>МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>
+    <thead>
+      <tr>
+        <th><div class="pagination-centered">Дата начала действия</div></th>
+        <th><div class="pagination-centered">Сумма, млн.бел.руб</div></th>        
+        <th colspan="2"><div class="pagination-centered">Действия</div></th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @nsi_min_ust_caps.each do |nsi_min_ust_cap| %>        
+        <tr>          
+          <td><div class="pull-left"><%= Russian::strftime(nsi_min_ust_cap.date_vvod,"%d %B %Y") %> года</div></td>          
+          <td><div class="pull-right"><%= number_with_delimiter(nsi_min_ust_cap.summa, delimiter: ' ') %></div></td>
+          <td>
+            <div class="pagination-centered">
+              <%= link_to ([@enterprise,nsi_min_ust_cap]), 
+                   class: "btn btn-small btn-danger", 
+                   method: :delete,                                             
+                   confirm: "Вы уверены удалить запись об МИНИМАЛЬНОМ УСТАВНОМ КАПИТАЛЕ нa "+Russian::strftime(nsi_min_ust_cap.date_vvod,"%d %B %Y")+" года для "+@OrgName+" ?" do %>
+                Удалить...<i class="icon-trash icon-white"></i> 
+              <% end %>
+             </div>
+          </td>
+          <td>
+            <div class="pagination-centered">
+              <%= link_to (enterprise_nsi_min_ust_cap_path(@enterprise,nsi_min_ust_cap)), class: "btn btn-small btn-info" do %>
+                Подробно...<i class="icon-info-sign icon-white"></i>
+              <% end %>  
+            </div>
+          </td>          
+        </tr>
+      <% end %>      
+    </tbody>    
+  </table>
+  <%= will_paginate %>
+<% end  %>
+
+
+
+
+<%#*<h1>Listing nsi_min_ust_caps</h1>%>
+
+<%#*<table>%>
+  <%#*<tr>%>
+    <%#*<th>Enterprise</th>%>
+    <%#*<th>Summa</th>%>
+    <%#*<th>Date vvod</th>%>
+    <%#*<th></th>%>
+    <%#*<th></th>%>
+    <%#*<th></th>%>
+  <%#*</tr>%>
+
+  <%# @nsi_min_ust_caps.each do |nsi_min_ust_cap| %>
+    <%#*<tr>%>
+      <%#*<td>%>
+        <%#= nsi_min_ust_cap.enterprise_id %>
+      <%#*</td>%>
+      <%#*<td>%>
+        <%#= nsi_min_ust_cap.summa %>
+      <%#*</td>%>
+      <%#*<td>%>
+        <%#= nsi_min_ust_cap.date_vvod %>
+      <%#*</td>%>
+      <%#*<td>%>
+        <%#= link_to 'Show', nsi_min_ust_cap %>
+      <%#*</td>%>
+      <%#*<td>%>
+        <%#= link_to 'Edit', edit_nsi_min_ust_cap_path(nsi_min_ust_cap) %>
+      <%#*</td>%>
+      <%#*<td>%>
+        <%#= link_to 'Destroy', nsi_min_ust_cap, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%#*</td>%>
+    <%#*</tr>%>
+  <%# end %>
+<%#*</table>%>
+
+<%#*<br />%>
+
+<%#= link_to 'New Nsi min ust cap', new_nsi_min_ust_cap_path %>

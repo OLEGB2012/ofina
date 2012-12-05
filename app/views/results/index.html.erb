@@ -11,7 +11,7 @@
 
 <% content_for :span9 do %>
 <div class="well sidebar-nav shadow" style="padding: 5pt;">
-  <legend><%= image_tag("Green-Dossier-64.png") %> Результаты анализа финансово-экономического состояния.</legend>
+  <legend><%= image_tag("Green-Dossier-64.png") %> Результаты анализа финансового состояния.</legend>
   <table class="table table-striped table-bordered table-condensed">
     <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
       Рабочий период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
@@ -82,6 +82,12 @@
       <td><div class="pull-left"           style="line-height: 30px; vertical-align:middle;">РЕНТАБЕЛЬНОСТЬ</div></td>
       <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;"><%= link_to image_tag("Generate tables 32.png"),results_ren_table_path(id: @enterprise) %></div></td>
       <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;"><%= link_to image_tag("column chart 32.png"),results_ren_graph_path(id: @enterprise) %></div></td>
+    </tr>
+    <tr>
+      <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">6.</div></td>
+      <td><div class="pull-left"           style="line-height: 30px; vertical-align:middle;"><%= link_to "АНАЛИЗ ЧИСТЫХ АКТИВОВ" , '#'%> <span class="badge badge-info">Идёт тестирование</span></div></td>
+      <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">-</div></td>
+      <td><div class="pagination-centered" style="line-height: 30px; vertical-align:middle;">-</div></td>
     </tr>
   </tbody>   
   </table>

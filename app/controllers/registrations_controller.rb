@@ -262,4 +262,8 @@ private
                   S084: 3982, S091: 50931, S092: 614, S093: 3698, S094: 0, S095: 35, S120: 9934, S140: 889)
                 
     new_enterprise.form_four_reports << new_form4
+    
+    # Введём запись об минимальном уставном капитале...
+    new_nsi_min_ust_cap = NsiMinUstCap.create!(date_vvod: '2009-01-16', summa: 40)
+    new_enterprise.nsi_min_ust_caps << new_nsi_min_ust_cap
   end

@@ -45,6 +45,9 @@ class EnterprisesController < ApplicationController
     @enterprise=Enterprise.new(params[:enterprise])
     @enterprise=current_user.enterprises.build(params[:enterprise])
     if @enterprise.save
+      # Введём запись об минимальном уставном капитале...
+      new_nsi_min_ust_cap = NsiMinUstCap.create!(date_vvod: '2009-01-16', summa: 0)
+      @enterprise.nsi_min_ust_caps << new_nsi_min_ust_cap
       flash[:notice]="Предприятие создано."
       redirect_to enterprises_path
     else

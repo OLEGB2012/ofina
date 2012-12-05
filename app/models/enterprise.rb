@@ -7,6 +7,7 @@ class Enterprise < ActiveRecord::Base
   has_many   :form_four_reports,  :dependent => :destroy
   has_many   :analytical_balances,:dependent => :destroy
   has_many   :balanse_rows,       :dependent => :destroy
+  has_many   :nsi_min_ust_caps,   :dependent => :destroy
   
   attr_accessible :org_name, 
                   :uch_nomer_plat, 

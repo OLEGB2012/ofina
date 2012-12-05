@@ -1,0 +1,2 @@
+module NsiMinUstCapsHelper
+end

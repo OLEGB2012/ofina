@@ -1,0 +1,31 @@
+<%  provide(:title, 'Запись Справочник МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ')%>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav shadow">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ</li>  
+      <li><%= link_to "Редактировать", edit_enterprise_nsi_min_ust_cap_path%></li>
+      <li><%= link_to "К списку записей", enterprise_nsi_min_ust_caps_path %></li>
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>
+
+  <table class="table table-striped table-bordered table-condensed">
+    <caption> Запись Справочника<strong> МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>       
+    <thead>
+      <tr>
+        <th><div class="pagination-centered">Дата ввода в действие</div></th>
+        <th><div class="pagination-centered">Сумма, млн.бел.руб.</div></th>
+      </tr>      
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="pagination-centered"><%= Russian::strftime(@DateVvod,"%d %B %Y")%> года</div></td>
+        <td><div class="pagination-centered"><%= display_cell_data("nsi_min_ust_cap","summa") %></div></td>
+      </tr>
+    </tbody>    
+  </table>
+
+<% end %>

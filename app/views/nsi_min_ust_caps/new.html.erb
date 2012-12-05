@@ -1,0 +1,14 @@
+<% provide(:title, 'Новая запись МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ') %>
+
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav shadow">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Новая Запись</li>  
+      <li><%= link_to "Отменить операцию", enterprise_nsi_min_ust_caps_path %></li>
+    </ul>  
+  </div>  
+<% end  %>
+
+<% content_for :span9 do %>  
+  <%= render 'fields'%>
+<% end  %>

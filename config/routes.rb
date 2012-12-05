@@ -1,5 +1,5 @@
 Ofina::Application.routes.draw do
-  
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   
   devise_for :users, :controllers => {:registrations => 'registrations'} 
@@ -34,6 +34,7 @@ Ofina::Application.routes.draw do
       resources :form_two_reports
       resources :form_three_reports
       resources :form_four_reports
+      resources :nsi_min_ust_caps
 #    end         
   end  
   

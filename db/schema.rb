@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129014353) do
+ActiveRecord::Schema.define(:version => 20121205130806) do
 
   create_table "analytical_balances", :force => true do |t|
     t.integer  "enterprise_id"
@@ -750,6 +750,14 @@ ActiveRecord::Schema.define(:version => 20121129014353) do
   add_index "form_two_reports", ["enterprise_id", "date_period_end"], :name => "two_enterpise_id_period_end"
   add_index "form_two_reports", ["enterprise_id"], :name => "index_form_two_reports_on_enterprise_id"
 
+  create_table "nsi_min_ust_caps", :force => true do |t|
+    t.integer  "enterprise_id"
+    t.integer  "summa",         :default => 0
+    t.date     "date_vvod"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -762,19 +770,6 @@ ActiveRecord::Schema.define(:version => 20121129014353) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
-
-  create_table "rich_rich_files", :force => true do |t|
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "rich_file_file_name"
-    t.string   "rich_file_content_type"
-    t.integer  "rich_file_file_size"
-    t.datetime "rich_file_updated_at"
-    t.string   "owner_type"
-    t.integer  "owner_id"
-    t.text     "uri_cache"
-    t.string   "simplified_type",        :default => "file"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

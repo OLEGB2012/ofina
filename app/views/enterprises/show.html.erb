@@ -6,6 +6,8 @@
       <li class="nav-header">Панель Управления</li>  
       <li><%= link_to "Редактировать Организацию", edit_enterprise_path%></li>
       <li><%= link_to "К списку Организаций", enterprises_path %></li>
+      <li class="nav-header">СПРАВОЧНИКИ</li>
+      <li><%= link_to "МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ", enterprise_nsi_min_ust_caps_path(@enterprise) %></li>
       <li class="nav-header">ОТЧЁТЫ</li>
       <li><%= link_to "БУХГАЛТЕРСКИЙ БАЛАНС"       , enterprise_form_one_reports_path(@enterprise) %></li>
       <li><%= link_to "О ПРИБЫЛЯХ И УБЫТКАХ"       , enterprise_form_two_reports_path(@enterprise) %></li>

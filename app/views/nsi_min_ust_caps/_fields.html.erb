@@ -1,0 +1,43 @@
+<%= simple_form_for([@enterprise,@nsi_min_ust_cap], html: {class: "well form-inline shadow"}, 
+    defaults: { label: false, :input_html => { :class => 'span12', style: "text-align: right; min-width: 50pt; font-size: 10pt; margin-top: 0px; margin-bottom: -8px; padding: 1pt" } }) do |f| %>
+    
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="form-inputs">
+
+<%= "Дата ввода в действие :" %>
+ <%= f.input :date_vvod, :input_html => {:class => "span4"}, :wrapper => :prepend do %>
+    <span class="add-on">ГГГГ-ММ-ДД</span><%= f.input_field :date_vvod, :as => :string, :class => "span4",style: "max-width: 190pt;",:maxlength => 10 %>
+ <%end%>  
+
+  <table class="table table-striped table-bordered table-condensed">
+    <caption> <strong>МИНИМАЛЬНЫЙ УСТАВНОЙ КАПИТАЛ</strong> предприятия <strong><em><%= @OrgName %></em></strong></caption>        
+    <tbody>          
+      <tr>
+        <th><div class="pull-right">Сумма, млн.бел.руб.:</div></th>        
+        <td><div class="span3"><%= f.input :summa %></div></td>        
+      </tr>
+    </tbody>    
+  </table>
+</div>
+ 
+  <div class="form-actions">
+    <%= f.submit "Сохранить", :class => "btn btn-large btn-primary" %>
+  </div> 
+  <% end %>
+
+
+
+<%#= simple_form_for(@nsi_min_ust_cap) do |f| %>
+  <%#= f.error_notification %>
+
+  <%#*<div class="form-inputs">%>
+    <%#= f.input :enterprise_id %>
+    <%#= f.input :summa %>
+    <%#= f.input :date_vvod %>
+  <%#*</div>%>
+
+  <%#*<div class="form-actions">%>
+    <%#= f.button :submit %>
+  <%#*</div>%>
+<%# end %>
