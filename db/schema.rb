@@ -758,6 +758,9 @@ ActiveRecord::Schema.define(:version => 20121205130806) do
     t.datetime "updated_at",                   :null => false
   end
 
+  add_index "nsi_min_ust_caps", ["enterprise_id", "date_vvod"], :name => "index_nsi_min_ust_caps_on_enterprise_id_and_date_vvod"
+  add_index "nsi_min_ust_caps", ["enterprise_id"], :name => "index_nsi_min_ust_caps_on_enterprise_id"
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"

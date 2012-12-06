@@ -7,5 +7,7 @@ class CreateNsiMinUstCaps < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :nsi_min_ust_caps, [:enterprise_id,:date_vvod]
+    add_index :nsi_min_ust_caps, :enterprise_id
   end
 end
