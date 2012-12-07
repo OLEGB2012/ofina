@@ -16,10 +16,10 @@
 <a name="BeginOfPage"></a>
 <legend><%= image_tag("column chart 64.png") %> Показатели Финансовой Устойчивости (Графически)</legend>  
  <table class="table table-striped table-bordered table-condensed">
-    <caption style="font-size: 14px">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+   <caption style="font-size: 14px"><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
-                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong> </caption>
-     <thead>
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></caption>
+     <thead style="background-color: lightgray">
       <tr>        
         <th><a name="G1"></a> <div class="pagination-centered"  style="font-size: 15px">Динамика Показателей</div></th>
       </tr>

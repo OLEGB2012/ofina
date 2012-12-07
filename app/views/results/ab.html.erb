@@ -21,10 +21,10 @@
 <legend><%= image_tag("AB-64.png") %> Анализ <%= @C0 %></legend>
 
 <table class="table table-striped table-bordered table-condensed" style="font-size: 12px">
-    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+  <caption><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
-                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
-    <thead>
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></caption>
+    <thead style="background-color: lightgray">
       <tr>
         <th rowspan="2"><div class="pagination-centered" style="line-height: 60px; vertical-align:middle; min-width: 240px">Наименование строки</div></th>
         <th rowspan="2"><div class="pagination-centered" style="line-height: 60px; vertical-align:middle;">Код</div></th>
@@ -151,7 +151,7 @@
   </table>
 <a name="Gorizontal"></a>
 <table class="table table-striped table-bordered table-condensed">
-  <thead>
+  <thead style="background-color: lightgray">
     <tr>
         <td><div class="pagination-centered" ><strong>Горизонтальный Анализ</strong></div></td>
     </tr>
@@ -193,7 +193,7 @@
   </table>
 <a name="Vertical"></a>
 <table class="table table-striped table-bordered table-condensed">
-   <thead>
+   <thead style="background-color: lightgray">
       <tr>
         <td><div class="pagination-centered" ><strong>Вертикальный Анализ</strong></div></td>
       </tr>
@@ -218,7 +218,7 @@
   </table>
 <%#############################################################################################################################%>
 <table class="table table-bordered table-condensed">
-     <thead style="font-size: 14px">
+     <thead style="font-size: 14px; background-color: lightgray">
       <tr>        
         <th><div class="pagination-centered">На Дату</div></th>
         <th><div class="pagination-centered">Удельные веса <%= @C1%></div></th>

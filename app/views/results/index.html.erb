@@ -13,10 +13,10 @@
 <div class="well sidebar-nav shadow" style="padding: 5pt;">
   <legend><%= image_tag("Green-Dossier-64.png") %> Результаты анализа финансового состояния.</legend>
   <table class="table table-striped table-bordered table-condensed">
-    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+    <caption><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
       Рабочий период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
-        <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
-    <thead>
+        <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></caption>
+    <thead style="background-color: lightgray">
       <tr>
         <th rowspan="2"><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">№ п.п.</div></th>
         <th rowspan="2"><div class="pagination-centered" style="line-height: 40px; vertical-align:middle;">Вид Анализа</div></th>

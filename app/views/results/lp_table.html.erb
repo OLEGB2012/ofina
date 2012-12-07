@@ -11,10 +11,10 @@
 <% end  %>
 
  <table class="table table-striped table-bordered table-condensed">
-    <caption> Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+   <caption><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
-                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></caption>
-    <thead>
+                                  <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></caption>
+    <thead style="background-color: lightgray">
       <tr>
         <th rowspan="3"><div class="pagination-centered" style="line-height: 130px; vertical-align:middle; min-width: 180px">Дата</div></th>
         <th colspan="10"><div class="pagination-centered">Коэффициенты</div></th>        
