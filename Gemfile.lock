@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/OLEGB2012/seer
+  revision: 396c58f973a4d21d2e4c7deeea2279ddca4936fd
+  specs:
+    seer (0.10.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -195,7 +201,6 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    seer (0.10.0)
     selenium-webdriver (2.27.1)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
@@ -257,7 +262,7 @@ DEPENDENCIES
   rspec-rails (= 2.10.1)
   russian (~> 0.6.0)
   sass-rails (= 3.2.5)
-  seer (= 0.10.0)
+  seer (= 0.10.0)!
   simple_form
   therubyracer (= 0.10.2)
   uglifier (~> 1.3.0)

@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3' #, :git => 'git://github.com/rails/rails.git'
 gem 'bootstrap-sass' , "~> 2.0.4.0" # https://github.com/thomas-mcdonald/bootstrap-sass/
 gem 'simple_form'                  # https://github.com/plataformatec/simple_form
-gem 'seer', '0.10.0'                # https://github.com/Bantik/seer
+gem 'seer', '0.10.0', :git => 'https://github.com/OLEGB2012/seer'   # https://github.com/Bantik/seer 
 
 #gem 'active_scaffold'
 gem 'rails_admin'                  # https://github.com/sferik/rails_admin 
