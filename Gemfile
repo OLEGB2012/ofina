@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3' #, :git => 'git://github.com/rails/rails.git'
 gem 'bootstrap-sass' , "~> 2.0.4.0" # https://github.com/thomas-mcdonald/bootstrap-sass/
 gem 'simple_form'                  # https://github.com/plataformatec/simple_form
-gem 'seer'                         # https://github.com/Bantik/seer
+gem 'seer', '0.10.0'                # https://github.com/Bantik/seer
 
 #gem 'active_scaffold'
 gem 'rails_admin'                  # https://github.com/sferik/rails_admin 
@@ -33,9 +33,9 @@ group :assets do
   gem 'coffee-rails' , '3.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', '0.9.9', :platform => :ruby
-
-  gem 'uglifier' , '1.2.4'
+  gem 'therubyracer' , '0.10.2', :platform => :ruby
+  
+  gem "uglifier", "~> 1.3.0"
 end
 
 gem 'jquery-rails'
