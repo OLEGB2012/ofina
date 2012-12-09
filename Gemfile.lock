@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/OLEGB2012/seer
-  revision: fe0a2d3ab7f765867983e6c5f19b1c8db693cdc5
+  revision: 913065ead22cfb3c038171b102b29b0f8707b81e
   specs:
     seer (0.10.0)
 

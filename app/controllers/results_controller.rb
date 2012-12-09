@@ -241,7 +241,7 @@ class ResultsController < ApplicationController
         @enterprise.analytical_balances << @AB_new_rec
         @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
           row_type: 2, ab_type: 3,
-          G1: "Долгосрочные активы, предназначенные для реализации",G2: "220", 
+          G1: "Долгосрочные активы для реал.",G2: "220", 
           G3: @f1_beg.S220, G4: (@f1_beg.S220.to_f/@f1_beg.S290)*100,
           G5: @f1_end.S220, G6: (@f1_end.S220.to_f/@f1_end.S290)*100)
         @enterprise.analytical_balances << @AB_new_rec
@@ -253,7 +253,7 @@ class ResultsController < ApplicationController
         @enterprise.analytical_balances << @AB_new_rec
         @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
           row_type: 2, ab_type: 3,
-          G1: "Налог на добавленную стоимость по приобретенным товарам, работам, услугам",G2: "240", 
+          G1: "НДС по приобретённым ТРУ",G2: "240", 
           G3: @f1_beg.S240, G4: (@f1_beg.S240.to_f/@f1_beg.S290)*100,
           G5: @f1_end.S240, G6: (@f1_end.S240.to_f/@f1_end.S290)*100)
         @enterprise.analytical_balances << @AB_new_rec
@@ -294,7 +294,7 @@ class ResultsController < ApplicationController
             @Arr_ab=[["15", "Запасы", "S210","(data.S210.to_f/data.S290)*100"],
                      ["15", "Долгосрочные активы для реал.", "S220","(data.S220.to_f/data.S290)*100"],
                      ["15", "Расходы будущих периодов", "S230","(data.S230.to_f/data.S290)*100"],
-                     ["15", "Налог на добавл.стоим.по приобр.ТРУ", "S240","(data.S240.to_f/data.S290)*100"],
+                     ["15", "НДС по приобретённым ТРУ", "S240","(data.S240.to_f/data.S290)*100"],
                      ["15", "Краткоср-ая дебит-ая задол-сть", "S250","(data.S250.to_f/data.S290)*100"],
                      ["15", "Краткоср-ые фин. вложения", "S260","(data.S260.to_f/data.S290)*100"],
                      ["15", "Денежные сред-ва и их эквив-ты", "S270","(data.S270.to_f/data.S290)*100"],
