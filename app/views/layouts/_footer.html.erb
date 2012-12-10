@@ -30,7 +30,7 @@
             <% end %>          
           </div>
         <% else %>
-          <div class="span6">&COPY; On-Line Финансовый Анализ 2012</div>          
+          <div class="span6">&COPY; On-Line Финансовый Анализ 2012</div>                  
         <% end %>
         <nav>
           <ul>
@@ -40,10 +40,22 @@
           </ul>
         </nav>
       </div>      
-      <div>
-        <a href="http://www.infocom.by" target="_blank">
-        <img src="http://www.infocom.by/buttons/infocom_150_75.gif" width="150" height="75" border="0" alt="Белорусский справочный портал" title="Белорусский справочный портал"></a>
-      </div>
+      <% if current_user.nil? %>
+        <div class="row">          
+          <span> 
+              <%= link_to image_tag("rails.png", size: '40x50'), 'http://rubyonrails.org/' %>             
+          </span>
+          <span>
+            <a href="http://www.infocom.by" target="_blank">
+            <img src="http://www.infocom.by/buttons/infocom_150_75.gif" width="100" height="50" border="0" alt="Белорусский справочный портал" title="Белорусский справочный портал"></a>
+          </span>
+          <span> 
+             <nav>
+               <em>Developed with Ruby On Rails </br>Web-framework v.<%=  Rails::VERSION::STRING%></em>
+             </nav>
+          </span>
+        </div>
+      <% end %>
     </div>    
   </small>
 </footer>

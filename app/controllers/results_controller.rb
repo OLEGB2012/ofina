@@ -866,6 +866,12 @@ class ResultsController < ApplicationController
     end
   end
   
+  ###########################################################################
+  # Чистые активы
+  def cha
+    
+  end # def cha
+  
   private
   def get_enterprise
     @enterprise=Enterprise.find_by_id(params[:id])
