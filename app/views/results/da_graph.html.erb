@@ -5,7 +5,7 @@
 <% content_for :span3 do %>      
   <div class="well sidebar-nav shadow">  
     <ul class="nav nav-list">  
-      <li class="nav-header">ГРАФИКИ</li>       
+      <li class="nav-header">ГРАФИЧЕСКИ</li>       
       <li><%= link_to "К странице Результаты", results_path(id: @enterprise) %></li>
       <%= render 'da_graph_anchors'%>      
     </ul>  
@@ -19,7 +19,7 @@
    <caption style="font-size: 14px"><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
                                   <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></caption>
-     <thead style="background-color: lightgray">
+     <thead  style="background-color: lightgray">
       <tr>        
         <th><a name="G1"></a> <div class="pagination-centered"  style="font-size: 15px">Динамика Показателей</div></th>
       </tr>

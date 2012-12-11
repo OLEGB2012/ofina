@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205130806) do
+ActiveRecord::Schema.define(:version => 20121211082204) do
 
   create_table "analytical_balances", :force => true do |t|
     t.integer  "enterprise_id"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(:version => 20121205130806) do
     t.decimal  "K3",            :precision => 6, :scale => 4, :default => 0.0
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
+    t.integer  "Cha",                                         :default => 0
   end
 
   add_index "form_one_reports", ["enterprise_id", "date_period"], :name => "index_form_one_reports_on_enterprise_id_and_date_period"

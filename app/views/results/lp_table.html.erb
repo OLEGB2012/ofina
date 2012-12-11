@@ -1,9 +1,12 @@
 <%  provide(:title, 'Результаты|Таблично')%>
 
-<% content_for :span3 do %>      
-  <%= link_to results_path(id: @enterprise), class: "btn btn-small btn-info" do %>
-     К странице Результаты
-  <% end %> 
+<% content_for :span3 do %>
+ <div class="well sidebar-nav shadow">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Таблично</li>         
+      <li><%= link_to "К странице Результаты", results_path(id: @enterprise) %></li>  
+    </ul>  
+  </div>  
 <% end  %>
 
 <% content_for :span9 do %>     
@@ -14,7 +17,7 @@
    <caption><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
               За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
                                   <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></caption>
-    <thead style="background-color: lightgray">
+    <thead  style="background-color: lightgray; font-size: 10px">
       <tr>
         <th rowspan="3"><div class="pagination-centered" style="line-height: 130px; vertical-align:middle; min-width: 180px">Дата</div></th>
         <th colspan="10"><div class="pagination-centered">Коэффициенты</div></th>        

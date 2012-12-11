@@ -1,0 +1,22 @@
+<%  provide(:title, 'Результаты|Чистые Активы')%> 
+
+<% content_for :span3 do %>
+ <%= link_to results_path(id: @enterprise), class: "btn btn-small btn-info" do %>
+     К странице Результаты
+ <% end %>  
+<% end  %>
+
+<% content_for :span9 do %>
+  <%= raw Seer::init_visualization %>
+  <a name="BeginOfPage"></a>
+  <legend><%= image_tag("AB-64.png") %> Анализ чистых активов</legend>
+  <div style="text-align: center "><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
+      За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
+        <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></div>
+
+  
+<% end  %> <%#### content_for :span9 do %>
+
+<div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+           В начало страницы
+<% end %></div>
