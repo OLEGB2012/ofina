@@ -21,7 +21,8 @@ class CalculationsController < ApplicationController
                                         Kabsl:  form_one_report.S690!=0?((form_one_report.S260+form_one_report.S270).to_f/form_one_report.S690):0,
                                         Kkrl:   form_one_report.S690!=0?((form_one_report.S250+form_one_report.S260+form_one_report.S270).to_f/form_one_report.S690):0,
                                         K2:     form_one_report.S290!=0?((form_one_report.S490+form_one_report.S590-form_one_report.S190).to_f/form_one_report.S290):0, 
-                                        K3:     form_one_report.S300!=0?((form_one_report.S690+form_one_report.S590).to_f/form_one_report.S300):0)
+                                        K3:     form_one_report.S300!=0?((form_one_report.S690+form_one_report.S590).to_f/form_one_report.S300):0,
+                                        Cha:    form_one_report.S190+form_one_report.S290-form_one_report.S590-form_one_report.S690)
     end
     #######################################################################################
     # 2 - считаем показатели на основе формы 2 (о прибылях и убытках) и формы 1 (баланс)
