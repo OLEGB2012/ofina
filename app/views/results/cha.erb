@@ -1,10 +1,13 @@
 <%  provide(:title, 'Результаты|Чистые Активы')%> 
 
-<% content_for :span3 do %>
- <%= link_to results_path(id: @enterprise), class: "btn btn-small btn-info" do %>
-     К странице Результаты
- <% end %>  
-<% end  %>
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav shadow">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Действия</li>         
+      <li><%= link_to "К странице Результаты", results_path(id: @enterprise) %></li>  
+    </ul>  
+  </div>  
+<% end %>
 
 <% content_for :span9 do %>
   <%= raw Seer::init_visualization %>
