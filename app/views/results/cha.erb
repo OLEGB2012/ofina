@@ -16,7 +16,100 @@
   <div style="text-align: center "><span class="badge badge-success">Предприятие - <strong><em><%= @enterprise.org_name %>.</em></strong> 
       За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
         <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></div>
-
+  
+  <%#############################################################################################################%>
+<%# Общая для все вариантов таблица ...%>
+<table class="table table-striped table-bordered table-condensed" style="font-size: 12px">  
+  <thead style="background-color: lightgray">
+    <tr>
+      <th><div class="pagination-centered">№ п.п.</div></th>
+      <th><div class="pagination-centered" style="line-height: 60px; vertical-align:middle;min-width: 240px; ">Показатель</div></th>      
+      <th><div class="pagination-centered">На начало периода, млн.руб.</div></th>
+      <th><div class="pagination-centered">На конец периода, млн.руб.</div></th>
+      <th><div class="pagination-centered">Изменения за отчетный период (гр. 2 - гр. 1)</div></th>
+      <th><div class="pagination-centered">Темп роста (гр.2/гр.1)x100%, %</div></th>
+    </tr>    
+    <tr>
+      <th><div class="pagination-centered">А</div></th>
+      <th><div class="pagination-centered">Б</div></th>
+      <th><div class="pagination-centered">1</div></th>
+      <th><div class="pagination-centered">2</div></th>
+      <th><div class="pagination-centered">3</div></th>
+      <th><div class="pagination-centered">4</div></th>      
+    </tr>
+  </thead>
+  <tbody>      
+    <%# пройдёмся по первому массиву @AB_8 %>
+    <% @AB_8.each do |ab| %>      
+      <% case ab.row_type %>
+      <% when 0 %> 
+        <tr>
+          <td colspan="6" style="background-color: navy; color: lavender"><div class="pagination-centered"><strong><%= ab.G1%></strong></div></td>             
+        </tr>
+      <% when 1 %> 
+        <tr>
+          <td colspan="6"><div class="pagination-centered"><strong><%= ab.G1%></strong></div></td>             
+        </tr>
+      <% when 2 %> 
+        <tr>
+          <td><div class="pull-left"><%= ab.G2 %></div></td>
+          <td><div class="pull-left"><%= ab.G1 %></div></td>
+          <td><div class="pagination-centered"><%= display_result_data(ab.G3) %></div></td>
+          <td><div class="pagination-centered"><%= display_result_data(ab.G5) %></div></td>
+          <td><div class="pagination-centered"><%= display_result_data(ab.G7) %></div></td>
+          <td><div class="pagination-centered"><%= display_result_data(ab.G9) %></div></td>
+        </tr>
+      <% when 3 %>
+        <tr>
+          <td><div class="pull-left"><strong><%= ab.G2 %></strong></div></td>
+          <td><div class="pull-left"><strong><%= ab.G1 %></strong></div></td>
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G3) %></strong></div></td>
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G5) %></strong></div></td>
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G7) %></strong></div></td>
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G9) %></strong></div></td>          
+        </tr>
+      <% when 4 %>
+        <tr>
+          <td><div><%= ab.G2%></div></td>
+          <td><div></div></td>
+          <td><div></div></td>
+          <td><div></div></td>
+          <td><div></div></td>
+          <td><div></div></td>          
+        </tr>
+      <% when 5 %>
+        <tr>
+          <td><div class="pull-left"><em><%= ab.G2 %></em></div></td>
+          <td><div class="pull-left"><em><%= ab.G1 %></em></div></td>
+          <td><div class="pagination-centered"><em><%= display_result_data(ab.G3) %></em></div></td>          
+          <td><div class="pagination-centered"><em><%= display_result_data(ab.G5) %></em></div></td>          
+          <td><div class="pagination-centered"><em><%= display_result_data(ab.G7) %></em></div></td>          
+          <td><div class="pagination-centered"><em><%= display_result_data(ab.G9) %></em></div></td>          
+        </tr>
+      <% when 6 %>
+        <tr>
+          <td><div class="pull-left"><strong><%= ab.G2 %></strong></div></td>
+          <td><div class="pull-left"><strong><%= ab.G1 %></strong></div></td>
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G3) %></strong></div></td>          
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G5) %></strong></div></td>          
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G7) %></strong></div></td>          
+          <td><div class="pagination-centered"><strong><%= display_result_data(ab.G9) %></strong></div></td>         
+        </tr>
+      <% when 7 %>
+        <tr>
+          <td><div class="pull-left"><strong><%= ab.G2 %></strong></div></td>
+          <td><div class="pull-left" ><strong><%= ab.G1 %></strong></div></td>
+          <td><div class="pagination-centered" ><strong><%= display_result_data(ab.G3) %></strong></div></td>          
+          <td><div class="pagination-centered" ><strong><%= display_result_data(ab.G5) %></strong></div></td>          
+          <td><div class="pagination-centered" ><strong><%= display_result_data(ab.G7) %></strong></div></td>          
+          <td><div class="pagination-centered" ><strong><%= display_result_data(ab.G9) %></strong></div></td>          
+        </tr>
+      <% end %>
+    <% end %>
+    
+        
+  </tbody>   
+</table>
   
 <% end  %> <%#### content_for :span9 do %>
 

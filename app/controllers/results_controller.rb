@@ -873,24 +873,24 @@ class ResultsController < ApplicationController
     # В интервале дат должны иметься отчёты!))
     unless @f1_beg.nil? or @f1_end.nil?
     # Почистим целевые таблицы от предыдущего аналогичного расчёта: используем таблицу аналитического баланса для хранения результатов
-    # расчётов чистых активов, тип записей =8, диаграмма типа=73 ...
-      AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(8).destroy_all 
+    # расчётов чистых активов, тип аналитического баланса =8,9,10, диаграмма типа=73 ...
+      AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(8).destroy_all      
       BalanseRow.BalanseRowEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).Diagram(73,73).destroy_all
       
       ###############################################################################################
       # Анализ формирования величины чистых активов организации ...
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-        row_type: 6, ab_type: 8,
-        G1: "Анализ формирования величины чистых активов организации")
+        row_type: 0, ab_type: 8,
+        G1: "АНАЛИЗ ФОРМИРОВАНИЯ ВЕЛИЧИНЫ ЧИСТЫХ АКТИВОВ ОГАНИЗАЦИИ")
       @enterprise.analytical_balances << @AB_new_rec
       
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 1, ab_type: 8,
-        G1: "АКТИВЫ",G2: "1")
+        G1: "1.АКТИВЫ",G2: "1")
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "В том числе: Долгосрочные активы",G2: "1.1", 
+        G1: "Долгосрочные активы",G2: "1.1", 
         G3: @f1_beg.S190, G5: @f1_end.S190)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
@@ -904,7 +904,7 @@ class ResultsController < ApplicationController
         G3: @f1_beg.S120, G5: @f1_end.S120)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-        row_type: 3, ab_type: 8,
+        row_type: 2, ab_type: 8,
         G1: "Доходные вложения в материальные активы",G2: "1.1.3", 
         G3: @f1_beg.S130, G5: @f1_end.S130)
       @enterprise.analytical_balances << @AB_new_rec
@@ -936,12 +936,13 @@ class ResultsController < ApplicationController
 
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "КРАТКОСРОЧНЫЕ АКТИВЫ",G2: "1.2", 
+        G1: "Краткосрочные активы",G2: "1.2", 
         G3: @f1_beg.S290, G5: @f1_end.S290)
       @enterprise.analytical_balances << @AB_new_rec
+      
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 2, ab_type: 8,
-        G1: "В том числе: Запасы",G2: "1.2.1", 
+        G1: "Запасы",G2: "1.2.1", 
         G3: @f1_beg.S210, G5: @f1_end.S210)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
@@ -977,19 +978,21 @@ class ResultsController < ApplicationController
       
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "Активы, принимаемые к расчёту (Строка 1.1 + Строка 1.2)",G2: "2", 
+        G1: "АКТИВЫ, ПРИНИМАЕМЫЕ К РАСЧЁТУ (Строка 1.1 + Строка 1.2)",G2: "2", 
         G3: @f1_beg.S190+@f1_beg.S290, G5: @f1_end.S190+@f1_end.S290)
       @enterprise.analytical_balances << @AB_new_rec
 
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 1, ab_type: 8,
-        G1: "ОБЯЗАТЕЛЬСТВА",G2: "3")
+        G1: "3.ОБЯЗАТЕЛЬСТВА",G2: "3")
       @enterprise.analytical_balances << @AB_new_rec
+      
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "В том числе: Долгосрочные обязательства",G2: "3.1", 
+        G1: "Долгосрочные обязательства",G2: "3.1", 
         G3: @f1_beg.S590, G5: @f1_end.S590)
       @enterprise.analytical_balances << @AB_new_rec
+      
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 2, ab_type: 8,
         G1: "Долгосрочные кредиты и займы",G2: "3.1.1", 
@@ -1023,9 +1026,10 @@ class ResultsController < ApplicationController
         
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "Краткосрочный обязательства, в том числе:",G2: "3.2", 
+        G1: "Краткосрочные обязательства",G2: "3.2", 
         G3: @f1_beg.S690, G5: @f1_end.S690)
       @enterprise.analytical_balances << @AB_new_rec
+      
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 2, ab_type: 8,
         G1: "Краткосрочные кредиты и займы",G2: "3.2.1", 
@@ -1037,7 +1041,7 @@ class ResultsController < ApplicationController
         G3: @f1_beg.S620, G5: @f1_end.S620)
       @enterprise.analytical_balances << @AB_new_rec
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-        row_type: 3, ab_type: 8,
+        row_type: 2, ab_type: 8,
         G1: "Краткосрочная кредиторская задолженность",G2: "3.2.3", 
         G3: @f1_beg.S630, G5: @f1_end.S630)
       @enterprise.analytical_balances << @AB_new_rec
@@ -1064,30 +1068,97 @@ class ResultsController < ApplicationController
 
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "Обязательства, принимаемые к расчёту (Строка 3.1 + Строка 3.2)",G2: "4", 
+        G1: "ОБЯЗАТЕЛЬСТВА, ПРИНИМАЕМЫЕ К РАСЧЁТУ (Стр. 3.1 + Стр 3.2)",G2: "4", 
         G3: @f1_beg.S590+@f1_beg.S690, G5: @f1_end.S590+@f1_end.S690)
       @enterprise.analytical_balances << @AB_new_rec
       
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-        row_type: 6, ab_type: 8,
-        G1: "Стоимость чистых активов (Строка 2 - Строка 4)",G2: "5", 
+        row_type: 3, ab_type: 8,
+        G1: "СТОИМОСТЬ ЧИСТЫХ АКТИВОВ (Стр. 2 - Стр. 4)",G2: "5", 
         G3: @f1_beg.Cha, G5: @f1_end.Cha)
       @enterprise.analytical_balances << @AB_new_rec
 
       ##############################################################################################################
       # Анализ соотношения чистых активов с уставным капиталом и минимальным размером уставного капитала организации
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
-        row_type: 6, ab_type: 8,
-        G1: "Анализ соотношения чистых активов с уставным капиталом и минимальным размером уставного капитала организации")
+        row_type: 0, ab_type: 8,
+        G1: "АНАЛИЗ СООТНОШЕНИЯ ЧИСТЫХ АКТИВОВ С УСТАВНЫМ КАПИТАЛОМ И МИНИМАЛЬНЫМ РАЗМЕРОМ УСТАВНОГО КАПИТАЛА ОРГАНИЗАЦИИ")
       @enterprise.analytical_balances << @AB_new_rec
       
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 2, ab_type: 8,
+        G1: "Стоимость чистых активов",G2: "1", 
+        G3: @f1_beg.Cha, G5: @f1_end.Cha)
+      @enterprise.analytical_balances << @AB_new_rec
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 2, ab_type: 8,
+        G1: "Уставный капитал",G2: "2", 
+        G3: @f1_beg.S410, G5: @f1_end.S410)
+      @enterprise.analytical_balances << @AB_new_rec
       
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 6, ab_type: 8,
+        G1: "Разность между чистыми активами и уставным капиталом (стр. 1 - стр. 2)",G2: "3", 
+        G3: @f1_beg.Cha-@f1_beg.S410, G5: @f1_end.Cha-@f1_end.S410)
+      @enterprise.analytical_balances << @AB_new_rec
       
+      ######################################################################################################
+      # Определим значение минимального уставного кап-ла из справочника с учётом "историзма".
+      # Также проверяем на существование результата, иначе - выдаём предупреждение ...
+      @nsi_min_ust_cap_beg=NsiMinUstCap.EnterpriseFor(params[:id]).Sorted.OnDate(@f1_beg.date_period).first
+      @nsi_min_ust_cap_end=NsiMinUstCap.EnterpriseFor(params[:id]).Sorted.OnDate(@f1_end.date_period).first
+      if not (@nsi_min_ust_cap_beg.nil? and @nsi_min_ust_cap_end.nil?)
+        @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+          row_type: 2, ab_type: 8,
+          G1: "Минимальный уставный капитал",G2: "4", 
+          G3: @nsi_min_ust_cap_beg.summa, G5: @nsi_min_ust_cap_end.summa)
+        @enterprise.analytical_balances << @AB_new_rec
+
+        @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+          row_type: 6, ab_type: 8,
+          G1: "Разность между чистыми активами и минимальным уставным капиталом (стр. 1 - стр. 4)",G2: "5", 
+          G3: @f1_beg.Cha-@nsi_min_ust_cap_beg.summa, G5: @f1_end.Cha-@nsi_min_ust_cap_end.summa)
+        @enterprise.analytical_balances << @AB_new_rec
+      else
+        @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+          row_type: 5, ab_type: 8,
+          G1: "На отчётный период не введён минимальный уставной капитал. 
+               Введите его посредством Панель Управления->Справочники-> для Вашей организации...",G2: "-", 
+          G3: 0, G5: 0)
+        @enterprise.analytical_balances << @AB_new_rec
+      end
       #########################################################################################
       # Анализ соотношения чистых активов с суммой уставного и резервного капиталов организации
       @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 0, ab_type: 8,
+        G1: "АНАЛИЗ СООТНОШЕНИЯ ЧИСТЫХ АКТИВОВ С СУММОЙ УСТАВНОГО И РЕЗЕРВНОГО КАПИТАЛОВ ОРГАНИЗАЦИИ")
+      @enterprise.analytical_balances << @AB_new_rec
+      
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 2, ab_type: 8,
+        G1: "Стоимость чистых активов",G2: "1", 
+        G3: @f1_beg.Cha, G5: @f1_end.Cha)
+      @enterprise.analytical_balances << @AB_new_rec
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 2, ab_type: 8,
+        G1: "Уставный капитал",G2: "2", 
+        G3: @f1_beg.S410, G5: @f1_end.S410)
+      @enterprise.analytical_balances << @AB_new_rec
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 2, ab_type: 8,
+        G1: "Резервный капитал",G2: "3", 
+        G3: @f1_beg.S440, G5: @f1_end.S440)
+      @enterprise.analytical_balances << @AB_new_rec
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
+        row_type: 2, ab_type: 8,
+        G1: "Сумма уставного и резервного капиталов (стр. 2 + стр. 3)",G2: "4", 
+        G3: @f1_beg.S410+@f1_beg.S440, G5: @f1_end.S410+@f1_end.S440)
+      @enterprise.analytical_balances << @AB_new_rec
+      
+      @AB_new_rec = AnalyticalBalance.create!(date_period_beg: @f1_beg.date_period, date_period_end: @f1_end.date_period, 
         row_type: 6, ab_type: 8,
-        G1: "Анализ соотношения чистых активов с суммой уставного и резервного капиталов организации")
+        G1: "Разность между чистыми активами и суммой уставного и резервного капиталов (стр. 1 – стр. 4)",G2: "5", 
+        G3: @f1_beg.Cha-@f1_beg.S410-@f1_beg.S440, G5: @f1_end.Cha-@f1_end.S410-@f1_end.S440)
       @enterprise.analytical_balances << @AB_new_rec
       
       
@@ -1102,6 +1173,9 @@ class ResultsController < ApplicationController
                  ["8", "Прочие долгосрочные активы", "S180","(data.S180.to_f/data.S190)*100"],
                  ["8", "ИТОГО Раздел I", "S190",100]]
       end      
+      
+      # Читаем расчёты из таблицы аналитического баланса ...
+      @AB_8 =AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(8).order('id')      
       
     else  # unless @f1_beg.nil? or @f1_end.nil?
       wrong_data_message
