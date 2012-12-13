@@ -17,7 +17,46 @@
       За период : <strong><%= Russian::strftime(@enterprise.rab_date_beg,"%d %B %Y г.") %> - 
         <%= Russian::strftime(@enterprise.rab_date_end,"%d %B %Y г.") %></strong></span></div>
   
-  <%#############################################################################################################%>
+      <table class="table table-striped table-bordered table-condensed">
+        <thead style="background-color: lightgray">
+          <tr>
+            <td><div class="pagination-centered" ><strong>Анализ Чистых Активов</strong></div></td>
+          </tr>
+        </thead>
+        <tbody>      
+          <tr>
+            <td><div id="D1"></div></td>
+          </tr>
+        </tbody>   
+      </table>
+      <%####################################################################################################################%>
+      <% unless @DiagType73_data.nil? %>  
+        <%= raw Seer::visualize(
+          @DiagType73_data, 
+          :as => :line_chart,
+          :in_element => 'D1',
+          :series => {
+            :series_label => 'name',
+            :data_label   => 'rus_date_period',
+            :data_method  => 'summa',
+            :data_series  => @DiagType73_series
+          },
+          :chart_options => {
+            :title => 'Динамика капиталов и активов',
+            :title_y => 'Сумма, млн.руб.',        
+            :legend_font_size => 10,
+            :height => 270,
+            :width => 700,
+            :axis_font_size => 11,
+            :colors => ['#000099','#009900','#990000','#FF0000','#FFA500','#FFFF00',
+              '#808000','#008000','#800080','#FF00FF',
+              '#00FF00','#008080','#FA8072','#0000FF',
+              '#000080','#000000','#808088','#C0C0C0',
+              '#9400D3','#FF1493','#4682B4','#F0E68C','#BC8F8F'],
+            :point_size => 5})%>
+      <% end %>
+
+<%#############################################################################################################%>
 <%# Общая для все вариантов таблица ...%>
 <table class="table table-striped table-bordered table-condensed" style="font-size: 12px">  
   <thead style="background-color: lightgray">

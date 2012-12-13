@@ -1,14 +1,43 @@
 <% provide(:title, 'Новости') %>
 
-<div class="well sidebar-nav shadow"style="text-align: justify; color: black; padding: 5pt ">
-<legend><%= image_tag("News-64.png")%><strong>Новости</strong></legend>
-<dl> 
-    <dt> 11 октября 2012 г. </dt>
-    <dd>В настоящее время идёт разработка новых аналитических блоков:
-    <ul>
-      <li>Анализ чистых активов и структуры прибыли <strong><em>(срок внедрения - ноябрь 2012 г.)</em></strong></li>
-      <li>Анализ денежных потоков <strong><em>(срок внедрения - декабрь 2012 г.)</em></strong></li>      
-    </ul>       
-    </dd>
-</dl>    
-</div>
+<% content_for :span3 do %>      
+  <div class="well sidebar-nav shadow">  
+    <ul class="nav nav-list">  
+      <li class="nav-header">Действия</li>         
+      <li><%= link_to "На Главную", root_path %></li>  
+    </ul>  
+  </div>  
+<% end %>
+
+
+
+<% content_for :span9 do %> 
+  <div class="well sidebar-nav shadow"style="text-align: justify; color: black; padding: 5pt ">
+    <legend><%= image_tag("News-64.png")%><strong>Новости</strong></legend>
+    <dl> 
+        <dt> 12 декабря 2012 г. </dt>
+        <dd>Разработан новый аналитический блок:
+        <ul>
+          <li> - Анализ величины чистых активов и структуры их формирования.</li>
+        </ul>       
+        </dd>
+    </dl>
+    <dd>Идут работы по созданию аналитического блока <em>"Анализ финансовых потоков"</em> <strong><em>(срок внедрения - декабрь 2012 г.)</em></strong></dd>      
+    
+    <dl> 
+        <dt> 11 октября 2012 г. </dt>
+        <dd>В настоящее время идёт разработка новых аналитических блоков:
+        <ul>
+          <li>Анализ чистых активов и структуры их формирования <strong><em>(срок внедрения - ноябрь 2012 г.)</em></strong></li>
+          <li>Анализ финансовых потоков <strong><em>(срок внедрения - декабрь 2012 г.)</em></strong></li>      
+        </ul>       
+        </dd>    
+    </dl>    
+  </div>
+<% end  %> <%#### content_for :span9 do %>
+
+<%#*<div class="pull-left"><%= link_to "#BeginOfPage", class: "btn btn-small btn-info" do %>
+           <%#*В начало страницы%>
+<%# end %>
+<%#*</div>%>
+

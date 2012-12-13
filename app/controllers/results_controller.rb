@@ -1163,20 +1163,29 @@ class ResultsController < ApplicationController
       
       
       unless @form_one_reports.empty?          
-        @Arr_ab=[["8", "Основные средства", "S110","(data.S110.to_f/data.S190)*100"],
-                 ["8", "Нематериальные активы", "S120","(data.S120.to_f/data.S190)*100"],
-                 ["8", "Доходные вложения в матер-ые активы", "S130","(data.S130.to_f/data.S190)*100"],
-                 ["8", "Вложения в долгосрочные активы", "S140","(data.S140.to_f/data.S190)*100"],
-                 ["8", "Долгосрочные финансовые вложения", "S150","(data.S150.to_f/data.S190)*100"],
-                 ["8", "Отложенные налоговые активы", "S160","(data.S160.to_f/data.S190)*100"],
-                 ["8", "Долгосрочная дебиторская задол-сть", "S170","(data.S170.to_f/data.S190)*100"],
-                 ["8", "Прочие долгосрочные активы", "S180","(data.S180.to_f/data.S190)*100"],
-                 ["8", "ИТОГО Раздел I", "S190",100]]
+        @Arr_ab=[["73", "Чистые активы", "data.Cha"],
+                 ["73", "Уставный капитал", "data.S410"],
+                 ["73", "Сумма уставного и резервного капиталов", "data.S410+data.S440"],
+                 ["73", "Минимальный уставной капитал", "NsiMinUstCap.EnterpriseFor(params[:id]).Sorted.OnDate(data.date_period).first.summa"]]
       end      
       
       # Читаем расчёты из таблицы аналитического баланса ...
       @AB_8 =AnalyticalBalance.ABEnterpriseFor(params[:id]).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).KindOfAB(8).order('id')      
-      
+      # Разложим массивы по таблицам для каждого вида диаграмм ...
+      @Arr_ab.each do |x|
+        # Готовим массив для :line_chart-графика Динамика значений за интервал.
+        #
+        eval("@BR_new_rec=BalanseRow.create!(date_period_beg: @f1_beg.date_period, 
+                                     date_period_end: @f1_end.date_period, 
+                                     diag_type: #{x[0]}, 
+                                     name: "+'"'+"#{x[1]}"+'"'+")
+                @BR_rec=@enterprise.balanse_rows << @BR_new_rec
+                @form_one_reports.each do |data|
+                   @BV_new_rec=@BR_rec.last.balanse_values.create!(date_period: data.date_period,summa: #{x[2]}) 
+                end
+                @DiagType#{x[0]}_data  =BalanseRow.BalanseRowEnterpriseFor(params[:id]).DiagramType(#{x[0]}).WorkPeriod(@f1_beg.date_period,@f1_end.date_period).order("+'"'+"id"+'"'+").all
+                @DiagType#{x[0]}_series=@DiagType#{x[0]}_data.map{|w|w.balanse_values}")
+      end
     else  # unless @f1_beg.nil? or @f1_end.nil?
       wrong_data_message
       redirect_to enterprise_path(params[:id])        
