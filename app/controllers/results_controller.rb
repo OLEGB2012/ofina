@@ -1166,7 +1166,8 @@ class ResultsController < ApplicationController
         @Arr_ab=[["73", "Чистые активы", "data.Cha"],
                  ["73", "Уставный капитал", "data.S410"],
                  ["73", "Сумма уставного и резервного капиталов", "data.S410+data.S440"],
-                 ["73", "Минимальный уставной капитал", "NsiMinUstCap.EnterpriseFor(params[:id]).Sorted.OnDate(data.date_period).first.summa"]]
+                 ["73", "Минимальный уставной капитал", 
+                   "NsiMinUstCap.EnterpriseFor(params[:id]).Sorted.OnDate(data.date_period).first.nil? ? 0:NsiMinUstCap.EnterpriseFor(params[:id]).Sorted.OnDate(data.date_period).first.summa"]]
       end      
       
       # Читаем расчёты из таблицы аналитического баланса ...
