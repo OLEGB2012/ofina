@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9' #, :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.11' #, :git => 'git://github.com/rails/rails.git'
 gem 'bootstrap-sass' , "~> 2.0.4.0" # https://github.com/thomas-mcdonald/bootstrap-sass/
 gem 'simple_form'                  # https://github.com/plataformatec/simple_form
 gem 'seer', '0.10.0' , :git => 'https://github.com/OLEGB2012/seer'   # https://github.com/Bantik/seer 
